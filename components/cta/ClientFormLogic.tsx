@@ -215,7 +215,7 @@ export default function ClientFormLogic({
                 Szacowany budżet na projekt?
               </label>
               {/* do 5 tys. zł / 5–10 tys. zł / 10–20 tys. zł / powyżej 20 tys. zł / Jeszcze nie wiem */}
-              {formData.budget !== "" && (
+              {formData.timeline !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -378,7 +378,7 @@ export default function ClientFormLogic({
                 Czy masz już domenę i hosting?
               </label>
               {/* Tak / Nie / Potrzebuję pomocy */}
-              {formData.hosting !== "" && (
+              {formData.style !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -440,7 +440,7 @@ export default function ClientFormLogic({
                 Jaki styl strony najbardziej Ci odpowiada?
               </label>
               {/* Nowoczesny / Minimalistyczny / Klasyczny / Nie mam zdania */}
-              {formData.style !== "" && (
+              {formData.materials.length > 0 && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -501,7 +501,7 @@ export default function ClientFormLogic({
           {step >= 2 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.materials !== "" && (
+                {formData.materials.length > 0 && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -509,7 +509,7 @@ export default function ClientFormLogic({
                 Pytanie 3/8
               </span>
               <label className="font-light mt-3">Czy masz już materiały?</label>
-              {formData.materials !== "" && (
+              {formData.mainGoal !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {/* Logo / Teksty / Zdjęcia / Nic jeszcze */}
                   <button
@@ -617,7 +617,7 @@ export default function ClientFormLogic({
               <label className="font-light mt-3">
                 Jaki jest główny cel tej strony?
               </label>
-              {formData.mainGoal !== "" && (
+              {formData.projectType !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   {/* Pozyskiwanie klientów / Sprzedaż online / Prezentacja firmy / Inne */}
                   <button
