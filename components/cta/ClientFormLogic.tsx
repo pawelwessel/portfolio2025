@@ -94,7 +94,7 @@ export default function ClientFormLogic({
       <Toast />
       {isSent && <Success />}
       <div className="flex flex-col relative pb-48">
-        {formData.budget !== undefined && (
+        {formData.budget !== "" && (
           <div
             style={{ boxShadow: "0px 0px 3px black" }}
             className="rounded-xl mx-6 my-6 p-6 bg-white flex flex-col"
@@ -204,7 +204,7 @@ export default function ClientFormLogic({
           {step >= 6 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.budget !== undefined && (
+                {formData.budget !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -215,7 +215,7 @@ export default function ClientFormLogic({
                 Szacowany budżet na projekt?
               </label>
               {/* do 5 tys. zł / 5–10 tys. zł / 10–20 tys. zł / powyżej 20 tys. zł / Jeszcze nie wiem */}
-              {formData.budget !== undefined && (
+              {formData.budget !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -293,7 +293,7 @@ export default function ClientFormLogic({
           {step >= 5 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.timeline !== undefined && (
+                {formData.timeline !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -303,7 +303,7 @@ export default function ClientFormLogic({
               <label className="font-light mt-3">
                 Kiedy chcesz wystartować ze stroną?
               </label>
-              {formData.hosting !== undefined && (
+              {formData.hosting !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -367,7 +367,7 @@ export default function ClientFormLogic({
           {step >= 4 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.hosting !== undefined && (
+                {formData.hosting !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -378,7 +378,7 @@ export default function ClientFormLogic({
                 Czy masz już domenę i hosting?
               </label>
               {/* Tak / Nie / Potrzebuję pomocy */}
-              {formData.hosting !== undefined && (
+              {formData.hosting !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -429,7 +429,7 @@ export default function ClientFormLogic({
           {step >= 3 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.style !== undefined && (
+                {formData.style !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -440,7 +440,7 @@ export default function ClientFormLogic({
                 Jaki styl strony najbardziej Ci odpowiada?
               </label>
               {/* Nowoczesny / Minimalistyczny / Klasyczny / Nie mam zdania */}
-              {formData.style !== undefined && (
+              {formData.style !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   <button
                     onClick={() => {
@@ -501,7 +501,7 @@ export default function ClientFormLogic({
           {step >= 2 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.materials !== undefined && (
+                {formData.materials !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -509,7 +509,7 @@ export default function ClientFormLogic({
                 Pytanie 3/8
               </span>
               <label className="font-light mt-3">Czy masz już materiały?</label>
-              {formData.materials !== undefined && (
+              {formData.materials !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {/* Logo / Teksty / Zdjęcia / Nic jeszcze */}
                   <button
@@ -607,7 +607,7 @@ export default function ClientFormLogic({
           {step >= 1 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.mainGoal !== undefined && (
+                {formData.mainGoal !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>
@@ -617,7 +617,7 @@ export default function ClientFormLogic({
               <label className="font-light mt-3">
                 Jaki jest główny cel tej strony?
               </label>
-              {formData.mainGoal !== undefined && (
+              {formData.mainGoal !== "" && (
                 <div className="-ml-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   {/* Pozyskiwanie klientów / Sprzedaż online / Prezentacja firmy / Inne */}
                   <button
@@ -688,7 +688,7 @@ export default function ClientFormLogic({
           {step >= 0 && (
             <div className="flex flex-col justify-center border-t border-green-500 py-6 px-6 relative">
               <span className="font-bold text-lg">
-                {formData.projectType !== undefined && (
+                {formData.projectType !== "" && (
                   <div className="text-2xl absolute left-2 top-4 -translate-y-1/2 text-green-500">
                     <FaCheckCircle />
                   </div>

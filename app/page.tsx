@@ -19,7 +19,7 @@ export default async function Page({
 }) {
   const ref = searchParams?.ref;
   return (
-    <>
+    <div className="w-screen overflow-x-hidden">
       <ClientFormWrapper searchParams={ref} />
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
         <Header view={searchParams?.view} />
@@ -178,6 +178,6 @@ export default async function Page({
           </section>
         </main>
       </div>
-    </>
+    </div>
   );
 }
