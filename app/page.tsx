@@ -22,16 +22,15 @@ export default async function Page({
     <>
       <ClientFormWrapper searchParams={ref} />
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
-        <AssistantAI />
         <Header view={searchParams?.view} />
         <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-6 xl:top-12 overflow-hidden rounded-r-xl">
           <div className="w-full flex items-start relative">
             <div className="w-max absolute left-[300px] top-0">
               <Image
-                src="/loga.png"
-                width={3600}
+                src="/logo-quixy.png"
+                width={300}
                 height={200}
-                alt="Dofinansowanie na termomodernizację"
+                alt="Quixy Studio - Strony internetowe"
                 className="w-auto h-[50px] move-from-right-to-left"
               />
             </div>
@@ -44,7 +43,7 @@ export default async function Page({
           <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 h-max">
             <h1 className="z-50 bg-zinc-800 bg-opacity-80 rounded-xl p-6 lg:p-12 flex flex-col justify-center h-max my-auto">
               <Image
-                src="/logo-hexon2.png"
+                src="/logo-quixy.png"
                 width={400}
                 height={400}
                 alt=""
