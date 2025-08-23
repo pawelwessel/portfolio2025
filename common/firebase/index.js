@@ -135,7 +135,152 @@ export async function pushSecondLead(data) {
     return productDocRef;
   }
 }
+export async function getDocument(collectionName, key) {
+  try {
+    const docRef = doc(db, collectionName, key);
+    const docSnapshot = await getDoc(docRef);
 
+    if (docSnapshot.exists()) {
+      return docSnapshot.data();
+    } else {
+      console.warn(`Document ${key} not found in collection ${collectionName}`);
+      return null;
+    }
+  } catch (error) {
+    console.warn(
+      `Error fetching document ${key} from ${collectionName}:`,
+      error
+    );
+    return null;
+  }
+}
+export async function getDocuments(collectionName) {
+  try {
+    const ref = collection(db, collectionName);
+    const response = await getDocs(ref);
+    const res = response.docs.map((doc) => doc.data());
+    return res;
+  } catch (error) {
+    console.warn(`Error fetching documents from ${collectionName}:`, error);
+    // Return empty array as fallback during build time
+    return [];
+  }
+}
+export async function getBlogPosts() {
+  const docRef = doc(db, "blog", "blog");
+  const docSnap = await getDoc(docRef);
+  return docSnap.data();
+}
+export async function addBlogPost(post) {
+  const docRef = doc(db, "blog", "blog");
+  const docSnap = await getDoc(docRef);
+  if (!docSnap.data()) {
+    await setDoc(doc(db, "blog", "blog"), { posts: [post] });
+  } else {
+    await updateDoc(doc(db, "blog", "blog"), {
+      posts: arrayUnion(post),
+    });
+  }
+}
+async function updateBlogPost(postId, updatedPost) {
+  const docRef = doc(db, "blog", "blog");
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    const posts = docSnap.data().posts;
+    const postIndex = posts.findIndex((post) => post.postId === postId);
+    if (postIndex !== -1) {
+      posts[postIndex] = updatedPost;
+      await updateDoc(docRef, { posts });
+    }
+  }
+}
+
+//auto blogger
+//product === generated blog post
+
+export async function createDraft(productConfig, customId) {
+  const draftDocRef = doc(collection(db, "drafts"), customId);
+
+  const docSnap = await getDoc(draftDocRef);
+  if (docSnap.exists()) {
+    // Document with customId already exists, do not create a new one
+    return draftDocRef;
+  } else {
+    await setDoc(draftDocRef, {
+      ...productConfig,
+      createdAt: Date.now(),
+    });
+    return draftDocRef;
+  }
+}
+export async function deleteBlogPost(postId) {
+  const docRef = doc(db, "blog", "blog");
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    const posts = docSnap.data().posts;
+    const postIndex = posts.findIndex((post) => post.postId === postId);
+    if (postIndex !== -1) {
+      posts.splice(postIndex, 1);
+      await updateDoc(docRef, { posts });
+    }
+  }
+}
+
+export async function getDrafts() {
+  const querySnapshot = await getDocs(collection(db, "drafts"));
+  return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+}
+
+export async function getDraft(draftId) {
+  const draftDocRef = doc(db, "drafts", draftId);
+  const draftDoc = await getDoc(draftDocRef);
+  return draftDoc.exists() ? { ...draftDoc.data(), id: draftDoc.id } : null;
+}
+
+export async function updateDraft(draftId, updates) {
+  const draftDocRef = doc(db, "drafts", draftId);
+  return await updateDoc(draftDocRef, updates);
+}
+
+export async function deleteDraft(draftId) {
+  const draftDocRef = doc(db, "drafts", draftId);
+  return await deleteDoc(draftDocRef);
+}
+
+export async function deleteMultipleDrafts(draftIds) {
+  const promises = draftIds.map(async (draftId) => {
+    const draftDocRef = doc(db, "drafts", draftId);
+    await deleteDoc(draftDocRef);
+  });
+  await Promise.all(promises);
+}
+
+export async function deleteMultipleProducts(productIds) {
+  const promises = productIds.map(async (productId) => {
+    const productDocRef = doc(db, "products", productId);
+    await deleteDoc(productDocRef);
+  });
+  await Promise.all(promises);
+}
+
+export async function addDocument(collectionName, uniqueId, data) {
+  const cleaned = pruneUndefined(data);
+  await setDoc(doc(db, collectionName, uniqueId), cleaned);
+}
+export async function removeDocument(collectionName, uniqueId) {
+  await deleteDoc(doc(db, collectionName, uniqueId));
+}
+export async function updateDocument(keys, values, collectionName, id) {
+  const docRef = doc(db, collectionName, id);
+  const docSnapshot = await getDoc(docRef);
+
+  const existingData = docSnapshot.data();
+  const updatedData = { ...existingData };
+  keys.forEach((key, index) => {
+    updatedData[key] = values[index];
+  });
+  await updateDoc(docRef, updatedData);
+}
 export async function getSecondLeads() {
   try {
     const leadsRef = collection(db, "secondLeads");

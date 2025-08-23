@@ -1,7 +1,7 @@
 {
-  "name": "Quixy.pl",
-  "short_name": "Quixy.pl",
-  "description": "Tworzymy strony internetowe dla firm i osób prywatnych. Zamów stronę www – to proste!",
+  "name": "Paweł Wessel Portfolio",
+  "short_name": "P. Wessel",
+  "description": "Paweł Wessel - Full-stack developer z 10-letnim doświadczeniem. Tworzę nowoczesne strony internetowe i aplikacje.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

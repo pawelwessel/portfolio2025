@@ -71,16 +71,16 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#ffffff",
   manifest: "/manifest.json",
-  title: "Quixy.pl | Strony internetowe dla firm i osób prywatnych",
+  title: "Paweł Wessel | Full-Stack Developer & Portfolio",
   description:
-    "Tworzymy strony internetowe dla firm i osób prywatnych. Zamów stronę www – to proste!",
+    "Paweł Wessel - pasjonat programowania i tworzenia cyfrowych doświadczeń. Full-stack developer z 10-letnim doświadczeniem. Tworzę nowoczesne strony internetowe i aplikacje.",
   openGraph: {
     type: "website",
     url: "https://quixy.pl",
-    title: "Quixy.pl | Strony internetowe dla firm i osób prywatnych",
+    title: "Paweł Wessel | Full-Stack Developer & Portfolio",
     description:
-      "Tworzymy strony internetowe dla firm i osób prywatnych. Zamów stronę www – to proste!",
-    siteName: "Quixy.pl",
+      "Paweł Wessel - pasjonat programowania i tworzenia cyfrowych doświadczeń. Full-stack developer z 10-letnim doświadczeniem. Tworzę nowoczesne strony internetowe i aplikacje.",
+    siteName: "Paweł Wessel Portfolio",
   },
   authors: [{ name: "wesiu.dev", url: "https://wesiudev.netlify.app" }],
   publisher: "wesiu.dev",

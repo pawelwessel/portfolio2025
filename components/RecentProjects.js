@@ -4,28 +4,46 @@ import Link from "next/link";
 
 const projects = [
   {
-    img: "/6.png",
+    img: "/6.PNG",
     name: "Naily.pl",
     desc: "Platforma z systemem rezerwacji w branży beauty",
     link: "https://naily.pl",
   },
   {
-    img: "/5.png",
+    img: "/5.PNG",
     name: "Blackbellartstudio.pl",
     desc: "E-commerce z obrazami w branży artystycznej",
     link: "https://blackbellartstudio.pl",
   },
   {
-    img: "/7.png",
+    img: "/7.PNG",
+    name: "Pizzuj.pl",
+    desc: "Ranking pizzerii w branży gastronomicznej.",
+    link: "https://pizzuj.pl",
+  },
+  {
+    img: "/8.PNG",
     name: "Mocnyrozwoj.pl",
     desc: "E-commerce z dietami i kursami. System CMS.",
     link: "https://mocnyrozwoj.pl",
   },
   {
-    img: "/8.png",
-    name: "Pizzuj.pl",
-    desc: "Ranking pizzerii w branży gastronomicznej.",
-    link: "https://pizzuj.pl",
+    img: "/images/projects/fryzurykaminska/hero.webp",
+    name: "Fryzury Kamińska",
+    desc: "Strona dla fryzjerki",
+    link: "https://www.fryzurykaminska.pl/",
+  },
+  {
+    img: "/images/projects/kancelariadeluga/hero.webp",
+    name: "Kancelaria Deluga",
+    desc: "Strona dla prawnika",
+    link: "https://www.delugakancelaria.pl/",
+  },
+  {
+    img: "/images/projects/manicuregrudziadz/hero.webp",
+    name: "Manicure Grudziądz",
+    desc: "Strona dla manicurzystki",
+    link: "https://www.manicuregrudziadz.pl/",
   },
 ];
 
