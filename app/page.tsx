@@ -27,8 +27,8 @@ export default async function Page({
           <div className="w-full flex items-start relative">
             <div className="w-max absolute left-[300px] top-0">
               <Image
-                src="/logo-quixy.png"
-                width={300}
+                src="/loga.png"
+                width={3600}
                 height={200}
                 alt="Quixy Studio - Strony internetowe"
                 className="w-auto h-[50px] move-from-right-to-left"
@@ -78,7 +78,7 @@ export default async function Page({
               <div>
                 <div className="group">
                   <Image
-                    src="/logo-hexon2.png"
+                    src="/logo-quixy.png"
                     width={400}
                     height={400}
                     alt=""
