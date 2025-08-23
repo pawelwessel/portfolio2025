@@ -31,7 +31,7 @@ export default function CountToTheNumberAnimated({
           setCount(numberToAnimateTo);
           setHasFinished(true);
         }
-      }, animationSpeed);
+      }, 10);
       return () => clearInterval(interval);
     }
   }, [count, hasFinished, numberToAnimateTo, isVisible]);
@@ -58,7 +58,7 @@ export default function CountToTheNumberAnimated({
         </div>
 
         <div className="font-bold text-8xl flex flex-row w-max items-end">
-          <div className="font-bold bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] bg-clip-text text-transparent drop-shadow-xl shadow-zinc-800">
+          <div className="w-[115px] bg-red-500 font-bold bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] bg-clip-text text-transparent drop-shadow-xl shadow-zinc-800">
             {count.toLocaleString("pl-PL")}
             {numberToAnimateTo === 97 && "%"}
           </div>

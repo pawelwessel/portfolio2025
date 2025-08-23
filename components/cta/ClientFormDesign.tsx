@@ -51,7 +51,7 @@ export default function ClientForm({
             action === "client"
               ? "fixed -translate-y-0"
               : "-translate-y-[100vh]"
-          } duration-500 delay-500 left-1/2 -translate-x-1/2 top-0 w-[85vw] lg:max-w-[70vw] xl:max-w-[60vw] h-[80vh] bg-white overflow-y-scroll max-h-[80vh] rounded-b-3xl overflow-x-hidden`}
+          } duration-500 delay-500 left-1/2 -translate-x-1/2 top-0 w-[85vw] lg:max-w-[70vw] xl:max-w-[60vw] h-[80vh] bg-white overflow-y-auto max-h-[80vh] rounded-b-3xl overflow-x-hidden`}
         >
           <div className="bg-gradient-to-br from-[#C5FF17] to-[#33E5CF] p-6 flex flex-col sm:flex-row xl:sticky z-10 top-0 left-0">
             <div className="lg:px-3 mt-3 lg:mt-0">
