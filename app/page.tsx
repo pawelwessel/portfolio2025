@@ -18,6 +18,145 @@ export default async function Page({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
   const ref = searchParams?.ref;
+
+  // Map markers data stored in server component
+  const mapMarkers = [
+    {
+      id: "szczecin",
+      top: "40%",
+      left: "9.5%",
+      leftSm: "8.5%",
+      width: "8%",
+      text: "Szczecin - Strona internetowa dla restauracji",
+    },
+    {
+      id: "zielona-gora",
+      top: "58%",
+      left: "18%",
+      width: "10%",
+      text: "Zielona Góra - Sklep online z elektroniką",
+    },
+    {
+      id: "wroclaw",
+      top: "69%",
+      left: "33%",
+      width: "6%",
+      text: "Wrocław - Portfolio fotografa",
+    },
+    {
+      id: "opole",
+      top: "76%",
+      left: "43%",
+      width: "6%",
+      text: "Opole - Strona dla kancelarii prawnej",
+    },
+    {
+      id: "katowice",
+      top: "67%",
+      left: "44.5%",
+      width: "6%",
+      text: "Katowice - Sklep internetowy z odzieżą",
+    },
+    {
+      id: "krakow",
+      top: "81%",
+      left: "56.5%",
+      width: "8%",
+      text: "Kraków - Strona internetowa dla hotelu",
+    },
+    {
+      id: "rzeszow",
+      top: "78%",
+      left: "72.5%",
+      width: "8%",
+      text: "Rzeszów - Portal edukacyjny",
+    },
+    {
+      id: "lublin",
+      top: "57%",
+      left: "79%",
+      width: "10%",
+      text: "Lublin - Strona internetowa dla lekarza",
+    },
+    {
+      id: "kielce",
+      top: "65%",
+      left: "60.5%",
+      width: "8%",
+      text: "Kielce - Blog kulinarny",
+    },
+    {
+      id: "lodz",
+      top: "50%",
+      left: "47.5%",
+      width: "10%",
+      text: "Łódź - Portfolio grafika",
+    },
+    {
+      id: "poznan",
+      top: "46%",
+      left: "30%",
+      width: "8%",
+      text: "Poznań - Strona internetowa dla agencji marketingowej",
+    },
+    {
+      id: "gorzow",
+      top: "36%",
+      left: "22%",
+      width: "8%",
+      text: "Gorzów Wlkp. - Strona internetowa dla szkoły językowej",
+    },
+    {
+      id: "bydgoszcz",
+      top: "27%",
+      left: "37.5%",
+      width: "10%",
+      text: "Bydgoszcz - Sklep internetowy z zabawkami",
+    },
+    {
+      id: "radom",
+      top: "44%",
+      left: "65%",
+      width: "8%",
+      text: "Radom - Strona internetowa dla architekta",
+    },
+    {
+      id: "bialystok",
+      top: "34%",
+      left: "56%",
+      width: "8%",
+      text: "Białystok - Portal informacyjny",
+    },
+    {
+      id: "suwalki",
+      top: "23%",
+      left: "78%",
+      width: "10%",
+      text: "Suwałki - Strona internetowa dla firmy budowlanej",
+    },
+    {
+      id: "olsztyn",
+      top: "14.5%",
+      topSm: "13.5%",
+      left: "58%",
+      width: "10%",
+      text: "Olsztyn - Strona internetowa dla przedszkola",
+    },
+    {
+      id: "gdansk",
+      top: "10%",
+      left: "32%",
+      width: "10%",
+      text: "Gdańsk - Strona internetowa dla salonu fryzjerskiego",
+    },
+    {
+      id: "koszalin",
+      top: "20%",
+      left: "10%",
+      width: "10%",
+      text: "Koszalin - Strona internetowa dla trenera personalnego",
+    },
+  ];
   return (
     <div className="w-screen overflow-x-hidden">
       <ClientFormWrapper searchParams={ref} />
@@ -30,7 +169,7 @@ export default async function Page({
                 src="/loga.png"
                 width={3600}
                 height={200}
-                alt="Quixy Studio - Strony internetowe"
+                alt="Quixy Studio - Tworzenie stron internetowych"
                 className="w-auto h-[50px] move-from-right-to-left"
               />
             </div>
@@ -107,7 +246,7 @@ export default async function Page({
                 <ul className="mt-6 space-y-3 flex flex-col text-sm">
                   <li className="flex flex-row items-center">
                     <div className="bg-[#52eba7] h-2 w-2 rounded-full mr-2"></div>
-                    Strona dopasowana do Twoich potrzeb
+                    Strona internetowa dopasowana do Twoich potrzeb
                   </li>
                   <li className="flex flex-row items-center">
                     <div className="bg-[#52eba7] h-2 w-2 rounded-full mr-2"></div>
@@ -131,7 +270,7 @@ export default async function Page({
                 <div className="flex flex-col">
                   <div>
                     <h2 className="text-3xl lg:text-4xl font-bold">
-                      Jakie strony tworzymy?
+                      Jakie strony internetowe tworzymy?
                     </h2>
                     <ul className="mt-6 space-y-3 flex flex-col text-sm">
                       <li className="flex flex-row items-center font-bold">
@@ -169,10 +308,10 @@ export default async function Page({
                 <RecentProjects />
               </div>
               <h2 className="text-center text-3xl lg:text-4xl font-light font-gotham mt-24 italic">
-                Realizacje stron internetowych w całej Polsce.
+                Tworzymy strony internetowe w całej Polsce.
               </h2>
               <div className="relative w-[100%] lg:max-w-[40rem] mt-3 mx-auto p-3 overflow-visible">
-                <Map />
+                <Map markers={mapMarkers} />
               </div>
             </div>
           </section>
