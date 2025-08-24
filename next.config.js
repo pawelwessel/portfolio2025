@@ -21,6 +21,11 @@ const nextConfig = {
         hostname: "cataas.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        port: "",
+      },
     ],
   },
 };

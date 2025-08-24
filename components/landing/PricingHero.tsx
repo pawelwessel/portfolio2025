@@ -8,7 +8,7 @@ export default function PricingHero() {
           <div className="order-1 lg:order-none">
             <div className="bg-white rounded-xl p-4 shadow-md border flex items-center justify-center">
               <Image
-                src="/google.webp"
+                src="https://images.pexels.com/photos/18569238/pexels-photo-18569238.jpeg?_gl=1*cakisu*_ga*NzU4NzQzMjk1LjE3NTU1MTc3ODk.*_ga_8JE65Q40S6*czE3NTU2MDYyMTckbzIkZzEkdDE3NTU2MDYyNjgkajkkbDAkaDA."
                 width={800}
                 height={600}
                 alt="Oferta cenowa – strony i kampanie"
