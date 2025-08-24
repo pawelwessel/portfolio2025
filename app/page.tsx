@@ -85,12 +85,8 @@ export default async function Page({
         <main className="font-sans overflow-visible relative items-center min-h-screen px-3 lg:px-0 grid grid-cols-1 z-30">
           <section className={`w-full h-max z-50`}>
             <MainCard />
-            <div className="w-max mx-auto pt-6 bg-white px-6">
-              <Cta label="Napisz do mnie – porozmawiajmy o Twoim projekcie" />
-            </div>
             <PricingHero />
             <OpinionsSection />
-
             <ReachSection markers={mapMarkers} />
           </section>
         </main>
