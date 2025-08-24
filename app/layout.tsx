@@ -71,21 +71,36 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#ffffff",
   manifest: "/manifest.json",
-  title: "Paweł Wessel | Full-Stack Developer & Portfolio",
+  title: "Quixy Studio | Strony WWW, Social Media i Google Ads",
   description:
-    "Paweł Wessel - pasjonat programowania i tworzenia cyfrowych doświadczeń. Full-stack developer z 10-letnim doświadczeniem. Tworzę nowoczesne strony internetowe i aplikacje.",
+    "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads. Transparentne ceny i realne wyniki biznesowe.",
   openGraph: {
     type: "website",
     url: "https://quixy.pl",
-    title: "Paweł Wessel | Full-Stack Developer & Portfolio",
+    title: "Quixy Studio | Strony WWW, Social Media i Google Ads",
     description:
-      "Paweł Wessel - pasjonat programowania i tworzenia cyfrowych doświadczeń. Full-stack developer z 10-letnim doświadczeniem. Tworzę nowoczesne strony internetowe i aplikacje.",
-    siteName: "Paweł Wessel Portfolio",
+      "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
+    siteName: "Quixy Studio",
+    images: [
+      {
+        url: "/logo-quixy.png",
+        width: 1200,
+        height: 630,
+        alt: "Quixy Studio",
+      },
+    ],
   },
-  authors: [{ name: "wesiu.dev", url: "https://wesiudev.netlify.app" }],
-  publisher: "wesiu.dev",
+  twitter: {
+    card: "summary_large_image",
+    title: "Quixy Studio | Strony WWW, Social Media i Google Ads",
+    description:
+      "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
+    images: ["/logo-quixy.png"],
+  },
+  authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
+  publisher: "Quixy Studio",
   keywords:
-    "strony internetowe, strony www, strony internetowe dla firm, strony internetowe dla osób prywatnych, strony internetowe dla firm, strony internetowe dla osób prywatnych, strony internetowe dla firm, strony internetowe dla osób prywatnych, strony internetowe dla firm, strony internetowe dla osób prywatnych",
+    "strony internetowe, strony www, sklepy internetowe, landing page, web developer, projektowanie stron, social media, marketing, Google Ads, kampanie reklamowe, SEO, Core Web Vitals",
   icons: [
     {
       url: "/favicons/apple-touch-icon.png",
@@ -93,7 +108,7 @@ export const metadata: Metadata = {
       type: "image/png",
     },
     {
-      url: "/favicons/android-chrome-16x16.png",
+      url: "/favicons/favicon-16x16.png",
       sizes: "16x16",
       type: "image/png",
     },

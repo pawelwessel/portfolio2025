@@ -23,9 +23,9 @@ export default function ReachSection({ markers }: ReachSectionProps) {
             Zasięg Działania
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            Realizuję projekty dla klientów w całej Polsce. Współpracuję
-            zdalnie, zapewniając profesjonalną obsługę bez względu na
-            lokalizację.
+            Realizujemy strony internetowe, platformy webowe oraz kampanie
+            marketingowe (Google Ads, social media) dla klientów w całej Polsce.
+            Pracujemy zdalnie, z pełnym wsparciem niezależnie od lokalizacji.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
             <div className="bg-white rounded-lg p-4 shadow-sm text-center">
@@ -47,7 +47,7 @@ export default function ReachSection({ markers }: ReachSectionProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-md">
+        <div className="">
           <div className="relative w-full mx-auto overflow-visible">
             <Map />
           </div>
@@ -74,24 +74,68 @@ export default function ReachSection({ markers }: ReachSectionProps) {
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
             <h4 className="font-bold text-blue-800 mb-2">Północ</h4>
             <p className="text-sm text-blue-700">Gdańsk, Szczecin, Olsztyn</p>
-            <p className="text-xs text-blue-600 mt-1">8+ projektów</p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="text-[10px] bg-white/80 border text-blue-700 px-2 py-1 rounded">
+                strony www
+              </span>
+              <span className="text-[10px] bg-white/80 border text-blue-700 px-2 py-1 rounded">
+                platformy
+              </span>
+              <span className="text-[10px] bg-white/80 border text-blue-700 px-2 py-1 rounded">
+                Google Ads
+              </span>
+            </div>
+            <p className="text-xs text-blue-600 mt-3">8+ projektów</p>
           </div>
           <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg">
             <h4 className="font-bold text-green-800 mb-2">Zachód</h4>
             <p className="text-sm text-green-700">
               Wrocław, Poznań, Zielona Góra
             </p>
-            <p className="text-xs text-green-600 mt-1">12+ projektów</p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="text-[10px] bg-white/80 border text-green-700 px-2 py-1 rounded">
+                strony www
+              </span>
+              <span className="text-[10px] bg-white/80 border text-green-700 px-2 py-1 rounded">
+                sklepy
+              </span>
+              <span className="text-[10px] bg-white/80 border text-green-700 px-2 py-1 rounded">
+                social media
+              </span>
+            </div>
+            <p className="text-xs text-green-600 mt-3">12+ projektów</p>
           </div>
           <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg">
             <h4 className="font-bold text-purple-800 mb-2">Centrum</h4>
             <p className="text-sm text-purple-700">Warszawa, Łódź, Bydgoszcz</p>
-            <p className="text-xs text-purple-600 mt-1">15+ projektów</p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="text-[10px] bg-white/80 border text-purple-700 px-2 py-1 rounded">
+                platformy
+              </span>
+              <span className="text-[10px] bg-white/80 border text-purple-700 px-2 py-1 rounded">
+                landing pages
+              </span>
+              <span className="text-[10px] bg-white/80 border text-purple-700 px-2 py-1 rounded">
+                Google Ads
+              </span>
+            </div>
+            <p className="text-xs text-purple-600 mt-3">15+ projektów</p>
           </div>
           <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg">
             <h4 className="font-bold text-orange-800 mb-2">Południe</h4>
             <p className="text-sm text-orange-700">Kraków, Katowice, Rzeszów</p>
-            <p className="text-xs text-orange-600 mt-1">18+ projektów</p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="text-[10px] bg-white/80 border text-orange-700 px-2 py-1 rounded">
+                sklepy
+              </span>
+              <span className="text-[10px] bg-white/80 border text-orange-700 px-2 py-1 rounded">
+                strony www
+              </span>
+              <span className="text-[10px] bg-white/80 border text-orange-700 px-2 py-1 rounded">
+                social media
+              </span>
+            </div>
+            <p className="text-xs text-orange-600 mt-3">18+ projektów</p>
           </div>
         </div>
       </div>

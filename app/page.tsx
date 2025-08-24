@@ -4,6 +4,7 @@ import Cta from "@/components/cta/Cta";
 import ClientFormWrapper from "@/components/cta/ClientFormWrapper";
 import HeroIntro from "../components/landing/HeroIntro";
 import MainCard from "../components/landing/MainCard";
+import PricingHero from "../components/landing/PricingHero";
 import OpinionsSection from "../components/landing/OpinionsSection";
 import ReachSection from "../components/landing/ReachSection";
 export default async function Page({
@@ -84,9 +85,10 @@ export default async function Page({
         <main className="font-sans overflow-visible relative items-center min-h-screen px-3 lg:px-0 grid grid-cols-1 z-30">
           <section className={`w-full h-max z-50`}>
             <MainCard />
-
-            <Cta label="Napisz do mnie – porozmawiajmy o Twoim projekcie" />
-
+            <div className="w-max mx-auto pt-6 bg-white px-6">
+              <Cta label="Napisz do mnie – porozmawiajmy o Twoim projekcie" />
+            </div>
+            <PricingHero />
             <OpinionsSection />
 
             <ReachSection markers={mapMarkers} />

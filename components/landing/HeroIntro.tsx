@@ -33,8 +33,8 @@ export default function HeroIntro() {
             />
             <div className="font-light mt-6 text-base lg:text-lg xl:text-xl text-gray-50 text-center lg:text-left z-30 w-full flex justify-center">
               <span className="text-white drop-shadow-md shadow-black italic sm:max-w-[30rem] lg:max-w-[50rem] max-w-[40rem]">
-                Tworzę nowoczesne strony internetowe i aplikacje.
-                Współpracujmy razem nad Twoim projektem!
+                Tworzymy skuteczne strony WWW, marketing w social media i
+                kampanie Google Ads.
               </span>
             </div>
             <div className="flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
