@@ -2,8 +2,9 @@ import "@/styles/globals.css";
 import localFont from "next/font/local";
 import Script from "next/script";
 import AOSInit from "@/components/AOS";
-import { Providers } from "@/common/redux/Provider";
-import ClientFormWrapper from "@/components/cta/ClientFormWrapper";
+import { PhoneModalProvider } from "@/common/context/PhoneModalContext";
+import { ThemeProvider } from "@/common/context/ThemeContext";
+import PhoneModal from "@/components/PhoneModal";
 import { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 export default async function Root({
@@ -17,7 +18,12 @@ export default async function Root({
         className={`${cocosharp.variable} overflow-x-hidden ${gotham.variable}`}
       >
         <AOSInit />
-        <Providers>{children}</Providers>
+        <ThemeProvider>
+          <PhoneModalProvider>
+            {children}
+            <PhoneModal />
+          </PhoneModalProvider>
+        </ThemeProvider>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-10818390066"

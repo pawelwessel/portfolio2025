@@ -1,7 +1,6 @@
 import Hero from "@/components/hero/Hero";
 import Header from "@/components/header";
 import Cta from "@/components/cta/Cta";
-import ClientFormWrapper from "@/components/cta/ClientFormWrapper";
 import HeroIntro from "../components/landing/HeroIntro";
 import MainCard from "../components/landing/MainCard";
 import PricingHero from "../components/landing/PricingHero";
@@ -74,7 +73,6 @@ export default async function Page({
   ];
   return (
     <div className="w-screen overflow-x-hidden">
-      <ClientFormWrapper searchParams={ref} />
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
         <Header view={searchParams?.view} />
         <HeroIntro />

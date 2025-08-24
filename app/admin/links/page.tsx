@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
-import { useSelector } from "react-redux";
+import { useTheme } from "@/common/context/ThemeContext";
 export default function Page() {
   const [links, setLinks] = useState<any[]>([]);
-  const { light } = useSelector((state: any) => state.light);
+  const { light } = useTheme();
   useEffect(() => {
     const ref = collection(getFirestore(app), "links");
     const unsub = onSnapshot(ref, (querySnapshot: any) => {

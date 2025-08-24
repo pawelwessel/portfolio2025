@@ -3,7 +3,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { pushLinks } from "@/common/firebase";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
+import { useTheme } from "@/common/context/ThemeContext";
 import Links from "@/components/Links";
 
 export default function Page() {
@@ -21,7 +21,7 @@ export default function Page() {
     setLinks((prevLinks: any) => [...prevLinks, ...newLinks]);
   }
   const router = useRouter();
-  const { light } = useSelector((state: any) => state.light);
+  const { light } = useTheme();
   return (
     <div className="w-full h-full text-white font-sans pb-12">
       <h1 className="text-4xl font-bold mt-12 mb-12 px-6">

@@ -18,14 +18,14 @@ const projects = [
       "Zwiększyliśmy konwersję o 156% poprzez optymalizację ścieżki zakupowej i implementację systemu rekomendacji.",
   },
   {
-    img: "/7.PNG",
+    img: "/8.PNG",
     name: "Pizzuj.pl",
     desc: "Ranking pizzerii w branży gastronomicznej.",
     achievement:
       "Zwiększyliśmy ruch organiczny o 200% w ciągu 3 miesięcy poprzez optymalizację SEO i content marketing.",
   },
   {
-    img: "/8.PNG",
+    img: "/7.PNG",
     name: "Mocnyrozwoj.pl",
     desc: "E-commerce z dietami i kursami. System CMS.",
     achievement:

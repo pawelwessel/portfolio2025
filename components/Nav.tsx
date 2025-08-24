@@ -11,6 +11,9 @@ import {
   FaSignOutAlt,
   FaUser,
   FaUsers,
+  FaArtstation,
+  FaUpload,
+  FaEdit,
 } from "react-icons/fa";
 
 import { useState } from "react";
@@ -49,25 +52,24 @@ export default function Nav({
         { title: "Wiadomości", href: `/admin/messages`, icon: <FaEnvelope /> },
       ],
     },
-
-    // {
-    //   title: "Blog",
-    //   href: `/admin/blog/edit`,
-    //   expandable: true,
-    //   icon: <FaArtstation />,
-    //   subItems: [
-    //     {
-    //       title: "Nowy post",
-    //       href: `/admin/blog/new`,
-    //       icon: <FaUpload />,
-    //     },
-    //     {
-    //       title: "Edytuj post",
-    //       href: `/admin/blog/edit`,
-    //       icon: <FaEdit />,
-    //     },
-    //   ],
-    // },
+    {
+      title: "Blog",
+      href: `/admin/blog/edit`,
+      expandable: true,
+      icon: <FaArtstation />,
+      subItems: [
+        {
+          title: "Nowy post",
+          href: `/admin/blog/new`,
+          icon: <FaUpload />,
+        },
+        {
+          title: "Edytuj post",
+          href: `/admin/blog/edit`,
+          icon: <FaEdit />,
+        },
+      ],
+    },
     {
       title: "Leady",
       href: `/admin/leads`,

@@ -7,8 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaLightbulb } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { setLight } from "@/common/redux/slices/lightSlice";
+import { useTheme } from "@/common/context/ThemeContext";
 import { usePathname } from "next/navigation";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
 import dynamic from "next/dynamic";
@@ -51,9 +50,7 @@ export default function AdminLayout({
   const pathname = usePathname();
   const [isNavOpen, setNavOpen] = useState(false);
   const [user, loading] = useAuthState(auth);
-  const dispatch = useDispatch();
-
-  const { light } = useSelector((state: any) => state.light);
+  const { light, toggle } = useTheme();
 
   return (
     <>
@@ -66,7 +63,7 @@ export default function AdminLayout({
             !pathname.includes("/leads/courses") &&
             !pathname.includes("/leads/applications") && (
               <button
-                onClick={() => dispatch(setLight(!light))}
+                onClick={() => toggle()}
                 className="absolute right-6 top-6"
               >
                 <FaLightbulb

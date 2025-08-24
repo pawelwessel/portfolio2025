@@ -2,7 +2,7 @@
 import moment from "moment";
 import { useState } from "react";
 import { FaLink } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useTheme } from "@/common/context/ThemeContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LinkComponent from "./LinkComponent";
@@ -14,7 +14,7 @@ export default function Links({ links }: { links: any }) {
       toast.success("Skopiowano", { autoClose: 5000 });
     });
   }
-  const { light } = useSelector((state: any) => state.light);
+  const { light } = useTheme();
   return (
     <>
       <div className="mt-12 px-6 duration-300 min-h-screen">

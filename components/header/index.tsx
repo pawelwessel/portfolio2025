@@ -8,12 +8,11 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { setModalVisible } from "@/common/redux/slices/actionSlice";
-import { useDispatch } from "react-redux";
+import { usePhoneModal } from "@/common/context/PhoneModalContext";
 import Faq from "../faq";
 import Cta from "../cta/Cta";
 export default function Header({ view }: { view: any }) {
-  const dispatch = useDispatch();
+  const { open } = usePhoneModal();
   const [isFaqOpen, setFaqOpen] = useState<boolean>(false);
   const faqs = [
     {
