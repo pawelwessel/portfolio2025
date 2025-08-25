@@ -16,7 +16,7 @@ export default function Page() {
           className="w-[150px] sm:w-[200px]"
         />
       </Link>
-      <Header view={"courses"} />
+      <Header />
       <div className="bg-zinc-800 h-screen w-full fixed left-0 top-0">
         <Hero />
       </div>

@@ -38,7 +38,7 @@ export default function HeroIntro() {
               </span>
             </div>
             <div className="flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
-              <Cta label="Skontaktuj się ze mną" />
+              <Cta label="Skontaktuj się" />
             </div>
           </h1>
           <div className="flex items-center xl:justify-center flex-col w-full lg:pl-12 mt-20 lg:mt-0">

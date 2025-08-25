@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { usePhoneModal } from "@/common/context/PhoneModalContext";
 import Faq from "../faq";
 import Cta from "../cta/Cta";
-export default function Header({ view }: { view: any }) {
+export default function Header() {
   const { open } = usePhoneModal();
   const [isFaqOpen, setFaqOpen] = useState<boolean>(false);
   const faqs = [
@@ -54,10 +54,9 @@ export default function Header({ view }: { view: any }) {
   };
 
   return (
-    <header className="fixed left-0 top-6 xl:top-12 w-full z-[500] font-sans">
-      <Faq faqs={faqs} isFaqOpen={isFaqOpen} setFaqOpen={setFaqOpen} />
+    <header className="fixed left-0 top-3 xl:top-9 w-full z-[500] font-sans">
       <div className="w-[98vw] mx-auto flex flex-row justify-end px-6">
-        <Cta label="Zamów stronę" />
+        <Cta label="Darmowa wycena" />
       </div>
     </header>
   );

@@ -2,25 +2,25 @@ import { FaStar } from "react-icons/fa";
 
 const opinions = [
   {
-    name: "Anna Nowak",
+    name: "Anna N.",
     opinion:
       "Strona wykonana szybko i profesjonalnie. Kontakt z zespołem był bardzo dobry. Polecam każdemu, kto chce mieć nowoczesną stronę!",
     rating: "5",
   },
   {
-    name: "Marek Zieliński",
+    name: "Marek Z.",
     opinion:
       "Bardzo sprawna realizacja, wszystko zgodnie z ustaleniami. Strona wygląda świetnie i działa bez zarzutu.",
     rating: "5",
   },
   {
-    name: "Katarzyna Wójcik",
+    name: "Katarzyna W.",
     opinion:
       "Nie musiałam się na niczym znać – wystarczyło opisać, czego potrzebuję. Efekt przeszedł moje oczekiwania!",
     rating: "5",
   },
   {
-    name: "Tomasz Lewandowski",
+    name: "Tomasz L.",
     opinion: "Świetna obsługa i wsparcie po wdrożeniu strony. Polecam!",
     rating: "5",
   },

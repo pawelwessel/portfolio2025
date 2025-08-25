@@ -160,7 +160,7 @@ export default function BlogSection() {
 
                   <div className="mt-5">
                     <Link
-                      href={`/blog/${post.slug || post.url || post.postId}`}
+                      href={`/oferta/${post.slug || post.url || post.postId}`}
                       className="inline-flex items-center text-[#B4FC2D] hover:text-[#A3E626] text-sm font-medium transition-colors duration-300"
                       onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
                         e.stopPropagation()
@@ -277,7 +277,7 @@ export default function BlogSection() {
 
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Link
-                    href={`/blog/${
+                    href={`/oferta/${
                       activePost.slug || activePost.url || activePost.postId
                     }`}
                     className="inline-flex items-center justify-center bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] hover:from-[#A3E626] hover:to-[#2DD4B0] text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#B4FC2D]/20"

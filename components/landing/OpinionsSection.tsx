@@ -17,7 +17,7 @@ export default function OpinionsSection() {
                 A
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Anna Nowak</h4>
+                <h4 className="font-bold text-gray-800">Anna N.</h4>
                 <p className="text-sm text-gray-500">
                   Właścicielka salonu fryzjerskiego
                 </p>
@@ -29,7 +29,7 @@ export default function OpinionsSection() {
             <p className="text-gray-700 leading-relaxed">
               &quot;Profesjonalne wykonanie strony internetowej w bardzo dobrym
               czasie. Paweł świetnie zrozumiał moje potrzeby i stworzył
-              nowoczesną stronę wizytówkę z systemem rezerwacji online. Polecam
+              nowoczesną stronę z możliwością umówienia wizyt online. Polecam
               każdemu przedsiębiorcy!&quot;
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function OpinionsSection() {
                 M
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Marek Zieliński</h4>
+                <h4 className="font-bold text-gray-800">Marek Z.</h4>
                 <p className="text-sm text-gray-500">CEO firmy e-commerce</p>
               </div>
             </div>
@@ -48,10 +48,10 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Sklep internetowy wykonany zgodnie z najwyższymi
-              standardami. Integracja płatności, responsywny design i
-              optymalizacja SEO - wszystko na najwyższym poziomie. Sprzedaż
-              wzrosła o 200% w pierwszym miesiącu.&quot;
+              &quot;Sklep internetowy wykonany profesjonalnie i zgodnie z moimi
+              oczekiwaniami. Strona działa sprawnie, płatności online działają
+              bez problemów. Sprzedaż wzrosła o 200% w pierwszym miesiącu dzięki
+              lepszej widoczności w Google.&quot;
             </p>
           </div>
 
@@ -61,7 +61,7 @@ export default function OpinionsSection() {
                 K
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Katarzyna Wójcik</h4>
+                <h4 className="font-bold text-gray-800">Katarzyna W.</h4>
                 <p className="text-sm text-gray-500">Lekarz dentysta</p>
               </div>
             </div>
@@ -70,9 +70,10 @@ export default function OpinionsSection() {
             </div>
             <p className="text-gray-700 leading-relaxed">
               &quot;Fantastyczne podejście do klienta! Nie musiałam się martwić
-              żadnymi technikaliami. Paweł przeprowadził mnie przez cały proces
-              tworzenia strony medycznej z systemem umówienia wizyt. Rezultat
-              przekroczył oczekiwania!&quot;
+              żadnymi szczegółami technicznymi. Paweł przeprowadził mnie przez
+              cały proces tworzenia strony dla mojej praktyki lekarskiej z
+              możliwością umawiania wizyt. Rezultat przekroczył
+              oczekiwania!&quot;
             </p>
           </div>
 
@@ -82,7 +83,7 @@ export default function OpinionsSection() {
                 T
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Tomasz Lewandowski</h4>
+                <h4 className="font-bold text-gray-800">Tomasz L.</h4>
                 <p className="text-sm text-gray-500">
                   Właściciel agencji marketingowej
                 </p>
@@ -92,10 +93,10 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Kompleksowa realizacja projektu - od UX/UI design po
-              wdrożenie. Aplikacja webowa z CRM działa bez zarzutu. Świetne
-              wsparcie techniczne i regularne aktualizacje. Najlepsza inwestycja
-              w IT!&quot;
+              &quot;Kompleksowa realizacja projektu - od projektu strony po jej
+              uruchomienie. Nowa strona z systemem zarządzania klientami działa
+              bez zarzutu. Świetne wsparcie po oddaniu projektu i regularne
+              aktualizacje. Najlepsza inwestycja w rozwój firmy!&quot;
             </p>
           </div>
 
@@ -105,7 +106,7 @@ export default function OpinionsSection() {
                 J
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Joanna Kowalska</h4>
+                <h4 className="font-bold text-gray-800">Joanna K.</h4>
                 <p className="text-sm text-gray-500">
                   Artystka, właścicielka galerii
                 </p>
@@ -116,9 +117,9 @@ export default function OpinionsSection() {
             </div>
             <p className="text-gray-700 leading-relaxed">
               &quot;Portfolio online wykonane z niezwykłą dbałością o detale.
-              Galeria zdjęć z zaawansowanymi animacjami Three.js wygląda
-              profesjonalnie. Dzięki nowej stronie moja sztuka dotarła do
-              szerszej publiczności!&quot;
+              Galeria moich prac wygląda profesjonalnie i bardzo efektownie.
+              Dzięki nowej stronie moja sztuka dotarła do szerszej publiczności
+              i zyskałam nowych klientów!&quot;
             </p>
           </div>
 
@@ -128,7 +129,7 @@ export default function OpinionsSection() {
                 R
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Robert Nowicki</h4>
+                <h4 className="font-bold text-gray-800">Robert N.</h4>
                 <p className="text-sm text-gray-500">Właściciel restauracji</p>
               </div>
             </div>
@@ -136,10 +137,10 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Strona restauracji z systemem zamówień online działa
-              perfekcyjnie. Integracja z systemami płatności i dostaw znacznie
-              uprościła prowadzenie biznesu. Profesjonalna obsługa od A do Z.
-              Gorąco polecam!&quot;
+              &quot;Strona restauracji z możliwością zamawiania online działa
+              perfekcyjnie. Klienci mogą teraz łatwo składać zamówienia, a
+              płatności są automatycznie obsługiwane. Znacznie uprościło to
+              prowadzenie biznesu. Profesjonalna obsługa od A do Z!&quot;
             </p>
           </div>
 
@@ -149,7 +150,7 @@ export default function OpinionsSection() {
                 E
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Ewa Kowalczyk</h4>
+                <h4 className="font-bold text-gray-800">Ewa K.</h4>
                 <p className="text-sm text-gray-500">
                   Właścicielka sklepu internetowego
                 </p>
@@ -159,11 +160,10 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Sklep internetowy WordPress z WooCommerce to strzał w
-              dziesiątkę! Optymalizacja SEO pozwoliła mi znaleźć się na
-              pierwszej stronie Google. Responsywna strona internetowa działa
-              idealnie na wszystkich urządzeniach. Programista webdeveloper z
-              prawdziwą pasją!&quot;
+              &quot;Sklep internetowy to strzał w dziesiątkę! Dzięki poprawie
+              widoczności w Google moja strona znalazła się na pierwszej stronie
+              wyników wyszukiwania. Sklep działa idealnie na telefonach i
+              komputerach. Paweł to profesjonalista z prawdziwą pasją!&quot;
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export default function OpinionsSection() {
                 M
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Michał Jankowski</h4>
+                <h4 className="font-bold text-gray-800">Michał J.</h4>
                 <p className="text-sm text-gray-500">Dyrektor firmy IT</p>
               </div>
             </div>
@@ -181,10 +181,10 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Aplikacja mobilna React Native przekroczyła nasze
-              oczekiwania. Full-stack developer z ogromną wiedzą o nowoczesnych
-              technologiach. Frontend React.js i backend Node.js działają bez
-              zarzutu. Najlepszy programista stron internetowych w Polsce!&quot;
+              &quot;Aplikacja mobilna dla naszej firmy przekroczyła nasze
+              oczekiwania. Paweł ma ogromną wiedzę o nowoczesnych rozwiązaniach
+              internetowych. Cały system działa bez zarzutu i znacznie ułatwił
+              nam pracę. Najlepszy specjalista od stron internetowych!&quot;
             </p>
           </div>
 
@@ -194,7 +194,7 @@ export default function OpinionsSection() {
                 A
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Aleksandra Wąsik</h4>
+                <h4 className="font-bold text-gray-800">Aleksandra W.</h4>
                 <p className="text-sm text-gray-500">Marketing Manager</p>
               </div>
             </div>
@@ -202,11 +202,11 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Strona firmowa wykonana w Next.js to prawdziwe dzieło
-              sztuki! Web design UI/UX na najwyższym poziomie. Optymalizacja
-              PageSpeed 100/100 i pozycjonowanie strony w Google przyniosły
-              fantastyczne rezultaty. Webmaster z prawdziwą pasją do
-              kodowania!&quot;
+              &quot;Strona firmowa to prawdziwe dzieło sztuki! Projekt i
+              użyteczność na najwyższym poziomie. Strona ładuje się
+              błyskawicznie, a pozycjonowanie w Google przyniosło fantastyczne
+              rezultaty w postaci nowych klientów. Paweł to specjalista z
+              prawdziwą pasją!&quot;
             </p>
           </div>
 
@@ -216,7 +216,7 @@ export default function OpinionsSection() {
                 P
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Piotr Mazurek</h4>
+                <h4 className="font-bold text-gray-800">Piotr M.</h4>
                 <p className="text-sm text-gray-500">
                   Właściciel centrum medycznego
                 </p>
@@ -227,10 +227,9 @@ export default function OpinionsSection() {
             </div>
             <p className="text-gray-700 leading-relaxed">
               &quot;System rezerwacji online z kalendarzem wizyt to rewolucja w
-              naszej praktyce! Strona internetowa HTML CSS JavaScript z
-              integracją bazy danych MySQL działa bezawaryjnie. Tworzenie stron
-              internetowych na poziomie enterprise. Najlepszy freelancer
-              programista w branży!&quot;
+              naszej praktyce! Pacjenci mogą teraz umówić się na wizytę przez
+              stronę internetową, a my mamy wszystko pod kontrolą. Strona działa
+              bezawaryjnie. Najlepszy specjalista w branży!&quot;
             </p>
           </div>
 
@@ -240,7 +239,7 @@ export default function OpinionsSection() {
                 L
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Liliana Bąk</h4>
+                <h4 className="font-bold text-gray-800">Liliana B.</h4>
                 <p className="text-sm text-gray-500">Właścicielka butiku</p>
               </div>
             </div>
@@ -248,11 +247,10 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;E-commerce WooCommerce z płatnościami online Stripe i PayPal
-              to najlepsza inwestycja! Responsywna strona www z mobile-first
-              design ładuje się błyskawicznie. Pozycjonowanie SEO Google i
-              optymalizacja Core Web Vitals na 5 gwiazdek. Polecam tego web
-              developera każdemu!&quot;
+              &quot;Sklep internetowy z płatnościami online to najlepsza
+              inwestycja! Strona ładuje się błyskawicznie na telefonach i
+              komputerach. Dzięki poprawie widoczności w Google mam znacznie
+              więcej klientów. Polecam Pawła każdemu przedsiębiorcy!&quot;
             </p>
           </div>
 
@@ -262,7 +260,7 @@ export default function OpinionsSection() {
                 D
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Damian Czajka</h4>
+                <h4 className="font-bold text-gray-800">Damian C.</h4>
                 <p className="text-sm text-gray-500">
                   CEO startupu technologicznego
                 </p>
@@ -286,7 +284,7 @@ export default function OpinionsSection() {
                 K
               </div>
               <div className="ml-3">
-                <h4 className="font-bold text-gray-800">Karolina Nowak</h4>
+                <h4 className="font-bold text-gray-800">Karolina N.</h4>
                 <p className="text-sm text-gray-500">
                   Właścicielka szkoły językowej
                 </p>
