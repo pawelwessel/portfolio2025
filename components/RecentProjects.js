@@ -55,8 +55,6 @@ const projects = [
 ];
 
 export default function RecentProjects({ className = "" }) {
-  const [selectedProject, setSelectedProject] = useState(null);
-
   return (
     <section className={`w-full py-12 ${className}`}>
       <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8">
@@ -66,15 +64,14 @@ export default function RecentProjects({ className = "" }) {
         {projects.map((p, i) => (
           <div
             key={i}
-            onClick={() => setSelectedProject(p)}
-            className="group block rounded-xl bg-gray-200 duration-300 overflow-hidden cursor-pointer"
+            className="group block rounded-xl bg-gray-200 duration-300 overflow-hidden"
           >
             <div className="relative w-full aspect-[4/3] overflow-hidden">
               <Image
                 src={p.img}
                 alt={p.name}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 25vw"
                 priority={i === 0}
               />
@@ -88,52 +85,6 @@ export default function RecentProjects({ className = "" }) {
           </div>
         ))}
       </div>
-
-      {selectedProject && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-xl p-6 max-w-4xl w-full">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-bold">{selectedProject.name}</h3>
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="relative w-full h-[300px] md:h-[400px]">
-                <Image
-                  src={selectedProject.img}
-                  alt={selectedProject.name}
-                  fill
-                  className="object-contain rounded-lg"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={100}
-                />
-              </div>
-              <div>
-                <p className="text-gray-600 mb-4">{selectedProject.desc}</p>
-                <p className="text-gray-800 mb-4">
-                  {selectedProject.achievement}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

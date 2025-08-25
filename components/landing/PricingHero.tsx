@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Cta from "@/components/cta/Cta";
 
 export default function PricingHero() {
   return (
@@ -140,12 +141,7 @@ export default function PricingHero() {
             </div>
 
             <div className="mt-6">
-              <a
-                href="#contact"
-                className="inline-block bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] text-black font-semibold px-5 py-3 rounded-lg shadow"
-              >
-                Zamów wycenę
-              </a>
+              <Cta label="Zamów wycenę" />
             </div>
           </div>
         </div>
