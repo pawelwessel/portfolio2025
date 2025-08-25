@@ -50,7 +50,7 @@ export const ParallaxImage: React.FC<ParallaxImageProps> = ({
 
   return (
     <div
-      ref={ref}
+      ref={ref as React.RefObject<HTMLDivElement>}
       className={`relative overflow-hidden ${containerClassName} ${
         className || ""
       }`}
