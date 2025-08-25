@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type RefObject,
+  type CSSProperties,
+} from "react";
 
 interface ParallaxOptions {
   speed?: number;
@@ -11,7 +17,7 @@ interface ParallaxOptions {
 
 export const useParallax = <T extends HTMLElement = HTMLDivElement>(
   options: ParallaxOptions = {}
-) => {
+): { ref: RefObject<T>; style: CSSProperties; isVisible: boolean } => {
   const {
     speed = 0.5,
     direction = "up",
@@ -73,7 +79,7 @@ export const useParallax = <T extends HTMLElement = HTMLDivElement>(
         transition: "transform 0.1s ease-out",
       };
 
-  return { ref: elementRef, style: parallaxStyle, isVisible };
+  return { ref: elementRef as RefObject<T>, style: parallaxStyle, isVisible };
 };
 
 export default useParallax;
