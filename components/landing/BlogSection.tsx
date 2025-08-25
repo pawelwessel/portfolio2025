@@ -6,9 +6,7 @@ import dynamic from "next/dynamic";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
 import { Post } from "@/types";
 
-const HeroStars = dynamic(() => import("@/components/hero/Hero"), {
-  ssr: false,
-});
+import HeroStars from "@/components/hero/Hero";
 
 export default function BlogSection() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -50,11 +48,21 @@ export default function BlogSection() {
       </div>
 
       <div className="relative z-10 w-full px-3 max-w-7xl mx-auto">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white">Z Bloga</h2>
-          <p className="text-gray-300 mt-2">
+        <div className="mb-12 text-center relative">
+          {/* Floating accent elements */}
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
+          <div className="absolute top-2 right-1/4 w-1 h-1 bg-[#3EE7C0] rounded-full opacity-80" />
+          <div className="absolute -top-2 left-1/4 w-1.5 h-1.5 bg-[#B4FC2D] rounded-full opacity-40" />
+
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white font-gotham">
+            Z Bloga
+          </h2>
+          <p className="text-gray-200 mt-3 text-base lg:text-lg max-w-2xl mx-auto">
             Artykuły o stronach, projektowaniu i inspiracjach
           </p>
+
+          {/* Subtle gradient line */}
+          <div className="w-24 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mx-auto mt-4 rounded-full opacity-60" />
         </div>
 
         {loading ? (
@@ -62,11 +70,24 @@ export default function BlogSection() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-[#1b1e29] rounded-xl p-4 animate-pulse"
+                className="bg-[#0f1320]/80 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-2xl overflow-hidden animate-pulse"
               >
-                <div className="w-full aspect-[16/9] bg-[#2a2f3d] rounded" />
-                <div className="h-4 bg-[#2a2f3d] rounded mt-4 w-3/4" />
-                <div className="h-4 bg-[#2a2f3d] rounded mt-2 w-1/2" />
+                <div className="w-full aspect-[16/9] bg-[#1a1f2e] relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1320]/80 via-transparent to-transparent" />
+                </div>
+                <div className="p-5">
+                  <div className="flex gap-2 mb-3">
+                    <div className="h-6 bg-[#1a1f2e] rounded-full w-20" />
+                    <div className="h-6 bg-[#1a1f2e] rounded-full w-16" />
+                  </div>
+                  <div className="h-6 bg-[#1a1f2e] rounded w-4/5 mb-2" />
+                  <div className="h-6 bg-[#1a1f2e] rounded w-3/5" />
+                  <div className="flex gap-2 mt-4">
+                    <div className="h-6 bg-[#1a1f2e] rounded-full w-12" />
+                    <div className="h-6 bg-[#1a1f2e] rounded-full w-16" />
+                  </div>
+                  <div className="h-4 bg-[#1a1f2e] rounded w-24 mt-5" />
+                </div>
               </div>
             ))}
           </div>
@@ -81,9 +102,12 @@ export default function BlogSection() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") setActivePost(post);
                 }}
-                className="group bg-[#141723]/80 hover:bg-[#1b2030]/80 transition-colors rounded-xl overflow-hidden border border-[#2a2f3d] backdrop-blur-sm cursor-pointer"
+                className="group relative bg-[#0f1320]/80 hover:bg-[#141723]/90 transition-all duration-300 rounded-2xl overflow-hidden border border-[#2a2f3d]/50 backdrop-blur-xl cursor-pointer hover:border-[#B4FC2D]/30 hover:shadow-lg hover:shadow-[#B4FC2D]/10 hover:-translate-y-1"
               >
-                <div className="relative aspect-[16/9]">
+                {/* Floating accent dot */}
+                <div className="absolute top-3 right-3 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+
+                <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
                     src={
                       typeof post.mainImage === "string" &&
@@ -95,36 +119,69 @@ export default function BlogSection() {
                     }
                     alt={post.title}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1320]/80 via-transparent to-transparent" />
                 </div>
-                <div className="p-4">
-                  <div className="flex items-center gap-2 text-xs text-gray-400 mb-2">
-                    <span>
+
+                <div className="p-5">
+                  <div className="flex items-center gap-2 text-xs mb-3">
+                    <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
                       {new Date(post.creationTime).toLocaleDateString("pl-PL")}
                     </span>
                     {typeof post.readTime === "number" && post.readTime > 0 && (
-                      <span>• {post.readTime} min</span>
+                      <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                        {post.readTime} min
+                      </span>
                     )}
                     {typeof post.viewerCount === "number" && (
-                      <span>• {post.viewerCount} wyświetleń</span>
+                      <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                        {post.viewerCount}
+                      </span>
                     )}
                   </div>
-                  <h3 className="text-white font-semibold text-lg line-clamp-2 group-hover:text-[#B4FC2D] transition-colors">
+
+                  <h3 className="text-white font-semibold text-lg leading-tight line-clamp-2 group-hover:text-[#B4FC2D] transition-colors duration-300 font-gotham">
                     {post.title}
                   </h3>
+
                   {post.tags && post.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-2 mt-4">
                       {post.tags.slice(0, 3).map((tag, idx) => (
                         <span
                           key={idx}
-                          className="text-xs bg-[#22263a] text-gray-300 px-2 py-1 rounded"
+                          className="text-xs bg-gradient-to-r from-[#1a1f2e] to-[#22263a] text-gray-300 px-2.5 py-1 rounded-full border border-[#2a2f3d]/30 backdrop-blur-sm"
                         >
                           #{tag}
                         </span>
                       ))}
                     </div>
                   )}
+
+                  <div className="mt-5">
+                    <Link
+                      href={`/blog/${post.slug || post.url || post.postId}`}
+                      className="inline-flex items-center text-[#B4FC2D] hover:text-[#A3E626] text-sm font-medium transition-colors duration-300"
+                      onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                        e.stopPropagation()
+                      }
+                    >
+                      Otwórz artykuł
+                      <svg
+                        className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -134,86 +191,106 @@ export default function BlogSection() {
 
       {activePost && (
         <div
-          className="fixed inset-0 z-[2000] flex items-center justify-center px-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4 backdrop-blur-sm"
           aria-modal="true"
           role="dialog"
         >
           <div
-            className="absolute inset-0 bg-black/70"
+            className="absolute inset-0 bg-black/80"
             onClick={() => setActivePost(null)}
           />
-          <div className="relative w-full max-w-3xl bg-[#0f1320] border border-[#2a2f3d] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative w-full max-w-4xl max-h-[90vh] bg-[#0f1320]/95 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-2xl overflow-hidden shadow-2xl">
             <button
               onClick={() => setActivePost(null)}
-              className="absolute right-3 top-3 text-gray-300 hover:text-white z-10"
+              className="absolute right-4 top-4 z-20 w-8 h-8 bg-[#1a1f2e]/80 hover:bg-[#22263a] border border-[#2a2f3d] rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all"
               aria-label="Zamknij"
             >
               ✕
             </button>
-            <div className="relative aspect-[16/7]">
-              <Image
-                src={
-                  typeof activePost.mainImage === "string" &&
-                  (activePost.mainImage.startsWith("http://") ||
-                    activePost.mainImage.startsWith("https://") ||
-                    activePost.mainImage.startsWith("/"))
-                    ? activePost.mainImage
-                    : "/images/projects/quixy/hero.png"
-                }
-                alt={activePost.title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f1320] via-transparent to-transparent" />
-            </div>
-            <div className="p-5">
-              <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
-                <span>
-                  {new Date(activePost.creationTime).toLocaleDateString(
-                    "pl-PL"
-                  )}
-                </span>
-                {typeof activePost.readTime === "number" &&
-                  activePost.readTime > 0 && (
-                    <span>• {activePost.readTime} min</span>
-                  )}
-                {typeof activePost.viewerCount === "number" && (
-                  <span>• {activePost.viewerCount} wyświetleń</span>
-                )}
+
+            {/* Scrollable content container */}
+            <div className="max-h-[90vh] overflow-y-auto scrollbar">
+              <div className="relative aspect-[16/7] min-h-[200px]">
+                <Image
+                  src={
+                    typeof activePost.mainImage === "string" &&
+                    (activePost.mainImage.startsWith("http://") ||
+                      activePost.mainImage.startsWith("https://") ||
+                      activePost.mainImage.startsWith("/"))
+                      ? activePost.mainImage
+                      : "/images/projects/quixy/hero.png"
+                  }
+                  alt={activePost.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f1320] via-[#0f1320]/20 to-transparent" />
+
+                {/* Floating accent elements */}
+                <div className="absolute top-4 left-4 w-3 h-3 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
+                <div className="absolute top-8 right-8 w-2 h-2 bg-[#3EE7C0] rounded-full opacity-40" />
+                <div className="absolute bottom-6 left-8 w-1 h-1 bg-[#B4FC2D] rounded-full opacity-80" />
               </div>
-              <h3 className="text-white text-2xl font-bold">
-                {activePost.title}
-              </h3>
-              {activePost.intro && (
-                <p className="text-gray-300 mt-3 whitespace-pre-line">
-                  {activePost.intro}
-                </p>
-              )}
-              {activePost.tags && activePost.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {activePost.tags.slice(0, 6).map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="text-xs bg-[#22263a] text-gray-300 px-2 py-1 rounded"
-                    >
-                      #{tag}
+
+              <div className="p-6 md:p-8">
+                <div className="flex items-center gap-3 text-xs mb-4">
+                  <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-300 px-3 py-1.5 rounded-full">
+                    {new Date(activePost.creationTime).toLocaleDateString(
+                      "pl-PL"
+                    )}
+                  </span>
+                  {typeof activePost.readTime === "number" &&
+                    activePost.readTime > 0 && (
+                      <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-300 px-3 py-1.5 rounded-full">
+                        {activePost.readTime} min czytania
+                      </span>
+                    )}
+                  {typeof activePost.viewerCount === "number" && (
+                    <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-300 px-3 py-1.5 rounded-full">
+                      {activePost.viewerCount} wyświetleń
                     </span>
-                  ))}
+                  )}
                 </div>
-              )}
-              <div className="mt-6 flex gap-3">
-                <Link
-                  href={`/blog/${activePost.url || activePost.postId}`}
-                  className="inline-block bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] text-black font-semibold px-4 py-2 rounded-lg"
-                >
-                  Czytaj cały artykuł
-                </Link>
-                <button
-                  onClick={() => setActivePost(null)}
-                  className="inline-block bg-[#22263a] text-gray-200 px-4 py-2 rounded-lg"
-                >
-                  Zamknij
-                </button>
+
+                <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight font-gotham">
+                  {activePost.title}
+                </h3>
+
+                {activePost.intro && (
+                  <p className="text-gray-200 mt-4 leading-relaxed text-base md:text-lg whitespace-pre-line">
+                    {activePost.intro}
+                  </p>
+                )}
+
+                {activePost.tags && activePost.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    {activePost.tags.slice(0, 6).map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-xs bg-gradient-to-r from-[#1a1f2e] to-[#22263a] text-gray-300 px-3 py-1.5 rounded-full border border-[#2a2f3d]/30 backdrop-blur-sm"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href={`/blog/${
+                      activePost.slug || activePost.url || activePost.postId
+                    }`}
+                    className="inline-flex items-center justify-center bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] hover:from-[#A3E626] hover:to-[#2DD4B0] text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#B4FC2D]/20"
+                  >
+                    Czytaj cały artykuł →
+                  </Link>
+                  <button
+                    onClick={() => setActivePost(null)}
+                    className="inline-flex items-center justify-center bg-[#1a1f2e]/80 hover:bg-[#22263a] border border-[#2a2f3d] text-gray-200 hover:text-white px-6 py-3 rounded-xl transition-all duration-300 backdrop-blur-sm"
+                  >
+                    Zamknij
+                  </button>
+                </div>
               </div>
             </div>
           </div>

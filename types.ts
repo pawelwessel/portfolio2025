@@ -86,6 +86,7 @@ export type Post = {
   outro: string;
   tags: string[];
   url: string;
+  slug?: string;
   metaTitle?: string;
   metaDescription?: string;
   metaKeywords?: string[];

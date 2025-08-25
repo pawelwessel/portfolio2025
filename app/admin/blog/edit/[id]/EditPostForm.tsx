@@ -105,6 +105,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           "faq",
           "blogType",
           "url",
+          "slug",
           "viewerCount",
           "readTime",
         ],
@@ -121,6 +122,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           formData.faq,
           formData.blogType,
           formData.url,
+          formData.slug || "",
           typeof formData.viewerCount === "number" ? formData.viewerCount : 0,
           typeof formData.readTime === "number" ? formData.readTime : 0,
         ],
@@ -275,6 +277,19 @@ export default function EditPostForm({ post }: EditPostFormProps) {
                 value={formData.url}
                 onChange={(e) => handleInputChange("url", e.target.value)}
                 className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-white font-medium mb-2">Slug</label>
+              <input
+                type="text"
+                value={formData.slug || ""}
+                onChange={(e) =>
+                  handleInputChange("slug", e.target.value.toLowerCase())
+                }
+                className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+                placeholder="np. jak-zrobic-szybka-strone"
               />
             </div>
 

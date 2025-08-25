@@ -27,6 +27,7 @@ export default function NewPostPage() {
     tags: [],
     faq: [],
     url: "",
+    slug: "",
     blogType: "" as BlogType,
     creationTime: Date.now(),
     viewerCount: 0,
@@ -145,6 +146,7 @@ export default function NewPostPage() {
         tags: [],
         faq: [],
         url: "",
+        slug: "",
         blogType: "",
         creationTime: Date.now(),
         viewerCount: 0,
@@ -298,6 +300,24 @@ export default function NewPostPage() {
                       value={input.url}
                       onChange={(e) =>
                         setInput({ ...input, url: e.target.value })
+                      }
+                      className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-white font-medium mb-2">
+                      Slug (adres artykułu)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="np. jak-zrobic-szybka-strone"
+                      value={input.slug || ""}
+                      onChange={(e) =>
+                        setInput({
+                          ...input,
+                          slug: e.target.value.toLowerCase(),
+                        })
                       }
                       className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
                     />
