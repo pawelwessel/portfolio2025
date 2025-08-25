@@ -66,10 +66,28 @@ export default function MainCard() {
         <h2 className="text-3xl lg:text-4xl font-bold">
           Marketing w social media
         </h2>
-        <p className="text-base font-light max-w-[45rem] mt-4">
-          Kompleksowa obsługa profili: strategia treści, kreacje, kampanie
-          płatne, moderacja i raportowanie.
-        </p>
+
+        <ul className="mt-6 space-y-2 flex flex-col text-sm">
+          <li className="flex flex-row items-center">
+            <div className="bg-[#52eba7] h-2 w-2 rounded-full mr-2"></div>
+            Content marketing, storytelling i budowanie społeczności online
+          </li>
+          <li className="flex flex-row items-center">
+            <div className="bg-[#52eba7] h-2 w-2 rounded-full mr-2"></div>
+            Facebook Business Manager, Instagram Creator Studio, social media
+            automation
+          </li>
+          <li className="flex flex-row items-center">
+            <div className="bg-[#52eba7] h-2 w-2 rounded-full mr-2"></div>
+            Kampanie reklamowe: lead generation, conversions, brand awareness,
+            reach
+          </li>
+          <li className="flex flex-row items-center">
+            <div className="bg-[#52eba7] h-2 w-2 rounded-full mr-2"></div>
+            Analytics: Facebook Insights, Instagram Analytics, Google Analytics
+            4
+          </li>
+        </ul>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
           <div className="bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm">
             <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
@@ -103,7 +121,15 @@ export default function MainCard() {
           </div>
         </div>
       </div>
-
+      <p className="text-base font-light max-w-[45rem] mt-4">
+        Kompleksowa obsługa social media: zarządzanie profilami, strategia
+        content marketingu, kreacje graficzne i video, kampanie reklamowe
+        Facebook Ads i Instagram Ads, community management, influencer
+        marketing, remarketing, targeting demograficzny, analityka mediów
+        społecznościowych, organic reach, engagement, hashtag strategy,
+        user-generated content (UGC), social listening, brand awareness i
+        raportowanie KPI.
+      </p>
       <div className="mt-12">
         <RecentProjects />
       </div>
