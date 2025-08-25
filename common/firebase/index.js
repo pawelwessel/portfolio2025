@@ -264,8 +264,7 @@ export async function deleteMultipleProducts(productIds) {
 }
 
 export async function addDocument(collectionName, uniqueId, data) {
-  const cleaned = pruneUndefined(data);
-  await setDoc(doc(db, collectionName, uniqueId), cleaned);
+  await setDoc(doc(db, collectionName, uniqueId), data);
 }
 export async function removeDocument(collectionName, uniqueId) {
   await deleteDoc(doc(db, collectionName, uniqueId));

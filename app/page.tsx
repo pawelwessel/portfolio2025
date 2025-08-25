@@ -4,6 +4,7 @@ import Cta from "@/components/cta/Cta";
 import HeroIntro from "../components/landing/HeroIntro";
 import MainCard from "../components/landing/MainCard";
 import PricingHero from "../components/landing/PricingHero";
+import BlogSection from "../components/landing/BlogSection";
 import OpinionsSection from "../components/landing/OpinionsSection";
 import ReachSection from "../components/landing/ReachSection";
 export default async function Page({
@@ -80,10 +81,11 @@ export default async function Page({
           <Hero />
         </div>
 
-        <main className="font-sans overflow-visible relative items-center min-h-screen px-3 lg:px-0 grid grid-cols-1 z-30">
+        <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
           <section className={`w-full h-max z-50`}>
             <MainCard />
             <PricingHero />
+            <BlogSection />
             <OpinionsSection />
             <ReachSection markers={mapMarkers} />
           </section>

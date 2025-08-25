@@ -200,7 +200,7 @@ export default function Map() {
         </div>
       </div>
       <div className="group">
-        <div className="w-[10%] absolute top-[10%] left-[32%] flex items-center justify-center cursor-pointer">
+        <div className="w-[10%] absolute top-[6%] left-[32%] flex items-center justify-center cursor-pointer">
           <FaMapMarkerAlt
             size={40}
             className="text-red-600 group-hover:scale-125 transition-transform duration-200"

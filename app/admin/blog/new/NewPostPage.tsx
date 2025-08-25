@@ -29,6 +29,8 @@ export default function NewPostPage() {
     url: "",
     blogType: "" as BlogType,
     creationTime: Date.now(),
+    viewerCount: 0,
+    readTime: 0,
   });
   const [selectedSection, setSelectedSection] = useState<Section>({
     title: "",
@@ -145,6 +147,8 @@ export default function NewPostPage() {
         url: "",
         blogType: "",
         creationTime: Date.now(),
+        viewerCount: 0,
+        readTime: 0,
       });
     } catch (error) {
       console.error("Error creating post:", error);
@@ -297,6 +301,46 @@ export default function NewPostPage() {
                       }
                       className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
                     />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-white font-medium mb-2">
+                        Liczba wyświetleń
+                      </label>
+                      <input
+                        type="number"
+                        min={0}
+                        value={input.viewerCount ?? 0}
+                        onChange={(e) =>
+                          setInput({
+                            ...input,
+                            viewerCount: Math.max(
+                              0,
+                              Number(e.target.value || 0)
+                            ),
+                          })
+                        }
+                        className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-white font-medium mb-2">
+                        Czas czytania (min)
+                      </label>
+                      <input
+                        type="number"
+                        min={0}
+                        value={input.readTime ?? 0}
+                        onChange={(e) =>
+                          setInput({
+                            ...input,
+                            readTime: Math.max(0, Number(e.target.value || 0)),
+                          })
+                        }
+                        className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+                      />
+                    </div>
                   </div>
 
                   <div className="flex justify-end">

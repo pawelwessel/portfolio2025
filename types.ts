@@ -97,6 +97,8 @@ export type Post = {
   }[];
   blogType: string;
   creationTime: number;
+  viewerCount?: number;
+  readTime?: number;
 };
 
 export type Section = {
