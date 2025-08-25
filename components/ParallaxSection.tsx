@@ -23,7 +23,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   className = "",
   ...props
 }) => {
-  const { ref, style } = useParallax({
+  const { ref, style } = useParallax<HTMLDivElement>({
     speed,
     direction,
     scale,

@@ -9,21 +9,23 @@ interface ParallaxOptions {
   disabled?: boolean;
 }
 
-export const useParallax = (options: ParallaxOptions = {}) => {
+export const useParallax = <T extends HTMLElement = HTMLDivElement>(
+  options: ParallaxOptions = {}
+) => {
   const {
     speed = 0.5,
     direction = "up",
     scale = 1.2,
     disabled = false,
   } = options;
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<T>(null);
   const [offset, setOffset] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (disabled || typeof window === "undefined") return;
 
-    const element = elementRef.current;
+    const element = elementRef.current as unknown as HTMLElement | null;
     if (!element) return;
 
     const observer = new IntersectionObserver(
