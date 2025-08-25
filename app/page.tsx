@@ -7,7 +7,6 @@ import PricingHero from "../components/landing/PricingHero";
 import BlogSection from "../components/landing/BlogSection";
 import OpinionsSection from "../components/landing/OpinionsSection";
 import ReachSection from "../components/landing/ReachSection";
-import InviteCta from "../components/landing/InviteCta";
 export default async function Page({
   searchParams,
 }: {
@@ -85,7 +84,6 @@ export default async function Page({
         <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
           <section className={`w-full h-max z-50`}>
             <MainCard />
-            <InviteCta />
             <PricingHero />
             <BlogSection />
             <OpinionsSection />

@@ -56,14 +56,7 @@ export default function Header() {
   return (
     <header className="fixed left-0 top-3 xl:top-9 w-full z-[500] font-sans">
       <div className="w-[98vw] mx-auto flex flex-row justify-end px-6">
-        <div className="flex gap-3">
-          <Cta label="Darmowa wycena" />
-          <Link href="/invite">
-            <button className="py-3 px-5 text-sm lg:text-base mt-4 hover:scale-110 duration-200 in-out text-white rounded-lg cursor-pointer bg-zinc-700 w-max">
-              Zaproszenie
-            </button>
-          </Link>
-        </div>
+        <Cta label="Darmowa wycena" />
       </div>
     </header>
   );
