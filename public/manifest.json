@@ -1,7 +1,7 @@
 {
-  "name": "Paweł Wessel Portfolio",
-  "short_name": "P. Wessel",
-  "description": "Paweł Wessel - Full-stack developer z 10-letnim doświadczeniem. Tworzę nowoczesne strony internetowe i aplikacje.",
+  "name": "Quixy Studio",
+  "short_name": "Quixy Studio",
+  "description": "Quixy Studio - Tworzymy skuteczne strony WWW, marketing w social media i kampanie Google Ads.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
