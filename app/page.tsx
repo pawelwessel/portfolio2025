@@ -75,7 +75,9 @@ export default async function Page({
   return (
     <div className="w-screen overflow-x-hidden">
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
-        <Header />
+        <div className="fixed top-0 left-0 w-full h-full z-50">
+          <Header />
+        </div>
         <HeroIntro />
         <div className="z-[30] fixed h-screen w-full left-0 top-0">
           <Hero />

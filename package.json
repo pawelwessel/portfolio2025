@@ -85,6 +85,7 @@
     "schema-dts": "^1.1.2",
     "server-only": "^0.0.1",
     "shrink-string": "^3.1.5",
+    "stripe": "^18.4.0",
     "three": "^0.170.0",
     "three-stdlib": "^2.21.8",
     "tunnel-rat": "^0.1.2",

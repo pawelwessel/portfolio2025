@@ -10,6 +10,7 @@ import "moment/locale/pl";
 import Loading from "@/app/loading";
 import { FaPause, FaPlay, FaCheckCircle } from "react-icons/fa";
 import { BsFullscreen } from "react-icons/bs";
+import Cta from "@/components/cta/Cta";
 
 const updateLink = async (id: string, data: any) =>
   fetch(`${process.env.NEXT_PUBLIC_URL}/api/v1/linkUpdate`, {
@@ -185,35 +186,62 @@ export default function ChooseTime({ linkId }: { linkId: any }) {
       {invite?.secondVersion && (
         <div className="flex flex-col items-center justify-center text-center">
           <h2 className="mt-3 text-2xl sm:text-3xl xl:text-4xl bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] bg-clip-text text-transparent font-bold px-4 lg:px-12 pt-3">
-            Rekrutacja na stanowisko Doradcy Klienta
+            Zaproszenie do zapoznania się z ofertą naszych stron internetowych
           </h2>{" "}
           {invite?.status !== "delivered" && invite?.status !== "visited" && (
             <>
               <p className="mt-4 text-white text-center px-12">
-                {invite?.name && `Cześć ${getFirstWord(invite.name)}!`} Aktywuj
-                link, by otrzymać 24-godzinny dostęp do wdrożeniowego materiału
-                szkoleniowego.
+                {invite?.name && `Cześć ${getFirstWord(invite.name)}!`}{" "}
+                Przygotowaliśmy dla Ciebie specjalną ofertę stron internetowych:
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                  <div className="bg-zinc-900 p-6 rounded-lg">
+                    <h3 className="text-xl font-bold text-[#B4FC2D] mb-3">
+                      Basic
+                    </h3>
+                    <div className="text-2xl font-bold mb-4">999 zł</div>
+                    <ul className="text-sm space-y-2 text-left">
+                      <li>✓ Strona wizytówkowa</li>
+                      <li>✓ Responsywny design</li>
+                      <li>✓ Do 5 podstron</li>
+                      <li>✓ Podstawowe SEO</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-zinc-900 p-6 rounded-lg border-2 border-[#3EE7C0]">
+                    <h3 className="text-xl font-bold text-[#3EE7C0] mb-3">
+                      Premium
+                    </h3>
+                    <div className="text-2xl font-bold mb-4">1999 zł</div>
+                    <ul className="text-sm space-y-2 text-left">
+                      <li>✓ Wszystko z Basic</li>
+                      <li>✓ Do 10 podstron</li>
+                      <li>✓ Blog</li>
+                      <li>✓ Panel administracyjny</li>
+                      <li>✓ Zaawansowane SEO</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-zinc-900 p-6 rounded-lg">
+                    <h3 className="text-xl font-bold text-[#B4FC2D] mb-3">
+                      Enterprise
+                    </h3>
+                    <div className="text-2xl font-bold mb-4">4999 zł</div>
+                    <ul className="text-sm space-y-2 text-left">
+                      <li>✓ Wszystko z Premium</li>
+                      <li>✓ Nieograniczona liczba podstron</li>
+                      <li>✓ System CRM</li>
+                      <li>✓ Integracje API</li>
+                      <li>✓ Dedykowane funkcje</li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="mt-6 text-sm opacity-80">
+                  Każda strona zawiera hosting na 12 miesięcy oraz wsparcie
+                  techniczne. Kliknij poniżej aby uzyskać dostęp do szczegółowej
+                  prezentacji naszej oferty.
+                </p>
               </p>
-              <button
-                onClick={() => {
-                  setLoading(true);
-                  updateLink(linkId, {
-                    ...data,
-                    date: moment().add(24, "hour"),
-                    id: invite?.id,
-                    name: invite?.name,
-                    status: "delivered",
-                    timeSpent: time,
-                    secondVersion: true,
-                  }).then(() => {
-                    setLoading(false);
-                  });
-                }}
-                title="Odbierz dostęp!"
-                className="hover:scale-105 duration-300 disabled:cursor-not-allowed bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] font-sans text-lg text-center text-zinc-800 px-3 py-1 rounded-xl max-w-[40rem] mt-4 mx-auto"
-              >
-                Odbierz dostęp!
-              </button>
+              <Cta label="Zapytaj o ofertę" />
             </>
           )}
           {moment().isAfter(invite?.date) && (

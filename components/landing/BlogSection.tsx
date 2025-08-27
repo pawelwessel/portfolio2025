@@ -160,7 +160,7 @@ export default function BlogSection() {
 
                   <div className="mt-5">
                     <Link
-                      href={`/oferta/${post.slug || post.url || post.postId}`}
+                      href={`/blog/${post.slug || post.url || post.postId}`}
                       className="inline-flex items-center text-[#B4FC2D] hover:text-[#A3E626] text-sm font-medium transition-colors duration-300"
                       onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
                         e.stopPropagation()

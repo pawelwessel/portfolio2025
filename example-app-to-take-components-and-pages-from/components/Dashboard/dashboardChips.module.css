@@ -1,0 +1,132 @@
+.chipsNavWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: hsl(var(--background));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid hsl(var(--border));
+  /* Edge fade for horizontal scroll on small screens */
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.chipsInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+
+.chipsScroller {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.chipsScroller::-webkit-scrollbar {
+  display: none;
+}
+
+.chipButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  font-weight: 500;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  min-height: 36px;
+  scroll-snap-align: start;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease, transform 0.06s ease;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.chipButton:hover {
+  background: color-mix(
+    in hsl,
+    hsl(var(--accent)) 85%,
+    hsl(var(--primary)) 15%
+  );
+  border-color: color-mix(
+    in hsl,
+    hsl(var(--border)) 50%,
+    hsl(var(--primary)) 50%
+  );
+}
+
+.chipButton:active {
+  transform: translateY(1px);
+}
+
+.chipButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in hsl, hsl(var(--primary)) 25%, transparent);
+}
+
+.chipButtonActive {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: transparent;
+  box-shadow: 0 2px 8px color-mix(in hsl, hsl(var(--primary)) 30%, transparent);
+}
+
+.chipIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.badgeCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.25rem;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  border-radius: 9999px;
+  background: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+}
+
+/* On medium+ screens, allow chips to wrap and remove scroll snapping */
+@media (min-width: 768px) {
+  .chipsScroller {
+    flex-wrap: wrap;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+}
+
+/* Very small devices: slightly tighter chips to avoid overflow */
+@media (max-width: 360px) {
+  .chipButton {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.8rem;
+    min-height: 34px;
+  }
+  .chipIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .badgeCount {
+    width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+  }
+}
