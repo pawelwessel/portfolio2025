@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/common/context/ThemeContext";
 import PhoneModal from "@/components/PhoneModal";
 import { Metadata } from "next";
 import PromoPopup from "@/components/PromoPopup";
+import ConditionalFooter from "@/components/footer/ConditionalFooter";
 
 export default async function Root({
   children,
@@ -22,6 +23,7 @@ export default async function Root({
         <ThemeProvider>
           <PhoneModalProvider>
             {children}
+            <ConditionalFooter />
             <PhoneModal />
             <PromoPopup />
           </PhoneModalProvider>

@@ -11,23 +11,78 @@ import Header from "@/components/header";
 import { Metadata } from "next";
 import Script from "next/script";
 import FaqSection from "./FaqSection";
+import {
+  polishCities,
+  getAllCitySlugs,
+  isCitySlug,
+  slugToCity,
+  getCityDisplayName,
+  PolishCase,
+  getCityInCase,
+  generateCityContent,
+} from "@/lib/polishCities";
+import { generateCityPost } from "@/lib/cityPostGenerator";
+
+// Generate static params for all city-based slugs
+export async function generateStaticParams() {
+  try {
+    // Get existing blog post slugs
+    const [collectionDocs, legacyDoc]: any = await Promise.all([
+      getDocuments("blog"),
+      getBlogPosts(),
+    ]);
+
+    const legacyPosts = Array.isArray(legacyDoc?.posts) ? legacyDoc.posts : [];
+    const combined: Post[] = [...(collectionDocs || []), ...legacyPosts];
+    const blogSlugs = combined
+      .map((post) => ({ slug: post.slug || post.url || post.postId }))
+      .filter(Boolean);
+
+    // Get all city-based slugs
+    const citySlugs = getAllCitySlugs().map((slug) => ({ slug }));
+
+    // Combine both types of slugs
+    return [...blogSlugs, ...citySlugs];
+  } catch (error) {
+    console.error("Error generating static params:", error);
+    // Fallback to just city slugs if blog fetching fails
+    return getAllCitySlugs().map((slug) => ({ slug }));
+  }
+}
 
 // Helper function to get post data
 async function getPostData(slug: string): Promise<Post | null> {
   try {
+    // First, check database for all posts (including city posts)
     const [collectionDocs, legacyDoc]: any = await Promise.all([
       getDocuments("blog"),
       getBlogPosts(),
     ]);
     const legacyPosts = Array.isArray(legacyDoc?.posts) ? legacyDoc.posts : [];
     const combined: Post[] = [...(collectionDocs || []), ...legacyPosts];
-    return (
+
+    // Look for exact match in database first
+    const existingPost =
       combined.find((p) => p?.slug === slug) ||
       combined.find((p) => p?.url === slug) ||
-      combined.find((p) => p?.postId === slug) ||
-      null
-    );
+      combined.find((p) => p?.postId === slug);
+
+    if (existingPost) {
+      return existingPost;
+    }
+
+    // If not found and it's a city-based slug, generate fallback content
+    if (isCitySlug(slug)) {
+      const cityName = slugToCity(slug);
+      if (cityName) {
+        // Generate on-the-fly content as fallback
+        return generateCityPost(cityName);
+      }
+    }
+
+    return null;
   } catch (e) {
+    console.error("Error fetching post data:", e);
     return null;
   }
 }
@@ -41,6 +96,18 @@ export async function generateMetadata({
   const post = await getPostData(params.slug);
 
   if (!post) {
+    // Enhanced 404 metadata for city pages
+    if (isCitySlug(params.slug)) {
+      const cityName = slugToCity(params.slug);
+      const displayName = cityName
+        ? getCityDisplayName(cityName)
+        : "Polski Miasto";
+      return {
+        title: `Strony internetowe ${displayName} | Quixy Studio`,
+        description: `Profesjonalne tworzenie stron internetowych w ${displayName}. Sprawdź naszą ofertę i skontaktuj się z nami po bezpłatną wycenę.`,
+      };
+    }
+
     return {
       title: "Artykuł nie znaleziony | Quixy Studio",
       description: "Nie znaleziono artykułu. Sprawdź adres i spróbuj ponownie.",
@@ -57,7 +124,7 @@ export async function generateMetadata({
       post.mainImage.startsWith("https://") ||
       post.mainImage.startsWith("/"))
       ? post.mainImage
-      : "/images/projects/quixy/hero.png";
+      : "/assets/globe.jpg";
 
   const url = `https://quixy.pl/oferta/${params.slug}`;
 
@@ -136,12 +203,15 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
     headline: post.title,
     description: post.intro || post.metaDescription,
     image:
-      typeof post.mainImage === "string" &&
-      (post.mainImage.startsWith("http://") ||
-        post.mainImage.startsWith("https://") ||
-        post.mainImage.startsWith("/"))
+      // Use globe image for city-based posts, otherwise use post's main image
+      isCitySlug(slug)
+        ? "/assets/globe.jpg"
+        : typeof post.mainImage === "string" &&
+          (post.mainImage.startsWith("http://") ||
+            post.mainImage.startsWith("https://") ||
+            post.mainImage.startsWith("/"))
         ? post.mainImage
-        : "/images/projects/quixy/hero.png",
+        : "/assets/globe.jpg",
     author: {
       "@type": "Organization",
       name: "Quixy Studio",
@@ -212,12 +282,15 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
           <div className="relative w-full aspect-[16/6] min-h-[400px]">
             <ParallaxImage
               src={
-                typeof post.mainImage === "string" &&
-                (post.mainImage.startsWith("http://") ||
-                  post.mainImage.startsWith("https://") ||
-                  post.mainImage.startsWith("/"))
+                // Use globe image for city-based posts, otherwise use post's main image
+                isCitySlug(slug)
+                  ? "/assets/globe.jpg"
+                  : typeof post.mainImage === "string" &&
+                    (post.mainImage.startsWith("http://") ||
+                      post.mainImage.startsWith("https://") ||
+                      post.mainImage.startsWith("/"))
                   ? post.mainImage
-                  : "/images/projects/quixy/hero.png"
+                  : "/assets/globe.jpg"
               }
               alt={post.title}
               fill
