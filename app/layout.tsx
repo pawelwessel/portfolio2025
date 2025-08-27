@@ -6,11 +6,8 @@ import { PhoneModalProvider } from "@/common/context/PhoneModalContext";
 import { ThemeProvider } from "@/common/context/ThemeContext";
 import PhoneModal from "@/components/PhoneModal";
 import { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import dynamic from "next/dynamic";
-const PromoPopup = dynamic(() => import("@/components/PromoPopup"), {
-  ssr: false,
-});
+import PromoPopup from "@/components/PromoPopup";
+
 export default async function Root({
   children,
 }: {

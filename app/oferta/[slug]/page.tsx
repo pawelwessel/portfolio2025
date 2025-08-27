@@ -8,11 +8,12 @@ import ParallaxImage from "@/components/ParallaxImage";
 import ParallaxSection from "@/components/ParallaxSection";
 import Cta from "@/components/cta/Cta";
 import Header from "@/components/header";
+import { Metadata } from "next";
+import Script from "next/script";
+import FaqButton from "./FaqButton";
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-
-  let post: Post | null = null;
+// Helper function to get post data
+async function getPostData(slug: string): Promise<Post | null> {
   try {
     const [collectionDocs, legacyDoc]: any = await Promise.all([
       getDocuments("blog"),
@@ -20,71 +21,169 @@ export default async function Page({ params }: { params: { slug: string } }) {
     ]);
     const legacyPosts = Array.isArray(legacyDoc?.posts) ? legacyDoc.posts : [];
     const combined: Post[] = [...(collectionDocs || []), ...legacyPosts];
-    post =
+    return (
       combined.find((p) => p?.slug === slug) ||
       combined.find((p) => p?.url === slug) ||
       combined.find((p) => p?.postId === slug) ||
-      null;
+      null
+    );
   } catch (e) {
-    post = null;
+    return null;
   }
+}
+
+// Metadata generation function
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = await getPostData(params.slug);
 
   if (!post) {
-    return (
-      <div className="relative w-screen overflow-x-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="z-5 fixed left-0 top-0 w-full h-screen">
-            <Hero />
-          </div>
-          <div className="absolute inset-0 bg-black/85" />
-        </div>
-        <main className="relative z-10 min-h-screen w-full px-4 flex items-center justify-center">
-          <section className="w-full max-w-2xl mx-auto text-center">
-            <div className="relative bg-[#0f1320]/90 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-2xl p-12 shadow-2xl">
-              {/* Floating accent elements */}
-              <div className="absolute top-6 left-6 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
-              <div
-                className="absolute top-8 right-8 w-1.5 h-1.5 bg-[#3EE7C0] rounded-full opacity-40 animate-pulse"
-                style={{ animationDelay: "1s" }}
-              />
-
-              <h1 className="text-2xl lg:text-3xl font-bold text-white mb-4 font-gotham">
-                Nie znaleziono artykułu
-              </h1>
-              <p className="text-gray-200 text-base lg:text-lg mb-8">
-                Sprawdź adres i spróbuj ponownie.
-              </p>
-
-              <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mx-auto mb-8 rounded-full opacity-60" />
-
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] hover:from-[#A3E626] hover:to-[#2DD4B0] text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#B4FC2D]/20"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
-                </svg>
-                Wróć do strony głównej
-              </Link>
-            </div>
-          </section>
-        </main>
-      </div>
-    );
+    return {
+      title: "Artykuł nie znaleziony | Quixy Studio",
+      description: "Nie znaleziono artykułu. Sprawdź adres i spróbuj ponownie.",
+    };
   }
+
+  const title = post.metaTitle || post.title;
+  const description =
+    post.metaDescription || post.intro || "Artykuł z Quixy Studio";
+  const keywords = post.metaKeywords || post.tags || [];
+  const imageUrl =
+    typeof post.mainImage === "string" &&
+    (post.mainImage.startsWith("http://") ||
+      post.mainImage.startsWith("https://") ||
+      post.mainImage.startsWith("/"))
+      ? post.mainImage
+      : "/images/projects/quixy/hero.png";
+
+  const url = `https://quixy.pl/oferta/${params.slug}`;
+
+  return {
+    title: `${title} | Quixy Studio`,
+    description,
+    keywords: Array.isArray(keywords) ? keywords.join(", ") : keywords,
+    authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
+    publisher: "Quixy Studio",
+    openGraph: {
+      type: "article",
+      url,
+      title,
+      description,
+      siteName: "Quixy Studio",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      publishedTime: new Date(post.creationTime).toISOString(),
+      modifiedTime: new Date(post.creationTime).toISOString(),
+      authors: ["Quixy Studio"],
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+      creator: "@quixystudio",
+      site: "@quixystudio",
+    },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  };
+}
+
+function PageContent({ post, slug }: { post: Post; slug: string }) {
+  // Generate JSON-LD structured data for FAQ
+  const faqJsonLd =
+    post.faq && post.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
+  // Generate JSON-LD structured data for Article
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.intro || post.metaDescription,
+    image:
+      typeof post.mainImage === "string" &&
+      (post.mainImage.startsWith("http://") ||
+        post.mainImage.startsWith("https://") ||
+        post.mainImage.startsWith("/"))
+        ? post.mainImage
+        : "/images/projects/quixy/hero.png",
+    author: {
+      "@type": "Organization",
+      name: "Quixy Studio",
+      url: "https://quixy.pl",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Quixy Studio",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://quixy.pl/logo-quixy.png",
+      },
+    },
+    datePublished: new Date(post.creationTime).toISOString(),
+    dateModified: new Date(post.creationTime).toISOString(),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://quixy.pl/oferta/${slug}`,
+    },
+    keywords: post.tags?.join(", "),
+  };
 
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      <Script
+        id="article-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleJsonLd),
+        }}
+      />
+      {faqJsonLd && (
+        <Script
+          id="faq-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd),
+          }}
+        />
+      )}
+
       <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-6 xl:top-12 overflow-hidden rounded-r-xl">
         <div className="w-full flex items-start relative">
           <div className="w-max absolute left-[300px] top-0">
@@ -179,6 +278,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                         {post.viewerCount}
                       </span>
                     )}
+                    <FaqButton post={post} />
                   </div>
                   <br />
                   <Link
@@ -292,4 +392,65 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </div>
     </>
   );
+}
+
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  const post = await getPostData(slug);
+
+  if (!post) {
+    return (
+      <div className="relative w-screen overflow-x-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="z-5 fixed left-0 top-0 w-full h-screen">
+            <Hero />
+          </div>
+          <div className="absolute inset-0 bg-black/85" />
+        </div>
+        <main className="relative z-10 min-h-screen w-full px-4 flex items-center justify-center">
+          <section className="w-full max-w-2xl mx-auto text-center">
+            <div className="relative bg-[#0f1320]/90 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-2xl p-12 shadow-2xl">
+              {/* Floating accent elements */}
+              <div className="absolute top-6 left-6 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
+              <div
+                className="absolute top-8 right-8 w-1.5 h-1.5 bg-[#3EE7C0] rounded-full opacity-40 animate-pulse"
+                style={{ animationDelay: "1s" }}
+              />
+
+              <h1 className="text-2xl lg:text-3xl font-bold text-white mb-4 font-gotham">
+                Nie znaleziono artykułu
+              </h1>
+              <p className="text-gray-200 text-base lg:text-lg mb-8">
+                Sprawdź adres i spróbuj ponownie.
+              </p>
+
+              <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mx-auto mb-8 rounded-full opacity-60" />
+
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] hover:from-[#A3E626] hover:to-[#2DD4B0] text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#B4FC2D]/20"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+                Wróć do strony głównej
+              </Link>
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
+
+  return <PageContent post={post} slug={slug} />;
 }

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
 import { Post } from "@/types";
 
@@ -160,7 +159,7 @@ export default function BlogSection() {
 
                   <div className="mt-5">
                     <Link
-                      href={`/blog/${post.slug || post.url || post.postId}`}
+                      href={`/oferta/${post.slug || post.url || post.postId}`}
                       className="inline-flex items-center text-[#B4FC2D] hover:text-[#A3E626] text-sm font-medium transition-colors duration-300"
                       onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
                         e.stopPropagation()

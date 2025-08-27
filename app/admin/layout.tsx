@@ -10,10 +10,9 @@ import { FaLightbulb } from "react-icons/fa";
 import { useTheme } from "@/common/context/ThemeContext";
 import { usePathname } from "next/navigation";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
-import dynamic from "next/dynamic";
 import Toast from "@/components/Toast";
 import Assistant from "@/components/assistant/Assistant";
-const Nav = dynamic(() => import("@/components/Nav"), { ssr: false });
+import Nav from "@/components/Nav";
 export default function AdminLayout({
   children,
 }: {

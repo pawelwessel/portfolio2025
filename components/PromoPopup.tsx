@@ -7,6 +7,7 @@ const LOCAL_STORAGE_KEY = "promoPopupDismissed";
 
 export default function PromoPopup() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [openWizard, setOpenWizard] = useState(false);
 
   useEffect(() => {
@@ -14,11 +15,25 @@ export default function PromoPopup() {
       const dismissed =
         typeof window !== "undefined" &&
         window.localStorage.getItem(LOCAL_STORAGE_KEY);
+
       if (!dismissed) {
-        setIsVisible(true);
+        // Show popup after 5 seconds
+        const timer = setTimeout(() => {
+          setIsVisible(true);
+          // Start animation slightly after visibility
+          setTimeout(() => setIsAnimating(true), 50);
+        }, 5000);
+
+        return () => clearTimeout(timer);
       }
     } catch {
-      setIsVisible(true);
+      // Fallback: show popup after 5 seconds even if localStorage fails
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+        setTimeout(() => setIsAnimating(true), 50);
+      }, 5000);
+
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -28,7 +43,11 @@ export default function PromoPopup() {
         window.localStorage.setItem(LOCAL_STORAGE_KEY, "true");
       }
     } catch {}
-    setIsVisible(false);
+
+    // Animate out
+    setIsAnimating(false);
+    // Hide after animation completes
+    setTimeout(() => setIsVisible(false), 300);
   };
 
   if (!isVisible) return null;
@@ -37,7 +56,13 @@ export default function PromoPopup() {
     <>
       <div className="font-gotham fixed inset-x-0 bottom-4 z-[2000] flex justify-center px-4">
         <div className="w-full sm:w-auto max-w-[48rem]">
-          <div className="relative rounded-2xl bg-white shadow-2xl border border-zinc-200 overflow-hidden">
+          <div
+            className={`relative rounded-2xl bg-white shadow-2xl border border-zinc-200 overflow-hidden transition-all duration-300 ease-out ${
+              isAnimating
+                ? "transform translate-y-0 opacity-100"
+                : "transform translate-y-full opacity-0"
+            }`}
+          >
             <div className="absolute -inset-x-1 -top-1 h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500" />
             <div className="p-4 sm:p-5 flex flex-col gap-3 sm:gap-4">
               <div className="flex-1">

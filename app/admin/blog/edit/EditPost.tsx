@@ -368,7 +368,7 @@ export default function EditPost({
                   {selectedPost.tags.map((tag: string, i: number) => (
                     <Link
                       className={`${i === 0 && "ml-6"}`}
-                      href={`/blog/?tag=${tag}`}
+                      href={`/oferta/?tag=${tag}`}
                       key={i}
                     >
                       {tag}

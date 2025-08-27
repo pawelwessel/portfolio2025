@@ -1,10 +1,6 @@
 "use client";
-import dynamic from "next/dynamic";
 
-const HeroStars = dynamic(() => import("@/components/hero/Hero"), {
-  ssr: false,
-});
-
+import HeroStars from "@/components/hero/Hero";
 export default function Page() {
   return (
     <div className="relative w-screen overflow-x-hidden">

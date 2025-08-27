@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Cta from "@/components/cta/Cta";
+import Link from "next/link";
 
 // Simple SVG data-URI placeholders (no external assets)
 const placeholder = (w: number, h: number, label: string, rx: number = 16) => {
@@ -47,8 +48,14 @@ export default function HeroIntroAds() {
                 kampanie Google Ads.
               </span>
             </div>
-            <div className="flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
+            <div className="gap-6 flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
               <Cta label="Skontaktuj się" />
+              {/* <Link
+                href="/praca-zdalna"
+                className="py-3 px-5 text-sm lg:text-base mt-4 hover:scale-110 duration-200 in-out text-white rounded-lg cursor-pointer bg-blue-500 w-max max-w-full"
+              >
+                Dla branży IT
+              </Link> */}
             </div>
           </h1>
           <div className="flex items-center xl:justify-center flex-col w-full lg:pl-12 mt-20 lg:mt-0">

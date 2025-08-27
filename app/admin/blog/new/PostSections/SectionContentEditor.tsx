@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.snow.css";
 import { SectionContentEditorProps } from "@/types";
-
-const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+import ReactQuill from "react-quill-new";
 
 export default function SectionContentEditor({
   addSection,

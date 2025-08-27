@@ -5,6 +5,20 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export async function POST(req: Request) {
   try {
     const { email, successRedirect, totalPricePLN, meta } = await req.json();
+    const channel = (meta?.channel || "google") as
+      | "google"
+      | "facebook"
+      | "instagram";
+    const productNameMap: Record<string, string> = {
+      google: "Google Ads Setup",
+      facebook: "Facebook Ads Setup",
+      instagram: "Instagram Ads Setup",
+    };
+    const productDescMap: Record<string, string> = {
+      google: "Konfiguracja kampanii Google Ads (pierwszy miesiąc)",
+      facebook: "Konfiguracja kampanii Facebook Ads (pierwszy miesiąc)",
+      instagram: "Konfiguracja kampanii Instagram Ads (pierwszy miesiąc)",
+    };
     const unitAmount = Math.round(
       Math.max(0, Number(totalPricePLN || 0)) * 100
     );
@@ -18,9 +32,8 @@ export async function POST(req: Request) {
           price_data: {
             currency: "pln",
             product_data: {
-              name: "Google Ads Setup",
-              description:
-                "Konfiguracja kampanii Google Ads (pierwszy miesiąc)",
+              name: productNameMap[channel] || productNameMap.google,
+              description: productDescMap[channel] || productDescMap.google,
             },
             unit_amount: unitAmount || 10000, // fallback 100 PLN
           },
