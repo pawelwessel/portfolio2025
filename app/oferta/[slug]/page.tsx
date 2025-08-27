@@ -10,7 +10,7 @@ import Cta from "@/components/cta/Cta";
 import Header from "@/components/header";
 import { Metadata } from "next";
 import Script from "next/script";
-import FaqButton from "./FaqButton";
+import FaqSection from "./FaqSection";
 
 // Helper function to get post data
 async function getPostData(slug: string): Promise<Post | null> {
@@ -278,7 +278,6 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
                         {post.viewerCount}
                       </span>
                     )}
-                    <FaqButton post={post} />
                   </div>
                   <br />
                   <Link
@@ -360,6 +359,9 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
                       </p>
                     </div>
                   )}
+
+                  {/* FAQ Section */}
+                  <FaqSection faqs={post.faq} />
 
                   {post.tags && post.tags.length > 0 && (
                     <div className="font-gotham font-light flex flex-wrap gap-3 mt-10 pt-8 border-t border-[#2a2f3d]/50">
