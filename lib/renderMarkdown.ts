@@ -1,4 +1,4 @@
-import { polishToEnglish } from "../../utils/polishToEnglish";
+import { polishToEnglish } from "@/utils/polishToEnglish";
 export const parseMarkdown = (input: any) => {
   // Basic Markdown parsing logic
   const lines = input.split("\n");
