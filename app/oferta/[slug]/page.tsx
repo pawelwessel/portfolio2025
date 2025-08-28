@@ -284,7 +284,7 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
 
         {/* Hero banner */}
         <section className="relative w-full">
-          <div className="relative w-full aspect-[16/6] min-h-[400px]">
+          <div className="relative w-full aspect-[16/6] min-h-[400px] z-[2]">
             <ParallaxImage
               src={
                 // Use globe image for city-based posts, otherwise use post's main image
@@ -360,7 +360,7 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
                   <br />
                   <Link
                     href="/"
-                    className="inline-flex items-center gap-2 bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 hover:text-white hover:border-[#B4FC2D]/30 px-4 py-2 rounded-full transition-all duration-300 font-gotham font-light"
+                    className="z-[50000] inline-flex items-center gap-2 bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 hover:text-white hover:border-[#B4FC2D]/30 px-4 py-2 rounded-full transition-all duration-300 font-gotham font-light"
                   >
                     <svg
                       className="w-4 h-4"
@@ -467,10 +467,12 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
               </div>
             </ParallaxSection>
           </article>
-          <PricingHero />
-          <BlogSection />
-          <OpinionsSection />
-          <ReachSection markers={mapMarkers} />
+          <div className="max-w-6xl mx-auto font-sans">
+            <PricingHero />
+            <BlogSection />
+            <OpinionsSection />
+            <ReachSection markers={mapMarkers} />
+          </div>
         </main>
       </div>
     </>

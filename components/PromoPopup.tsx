@@ -54,7 +54,7 @@ export default function PromoPopup() {
 
   return (
     <>
-      <div className="font-gotham fixed inset-x-0 bottom-4 z-[2000] flex justify-center px-4">
+      {/* <div className="font-gotham fixed inset-x-0 bottom-4 z-[2000] flex justify-center px-4">
         <div className="w-full sm:w-auto max-w-[48rem]">
           <div
             className={`relative rounded-2xl bg-white shadow-2xl border border-zinc-200 overflow-hidden transition-all duration-300 ease-out ${
@@ -99,9 +99,9 @@ export default function PromoPopup() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {openWizard && <GoogleAdsWizard onClose={() => setOpenWizard(false)} />}
+      {/* {openWizard && <GoogleAdsWizard onClose={() => setOpenWizard(false)} />} */}
     </>
   );
 }

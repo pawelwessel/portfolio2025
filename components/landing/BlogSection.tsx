@@ -40,10 +40,7 @@ export default function BlogSection() {
   return (
     <section className="relative w-full py-24 overflow-hidden px-4">
       <div className="absolute inset-0 -z-10">
-        <div className="fixed left-0 top-0 w-full h-screen">
-          <HeroStars />
-        </div>
-        <div className="left-0 absolute top-0 w-full h-full bg-gradient-to-b from-transparent via-[#11131a]/70 to-[#0b0d12]" />
+        <div className="rounded-b-xl left-0 absolute top-0 w-full h-full bg-gradient-to-b from-transparent via-[#11131a]/70 to-[#0b0d12]" />
       </div>
 
       <div className="relative z-10 w-full px-3 max-w-7xl mx-auto">

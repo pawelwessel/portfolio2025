@@ -1,7 +1,7 @@
 export default function OpinionsSection() {
   return (
     <div className="mt-12">
-      <div className="w-[90vw] sm:w-3/4 mx-auto bg-gradient-to-br from-blue-50 via-white to-green-50 rounded-2xl p-8 shadow-lg">
+      <div className="bg-gradient-to-br from-blue-50 via-white to-green-50 rounded-2xl p-8 shadow-lg">
         <h3 className="text-zinc-800 drop-shadow-xl shadow-black text-3xl lg:text-4xl font-bold text-center mb-4">
           Opinie Zadowolonych Klientów
         </h3>

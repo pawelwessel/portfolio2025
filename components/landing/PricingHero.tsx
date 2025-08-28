@@ -4,7 +4,7 @@ import Cta from "@/components/cta/Cta";
 export default function PricingHero() {
   return (
     <div className="mt-12">
-      <div className="w-[90vw] sm:w-3/4 mx-auto bg-gradient-to-br from-white via-zinc-50 to-green-50 rounded-2xl p-6 lg:p-10 shadow-lg">
+      <div className="bg-gradient-to-br from-white via-zinc-50 to-green-50 rounded-2xl p-6 lg:p-10 shadow-lg">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="order-1 lg:order-none">
             <div className="bg-white rounded-xl p-4 shadow-md border flex items-center justify-center">

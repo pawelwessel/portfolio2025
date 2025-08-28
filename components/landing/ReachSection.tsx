@@ -14,10 +14,28 @@ type ReachSectionProps = {
   markers: MapMarker[];
 };
 
+// Helper: disables pointer events on marker text when invisible
+function MarkerText({
+  visible,
+  children,
+}: {
+  visible: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <span
+      className={visible ? "" : "pointer-events-none select-none"}
+      aria-hidden={!visible}
+    >
+      {children}
+    </span>
+  );
+}
+
 export default function ReachSection({ markers }: ReachSectionProps) {
   return (
-    <div className="mt-24">
-      <div className="w-[90vw] sm:w-3/4 mx-auto bg-gradient-to-br from-gray-50 via-white to-blue-50 rounded-2xl p-8 shadow-lg">
+    <div className="mb-12 mt-24">
+      <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 rounded-2xl p-8 shadow-lg">
         <div className="text-center mb-12">
           <h2 className="mt-12 mb-6 italic text-3xl lg:text-4xl font-bold text-zinc-800 drop-shadow-md shadow-black">
             Zasięg Działania
@@ -49,6 +67,12 @@ export default function ReachSection({ markers }: ReachSectionProps) {
 
         <div className="">
           <div className="relative w-full mx-auto overflow-visible">
+            {/* 
+              If you render marker text on the map here, 
+              wrap it with <MarkerText visible={isVisible}>{text}</MarkerText>
+              and set isVisible to false when the marker is invisible.
+              If Map handles marker text, ensure it disables pointer events for invisible text.
+            */}
             <Map />
           </div>
 
