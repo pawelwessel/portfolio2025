@@ -5,9 +5,8 @@ import AOSInit from "@/components/AOS";
 import { PhoneModalProvider } from "@/common/context/PhoneModalContext";
 import { ThemeProvider } from "@/common/context/ThemeContext";
 import PhoneModal from "@/components/PhoneModal";
-import { Metadata } from "next";
 import PromoPopup from "@/components/PromoPopup";
-import ConditionalFooter from "@/components/footer/ConditionalFooter";
+import Footer from "@/components/footer/Footer";
 
 export default async function Root({
   children,
@@ -23,7 +22,7 @@ export default async function Root({
         <ThemeProvider>
           <PhoneModalProvider>
             {children}
-            <ConditionalFooter />
+            <Footer />
             <PhoneModal />
             <PromoPopup />
           </PhoneModalProvider>
@@ -77,73 +76,6 @@ export default async function Root({
     </html>
   );
 }
-export const metadata: Metadata = {
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#ffffff",
-  manifest: "/manifest.json",
-  title: "Quixy Studio | Strony WWW, Social Media i Google Ads",
-  description:
-    "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads. Transparentne ceny i realne wyniki biznesowe.",
-  openGraph: {
-    type: "website",
-    url: "https://quixy.pl",
-    title: "Quixy Studio | Strony WWW, Social Media i Google Ads",
-    description:
-      "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
-    siteName: "Quixy Studio",
-    images: [
-      {
-        url: "/logo-quixy.png",
-        width: 1200,
-        height: 630,
-        alt: "Quixy Studio",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Quixy Studio | Strony WWW, Social Media i Google Ads",
-    description:
-      "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
-    images: ["/logo-quixy.png"],
-  },
-  authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
-  publisher: "Quixy Studio",
-  keywords:
-    "strony internetowe, strony www, sklepy internetowe, landing page, web developer, projektowanie stron, social media, marketing, Google Ads, kampanie reklamowe, SEO, Core Web Vitals",
-  icons: [
-    {
-      url: "/favicons/apple-touch-icon.png",
-      sizes: "180x180",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/favicon-16x16.png",
-      sizes: "16x16",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/android-chrome-512x512.png",
-      sizes: "512x512",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/android-chrome-192x192.png",
-      sizes: "192x192",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/favicon-32x32.png",
-      sizes: "32x32",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/favicon.ico",
-      sizes: "48x48",
-      type: "image/x-icon",
-    },
-  ],
-};
 
 //font
 const gotham = localFont({
