@@ -27,7 +27,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              strona gotowa szybciej niż się spodziewałam! wszystko działa super, a klienci mogą się łatwo umawiać dzięki paweł
+              strona gotowa szybciej niż się spodziewałam! wszystko działa
+              super, a klienci mogą się łatwo umawiać dzięki paweł
             </p>
           </div>
 
@@ -63,7 +64,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Zero stresu, wszystko ogarnięte od A do Z. strona dla gabinetu wygląda świetnie
+              Zero stresu, wszystko ogarnięte od A do Z. strona dla gabinetu
+              wygląda świetnie
             </p>
           </div>
 
@@ -83,7 +85,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              paweł zrobił stronę i system dla klientów – wszystko działa, a ja mam spokój polecam!
+              paweł zrobił stronę i system dla klientów – wszystko działa, a ja
+              mam spokój polecam!
             </p>
           </div>
 
@@ -103,7 +106,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              moje prace w końcu mają swoje miejsce w sieci! strona wygląda pięknie 🎨
+              moje prace w końcu mają swoje miejsce w sieci! strona wygląda
+              pięknie 🎨
             </p>
           </div>
 
@@ -121,7 +125,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Zamówienia online działają super, klienci zadowoleni, ja też! dzięki
+              Zamówienia online działają super, klienci zadowoleni, ja też!
+              dzięki
             </p>
           </div>
 
@@ -141,7 +146,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              strona śmiga na telefonie i komputerze, a klienci łatwo kupują paweł zna się na rzeczy
+              strona śmiga na telefonie i komputerze, a klienci łatwo kupują
+              paweł zna się na rzeczy
             </p>
           </div>
 
@@ -159,7 +165,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              aplikacja działa bez zarzutu, wszystko zgodnie z planem polecam pawła każdemu!
+              aplikacja działa bez zarzutu, wszystko zgodnie z planem polecam
+              pawła każdemu!
             </p>
           </div>
 
@@ -197,7 +204,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              rezerwacje online? teraz to bajka wszystko działa, pacjenci zadowoleni
+              rezerwacje online? teraz to bajka wszystko działa, pacjenci
+              zadowoleni
             </p>
           </div>
 
@@ -235,7 +243,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Nowoczesna aplikacja, wszystko działa jak należy. Paweł zna się na
+              nowoczesna aplikacja, wszystko działa jak należy paweł zna się na
               rzeczy!
             </p>
           </div>
@@ -256,7 +264,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Strona dla szkoły super, uczniowie zachwyceni. Polecam z całego
+              strona dla szkoły super, uczniowie zachwyceni polecam z całego
               serca!
             </p>
           </div>
@@ -278,14 +286,6 @@ export default function OpinionsSection() {
             <div className="text-sm text-gray-600">Wsparcie techniczne</div>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-sm">
-            <div className="text-2xl font-bold text-orange-600">5.0</div>
-            <div className="text-sm text-gray-600">Średnia ocen</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
             <div className="text-2xl font-bold text-orange-600">5.0</div>
             <div className="text-sm text-gray-600">Średnia ocen</div>
           </div>
