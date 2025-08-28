@@ -161,18 +161,6 @@ export default function Footer() {
                 Regulamin
               </Link>
               <Link
-                href="/polityka-prywatnosci"
-                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
-              >
-                Polityka prywatności
-              </Link>
-              <Link
-                href="/admin"
-                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
-              >
-                Panel administracyjny
-              </Link>
-              <Link
                 href="/sitemap.xml"
                 className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
               >
