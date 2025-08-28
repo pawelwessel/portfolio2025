@@ -21,7 +21,7 @@ export default function HeroIntro() {
         </div>
       </div>
 
-      <div className="justify-evenly min-h-screen lg:mt-0 w-full mx-0 sm:mx-auto flex flex-col sm:w-4/5 lg:w-3/4 relative pt-36 pb-12 lg:py-0 overflow-x-hidden">
+      <div className="justify-evenly min-h-screen lg:mt-0 w-full mx-0 sm:mx-auto flex flex-col max-w-[90vw] relative pt-36 pb-12 lg:py-0 overflow-x-hidden">
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 h-max">
           <h1 className="z-50 bg-zinc-800 bg-opacity-80 rounded-xl p-6 lg:p-12 flex flex-col justify-center h-max my-auto">
             <Image

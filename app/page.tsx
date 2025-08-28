@@ -25,7 +25,7 @@ export default async function Page({
         </div>
 
         <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
-          <section className={`w-full h-max z-50`}>
+          <section className={`max-w-[90vw] mx-auto h-max z-50`}>
             <MainCard />
             <PricingHero />
             <BlogSection />

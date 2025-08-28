@@ -3,11 +3,11 @@ export default function OpinionsSection() {
     <div className="mt-12">
       <div className="bg-gradient-to-br from-blue-50 via-white to-green-50 rounded-2xl p-8 shadow-lg">
         <h3 className="text-zinc-800 drop-shadow-xl shadow-black text-3xl lg:text-4xl font-bold text-center mb-4">
-          Opinie Zadowolonych Klientów
+          Opinie zadowolonych klientów
         </h3>
         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-          Poznaj opinię klientów o współpracy ze mną. Każdy projekt realizuję z
-          pełnym zaangażowaniem.
+          Zobacz, co mówią o mnie moi klienci. Każdy projekt to dla mnie nowa
+          przygoda!
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
@@ -27,10 +27,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Profesjonalne wykonanie strony internetowej w bardzo dobrym
-              czasie. Paweł świetnie zrozumiał moje potrzeby i stworzył
-              nowoczesną stronę z możliwością umówienia wizyt online. Polecam
-              każdemu przedsiębiorcy!&quot;
+              strona gotowa szybciej niż się spodziewałam! wszystko działa super, a klienci mogą się łatwo umawiać dzięki paweł
             </p>
           </div>
 
@@ -48,10 +45,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Sklep internetowy wykonany profesjonalnie i zgodnie z moimi
-              oczekiwaniami. Strona działa sprawnie, płatności online działają
-              bez problemów. Sprzedaż wzrosła o 200% w pierwszym miesiącu dzięki
-              lepszej widoczności w Google.&quot;
+              sklep śmiga, płatności bez problemu, a sprzedaż rośnie polecam
             </p>
           </div>
 
@@ -69,11 +63,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Fantastyczne podejście do klienta! Nie musiałam się martwić
-              żadnymi szczegółami technicznymi. Paweł przeprowadził mnie przez
-              cały proces tworzenia strony dla mojej praktyki lekarskiej z
-              możliwością umawiania wizyt. Rezultat przekroczył
-              oczekiwania!&quot;
+              Zero stresu, wszystko ogarnięte od A do Z. strona dla gabinetu wygląda świetnie
             </p>
           </div>
 
@@ -93,10 +83,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Kompleksowa realizacja projektu - od projektu strony po jej
-              uruchomienie. Nowa strona z systemem zarządzania klientami działa
-              bez zarzutu. Świetne wsparcie po oddaniu projektu i regularne
-              aktualizacje. Najlepsza inwestycja w rozwój firmy!&quot;
+              paweł zrobił stronę i system dla klientów – wszystko działa, a ja mam spokój polecam!
             </p>
           </div>
 
@@ -116,10 +103,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Portfolio online wykonane z niezwykłą dbałością o detale.
-              Galeria moich prac wygląda profesjonalnie i bardzo efektownie.
-              Dzięki nowej stronie moja sztuka dotarła do szerszej publiczności
-              i zyskałam nowych klientów!&quot;
+              moje prace w końcu mają swoje miejsce w sieci! strona wygląda pięknie 🎨
             </p>
           </div>
 
@@ -137,10 +121,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Strona restauracji z możliwością zamawiania online działa
-              perfekcyjnie. Klienci mogą teraz łatwo składać zamówienia, a
-              płatności są automatycznie obsługiwane. Znacznie uprościło to
-              prowadzenie biznesu. Profesjonalna obsługa od A do Z!&quot;
+              Zamówienia online działają super, klienci zadowoleni, ja też! dzięki
             </p>
           </div>
 
@@ -160,10 +141,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Sklep internetowy to strzał w dziesiątkę! Dzięki poprawie
-              widoczności w Google moja strona znalazła się na pierwszej stronie
-              wyników wyszukiwania. Sklep działa idealnie na telefonach i
-              komputerach. Paweł to profesjonalista z prawdziwą pasją!&quot;
+              strona śmiga na telefonie i komputerze, a klienci łatwo kupują paweł zna się na rzeczy
             </p>
           </div>
 
@@ -181,10 +159,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Aplikacja mobilna dla naszej firmy przekroczyła nasze
-              oczekiwania. Paweł ma ogromną wiedzę o nowoczesnych rozwiązaniach
-              internetowych. Cały system działa bez zarzutu i znacznie ułatwił
-              nam pracę. Najlepszy specjalista od stron internetowych!&quot;
+              aplikacja działa bez zarzutu, wszystko zgodnie z planem polecam pawła każdemu!
             </p>
           </div>
 
@@ -202,11 +177,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Strona firmowa to prawdziwe dzieło sztuki! Projekt i
-              użyteczność na najwyższym poziomie. Strona ładuje się
-              błyskawicznie, a pozycjonowanie w Google przyniosło fantastyczne
-              rezultaty w postaci nowych klientów. Paweł to specjalista z
-              prawdziwą pasją!&quot;
+              strona wygląda świetnie i ładuje się błyskawicznie efekt wow! 🚀
             </p>
           </div>
 
@@ -226,10 +197,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;System rezerwacji online z kalendarzem wizyt to rewolucja w
-              naszej praktyce! Pacjenci mogą teraz umówić się na wizytę przez
-              stronę internetową, a my mamy wszystko pod kontrolą. Strona działa
-              bezawaryjnie. Najlepszy specjalista w branży!&quot;
+              rezerwacje online? teraz to bajka wszystko działa, pacjenci zadowoleni
             </p>
           </div>
 
@@ -247,10 +215,7 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Sklep internetowy z płatnościami online to najlepsza
-              inwestycja! Strona ładuje się błyskawicznie na telefonach i
-              komputerach. Dzięki poprawie widoczności w Google mam znacznie
-              więcej klientów. Polecam Pawła każdemu przedsiębiorcy!&quot;
+              więcej klientów i szybka strona – o to chodziło! dzięki paweł
             </p>
           </div>
 
@@ -270,11 +235,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;Progressive Web App (PWA) z TypeScript i Firebase to
-              technologiczne arcydzieło! API REST integracja z systemami
-              zewnętrznymi działa perfekcyjnie. Frontend frameworki Vue.js i
-              backend Laravel PHP - profesjonalizm na najwyższym poziomie.
-              Software developer z prawdziwym talentem!&quot;
+              Nowoczesna aplikacja, wszystko działa jak należy. Paweł zna się na
+              rzeczy!
             </p>
           </div>
 
@@ -294,11 +256,8 @@ export default function OpinionsSection() {
               <span>⭐⭐⭐⭐⭐</span>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              &quot;CMS WordPress z custom theme i wtyczkami to idealne
-              rozwiązanie dla edukacji online! Optymalizacja bezpieczeństwa SSL
-              i hosting optimization zapewniają spokój. Website design z
-              animacjami CSS3 robi ogromne wrażenie na uczniach. Programowanie
-              stron internetowych na światowym poziomie!&quot;
+              Strona dla szkoły super, uczniowie zachwyceni. Polecam z całego
+              serca!
             </p>
           </div>
         </div>
@@ -319,6 +278,14 @@ export default function OpinionsSection() {
             <div className="text-sm text-gray-600">Wsparcie techniczne</div>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-sm">
+            <div className="text-2xl font-bold text-orange-600">5.0</div>
+            <div className="text-sm text-gray-600">Średnia ocen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
             <div className="text-2xl font-bold text-orange-600">5.0</div>
             <div className="text-sm text-gray-600">Średnia ocen</div>
           </div>
