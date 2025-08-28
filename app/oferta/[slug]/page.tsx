@@ -22,6 +22,11 @@ import {
   generateCityContent,
 } from "@/lib/polishCities";
 import { generateCityPost } from "@/lib/cityPostGenerator";
+import PricingHero from "@/components/landing/PricingHero";
+import BlogSection from "@/components/landing/BlogSection";
+import OpinionsSection from "@/components/landing/OpinionsSection";
+import ReachSection from "@/components/landing/ReachSection";
+import { mapMarkers } from "@/lib/mapMarkers";
 
 // Generate static params for all city-based slugs
 export async function generateStaticParams() {
@@ -462,7 +467,10 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
               </div>
             </ParallaxSection>
           </article>
-          <div className="h-32" />
+          <PricingHero />
+          <BlogSection />
+          <OpinionsSection />
+          <ReachSection markers={mapMarkers} />
         </main>
       </div>
     </>
