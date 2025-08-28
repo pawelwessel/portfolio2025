@@ -1,5 +1,3 @@
-"use client";
-
 import HeroStars from "@/components/hero/Hero";
 import { Metadata } from "next";
 export default function Page() {
