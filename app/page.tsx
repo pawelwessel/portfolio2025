@@ -12,7 +12,6 @@ export default async function Page({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const ref = searchParams?.ref;
   return (
     <div className="w-screen overflow-x-hidden">
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
