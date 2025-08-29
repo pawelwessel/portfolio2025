@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaLightbulb } from "react-icons/fa";
-import { useTheme } from "@/common/context/ThemeContext";
 import { usePathname } from "next/navigation";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
 import Toast from "@/components/Toast";
@@ -49,7 +48,6 @@ export default function AdminLayout({
   const pathname = usePathname();
   const [isNavOpen, setNavOpen] = useState(false);
   const [user, loading] = useAuthState(auth);
-  const { light, toggle } = useTheme();
 
   return (
     <>
@@ -58,20 +56,6 @@ export default function AdminLayout({
       {/* <Assistant messages={assistantMessages} mode={mode} setMode={setMode} /> */}
       {!loading && (
         <div className="relative w-full overflow-x-hidden font-coco bg-[#404149] font-sans pb-48">
-          {!pathname.includes("/leads/leads") &&
-            !pathname.includes("/leads/courses") &&
-            !pathname.includes("/leads/applications") && (
-              <button
-                onClick={() => toggle()}
-                className="absolute right-6 top-6"
-              >
-                <FaLightbulb
-                  className={`text-4xl ${
-                    light ? "text-yellow-400" : "text-white"
-                  }`}
-                />
-              </button>
-            )}
           {user ? (
             <>
               <Nav

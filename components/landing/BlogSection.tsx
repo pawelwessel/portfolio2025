@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getDocuments, getBlogPosts } from "@/common/firebase";
+import { getDocuments } from "@/common/firebase";
 import { Post } from "@/types";
 
 import HeroStars from "@/components/hero/Hero";
@@ -15,16 +15,9 @@ export default function BlogSection() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const [collectionDocs, legacyDoc]: any = await Promise.all([
-          getDocuments("blog"),
-          getBlogPosts(),
-        ]);
-        const legacyPosts = Array.isArray(legacyDoc?.posts)
-          ? legacyDoc.posts
-          : [];
-        const combined = [...(collectionDocs || []), ...legacyPosts];
+        const collectionDocs: any = await getDocuments("blog");
         const unique = new Map<string, Post>();
-        for (const p of combined) {
+        for (const p of collectionDocs || []) {
           if (p?.postId) unique.set(p.postId, p as Post);
         }
         setPosts(Array.from(unique.values()));
