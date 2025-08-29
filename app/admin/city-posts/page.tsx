@@ -51,7 +51,7 @@ export default function CityPostsPage() {
 
     try {
       const response = await fetch(
-        `/api/generate-city-posts?action=generate-single&city=${city}`,
+        `${process.env.NEXT_PUBLIC_URL}/api/generate-city-posts?action=generate-single&city=${city}`,
         {
           method: "POST",
           headers: {
@@ -85,7 +85,9 @@ export default function CityPostsPage() {
 
   const checkStatus = async () => {
     try {
-      const response = await fetch("/api/generate-city-posts?action=status");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/generate-city-posts?action=status`
+      );
       const data = await response.json();
 
       if (data.success) {
