@@ -20,7 +20,7 @@ export const polishCities = [
   "gliwice",
   "zabrze",
   "bytom",
-  "bielsko-biala",
+  "bielsko-biala
   "olsztyn",
   "rzeszow",
   "ruda-slaska",

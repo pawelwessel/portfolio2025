@@ -23,7 +23,7 @@ export default function MainFooter({ jobsList }: { jobsList: any }) {
                 <Link
                   href={`${
                     process.env.NEXT_PUBLIC_URL
-                  }/oferta/${polishToEnglish(item.title)}`}
+                  }/oferta/dla-firm/${polishToEnglish(item.title)}`}
                   title={`Praca Zdalna ${item.title}`}
                 >
                   <h2 className="hover:scale-105 duration-100 text-center text-white 2xl:text-xl font-extrabold w-full px-4 py-2 bg-gradient-to-b from-primaryStart to-primaryEnd border-2 border-white rounded-md">
@@ -36,7 +36,7 @@ export default function MainFooter({ jobsList }: { jobsList: any }) {
                       <Link
                         href={`${
                           process.env.NEXT_PUBLIC_URL
-                        }/oferta/${polishToEnglish(
+                        }/oferta/dla-firm/${polishToEnglish(
                           item.title
                         )}/${polishToEnglish(cat.title)}`}
                         className="hover:underline w-full lg:w-max max-w-full text-white p-2  font-extralight text-lg"

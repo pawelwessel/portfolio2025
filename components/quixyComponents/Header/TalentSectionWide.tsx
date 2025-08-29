@@ -42,7 +42,7 @@ export default function ProductsWide({
           {jobs.map((job: any, i: any) => (
             <div className="mt-3 ml-3 w-[300px] flex flex-col" key={i}>
               <Link
-                href={`/oferta/${polishToEnglish(job.title)}`}
+                href={`/oferta/dla-firm/${polishToEnglish(job.title)}`}
                 title={`Quixy Studio Grudziądz ${job.title}`}
                 style={{ boxShadow: "0px 0px 4px black" }}
                 className={`text-lg mt-3 font-bold p-1 px-3  text-white bg-[#126b91] w-max`}
@@ -66,7 +66,7 @@ export default function ProductsWide({
                       <Link
                         title={`Oferta ${item.title}`}
                         className="p-0.5  group-hover:text-white font-bold group-hover:bg-[#126b91] w-max text-gray-800 text-sm"
-                        href={`/oferta/${polishToEnglish(
+                        href={`/oferta/dla-firm/${polishToEnglish(
                           job.title
                         )}/${polishToEnglish(item.title)}`}
                       >
@@ -78,7 +78,7 @@ export default function ProductsWide({
                           key={i}
                           style={{ boxShadow: "1px 0px 4px black" }}
                           className="max-w-[300px] bg-[#126b91] hover:bg-orange-300 duration-75 font-light text-white text-sm p-2"
-                          href={`/oferta/${polishToEnglish(
+                          href={`/oferta/dla-firm/${polishToEnglish(
                             job.title
                           )}/${polishToEnglish(item.title)}/${polishToEnglish(
                             subcategory.title

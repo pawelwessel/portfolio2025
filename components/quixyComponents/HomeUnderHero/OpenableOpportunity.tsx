@@ -19,7 +19,7 @@ export default function OpenableOpportunity({
           {opportunity.title}
         </h2>
         <Link
-          href={`/oferta/${polishToEnglish(opportunity.title)}`}
+          href={`/oferta/dla-firm/${polishToEnglish(opportunity.title)}`}
           className="h-max bg-gradient-to-r from-accentStart to-accentEnd px-4 py-2 rounded-md text-white text-xs sm:text-sm duration-300"
         >
           <div className="w-max">Zobacz więcej</div>
@@ -29,7 +29,7 @@ export default function OpenableOpportunity({
         {opportunity.data.map((subcategory: any, i: any) => (
           <Link
             key={i}
-            href={`/oferta/${polishToEnglish(
+            href={`/oferta/dla-firm/${polishToEnglish(
               opportunity.title
             )}/${polishToEnglish(subcategory.title)}`}
             className="text-sm sm:text-base text-black hover:underline"

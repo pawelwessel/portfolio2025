@@ -9,7 +9,7 @@ export default function GoogleAuthButton() {
     const auth = getAuth(app);
     try {
       await signInWithPopup(auth, provider);
-      router.push("/oferta/user");
+      router.push("/user");
     } catch (e) {}
   }
   return (

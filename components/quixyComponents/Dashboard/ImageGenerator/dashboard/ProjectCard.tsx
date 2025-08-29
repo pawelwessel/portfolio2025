@@ -80,7 +80,7 @@ export default function ProjectCard({
             <div className="flex items-center flex-wrap gap-2">
               {project?.tags?.map((tag: any, i: any) => (
                 <Link
-                  href={`/oferta/${polishToEnglish(
+                  href={`/oferta/dla-firm/${polishToEnglish(
                     tag.slugTitle
                   )}/${polishToEnglish(tag.categoryTitle)}/${polishToEnglish(
                     tag.title

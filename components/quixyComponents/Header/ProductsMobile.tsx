@@ -70,7 +70,7 @@ export default function ProductsMobile({
                       className={`flex items-center justify-between w-full text-xl`}
                     >
                       <Link
-                        href={`/oferta/${polishToEnglish(
+                        href={`/oferta/dla-firm/${polishToEnglish(
                           job.title
                         )}/${polishToEnglish(item.title)}`}
                         onClick={resetHeader}
@@ -94,7 +94,7 @@ export default function ProductsMobile({
                           key={i}
                           onClick={resetHeader}
                           className="flex items-center justify-center p-4 text-center w-full h-full bg-gradient-to-br from-slate-500 to-slate-700"
-                          href={`/oferta/${polishToEnglish(
+                          href={`/oferta/dla-firm/${polishToEnglish(
                             job.title
                           )}/${polishToEnglish(item.title)}/${polishToEnglish(
                             subcategory.title

@@ -27,7 +27,7 @@ export default function SlugFooter({
             {jobsList.map((item: any, i: any) => (
               <div key={i} className="flex flex-col w-full">
                 <Link
-                  href={`${process.env.NEXT_PUBLIC_URL}/oferta/${
+                  href={`${process.env.NEXT_PUBLIC_URL}/oferta/dla-firm/${
                     slug ? `${polishToEnglish(slug)}/` : ""
                   }${polishToEnglish(item.title)}`}
                 >
@@ -39,7 +39,7 @@ export default function SlugFooter({
                   {item.data.map((cat: any, i: any) => (
                     <h3 key={i} className="w-full lg:w-max max-w-full">
                       <Link
-                        href={`/oferta/${
+                        href={`/oferta/dla-firm/${
                           polishToEnglish(slug)
                             ? `${polishToEnglish(slug)}/`
                             : ""
