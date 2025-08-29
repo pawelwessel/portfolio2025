@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { addOpinion } from "@/common/firebase/";
+import { addOpinion } from "@/common/firebase/quixy";
 import { toast } from "react-toastify";
 import { FaCircleXmark } from "react-icons/fa6";
 

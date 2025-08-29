@@ -1,9 +1,8 @@
 "use client";
+import { pushEmail } from "@/utils/pushEmail";
 import Link from "next/link";
 import React, { useState } from "react";
-import { pushEmail } from "../../utils/pushEmail";
 import { toast } from "react-toastify";
-import { FaCircleXmark } from "react-icons/fa6";
 
 export default function HomePageLead() {
   const [isChecked, setIsChecked] = React.useState(true);

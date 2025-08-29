@@ -1,4 +1,4 @@
-import { updateDocument, updateUser } from "@/common/firebase";
+import { updateDocument, updateUser } from "@/common/firebase/quixy";
 import { set_modals } from "@/common/redux/slices/modalsopen";
 import { setUser } from "@/common/redux/slices/user";
 import moment from "moment";

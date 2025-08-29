@@ -1,5 +1,5 @@
 "use client";
-import { updateDocument } from "@/common/firebase";
+import { updateDocument } from "@/common/firebase/quixy";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
