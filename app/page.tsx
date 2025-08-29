@@ -6,7 +6,7 @@ import PricingHero from "../components/landing/PricingHero";
 import BlogSection from "../components/landing/BlogSection";
 import OpinionsSection from "../components/landing/OpinionsSection";
 import ReachSection from "../components/landing/ReachSection";
-import { mapMarkers } from "@/lib/mapMarkers";
+// import { mapMarkers } from "@/lib/mapMarkers";
 export default async function Page({
   searchParams,
 }: {
@@ -14,7 +14,7 @@ export default async function Page({
 }) {
   return (
     <div className="w-screen overflow-x-hidden">
-      <div className="font-sans w-full bg-[#222222] pb-48 h-full">
+      {/* <div className="font-sans w-full bg-[#222222] pb-48 h-full">
         <HeroIntro />
         <div className="z-[30] fixed h-screen w-full left-0 top-0">
           <Hero />
@@ -29,7 +29,7 @@ export default async function Page({
             <ReachSection markers={mapMarkers} />
           </section>
         </main>
-      </div>
+      </div> */}
     </div>
   );
 }
