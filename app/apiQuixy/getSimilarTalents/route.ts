@@ -1,4 +1,4 @@
-import { fetchUsers, getDocument } from "@/common/firebase";
+import { fetchUsers, getDocument } from "@/common/firebase/quixy";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

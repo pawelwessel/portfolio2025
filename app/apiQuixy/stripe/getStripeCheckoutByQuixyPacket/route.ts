@@ -1,4 +1,4 @@
-import { addOrder } from "@/common/firebase";
+import { addOrder } from "@/common/firebase/quixy";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 const stripe = require("stripe")(`${process.env.STRIPE_SECRET}`);
