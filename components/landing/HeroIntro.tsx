@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function HeroIntro() {
   return (
     <>
-      <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-6 xl:top-12 overflow-hidden rounded-r-xl">
+      <div className="z-[15] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-20 lg:top-36 overflow-hidden rounded-r-xl">
         <div className="w-full flex items-start relative">
           <div className="w-max absolute left-[300px] top-0">
             <Image
@@ -21,7 +21,7 @@ export default function HeroIntro() {
         </div>
       </div>
 
-      <div className="justify-evenly min-h-screen lg:mt-0 w-full mx-0 sm:mx-auto flex flex-col max-w-[90vw] relative pt-36 pb-12 lg:py-0 overflow-x-hidden">
+      <div className="mx-auto justify-evenly min-h-screen lg:mt-0 w-full flex flex-col px-3 lg:px-12 max-w-[90vw] relative pt-36 pb-12 overflow-x-hidden">
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 h-max">
           <h1 className="z-50 bg-zinc-800 bg-opacity-80 rounded-xl p-6 lg:p-12 flex flex-col justify-center h-max my-auto">
             <Image
@@ -41,17 +41,19 @@ export default function HeroIntro() {
             <div className="gap-6 flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
               <Cta label="Skontaktuj się" />
               {/* <Link
-                href="/praca-zdalna"
+                href="/oferta"
                 className="py-3 px-5 text-sm lg:text-base mt-4 hover:scale-110 duration-200 in-out text-white rounded-lg cursor-pointer bg-blue-500 w-max max-w-full"
               >
                 Dla branży IT
               </Link> */}
             </div>
           </h1>
-          <div className="flex items-center xl:justify-center flex-col w-full lg:pl-12 mt-20 lg:mt-0">
-            <ImageSlider />
+          <div className="flex items-center justify-center flex-col w-full lg:pl-12 mt-20 lg:mt-0">
+            <div className="max-w-[90vw] lg:max-w-[550px] flex items-center justify-center">
+              <ImageSlider />
+            </div>
             <h2 className="text-2xl lg:text-3xl font-italic text-white font-sans italic text-center mt-12">
-              Tworzę rozwiązania cyfrowe, które robią różnicę
+              Rozwiązania cyfrowe, które robią różnicę
             </h2>
           </div>
         </div>

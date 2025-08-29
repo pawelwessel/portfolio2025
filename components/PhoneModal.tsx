@@ -39,7 +39,7 @@ export default function PhoneModal() {
 
   return (
     <div
-      className={`fixed left-0 top-0 w-full h-full z-[1600] font-gotham ${
+      className={`fixed left-0 top-0 w-full h-full z-[99999999999999] font-gotham ${
         isOpen ? "translate-x-0" : "-translate-x-[400vw]"
       }`}
     >

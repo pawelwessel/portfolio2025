@@ -9,7 +9,7 @@ export default function GoogleAuthButton() {
     const auth = getAuth(app);
     try {
       await signInWithPopup(auth, provider);
-      router.push("/praca-zdalna/user");
+      router.push("/oferta/user");
     } catch (e) {}
   }
   return (

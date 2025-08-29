@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function GoogleAdsPage() {
   return (
     <>
-      <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-6 xl:top-12 overflow-hidden rounded-r-xl">
+      <div className="z-[15] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-20 lg:top-36 overflow-hidden rounded-r-xl">
         <div className="w-full flex items-start relative">
           <div className="w-max absolute left-[300px] top-0">
             <Image

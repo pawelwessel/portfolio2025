@@ -1,5 +1,4 @@
 import Hero from "@/components/hero/Hero";
-import Header from "@/components/header";
 import { Metadata } from "next";
 import HeroIntro from "../components/landing/HeroIntro";
 import MainCard from "../components/landing/MainCard";
@@ -14,11 +13,9 @@ export default async function Page({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
   const ref = searchParams?.ref;
-
   return (
     <div className="w-screen overflow-x-hidden">
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
-        <Header />
         <HeroIntro />
         <div className="z-[30] fixed h-screen w-full left-0 top-0">
           <Hero />

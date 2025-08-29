@@ -16,7 +16,7 @@ const placeholder = (w: number, h: number, label: string, rx: number = 16) => {
 export default function HeroIntroAds() {
   return (
     <>
-      <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-6 xl:top-12 overflow-hidden rounded-r-xl">
+      <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-24 lg:top-36 overflow-hidden rounded-r-xl">
         <div className="w-full flex items-start relative">
           <div className="w-max absolute left-[300px] top-0">
             <Image
@@ -51,7 +51,7 @@ export default function HeroIntroAds() {
             <div className="gap-6 flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
               <Cta label="Skontaktuj się" />
               {/* <Link
-                href="/praca-zdalna"
+                href="/oferta"
                 className="py-3 px-5 text-sm lg:text-base mt-4 hover:scale-110 duration-200 in-out text-white rounded-lg cursor-pointer bg-blue-500 w-max max-w-full"
               >
                 Dla branży IT
@@ -68,7 +68,7 @@ export default function HeroIntroAds() {
               priority
             />
             <h2 className="text-2xl lg:text-3xl font-italic text-white font-sans italic text-center mt-12">
-              Tworzę rozwiązania cyfrowe, które robią różnicę
+              Rozwiązania cyfrowe, które robią różnicę
             </h2>
           </div>
         </div>

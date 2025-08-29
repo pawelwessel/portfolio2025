@@ -1,8 +1,10 @@
-"use server";
 export async function getContent(slug: any) {
-  const posts = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/content/${slug}`,
-    { next: { revalidate: 600 } }
-  ).then((res: any) => res.json());
-  return posts;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/content/${slug}`
+  );
+  if (!res.ok) {
+    // Optionally log or handle error
+    return null;
+  }
+  return res.json();
 }

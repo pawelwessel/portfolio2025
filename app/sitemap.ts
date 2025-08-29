@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
 import { getAllCitySlugs } from "@/lib/polishCities";
-
+import { getProducts } from "@/common/firebase/quixy";
+import { polishToEnglish } from "@/utils/polishToEnglish";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://quixy.pl";
 
@@ -55,6 +56,68 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }));
+  let newsPages: MetadataRoute.Sitemap = [];
+  try {
+    const products = await getProducts();
+    newsPages = products.map((product: any) => ({
+      url: `${baseUrl}/news/${product.url}`,
+      lastModified: new Date(
+        product.updatedAt || product.createdAt || Date.now()
+      ),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.error("Error fetching news for sitemap:", error);
+  }
+  // --- OFERTA DLA FIRM ---
+  let ofertaPages: MetadataRoute.Sitemap = [];
+  try {
+    const jobs = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs?tubylytylkofigi=${process.env.API_SECRET_KEY}`
+    ).then((res) => res.json());
 
-  return [...staticPages, ...blogPages, ...cityPages];
+    jobs.forEach((service: any) => {
+      const slug = polishToEnglish(service.title);
+      // /oferta/dla-firm/[slug]
+      ofertaPages.push({
+        url: `${baseUrl}/oferta/dla-firm/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      });
+
+      service.data.forEach((category: any) => {
+        const categorySlug = polishToEnglish(category.title);
+        // /oferta/dla-firm/[slug]/[category]
+        ofertaPages.push({
+          url: `${baseUrl}/oferta/dla-firm/${slug}/${categorySlug}`,
+          lastModified: new Date(),
+          changeFrequency: "weekly",
+          priority: 0.7,
+        });
+
+        category.data.forEach((job: any) => {
+          const jobSlug = polishToEnglish(job.title);
+          // /oferta/dla-firm/[slug]/[category]/[job]
+          ofertaPages.push({
+            url: `${baseUrl}/oferta/dla-firm/${slug}/${categorySlug}/${jobSlug}`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.6,
+          });
+        });
+      });
+    });
+  } catch (error) {
+    console.error("Error fetching oferta dla firm for sitemap:", error);
+  }
+
+  return [
+    ...staticPages,
+    ...blogPages,
+    ...cityPages,
+    ...ofertaPages,
+    ...newsPages,
+  ];
 }

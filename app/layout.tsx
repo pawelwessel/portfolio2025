@@ -1,26 +1,30 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import Script from "next/script";
-import AOSInit from "@/components/AOS";
 import { PhoneModalProvider } from "@/common/context/PhoneModalContext";
 import { ThemeProvider } from "@/common/context/ThemeContext";
 import PhoneModal from "@/components/PhoneModal";
 import PromoPopup from "@/components/PromoPopup";
 import Footer from "@/components/footer/Footer";
+import Header from "@/components/quixyComponents/Header";
 
 export default async function Root({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const jobsRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs`, {
+    next: { revalidate: 60 },
+  });
+  const jobs = await jobsRes.json();
   return (
     <html lang="pl" style={{ scrollBehavior: "smooth" }}>
       <body
-        className={`${cocosharp.variable} overflow-x-hidden ${gotham.variable}`}
+        className={`${cocosharp.variable} font-sans overflow-x-hidden ${gotham.variable}`}
       >
-        <AOSInit />
         <ThemeProvider>
           <PhoneModalProvider>
+            <Header jobsList={jobs} />
             {children}
             <Footer />
             <PhoneModal />

@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./components/quixyComponents/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -12,8 +13,8 @@ module.exports = {
         ctaEnd: "#0B7D43",
         primaryStart: "#126b91",
         primaryEnd: "#082F47",
-        primaryHoverStart: "#468CA9",
-        primaryHoverEnd: "#126b91",
+        primaryHoverEnd: "#468CA9",
+        primaryHoverStart: "#126b91",
         bgStart: "#126b91",
         bgEnd: "#082F47",
         accentStart: "#FFA726",
@@ -23,6 +24,8 @@ module.exports = {
         courses: "url('/bg-courses.jpg')",
         "woman-pc": "url('/assets/woman-pc.webp')",
         "guitar-man": "url('/assets/guitar-man.webp')",
+        login: "url('/assets/login.webp')",
+        register: "url('/happy.webp')",
       },
       fontFamily: {
         sans: ["var(--font-cocosharp)"],

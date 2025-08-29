@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
 import { polishCities, getCityDisplayName } from "@/lib/polishCities";
 import { Post } from "@/types";
+import { FaFacebook, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   const [blogPosts, setBlogPosts] = useState<Post[]>([]);
@@ -196,22 +197,23 @@ export default function Footer() {
             </div>
 
             {/* Social Media Links */}
-            <div className="flex space-x-4">
-              <a
+            <div className="flex items-center space-x-4">
+              <Link
+                title="Strony Internetowe WWW z Cennikiem Grudziądz Tiktok"
+                target="_blank"
+                href="https://www.tiktok.com/@strony_www_grudziadz"
+                className="flex items-center"
+              >
+                <FaTiktok className="text-2xl text-white" />
+              </Link>
+              <Link
+                title="Strony Internetowe WWW z Cennikiem Grudziądz Facebook"
                 href="https://www.facebook.com/profile.php?id=61579945978455"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#3EE7C0] transition-colors"
-                aria-label="Facebook"
+                className="flex items-center"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
+                <FaFacebook className="text-2xl text-white" />
+              </Link>
             </div>
           </div>
 

@@ -7,7 +7,6 @@ import { FaBook, FaEye } from "react-icons/fa";
 import ParallaxImage from "@/components/ParallaxImage";
 import ParallaxSection from "@/components/ParallaxSection";
 import Cta from "@/components/cta/Cta";
-import Header from "@/components/header";
 import { Metadata } from "next";
 import Script from "next/script";
 import FaqSection from "./FaqSection";
@@ -27,6 +26,7 @@ import BlogSection from "@/components/landing/BlogSection";
 import OpinionsSection from "@/components/landing/OpinionsSection";
 import ReachSection from "@/components/landing/ReachSection";
 import { mapMarkers } from "@/lib/mapMarkers";
+import { notFound } from "next/navigation";
 
 // Generate static params for all city-based slugs
 export async function generateStaticParams() {
@@ -259,7 +259,7 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
         />
       )}
 
-      <div className="z-[1500] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-6 xl:top-12 overflow-hidden rounded-r-xl">
+      <div className="z-[15] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-20 lg:top-36 overflow-hidden rounded-r-xl">
         <div className="w-full flex items-start relative">
           <div className="w-max absolute left-[300px] top-0">
             <Image
@@ -274,7 +274,6 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
         </div>
       </div>
       <div className="relative w-screen overflow-x-hidden">
-        <Header />
         <div className="absolute inset-0 -z-10">
           <div className="z-50 fixed left-0 top-0 w-full h-screen">
             <Hero />
@@ -481,60 +480,22 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
+
+  // If the slug is a city slug but not a valid city, show 404
+  if (isCitySlug(slug) && !slugToCity(slug)) {
+    notFound();
+  }
+
   const post = await getPostData(slug);
 
+  // If it's a city slug, but the city is not valid, show 404
+  if (isCitySlug(slug) && !slugToCity(slug)) {
+    notFound();
+  }
+
+  // If it's not a city slug and not a post, show 404
   if (!post) {
-    return (
-      <div className="relative w-screen overflow-x-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="z-5 fixed left-0 top-0 w-full h-screen">
-            <Hero />
-          </div>
-          <div className="absolute inset-0 bg-black/85" />
-        </div>
-        <main className="relative z-10 min-h-screen w-full px-4 flex items-center justify-center">
-          <section className="w-full max-w-2xl mx-auto text-center">
-            <div className="relative bg-[#0f1320]/90 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-2xl p-12 shadow-2xl">
-              {/* Floating accent elements */}
-              <div className="absolute top-6 left-6 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
-              <div
-                className="absolute top-8 right-8 w-1.5 h-1.5 bg-[#3EE7C0] rounded-full opacity-40 animate-pulse"
-                style={{ animationDelay: "1s" }}
-              />
-
-              <h1 className="text-2xl lg:text-3xl font-bold text-white mb-4 font-gotham">
-                Nie znaleziono artykułu
-              </h1>
-              <p className="text-gray-200 text-base lg:text-lg mb-8">
-                Sprawdź adres i spróbuj ponownie.
-              </p>
-
-              <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mx-auto mb-8 rounded-full opacity-60" />
-
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] hover:from-[#A3E626] hover:to-[#2DD4B0] text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#B4FC2D]/20"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
-                </svg>
-                Wróć do strony głównej
-              </Link>
-            </div>
-          </section>
-        </main>
-      </div>
-    );
+    notFound();
   }
 
   return <PageContent post={post} slug={slug} />;
