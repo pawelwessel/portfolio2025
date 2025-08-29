@@ -29,47 +29,14 @@ export default async function Root({
         </ThemeProvider>
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-10818390066"
-        />
-        <Script async id="google-analytics1">
+          id="google-analytics"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VH4MSJ1DFY"
+        >
           {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-10818390066');
-          `}
-        </Script>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16664946086"
-        />
-        <Script async id="google-analytics2">
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-16664946086');
-          `}
-        </Script>
-
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-XJL7SETE7X"
-        />
-        <Script async id="google-analytics">
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XJL7SETE7X');
-          `}
-        </Script>
-        <Script async id="google-analytics">
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-TKFVWD1KMR');
+              gtag('config', 'G-VH4MSJ1DFY');
           `}
         </Script>
       </body>
