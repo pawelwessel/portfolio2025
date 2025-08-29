@@ -1,5 +1,4 @@
 import Hero from "@/components/hero/Hero";
-import Header from "@/components/header";
 import HeroIntroAds from "@/components/google-ads/HeroIntroAds";
 import PricingPlans from "@/components/google-ads/PricingPlans";
 import HowItWorks from "@/components/google-ads/HowItWorks";
@@ -26,7 +25,6 @@ export default function GoogleAdsPage() {
       </div>
       <div className="w-screen overflow-x-hidden">
         <div className="font-sans w-full bg-[#222222] pb-48 h-full">
-          <Header />
           <div className="z-[30] fixed h-screen w-full left-0 top-0">
             <Hero />
           </div>

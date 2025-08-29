@@ -1,4 +1,3 @@
-import Header from "@/components/header";
 import Hero from "@/components/hero/Hero";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +21,6 @@ export default async function Page({
           className="w-[150px] sm:w-[200px]"
         />
       </Link>
-      <Header />
       <div className="bg-zinc-800 h-screen w-full fixed left-0 top-0">
         <Hero />
       </div>
