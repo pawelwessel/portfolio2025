@@ -14,13 +14,13 @@ import { getStorage } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY1,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN1,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID1,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET1,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID1,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID1,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASURMENT_ID1,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY2,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN2,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID2,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET2,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID2,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID2,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASURMENT_ID2,
 };
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
