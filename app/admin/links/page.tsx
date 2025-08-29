@@ -4,10 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { collection, getFirestore, onSnapshot } from "firebase/firestore";
-import { useTheme } from "@/common/context/ThemeContext";
 export default function Page() {
   const [links, setLinks] = useState<any[]>([]);
-  const { light } = useTheme();
+  const light = false;
   useEffect(() => {
     const ref = collection(getFirestore(app), "links");
     const unsub = onSnapshot(ref, (querySnapshot: any) => {
@@ -41,9 +40,7 @@ export default function Page() {
         {links.map((item: any, i: any) => (
           <Link
             className={`p-4 ${
-              light === true
-                ? "bg-white text-zinc-800"
-                : "bg-zinc-800 text-white"
+              light ? "bg-white text-zinc-800" : "bg-zinc-800 text-white"
             } font-bold text-sm sm:text-base lg:text-lg xl:text-xl font-gotham flex flex-col items-start justify-start`}
             key={i}
             href={`/admin/links/${item.id}`}

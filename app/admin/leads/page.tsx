@@ -18,7 +18,6 @@ import {
   Bar,
   BarChart,
 } from "recharts";
-import { useTheme } from "@/common/context/ThemeContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 interface AdminPageProps {
   courses: any[];
@@ -72,7 +71,7 @@ export default function Admin() {
 
     return chartData;
   }
-  const { light } = useTheme();
+  const light = false;
   return (
     <div
       className={`min-h-screen grid lg:grid-cols-2 -ml-4 -mt-4 p-6 font-sans`}
