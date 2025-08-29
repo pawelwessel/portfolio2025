@@ -3,26 +3,26 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { PhoneModalProvider } from "@/common/context/PhoneModalContext";
 import { ThemeProvider } from "@/common/context/ThemeContext";
-// import PhoneModal from "@/components/PhoneModal";
-// import PromoPopup from "@/components/PromoPopup";
-// import Footer from "@/components/footer/Footer";
-// import Header from "@/components/quixyComponents/Header";
+import PhoneModal from "@/components/PhoneModal";
+import PromoPopup from "@/components/PromoPopup";
+import Footer from "@/components/footer/Footer";
+import Header from "@/components/quixyComponents/Header";
 
 export default async function Root({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // const jobsRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs`, {
-  //   next: { revalidate: 60 },
-  // });
-  // const jobs = await jobsRes.json();
+  const jobsRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs`, {
+    next: { revalidate: 60 },
+  });
+  const jobs = await jobsRes.json();
   return (
     <html lang="pl" style={{ scrollBehavior: "smooth" }}>
       <body
         className={`${cocosharp.variable} font-sans overflow-x-hidden ${gotham.variable}`}
       >
-        {/* <ThemeProvider>
+        <ThemeProvider>
           <PhoneModalProvider>
             <Header jobsList={jobs} />
             {children}
@@ -30,7 +30,7 @@ export default async function Root({
             <PhoneModal />
             <PromoPopup />
           </PhoneModalProvider>
-        </ThemeProvider> */}
+        </ThemeProvider>
         <Script id="linkedin-analytics">
           {`
           
