@@ -20,7 +20,7 @@ export function generateCityPost(citySlug: string): Post {
   }
 
   const currentDate = Date.now();
-  const postId = `city-${citySlug}-${currentDate}`;
+  const postId = `strona-internetowa-${citySlug}`;
   const slug = `strona-internetowa-${citySlug}`;
 
   return {
@@ -199,7 +199,7 @@ export async function generateCityPostIfNeeded(
 
     if (!exists) {
       const post = generateCityPost(citySlug);
-      await addDocument("blog", post.postId, post);
+      await addDocument("blog", post, post);
       console.log(`Generated and saved post for ${citySlug}`);
       return post;
     }
