@@ -96,8 +96,7 @@ export default function HeaderComponent({
               }}
               className={`w-max h-full py-5 group`}
             >
-              <Link
-                href="/oferta"
+              <button
                 onClick={() => {
                   setProductsOpen(true);
                   setMenuShow(false);
@@ -119,7 +118,7 @@ export default function HeaderComponent({
                     hovered === "cat" ? "rotate-180" : ""
                   } ml-1 duration-200 font-light`}
                 />
-              </Link>
+              </button>
             </div>
 
             <Link
