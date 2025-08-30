@@ -5,8 +5,6 @@ import Link from "next/link";
 import { getDocuments } from "@/common/firebase";
 import { Post } from "@/types";
 
-import HeroStars from "@/components/hero/Hero";
-
 export default function BlogSection() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -82,7 +80,7 @@ export default function BlogSection() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
+            {posts.slice(0, 8).map((post) => (
               <div
                 key={post.postId}
                 role="button"

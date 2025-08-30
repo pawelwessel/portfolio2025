@@ -37,13 +37,13 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#ffffff",
   manifest: "/manifest.json",
-  title: "Tworzenie Stron Internetowych | Strony i sklepy | Grudziądz",
+  title: "Strony internetowe dla firm. Tworzenie stron i sklepów.",
   description:
     "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads. Transparentne ceny i realne wyniki biznesowe.",
   openGraph: {
     type: "website",
     url: "https://quixy.pl",
-    title: "Tworzenie Stron Internetowych | Strony i sklepy | Grudziądz",
+    title: "Strony internetowe dla firm. Tworzenie stron i sklepów.",
     description:
       "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
     siteName: "Quixy Studio",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tworzenie Stron Internetowych | Strony i sklepy | Grudziądz",
+    title: "Strony internetowe dla firm. Tworzenie stron i sklepów.",
     description:
       "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
     images: ["/logo-quixy.png"],
