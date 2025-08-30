@@ -1,5 +1,5 @@
 "use client";
-import { auth } from "@/common/firebase/quixy";
+import { auth } from "@/common/firebase/firebase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";

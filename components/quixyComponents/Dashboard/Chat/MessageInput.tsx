@@ -45,7 +45,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ value }) => {
   const handleSendMessage = async (value: any) => {
     if (message.trim() === "") {
       toast.error("Treść zapytania jest wymagana", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -55,7 +55,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ value }) => {
     }
     if (!validatePhoneNumber(phoneNumber)) {
       toast.error("Numer telefonu jest nieprawidłowy", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -65,7 +65,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ value }) => {
     }
     if (!validateEmail(email)) {
       toast.error("Adres email jest nieprawidłowy", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

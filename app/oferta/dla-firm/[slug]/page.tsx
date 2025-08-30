@@ -2,7 +2,6 @@ import Link from "next/link";
 import { polishToEnglish } from "../../../../utils/polishToEnglish";
 import Image from "next/image";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
-import removePolishSignsAndSpaces from "@/lib/removePolish";
 import OpinionsForm from "@/components/quixyComponents/OpinionsForm";
 import Market from "@/components/quixyComponents/marketplace/Market";
 import BlogPostList from "@/components/quixyComponents/BlogPostList";
@@ -14,7 +13,7 @@ import Loadinger from "@/app/loading";
 import Hero from "@/components/hero/Hero";
 import InitializeUser from "@/components/quixyComponents/InitializeUser";
 import { FaArrowRightLong } from "react-icons/fa6";
-export const revalidate = 60;
+export const revalidate = 600;
 export const dynamicParams = true;
 export default async function Page(props: {
   params: Promise<any>;
@@ -229,45 +228,29 @@ export default async function Page(props: {
                   key={i}
                   className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all"
                 >
-                  #{removePolishSignsAndSpaces(item.toLowerCase())}
+                  #{item.toLowerCase()}
                 </li>
               ))}
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #firmy
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zleceniadlafirm
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zleceniadlafreelancerow
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #ilezarabia
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_singular.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
-                #
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_singular.toLowerCase()
-                )}
-                freelance
+                #freelance
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zarobki
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_plural.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_plural.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #znajdzprace

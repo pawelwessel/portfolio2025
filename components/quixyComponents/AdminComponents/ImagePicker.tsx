@@ -131,7 +131,7 @@ export default function ImagePicker({
               );
               if (tooLargeFiles.length > 0) {
                 return toast.error("Some images are larger than 2MB", {
-                  position: "top-right",
+                  position: "bottom-right",
                   autoClose: 5000,
                   hideProgressBar: false,
                   closeOnClick: true,

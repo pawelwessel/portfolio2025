@@ -21,11 +21,9 @@ import Image from "next/image";
 export default function Nav({
   isNavOpen,
   setNavOpen,
-  messages,
 }: {
   isNavOpen: boolean;
   setNavOpen: Function;
-  messages: any;
 }) {
   const [expandedItems, setExpandedItems] = useState([]);
 
@@ -210,12 +208,6 @@ export default function Nav({
                               {subItem.icon}
                               <div className="ml-2">{subItem.title}</div>
                             </div>
-                            {subItem?.title === "Wiadomości" &&
-                              messages?.length > 0 && (
-                                <div className="bg-red-500 text-white aspect-square rounded-full flex items-center justify-center h-6 w-6">
-                                  {messages?.length}
-                                </div>
-                              )}
                           </button>
                         </Link>
                       </li>

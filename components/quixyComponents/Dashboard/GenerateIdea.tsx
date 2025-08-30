@@ -34,7 +34,7 @@ export default function GenerateIdea({
   const dispatch = useDispatch();
   const showError = (message: string) => {
     toast.error(message, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

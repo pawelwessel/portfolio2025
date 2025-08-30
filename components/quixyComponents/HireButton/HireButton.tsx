@@ -20,7 +20,7 @@ export default function HireButton({
         onClick={() => {
           if (talentSlugData.uid === user?.uid) {
             return toast.error("Nie możesz aplikować do samego siebie", {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,

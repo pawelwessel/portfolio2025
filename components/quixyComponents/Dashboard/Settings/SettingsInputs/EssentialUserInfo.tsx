@@ -106,7 +106,7 @@ export default function EssentialUserInfo({
                 toast.error(
                   "Tylko zdjęcia o rozmiarze do 5MB są dozwolone (kwadratowe lub 16:9)",
                   {
-                    position: "top-right",
+                    position: "bottom-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,

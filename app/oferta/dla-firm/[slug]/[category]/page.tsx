@@ -2,8 +2,6 @@ import Link from "next/link";
 import { polishToEnglish } from "../../../../../utils/polishToEnglish";
 import { FaBriefcase } from "react-icons/fa";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
-import removePolishSignsAndSpaces from "@/lib/removePolish";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { getServices } from "@/lib/getServices";
 import { getPosts } from "@/lib/getPosts";
@@ -12,9 +10,6 @@ import Loadinger from "@/app/loading";
 import { Suspense } from "react";
 import Hero from "@/components/hero/Hero";
 import InitializeUser from "@/components/quixyComponents/InitializeUser";
-const Market = dynamic(
-  () => import("@/components/quixyComponents/marketplace/Market")
-);
 const BlogPostList = dynamic(
   () => import("@/components/quixyComponents/BlogPostList")
 );
@@ -22,7 +17,7 @@ const BlogPostList = dynamic(
 export async function generateStaticParams() {
   const jobs = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs?tubylytylkofigi=${process.env.API_SECRET_KEY}`,
-    { next: { revalidate: 60 } }
+    { next: { revalidate: 600 } }
   ).then((res) => res.json());
   return jobs.flatMap((service: any) =>
     service.data.flatMap((subItem: any) => ({ category: subItem.title }))
@@ -32,7 +27,7 @@ export default async function Page(props: { params: Promise<any> }) {
   const params = await props.params;
   const jobs = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs?tubylytylkofigi=${process.env.API_SECRET_KEY}`,
-    { next: { revalidate: 60 } }
+    { next: { revalidate: 600 } }
   ).then((res) => res.json());
   const cat: any = jobs.find(
     (page: any) => polishToEnglish(page.title) === params.slug
@@ -167,46 +162,29 @@ export default async function Page(props: { params: Promise<any> }) {
                   key={i}
                   className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all"
                 >
-                  #{removePolishSignsAndSpaces(item.toLowerCase())}
+                  #{item.toLowerCase()}
                 </li>
               ))}
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #firmy
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zleceniadlafirm
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zleceniadlafreelancerow
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #ilezarabia
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_singular.toLowerCase()
-                )}
               </li>
-
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
-                #
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_singular.toLowerCase()
-                )}
-                freelance
+                #freelance
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zarobki
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_plural.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_plural.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #znajdzprace

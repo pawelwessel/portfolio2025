@@ -84,7 +84,7 @@ export default function StepFour({
 
   const showToastError = (message: string) => {
     toast.error(message, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -198,7 +198,7 @@ export default function StepFour({
             toast.error(
               "Tylko zdjęcia o rozmiarze do 5MB są dozwolone (kwadratowe lub 16:9)",
               {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

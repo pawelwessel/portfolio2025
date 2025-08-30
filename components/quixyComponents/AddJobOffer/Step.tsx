@@ -194,7 +194,7 @@ export default function StepOne({
               nextStep();
             } else {
               return toast.error("Uzupełnij dane!", {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(params: any, req: any) {
   const { job } = await req.params;
-  const users = await fetchUsers();
+  const users: any[] = await fetchUsers();
   const filteredUsers = users
     ?.filter(
       (user) =>

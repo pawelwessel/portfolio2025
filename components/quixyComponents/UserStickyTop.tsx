@@ -95,7 +95,7 @@ export default function UserStickyTop({ slugData }: { slugData: any }) {
               onClick={() => {
                 if (slugData?.uid === user?.uid) {
                   return toast.error("Nie możesz aplikować do samego siebie", {
-                    position: "top-right",
+                    position: "bottom-right",
                     autoClose: 5000,
                   });
                 } else {

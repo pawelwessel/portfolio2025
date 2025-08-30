@@ -54,7 +54,7 @@ export default function ServiceCard({
       setDeleteMenu(false);
     } catch (error) {
       toast.error("Przepraszamy! Wystąpił błąd.", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

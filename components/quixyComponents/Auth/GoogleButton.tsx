@@ -72,7 +72,7 @@ export default function GoogleAuthButton({
         type="button"
         className={`${
           landing === "yes" ? "w-[200px] text-sm " : "w-full text-lg"
-        } block bg-white hover:bg-gray-100 focus:bg-gray-100 text-black font-gotham font-semibold px-4 py-3 border border-gray-300`}
+        } block bg-white hover:bg-gray-100 focus:bg-gray-100 text-black font-gotham font-semibold px-4 py-3 border border-zinc-600/75`}
       >
         <div className="flex items-center justify-center">
           <svg
@@ -106,7 +106,7 @@ export default function GoogleAuthButton({
               d="M48 48L17 24l-4-3 35-10z"
             />
           </svg>
-          <span className="ml-4">Zaloguj z Google</span>
+          <span className="ml-4 font-gotham font-light">Zaloguj z Google</span>
         </div>
       </button>
     </div>

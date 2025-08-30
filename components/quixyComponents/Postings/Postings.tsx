@@ -51,7 +51,7 @@ const JobOfferList = () => {
         dispatch(set_modals({ ...modals, quixies: true })),
         setLoading(false),
         toast.error("Niewystarczająca ilość Quixies", {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,

@@ -73,7 +73,7 @@ export default function EditPost({
       const postRef = doc(db, "posts", selectedPost.postId);
       await updateDoc(postRef, selectedPost);
       toast.success("Zaaktualizowano post pomyślnie!", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -81,7 +81,7 @@ export default function EditPost({
       });
     } catch (_error) {
       toast.error("Wystąpił błąd podczas aktualizacji posta!", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,

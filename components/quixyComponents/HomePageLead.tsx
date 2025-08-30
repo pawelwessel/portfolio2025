@@ -63,7 +63,7 @@ export default function HomePageLead() {
               pushEmail(email, isChecked).then((res: any) => {
                 if (!res.error) {
                   toast.success("Udało się! Jesteś na bieżąco!", {
-                    position: "top-right",
+                    position: "bottom-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -73,7 +73,7 @@ export default function HomePageLead() {
                   setLoading(false);
                 } else {
                   toast.error("${błąd}: res.code", {
-                    position: "top-right",
+                    position: "bottom-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -84,7 +84,7 @@ export default function HomePageLead() {
               });
             } else {
               toast.error("Wpisz poprawny email", {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -93,7 +93,7 @@ export default function HomePageLead() {
             }
           } else {
             toast.error("Musisz zaakceptować warunki korzystania z serwisu", {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,

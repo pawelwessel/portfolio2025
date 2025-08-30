@@ -1,5 +1,7 @@
 "use client";
-import { auth, getDocument } from "@/common/firebase";
+import { auth } from "@/common/firebase";
+import { getDocument } from "@/common/firebase/quixy";
+
 import { setUser } from "@/common/redux/slices/user";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";

@@ -332,7 +332,7 @@ export default function StepTwo({
                   ) {
                     if (!formData?.region || !formData?.city) {
                       return toast.error("Uzupełnij miasto lub region!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -355,7 +355,7 @@ export default function StepTwo({
                   ) {
                     if (!formData?.salaryValueBruttoFrom) {
                       return toast.error("Wpisz wynagrodzenie", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -367,7 +367,7 @@ export default function StepTwo({
                       formData?.salaryValueBruttoTo
                     ) {
                       return toast.error("Podaj wartość brutto od!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -378,7 +378,7 @@ export default function StepTwo({
                   if (formData?.preferences?.includes("Kontrakt B2B")) {
                     if (!formData?.salaryValueNettoFrom) {
                       return toast.error("Wpisz wynagrodzenie", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -390,7 +390,7 @@ export default function StepTwo({
                       formData?.salaryValueNettoTo
                     ) {
                       return toast.error("Podaj wartość netto od!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -401,7 +401,7 @@ export default function StepTwo({
                   if (formData?.salaryValueBruttoFrom) {
                     if (!formData?.salaryValueBruttoTo) {
                       return toast.error("Podaj wartość brutto do!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -415,7 +415,7 @@ export default function StepTwo({
                       return toast.error(
                         "Wartość brutto od nie może większa niż wartość brutto do!",
                         {
-                          position: "top-right",
+                          position: "bottom-right",
                           autoClose: 5000,
                           hideProgressBar: false,
                           closeOnClick: true,
@@ -427,7 +427,7 @@ export default function StepTwo({
                   if (formData?.salaryValueNettoFrom) {
                     if (!formData?.salaryValueNettoTo) {
                       return toast.error("Podaj wartość netto do!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -441,7 +441,7 @@ export default function StepTwo({
                       return toast.error(
                         "Wartość netto od nie może większa niż wartość netto do!",
                         {
-                          position: "top-right",
+                          position: "bottom-right",
                           autoClose: 5000,
                           hideProgressBar: false,
                           closeOnClick: true,
@@ -453,7 +453,7 @@ export default function StepTwo({
                   nextStep();
                 } else {
                   return toast.error("Uzupełnij dane!", {
-                    position: "top-right",
+                    position: "bottom-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,

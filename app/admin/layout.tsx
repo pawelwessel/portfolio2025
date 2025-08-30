@@ -17,35 +17,6 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [messages, setMessages] = useState<any[]>([]);
-  const [assistantMessages, setAssistantMessages] = useState<any[]>([]);
-  useEffect(() => {
-    const ref = collection(getFirestore(app), "assistantMessages");
-    const unsub = onSnapshot(ref, (querySnapshot: any) => {
-      const snapshotData: any[] = [];
-      querySnapshot.forEach((doc: any) => {
-        snapshotData.push(doc.data());
-      });
-      setAssistantMessages(snapshotData);
-    });
-    return () => {
-      unsub();
-    };
-  }, []);
-  useEffect(() => {
-    const ref = collection(getFirestore(app), "messages");
-    const unsub = onSnapshot(ref, (querySnapshot: any) => {
-      const snapshotData: any[] = [];
-      querySnapshot.forEach((doc: any) => {
-        snapshotData.push(doc.data());
-      });
-      setMessages(snapshotData);
-    });
-    return () => {
-      unsub();
-    };
-  }, []);
-  const pathname = usePathname();
   const [isNavOpen, setNavOpen] = useState(false);
   const [user, loading] = useAuthState(auth);
 
@@ -58,11 +29,7 @@ export default function AdminLayout({
         <div className="relative w-full overflow-x-hidden font-coco bg-[#404149] font-sans pb-48">
           {user ? (
             <>
-              <Nav
-                isNavOpen={isNavOpen}
-                setNavOpen={setNavOpen}
-                messages={messages}
-              />
+              <Nav isNavOpen={isNavOpen} setNavOpen={setNavOpen} />
               <div className={` duration-500 w-full pt-24 scrollbar`}>
                 <Link href="/" className="absolute left-20 top-6 z-50">
                   <Image

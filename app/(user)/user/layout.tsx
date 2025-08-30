@@ -1,5 +1,5 @@
 "use client";
-import { auth } from "@/common/firebase/quixy";
+import { auth } from "@/common/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Nav from "./Nav";

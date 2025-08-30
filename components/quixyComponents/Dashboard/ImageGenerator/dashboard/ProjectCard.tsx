@@ -28,7 +28,7 @@ export default function ProjectCard({
   const router = useRouter();
   async function finishUpQuickOffer() {
     toast.success("Pomyślnie dodano ofertę!", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
     });
 

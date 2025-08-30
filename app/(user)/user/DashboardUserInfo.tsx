@@ -26,7 +26,7 @@ export default function DashboardUserInfo() {
     toast.success(
       "Wiadomość aktywacyjna została wysłana na podany adres e-mail.",
       {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -120,7 +120,7 @@ export default function DashboardUserInfo() {
                         }/${user?.pseudo}`
                       );
                       toast.success("Skopiowano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,

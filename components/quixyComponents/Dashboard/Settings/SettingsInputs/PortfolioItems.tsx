@@ -89,7 +89,7 @@ export default function PortfolioItems({
   };
   const showToastSuccess = (message: string) => {
     toast.success(message, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -99,7 +99,7 @@ export default function PortfolioItems({
   };
   const showToastError = (message: string) => {
     toast.error(message, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -215,7 +215,7 @@ export default function PortfolioItems({
                           toast.success(
                             `Usunięto widok oferty w "${selectedTag.title}"`,
                             {
-                              position: "top-right",
+                              position: "bottom-right",
                               autoClose: 5000,
                               hideProgressBar: false,
                               closeOnClick: true,
@@ -370,7 +370,7 @@ export default function PortfolioItems({
                                               color: "white",
                                             },
 
-                                            position: "top-right",
+                                            position: "bottom-right",
                                             autoClose: 5000,
                                             hideProgressBar: false,
                                             closeOnClick: true,
@@ -409,7 +409,7 @@ export default function PortfolioItems({
                                       toast.success(
                                         `Oferta wyświetli się w ${category.title} oraz ${job.title}.`,
                                         {
-                                          position: "top-right",
+                                          position: "bottom-right",
                                           autoClose: 5000,
                                           hideProgressBar: false,
                                           closeOnClick: true,
@@ -596,7 +596,7 @@ export default function PortfolioItems({
                       onClick={() => {
                         setImageDescriptionOpen(-1);
                         toast.success("Pomyślnie dodano opis!", {
-                          position: "top-right",
+                          position: "bottom-right",
                           autoClose: 5000,
                           hideProgressBar: false,
                           closeOnClick: true,
@@ -618,7 +618,7 @@ export default function PortfolioItems({
                       ),
                     });
                     toast.success("Pomyślnie usunięto obraz!", {
-                      position: "top-right",
+                      position: "bottom-right",
                       autoClose: 5000,
                       hideProgressBar: false,
                       closeOnClick: true,
@@ -648,7 +648,7 @@ export default function PortfolioItems({
         onClick={() => {
           if (!user?.access) {
             return toast.error("Brak dostępu", {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -659,7 +659,7 @@ export default function PortfolioItems({
             handleRecruitmentStart();
           } else {
             toast.error("Uzupełnij wszystkie pola!", {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,

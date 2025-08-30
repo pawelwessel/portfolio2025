@@ -20,8 +20,8 @@ export function generateCityPost(citySlug: string): Post {
   }
 
   const currentDate = Date.now();
-  const postId = `strona-internetowa-${citySlug}`;
-  const slug = `strona-internetowa-${citySlug}`;
+  const postId = `tworzenie-strony-internetowej-${citySlug}-cennik`;
+  const slug = `tworzenie-strony-internetowej-${citySlug}-cennik`;
 
   return {
     postId,

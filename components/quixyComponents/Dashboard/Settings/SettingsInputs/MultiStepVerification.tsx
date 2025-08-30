@@ -49,7 +49,7 @@ export default function MultiStepVerification({
       updateUser(user?.uid, { access: true, tokens: user?.tokens - 20 }); // Call the updateUser function
       setIsAnimating(true); // Show confetti
       toast.success("Zweryfikowano pomyślnie!", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -61,7 +61,7 @@ export default function MultiStepVerification({
       }, 5000); // Hide confetti after 5 seconds
     } else {
       toast.error("Nie posiadasz wystarczającej ilości Quixies", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

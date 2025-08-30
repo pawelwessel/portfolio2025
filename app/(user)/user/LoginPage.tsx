@@ -1,5 +1,5 @@
 "use client";
-import { auth2 } from "@/common/firebase/quixy";
+import { auth } from "@/common/firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [passwordError, setPasswordError] = useState("");
   function emailPasswordLogin() {
     if (email.includes("@") && email.includes(".")) {
-      signInWithEmailAndPassword(auth2, email, password)
+      signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {})
         .catch((error) => {
           if (error.code === "auth/user-not-found") {

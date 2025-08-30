@@ -46,7 +46,7 @@ export default function ProductEdit({
   const [topic, setTopic] = useState("");
   function generateBlogPost(topic: string) {
     const id = toast.loading(<span>Generuję posta</span>, {
-      position: "top-right",
+      position: "bottom-right",
       theme: "dark",
     });
 
@@ -333,7 +333,7 @@ export default function ProductEdit({
                           );
                         } else {
                           toast.error(<div>Uzupełnij dane!</div>, {
-                            position: "top-right",
+                            position: "bottom-right",
                             autoClose: 5000,
                             hideProgressBar: false,
                             closeOnClick: true,

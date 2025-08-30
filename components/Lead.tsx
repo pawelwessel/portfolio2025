@@ -114,7 +114,7 @@ export default function Lead({
                     }).then(() => {
                       setSelectedLead(null);
                       toast.success("Przypisano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -135,7 +135,7 @@ export default function Lead({
                     }).then(() => {
                       setSelectedLead(null);
                       toast.success("Przypisano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -252,7 +252,7 @@ export default function Lead({
                 onClick={() => {
                   deleteLead(lead.id).then(() => {
                     toast.success("Usunięto", {
-                      position: "top-right",
+                      position: "bottom-right",
                       autoClose: 5000,
                       hideProgressBar: false,
                       closeOnClick: true,
@@ -478,7 +478,7 @@ export default function Lead({
                     }).then(() => {
                       setSelectedLead(null);
                       toast.success("Przypisano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -499,7 +499,7 @@ export default function Lead({
                     }).then(() => {
                       setSelectedLead(null);
                       toast.success("Przypisano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -614,7 +614,7 @@ export default function Lead({
                 onClick={() => {
                   deleteLead(lead.id).then(() => {
                     toast.success("Usunięto", {
-                      position: "top-right",
+                      position: "bottom-right",
                       autoClose: 5000,
                       hideProgressBar: false,
                       closeOnClick: true,
@@ -840,7 +840,7 @@ export default function Lead({
                     }).then(() => {
                       setSelectedLead(null);
                       toast.success("Przypisano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -861,7 +861,7 @@ export default function Lead({
                     }).then(() => {
                       setSelectedLead(null);
                       toast.success("Przypisano pomyślnie!", {
-                        position: "top-right",
+                        position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -976,7 +976,7 @@ export default function Lead({
                 onClick={() => {
                   deleteLead(lead.id).then(() => {
                     toast.success("Usunięto", {
-                      position: "top-right",
+                      position: "bottom-right",
                       autoClose: 5000,
                       hideProgressBar: false,
                       closeOnClick: true,

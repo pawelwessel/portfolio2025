@@ -14,7 +14,7 @@ export default function FirstStepButtons({
       {!seek && step === 1 && (
         <button
           onClick={() => setStep(2)}
-          className="bg-gradient-to-b from-ctaStart to-ctaEnd rounded-md py-2 px-4 text-white"
+          className="bg-green-600 duration-300 rounded-md py-2 px-4 text-white"
         >
           Przejdź do panelu!
         </button>
@@ -22,9 +22,9 @@ export default function FirstStepButtons({
       {seek && seek !== "ask" && step === 1 && (
         <button
           onClick={() => setStep(2)}
-          className="bg-gradient-to-b from-ctaStart to-ctaEnd rounded-md py-2 px-4 text-white"
+          className="bg-blue-600 duration-300 rounded-md py-2 px-4 text-white"
         >
-          Znajdźmy pracę!
+          Przejdź do panelu!
         </button>
       )}
       {/* {seek === "ask" && step === 1 && (

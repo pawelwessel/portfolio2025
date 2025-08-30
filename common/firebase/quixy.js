@@ -1,7 +1,4 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import {
-  getFirestore,
   collection,
   getDocs,
   query,
@@ -12,51 +9,30 @@ import {
   arrayUnion,
   where,
   deleteDoc,
-} from "firebase/firestore/lite";
-import { getStorage } from "firebase/storage";
-import { getAnalytics, isSupported } from "firebase/analytics";
+} from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY3,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN3,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID3,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET3,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID3,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID3,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASURMENT_ID3,
-};
-const firebaseConfig2 = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY2,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN2,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID2,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET2,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID2,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID2,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASURMENT_ID2,
-};
+import { app, auth, provider, storage, db } from "./firebase";
 
-export const app = initializeApp(firebaseConfig, "clients");
-export const app2 = initializeApp(firebaseConfig2, "admin");
-export const auth2 = getAuth(app2);
-export const db2 = getFirestore(app2);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-const storage = getStorage(app);
-
-const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
+/**
+ * Get a user by their userId.
+ */
 export async function getUserById(userId) {
   try {
     const userDocRef = doc(db, "users", userId);
     const userDoc = await getDoc(userDocRef);
     if (!userDoc.exists()) {
-      throw Error(`User with ID ${userId} does not exist`);
+      throw new Error(`User with ID ${userId} does not exist`);
     }
-    return userDoc.data();
+    return { id: userDoc.id, ...userDoc.data() };
   } catch (error) {
     throw error;
   }
 }
+
+/**
+ * Add a message to a conversation between participants.
+ * The conversation is stored in the "conversations" collection, with the document id as the sorted participant ids joined by "_".
+ */
 export async function addMessageToConversation(
   message,
   authorId,
@@ -65,67 +41,68 @@ export async function addMessageToConversation(
   try {
     const sortedParticipantIds = participants?.map((p) => p.uid).sort();
     const conversationId = sortedParticipantIds.join("_");
-    const conversationDocRef = doc(db, conversationId, conversationId);
+    const conversationDocRef = doc(db, "conversations", conversationId);
     const conversationDoc = await getDoc(conversationDocRef);
+
     if (!conversationDoc.exists()) {
-      throw Error(`Conversation with ID ${conversationId} does not exist`);
+      throw new Error(`Conversation with ID ${conversationId} does not exist`);
     }
 
-    const messages = conversationDoc.data().messages || [];
-    messages.push({
+    // Use arrayUnion to add the new message to the messages array
+    const newMessage = {
       id: uuidv4(),
       content: message,
       sender: authorId,
       timestamp: Date.now(),
-    });
+    };
     await updateDoc(conversationDocRef, {
-      messages: messages,
+      messages: arrayUnion(newMessage),
     });
   } catch (error) {
-    throw error; // Optionally rethrow the error to handle it further up the call stack
+    throw error;
   }
 }
+
+/**
+ * Create a new conversation document in the "conversations" collection.
+ */
 export async function createConversation(conversationId, conversationData) {
   try {
-    const conversationDocRef = doc(db, conversationId, conversationId);
+    const conversationDocRef = doc(db, "conversations", conversationId);
     await setDoc(conversationDocRef, conversationData);
     return { id: conversationId, ...conversationData };
   } catch (error) {
     throw error;
   }
 }
+
+/**
+ * Add a conversation between participants, or return the existing conversation id if it already exists.
+ */
 export async function addConversation(participants) {
   try {
-    // Sort participants by ID to ensure consistency
     const sortedParticipantIds = participants.map((p) => p.uid).sort();
     const conversationId = sortedParticipantIds.join("_");
-
-    // Check if the conversation already exists in the db
-    const conversationDocRef = doc(db, conversationId, conversationId);
+    const conversationDocRef = doc(db, "conversations", conversationId);
     const conversationDoc = await getDoc(conversationDocRef);
 
     if (conversationDoc.exists()) {
-      // Conversation already exists, return the existing chat room ID
       return conversationDoc.id;
     } else {
       const newConversationData = {
-        participants: participants,
+        participants,
         messages: [],
         createdAt: Date.now(),
         id: conversationId,
       };
 
-      // Ensure no undefined fields are passed
       if (
         Object.values(newConversationData).some((value) => value === undefined)
       ) {
         throw new Error("Undefined value found in conversation data");
       }
 
-      // Set the document with initial data
       await createConversation(conversationId, newConversationData);
-
-      // Return the ID of the new chat room
       return conversationId;
     }
   } catch (error) {
@@ -141,9 +118,9 @@ export async function updateUser(userId, data) {
 export async function getOpinions() {
   const opinionsRef = collection(db, "opinions");
   const opinionsSnap = await getDocs(opinionsRef);
-  const opinions = opinionsSnap.docs.map((doc) => doc.data());
-  return opinions;
+  return opinionsSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 export async function addOpinion(data) {
   const id = uuidv4();
   const opinionRef = doc(db, "opinions", id);
@@ -156,102 +133,111 @@ export async function addOpinion(data) {
 }
 
 export async function pushAssistantMessage(data, uid) {
-  const userDocRef = doc(collection(db, "users"), uid);
+  const userDocRef = doc(db, "users", uid);
   const userDocSnap = await getDoc(userDocRef);
+  const message = { ...data, createdAt: Date.now() };
   if (userDocSnap.exists()) {
     await updateDoc(userDocRef, {
-      assistantMessages: arrayUnion({
-        ...data,
-        createdAt: Date.now(),
-      }),
+      assistantMessages: arrayUnion(message),
     });
     return userDocRef;
   } else {
     await setDoc(userDocRef, {
-      assistantMessages: [{ ...data, createdAt: Date.now() }],
+      assistantMessages: [message],
     });
     return userDocRef;
   }
 }
+
 export async function deleteJobOffer(jobOfferId) {
   const jobOfferRef = doc(db, "job_offers", jobOfferId);
   await deleteDoc(jobOfferRef);
 }
+
 export async function deleteService(id) {
   const serviceRef = doc(db, "services", id);
   await deleteDoc(serviceRef);
 }
+
 export async function createAIChat(data) {
   const chatId = uuidv4();
-  const productDocRef = doc(collection(db, "chats"), chatId);
-  const docSnap = await getDoc(productDocRef);
+  const chatDocRef = doc(db, "chats", chatId);
+  const docSnap = await getDoc(chatDocRef);
   if (docSnap.exists()) {
-    return productDocRef;
+    return chatDocRef;
   } else {
-    await setDoc(productDocRef, {
-      data,
-    });
-    return productDocRef;
-  }
-}
-export async function pushSpecialization(data) {
-  const id = uuidv4();
-  const productDocRef = doc(collection(db, "specializations"), id);
-  const docSnap = await getDoc(productDocRef);
-  if (docSnap.exists()) {
-    return productDocRef;
-  } else {
-    await setDoc(productDocRef, {
+    await setDoc(chatDocRef, {
       ...data,
       createdAt: Date.now(),
-      id: id,
+      id: chatId,
     });
-    return productDocRef;
+    return chatDocRef;
   }
 }
+
+export async function pushSpecialization(data) {
+  const id = uuidv4();
+  const specializationDocRef = doc(db, "specializations", id);
+  const docSnap = await getDoc(specializationDocRef);
+  if (docSnap.exists()) {
+    return specializationDocRef;
+  } else {
+    await setDoc(specializationDocRef, {
+      ...data,
+      createdAt: Date.now(),
+      id,
+    });
+    return specializationDocRef;
+  }
+}
+
 export async function updateSpecialization(id, data) {
-  const docRef = doc(collection(db, "specializations"), id);
+  const docRef = doc(db, "specializations", id);
   await updateDoc(docRef, data);
   return docRef;
 }
+
 export async function createUser(data) {
   const dbUser = await getDocument("users", data.uid);
   if (!dbUser) {
     await setDoc(doc(db, "users", data.uid), data);
     return { exists: false };
   }
-  if (dbUser) {
-    return { exists: true };
-  }
+  return { exists: true };
 }
+
 export async function pushLead(data) {
   const id = uuidv4();
-  const productDocRef = doc(collection(db, "leads"), id);
-  const docSnap = await getDoc(productDocRef);
+  const leadDocRef = doc(db, "leads", id);
+  const docSnap = await getDoc(leadDocRef);
   if (docSnap.exists()) {
-    return productDocRef;
+    return leadDocRef;
   } else {
-    await setDoc(productDocRef, {
+    await setDoc(leadDocRef, {
       ...data,
       createdAt: Date.now(),
-      id: id,
+      id,
     });
-    return productDocRef;
+    return leadDocRef;
   }
 }
+
 export async function updateContent(id, data) {
-  const docRef = doc(collection(db, "content"), id);
+  const docRef = doc(db, "content", id);
   await updateDoc(docRef, data);
   return docRef;
 }
+
 export async function updateLead(id, data) {
-  const docRef = doc(collection(db, "leads"), id);
+  const docRef = doc(db, "leads", id);
   await updateDoc(docRef, data);
   return docRef;
 }
+
 async function addBooking(req, id) {
   await setDoc(doc(db, "bookings", id), req);
 }
+
 async function updateBooking(uid, id) {
   const docRef = doc(db, "bookings", id);
   await updateDoc(docRef, {
@@ -259,120 +245,130 @@ async function updateBooking(uid, id) {
     isReliable: true,
   });
 }
+
 async function getBookingById(id) {
   const docRef = doc(db, "bookings", id);
   const docSnapshot = await getDoc(docRef);
-  const booking = {
-    id: docSnapshot.id,
-    ...docSnapshot.data(),
-  };
-  return booking;
+  if (!docSnapshot.exists()) return null;
+  return { id: docSnapshot.id, ...docSnapshot.data() };
 }
+
 async function getBookingsByUserId(uid) {
   const ref = collection(db, "bookings");
   const filter = query(ref, where("uid", "==", uid));
   const response = await getDocs(filter);
-  const bookings = response.docs.map((doc) => doc.data());
-  return bookings;
+  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 async function getAllBookings() {
   const ref = collection(db, "bookings");
   const response = await getDocs(ref);
-  const bookings = response.docs.map((doc) => doc.data());
-  return bookings;
+  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 async function getBookings(uid) {
   const requestsCollection = collection(db, "bookings");
   const userRequestsQuery = query(requestsCollection, where("uid", "==", uid));
   const querySnapshot = await getDocs(userRequestsQuery);
-  const bookings = querySnapshot.docs.map((doc) => ({
+  return querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
-  return bookings;
 }
+
 async function getUsers() {
   const ref = collection(db, "users");
   const response = await getDocs(ref);
-  const users = response.docs.map((doc) => doc.data());
-  return users;
+  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 async function getUser(uid) {
   const ref = collection(db, "users");
   const filter = query(ref, where("uid", "==", uid));
   const response = await getDocs(filter);
-  const user = response.docs.length > 0 ? response.docs[0].data() : null;
-  return user;
+  return response.docs.length > 0
+    ? { id: response.docs[0].id, ...response.docs[0].data() }
+    : null;
 }
+
 async function getDocument(collectionName, key) {
   const docRef = doc(db, collectionName, key);
   const docSnapshot = await getDoc(docRef);
-
-  return docSnapshot.data();
+  if (!docSnapshot.exists()) return null;
+  return { id: docSnapshot.id, ...docSnapshot.data() };
 }
+
 export async function fetchUsers() {
   const ref = collection(db, "users");
   const response = await getDocs(ref);
-  const users = response.docs.map((doc) => doc.data());
-  return users;
+  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 export async function fetchOffers() {
   const ref = collection(db, "offers");
   const response = await getDocs(ref);
-  const offers = response.docs.map((doc) => doc.data());
-  return offers;
+  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 async function getDocuments(collectionName) {
   const ref = collection(db, collectionName);
   const res = await getDocs(ref);
-  const documents = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  return documents;
+  return res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
 async function addDocument(collectionName, uniqueId, data) {
   await setDoc(doc(db, collectionName, uniqueId), data);
 }
+
 async function removeDocument(collectionName, uniqueId) {
   await deleteDoc(doc(db, collectionName, uniqueId));
 }
+
 async function updateDocument(keys, values, collectionName, id) {
   const docRef = doc(db, collectionName, id);
   const docSnapshot = await getDoc(docRef);
 
-  const existingData = docSnapshot.data();
-  const updatedData = { ...existingData };
+  let updatedData = {};
+  if (docSnapshot.exists()) {
+    updatedData = { ...docSnapshot.data() };
+  }
   keys.forEach((key, index) => {
     updatedData[key] = values[index];
   });
   await updateDoc(docRef, updatedData);
 }
+
 async function updateUserLeads(uid, data) {
   const userRef = doc(db, "users", uid);
   const userSnapshot = await getDoc(userRef);
-  const userData = userSnapshot.data();
+  const userData = userSnapshot.exists() ? userSnapshot.data() : {};
   const leads = userData?.leads || [];
   await updateDoc(userRef, { leads: [...leads, data] });
 }
+
 async function getBlogPosts() {
   const docRef = doc(db, "blog", "blog");
   const docSnap = await getDoc(docRef);
-  return docSnap.data();
+  return docSnap.exists() ? docSnap.data() : { posts: [] };
 }
+
 async function addBlogPost(post) {
   const docRef = doc(db, "blog", "blog");
   const docSnap = await getDoc(docRef);
-  if (!docSnap.data()) {
-    await setDoc(doc(db, "blog", "blog"), { posts: [post] });
+  if (!docSnap.exists() || !docSnap.data()) {
+    await setDoc(docRef, { posts: [post] });
   } else {
-    await updateDoc(doc(db, "blog", "blog"), {
+    await updateDoc(docRef, {
       posts: arrayUnion(post),
     });
   }
 }
+
 async function updateBlogPost(postId, updatedPost) {
   const docRef = doc(db, "blog", "blog");
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    const posts = docSnap.data().posts;
+    const posts = docSnap.data().posts || [];
     const postIndex = posts.findIndex((post) => post.postId === postId);
     if (postIndex !== -1) {
       posts[postIndex] = updatedPost;
@@ -381,29 +377,29 @@ async function updateBlogPost(postId, updatedPost) {
   }
 }
 
-//auto blogger
-//product === generated blog post
+// Auto blogger
+// product === generated blog post
 
 export async function createDraft(productConfig, customId) {
-  const draftDocRef = doc(collection(db, "drafts"), customId);
-
+  const draftDocRef = doc(db, "drafts", customId);
   const docSnap = await getDoc(draftDocRef);
   if (docSnap.exists()) {
-    // Document with customId already exists, do not create a new one
     return draftDocRef;
   } else {
     await setDoc(draftDocRef, {
       ...productConfig,
       createdAt: Date.now(),
+      id: customId,
     });
     return draftDocRef;
   }
 }
+
 export async function deleteBlogPost(postId) {
   const docRef = doc(db, "blog", "blog");
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    const posts = docSnap.data().posts;
+    const posts = docSnap.data().posts || [];
     const postIndex = posts.findIndex((post) => post.postId === postId);
     if (postIndex !== -1) {
       posts.splice(postIndex, 1);
@@ -448,29 +444,33 @@ export async function deleteMultipleProducts(productIds) {
   });
   await Promise.all(promises);
 }
+
 export async function createProduct(productConfig) {
-  const productDocRef = doc(collection(db, "products"), productConfig.id);
+  const productDocRef = doc(db, "products", productConfig.id);
   const docSnap = await getDoc(productDocRef);
   if (docSnap.exists()) {
-    // Document with customId already exists, do not create a new one
     return productDocRef;
   } else {
     await setDoc(productDocRef, {
       ...productConfig,
       createdAt: Date.now(),
+      id: productConfig.id,
     });
     return productDocRef;
   }
 }
+
 export async function getProducts() {
   const querySnapshot = await getDocs(collection(db, "products"));
   return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 }
+
 export async function addJobOffer(jobOffer) {
-  const jobOfferDocRef = doc(collection(db, "offers"), jobOffer.id);
+  const jobOfferDocRef = doc(db, "offers", jobOffer.id);
   await setDoc(jobOfferDocRef, {
     ...jobOffer,
     creationTime: Date.now(),
+    id: jobOffer.id,
   });
   return jobOfferDocRef;
 }
@@ -488,15 +488,18 @@ export async function fetchJobOffer(jobOfferId) {
     ? { ...jobOfferDoc.data(), id: jobOfferDoc.id }
     : null;
 }
+
 export async function updateApplication(id, data) {
-  const docRef = doc(collection(db, "employees"), id);
+  const docRef = doc(db, "employees", id);
   await updateDoc(docRef, data);
   return docRef;
 }
+
 export async function fetchJobOffers() {
   const querySnapshot = await getDocs(collection(db, "offers"));
   return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 }
+
 export async function getProduct(productId) {
   const productDocRef = doc(db, "products", productId);
   const productDoc = await getDoc(productDocRef);
@@ -504,10 +507,10 @@ export async function getProduct(productId) {
     ? { ...productDoc.data(), id: productDoc.id }
     : null;
 }
+
 export async function getProductByUrl(url) {
   const products = await getProducts();
-  const product = products.find((product) => product.url === url);
-  return product;
+  return products.find((product) => product.url === url);
 }
 
 export async function updateProduct(productId, updates) {
@@ -519,38 +522,33 @@ export async function deleteProduct(productId) {
   const productDocRef = doc(db, "products", productId);
   return await deleteDoc(productDocRef);
 }
+
 export async function addOrder(id, data) {
   await setDoc(doc(db, "orders", id), data);
-
   const docRef = doc(db, "orders", id);
   const docSnapshot = await getDoc(docRef);
-  return docSnapshot.data();
+  return docSnapshot.exists()
+    ? { id: docSnapshot.id, ...docSnapshot.data() }
+    : null;
 }
+
 export async function updateOrder(keys, values, id) {
   const docRef = doc(db, "orders", id);
   const docSnapshot = await getDoc(docRef);
 
-  let updatedData;
-
+  let updatedData = {};
   if (docSnapshot.exists()) {
-    const existingData = docSnapshot.data();
-    updatedData = { ...existingData };
-
+    updatedData = { ...docSnapshot.data() };
     keys.forEach((key, index) => {
       updatedData[key] = values[index];
     });
-
     await updateDoc(docRef, updatedData);
   } else {
-    const initialData = {};
     keys.forEach((key, index) => {
-      initialData[key] = values[index];
+      updatedData[key] = values[index];
     });
-
-    await setDoc(docRef, initialData);
-    updatedData = initialData;
+    await setDoc(docRef, updatedData);
   }
-
   return updatedData;
 }
 
@@ -559,16 +557,17 @@ export async function getIdea(userId, ideaId) {
   const userDoc = await getDoc(userDocRef);
 
   if (userDoc.exists()) {
-    const userIdeas = userDoc.data().ideas;
+    const userIdeas = userDoc.data().ideas || [];
     const ideaIndex = userIdeas.findIndex((idea) => idea.id === ideaId);
     if (ideaIndex !== -1) {
       return userIdeas[ideaIndex];
     }
   }
+  return null;
 }
+
 export {
   addBooking,
-  auth,
   addDocument,
   getBookings,
   removeDocument,
@@ -584,8 +583,5 @@ export {
   updateBlogPost,
   getDocument,
   getDocuments,
-  db,
-  provider,
-  storage,
   updateUserLeads,
 };

@@ -42,7 +42,7 @@ export default function ImagePicker({ handler }: { handler: any }) {
           toast.error(
             "Tylko zdjęcia o rozmiarze do 5MB są dozwolone (kwadratowe lub 16:9)",
             {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -100,7 +100,7 @@ export default function ImagePicker({ handler }: { handler: any }) {
 
             if (!validType || !validSize) {
               toast.error("Tylko zdjęcia o rozmiarze do 5MB są dozwolone", {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

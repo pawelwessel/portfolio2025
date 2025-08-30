@@ -60,7 +60,7 @@ export default function FirstStep({
           </div>
         </div>
         <span className="text-left font-gotham font-light text-black  mt-4">
-          Firma
+          Dołączam jako firma.
         </span>
       </button>
       <button
@@ -104,7 +104,7 @@ export default function FirstStep({
         </div>
 
         <span className="text-left font-gotham font-light text-black  mt-4">
-          Osoba prywatna
+          Dołączam jako osoba prywatna.
         </span>
       </button>
     </div>

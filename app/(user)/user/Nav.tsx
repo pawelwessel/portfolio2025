@@ -1,5 +1,4 @@
 "use client";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaChevronDown, FaHome, FaPlusCircle, FaTag } from "react-icons/fa";
 import { useState } from "react";

@@ -1,7 +1,8 @@
 "use client";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { addDocument, auth, getDocument } from "@/common/firebase";
+import { addDocument, getDocument } from "@/common/firebase/quixy";
+import { auth } from "@/common/firebase/firebase";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -29,7 +30,7 @@ export default function Register() {
   function createAccount() {
     setLoading(true);
     const id = toast.loading(<span>Sekundarnie...</span>, {
-      position: "top-right",
+      position: "bottom-right",
       isLoading: true,
     });
 
@@ -148,9 +149,9 @@ export default function Register() {
         {step < 2 && (
           <>
             <h2
-              className={`text-black  text-left font-bold text-2xl xl:text-3xl drop-shadow-xl shadow-black font-gotham`}
+              className={`text-black py-3 pr-3 font-sans text-2xl lg:text-3xl drop-shadow-xl shadow-black mb-6 flex flex-row items-center`}
             >
-              Rejestracja Quixy Partner
+              Quixy Partner Program
             </h2>
             <FirstStep
               userData={userData}

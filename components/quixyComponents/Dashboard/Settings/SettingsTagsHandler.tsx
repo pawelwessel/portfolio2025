@@ -164,7 +164,7 @@ export default function TagsHandler({ light }: { light: any }) {
                                         toast.error(
                                           `Kategoria ${category.title} i stanowisko ${job.title} są już dodane.`,
                                           {
-                                            position: "top-right",
+                                            position: "bottom-right",
                                             autoClose: 5000,
                                             hideProgressBar: false,
                                             closeOnClick: true,
@@ -182,7 +182,7 @@ export default function TagsHandler({ light }: { light: any }) {
                                       toast.success(
                                         `Pomyślnie dodano kategorię ${category.title} i stanowisko ${job.title}.`,
                                         {
-                                          position: "top-right",
+                                          position: "bottom-right",
                                           autoClose: 5000,
                                           hideProgressBar: false,
                                           closeOnClick: true,
@@ -368,7 +368,7 @@ export default function TagsHandler({ light }: { light: any }) {
                                 setTagDeletion(false);
                                 setSelectedTag({});
                                 toast.success(`Pomyślnie usunięto kategorię.`, {
-                                  position: "top-right",
+                                  position: "bottom-right",
                                   autoClose: 5000,
                                   hideProgressBar: false,
                                   closeOnClick: true,

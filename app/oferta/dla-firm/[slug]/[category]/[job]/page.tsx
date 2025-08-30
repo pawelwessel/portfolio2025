@@ -4,14 +4,9 @@ import JobBoardList from "@/components/quixyComponents/JobBoardList";
 const BlogPostList = dynamic(
   () => import("@/components/quixyComponents/BlogPostList")
 );
-const Market = dynamic(
-  () => import("@/components/quixyComponents/marketplace/Market")
-);
-import removePolishSignsAndSpaces from "@/lib/removePolish";
 const JobOffers = dynamic(
   () => import("@/components/quixyComponents/JobOffers")
 );
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { getServices } from "@/lib/getServices";
 import { getPosts } from "@/lib/getPosts";
@@ -22,7 +17,7 @@ import Hero from "@/components/hero/Hero";
 const InitializeUser = dynamic(
   () => import("@/components/quixyComponents/InitializeUser")
 );
-export const revalidate = 60;
+export const revalidate = 600;
 export const dynamicParams = true;
 export default async function Page(props: { params: Promise<any> }) {
   const params = await props.params;
@@ -32,7 +27,7 @@ export default async function Page(props: { params: Promise<any> }) {
   ).then((res) => res.json());
   const users = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/apiQuixy/users/${params.job}`,
-    { next: { revalidate: 60 } }
+    { next: { revalidate: 600 } }
   ).then((res: any) => res.json());
   const content = await getContent(params.job);
   const services = await getServices();
@@ -144,45 +139,29 @@ export default async function Page(props: { params: Promise<any> }) {
                   key={i}
                   className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all"
                 >
-                  #{removePolishSignsAndSpaces(item.toLowerCase())}
+                  #{item.toLowerCase()}
                 </li>
               ))}
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #firmy
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zleceniadlafirm
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zleceniadlafreelancerow
-                {removePolishSignsAndSpaces(content?.genitive.toLowerCase())}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #ilezarabia
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_singular.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
-                #
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_singular.toLowerCase()
-                )}
-                freelance
+                #freelance
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #zarobki
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_plural.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #
-                {removePolishSignsAndSpaces(
-                  content?.informal_title_plural.toLowerCase()
-                )}
               </li>
               <li className="text-black bg-gray-100 px-4 py-2 rounded-full shadow-sm hover:bg-gray-200 transition-all">
                 #znajdzprace

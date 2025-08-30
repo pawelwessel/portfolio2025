@@ -19,7 +19,7 @@ function OpinionsForm({ opinions }: { opinions: Opinion[] }) {
 
     if (!name || !feedback) {
       return toast.error("Uzupełnij wszystkie pola!", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -31,7 +31,7 @@ function OpinionsForm({ opinions }: { opinions: Opinion[] }) {
     setSent(true);
     toast.success("Dziękujemy za Twoją opinię!", {
       style: { background: "green" },
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

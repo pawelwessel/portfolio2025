@@ -43,7 +43,7 @@ export default function RecruitmentForm({
     const file = e.target.files[0];
     if (file?.size > 20 * 1024 * 1024) {
       toast.error("Plik jest za duży", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -59,7 +59,7 @@ export default function RecruitmentForm({
       ].includes(file?.type)
     ) {
       return toast.error("Dozwolone formaty plików: PDF, DOC, DOCX, TXT, RTF", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

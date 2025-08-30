@@ -151,7 +151,7 @@ export default function ServiceEditor({
                           toast.success(
                             `Usunięto widok oferty w "${selectedTag.title}"`,
                             {
-                              position: "top-right",
+                              position: "bottom-right",
                               autoClose: 5000,
                               hideProgressBar: false,
                               closeOnClick: true,
@@ -306,7 +306,7 @@ export default function ServiceEditor({
                                               color: "white",
                                             },
 
-                                            position: "top-right",
+                                            position: "bottom-right",
                                             autoClose: 5000,
                                             hideProgressBar: false,
                                             closeOnClick: true,
@@ -345,7 +345,7 @@ export default function ServiceEditor({
                                       toast.success(
                                         `Oferta wyświetli się w ${category.title} oraz ${job.title}.`,
                                         {
-                                          position: "top-right",
+                                          position: "bottom-right",
                                           autoClose: 5000,
                                           hideProgressBar: false,
                                           closeOnClick: true,
@@ -531,7 +531,7 @@ export default function ServiceEditor({
                       onClick={() => {
                         setImageDescriptionOpen(-1);
                         toast.success("Pomyślnie dodano opis!", {
-                          position: "top-right",
+                          position: "bottom-right",
                           autoClose: 5000,
                           hideProgressBar: false,
                           closeOnClick: true,
@@ -553,7 +553,7 @@ export default function ServiceEditor({
                       ),
                     });
                     toast.success("Pomyślnie usunięto obraz!", {
-                      position: "top-right",
+                      position: "bottom-right",
                       autoClose: 5000,
                       hideProgressBar: false,
                       closeOnClick: true,
@@ -585,7 +585,7 @@ export default function ServiceEditor({
             editService();
           } else {
             toast.error("Uzupełnij wszystkie pola!", {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
