@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   const pseudo = req.nextUrl.searchParams.get("pseudo");
-  const users = await getUsers();
+  const users: any[] = await getUsers();
   const user = users.find((user) => user?.pseudo === pseudo);
   if (!user) {
     return NextResponse.json({ available: true });
