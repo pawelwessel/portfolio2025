@@ -80,98 +80,104 @@ export default function BlogSection() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.slice(0, 8).map((post) => (
-              <div
-                key={post.postId}
-                role="button"
-                tabIndex={0}
-                onClick={() => setActivePost(post)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setActivePost(post);
-                }}
-                className="group relative bg-[#0f1320]/80 hover:bg-[#141723]/90 transition-all duration-300 rounded-2xl overflow-hidden border border-[#2a2f3d]/50 backdrop-blur-xl cursor-pointer hover:border-[#B4FC2D]/30 hover:shadow-lg hover:shadow-[#B4FC2D]/10 hover:-translate-y-1"
-              >
-                {/* Floating accent dot */}
-                <div className="absolute top-3 right-3 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+            {posts
+              .filter((post) => post?.manual === true)
+              .slice(0, 8)
+              .map((post) => (
+                <div
+                  key={post.postId}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActivePost(post)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") setActivePost(post);
+                  }}
+                  className="group relative bg-[#0f1320]/80 hover:bg-[#141723]/90 transition-all duration-300 rounded-2xl overflow-hidden border border-[#2a2f3d]/50 backdrop-blur-xl cursor-pointer hover:border-[#B4FC2D]/30 hover:shadow-lg hover:shadow-[#B4FC2D]/10 hover:-translate-y-1"
+                >
+                  {/* Floating accent dot */}
+                  <div className="absolute top-3 right-3 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
 
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={
-                      typeof post.mainImage === "string" &&
-                      (post.mainImage.startsWith("http://") ||
-                        post.mainImage.startsWith("https://") ||
-                        post.mainImage.startsWith("/"))
-                        ? post.mainImage
-                        : "/images/projects/quixy/hero.png"
-                    }
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1320]/80 via-transparent to-transparent" />
-                </div>
-
-                <div className="p-5">
-                  <div className="flex items-center gap-2 text-xs mb-3">
-                    <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
-                      {new Date(post.creationTime).toLocaleDateString("pl-PL")}
-                    </span>
-                    {typeof post.readTime === "number" && post.readTime > 0 && (
-                      <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
-                        {post.readTime} min
-                      </span>
-                    )}
-                    {typeof post.viewerCount === "number" && (
-                      <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
-                        {post.viewerCount}
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="text-white font-semibold text-lg leading-tight line-clamp-2 group-hover:text-[#B4FC2D] transition-colors duration-300 font-gotham">
-                    {post.title}
-                  </h3>
-
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {post.tags.slice(0, 3).map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs bg-gradient-to-r from-[#1a1f2e] to-[#22263a] text-gray-300 px-2.5 py-1 rounded-full border border-[#2a2f3d]/30 backdrop-blur-sm"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="mt-5">
-                    <Link
-                      href={`/oferta/${post.slug || post.url || post.postId}`}
-                      className="inline-flex items-center text-[#B4FC2D] hover:text-[#A3E626] text-sm font-medium transition-colors duration-300"
-                      onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
-                        e.stopPropagation()
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <Image
+                      src={
+                        typeof post.mainImage === "string" &&
+                        (post.mainImage.startsWith("http://") ||
+                          post.mainImage.startsWith("https://") ||
+                          post.mainImage.startsWith("/"))
+                          ? post.mainImage
+                          : "/images/projects/quixy/hero.png"
                       }
-                    >
-                      Otwórz artykuł
-                      <svg
-                        className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f1320]/80 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 text-xs mb-3">
+                      <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                        {new Date(post.creationTime).toLocaleDateString(
+                          "pl-PL"
+                        )}
+                      </span>
+                      {typeof post.readTime === "number" &&
+                        post.readTime > 0 && (
+                          <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                            {post.readTime} min
+                          </span>
+                        )}
+                      {typeof post.viewerCount === "number" && (
+                        <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                          {post.viewerCount}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="text-white font-semibold text-lg leading-tight line-clamp-2 group-hover:text-[#B4FC2D] transition-colors duration-300 font-gotham">
+                      {post.title}
+                    </h3>
+
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {post.tags.slice(0, 3).map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs bg-gradient-to-r from-[#1a1f2e] to-[#22263a] text-gray-300 px-2.5 py-1 rounded-full border border-[#2a2f3d]/30 backdrop-blur-sm"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-5">
+                      <Link
+                        href={`/oferta/${post.slug || post.url || post.postId}`}
+                        className="inline-flex items-center text-[#B4FC2D] hover:text-[#A3E626] text-sm font-medium transition-colors duration-300"
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                          e.stopPropagation()
+                        }
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </Link>
+                        Otwórz artykuł
+                        <svg
+                          className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>

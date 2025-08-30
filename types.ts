@@ -79,6 +79,7 @@ export interface ICity {
 }
 
 export type Post = {
+  manual?: boolean;
   postId: string;
   title: string;
   sections: Section[];
