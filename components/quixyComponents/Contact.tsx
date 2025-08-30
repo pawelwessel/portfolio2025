@@ -5,6 +5,7 @@ import { pushLead } from "@/common/firebase";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { FaEnvelope } from "react-icons/fa6";
+import { randId } from "@/common/utils/getRandomId";
 
 export default function Contact() {
   const [data, setData] = useState({
@@ -13,172 +14,199 @@ export default function Contact() {
     message: "",
   });
   const [sent, setSent] = useState(false);
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-bgStart to-bgEnd pt-[65px] lg:pt-[94px]">
       <div className="flex-grow">
-        {/* Contact Section */}
-        <div className="flex flex-col relative overflow-hidden bg-white">
-          {/* Conditional Form Section */}
-          <div className="bg-white py-6 container mx-auto">
-            <div className=" text-black flex flex-col breadcrumbs">
-              <ul className="flex items-center flex-wrap">
-                <li className="!text-black">
-                  <Link href={`/`} title="Strony Internetowe Grudziądz">
-                    hello!
+        {/* Breadcrumbs and Title */}
+        <div className="w-full bg-white/80 shadow-sm border-b border-zinc-200">
+          <div className="container mx-auto px-4 py-6">
+            <nav className="flex items-center text-sm breadcrumbs !text-zinc-700">
+              <ul className="flex items-center flex-wrap gap-2">
+                <li>
+                  <Link
+                    href="/"
+                    title="Strony Internetowe Grudziądz"
+                    className="hover:underline font-semibold"
+                  >
+                    Strona główna
                   </Link>
                 </li>
-                <li className="!text-black">
-                  <Link href="/contact" title="kontakt">
-                    contact
+                <li>
+                  <span className="mx-2 text-zinc-400">/</span>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    title="kontakt"
+                    className="hover:underline font-semibold"
+                  >
+                    Kontakt
                   </Link>
                 </li>
               </ul>
-            </div>
-            <h1 className="pt-3 text-2xl font-extrabold bg-white text-zinc-800">
+            </nav>
+            <h1 className="mt-4 text-3xl md:text-4xl font-extrabold text-zinc-800 tracking-tight">
               Skontaktuj się z nami!
             </h1>
+            <p className="mt-2 text-zinc-600 max-w-2xl">
+              Masz pytania lub chcesz omówić swój projekt? Wypełnij formularz
+              lub skorzystaj z danych kontaktowych poniżej.
+            </p>
           </div>
-          <div className="px-4 py-12 bg-gray-200">
-            <div className="mx-auto container flex flex-col lg:flex-row items-center lg:items-start justify-center lg:space-x-6">
-              <div
-                style={{ boxShadow: "0px 0px 5px black" }}
-                className="max-w-lg lg:max-w-lg xl:max-w-2xl overflow-hidden rounded-lg"
-              >
-                <div className="bg-white shadow-lg relative z-50 pb-3 lg:pb-6 mx-auto lg:mx-0">
-                  <h2 className="flex items-center p-4 text-3xl text-white bg-gradient-to-r from-ctaStart to-primaryEnd  rounded-lg">
-                    <FaEnvelope className="mr-2" /> Wypełnij formularz
-                  </h2>
-                  <p className="text-lg text-justify  text-black p-4">
-                    Chcesz o coś zapytać, dołączyć do naszego zespołu, a może
-                    masz problem z naszymi usługami?
-                  </p>
-                  <div className="w-full flex flex-col px-4">
-                    <div className="flex flex-col lg:flex-row lg:space-x-6 w-full">
-                      <div className="w-full">
-                        <label
-                          className="text-black block text-lg "
-                          htmlFor="name"
-                        >
-                          Imię
-                        </label>
-                        <input
-                          onChange={(e: any) =>
-                            setData({ ...data, name: e.target.value })
-                          }
-                          value={data.name}
-                          type="text"
-                          id="name"
-                          className="w-full p-2   text-black  "
-                          placeholder="Wpisz swoje imię"
-                        />
-                      </div>
+        </div>
 
-                      <div className="w-full">
-                        <label
-                          className="text-black block text-lg  mt-2"
-                          htmlFor="email"
-                        >
-                          Email
-                        </label>
-                        <input
-                          onChange={(e: any) =>
-                            setData({ ...data, email: e.target.value })
-                          }
-                          value={data.email}
-                          type="email"
-                          id="email"
-                          className="  text-black  w-full p-2 "
-                          placeholder="Wpisz swój email"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="w-full h-full mt-3">
-                      <label
-                        className="block text-black text-lg  mb-2"
-                        htmlFor="message"
-                      >
-                        Wiadomość
-                      </label>
-                      <textarea
-                        onChange={(e: any) =>
-                          setData({ ...data, message: e.target.value })
-                        }
-                        value={data.message}
-                        id="message"
-                        className=" text-black min-h-full w-full p-2  "
-                        placeholder="Wpisz swoją wiadomość"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center z-50 relative ">
-                  <button
-                    onClick={(e: any) => {
-                      e.preventDefault();
-                      const id = toast.loading(<span>Sekunda...</span>);
-                      if (data.name && data.email && data.message) {
-                        pushLead(data).then(() => {
-                          setSent(true);
-                          toast.update(id, {
-                            render: "Wiadomość została wysłana",
-                            type: "success",
-                            isLoading: false,
-                            autoClose: 2000,
-                            onClose: () => {
-                              setData({
-                                email: "",
-                                name: "",
-                                message: "",
-                              });
-                            },
-                          });
-                        });
-                      } else {
-                        toast.update(id, {
-                          render: "Wypełnij wszystkie pola",
-                          type: "error",
-                          isLoading: false,
-                          autoClose: 2000,
-                        });
-                      }
-                    }}
-                    disabled={sent}
-                    className="disabled:duration-500 btn-lg disabled:bg-blue-600 disabled:cursor-not-allowed bg-green-600 hover:bg-green-700 text-white py-2 px-6 w-full disabled:hover:bg-blue-700 duration-75 rounded-lg"
-                  >
-                    {!sent ? "Wyślij wiadomość" : "Wiadomość została wysłana"}
-                  </button>
-                </div>
+        {/* Main Content */}
+        <div className="container mx-auto py-12">
+          <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 items-center lg:items-start justify-center">
+            {/* Contact Info */}
+            <div className="w-full flex flex-col items-center lg:items-start bg-white/90 rounded-2xl shadow-lg p-8 border border-zinc-100">
+              <h2 className="text-2xl font-bold text-zinc-800 mb-4 flex items-center gap-2">
+                <span className="inline-block bg-gradient-to-r from-primaryStart to-primaryEnd text-white px-3 py-1 rounded-lg">
+                  Informacje kontaktowe
+                </span>
+              </h2>
+              <p className="text-zinc-700 mb-4 text-center lg:text-left">
+                Możesz również skontaktować się z nami bezpośrednio:
+              </p>
+              <div className="flex flex-col gap-2 mb-6 w-full">
+                <Link
+                  href="mailto:kontakt@quixy.pl"
+                  className="text-primaryStart hover:underline font-medium transition"
+                >
+                  kontakt@quixy.pl
+                </Link>
+                <Link
+                  href="tel:+48721417154"
+                  className="text-primaryStart hover:underline font-medium transition"
+                >
+                  +48 721 417 154
+                </Link>
               </div>
-              <div className="text-zinc-800 py-12 lg:py-0 flex flex-col items-center justify-center lg:items-start lg:justify-start w-full">
-                <h2 className="pt-2 text-2xl text-white text-center lg:text-left">
-                  <span className="px-[1rem] py-[0.5rem] w-max max-w-full bg-gradient-to-b from-zinc-700 to-primaryHoverEnd rounded-md">
-                    Informacje kontaktowe
-                  </span>
-                </h2>
-                <p className="text-center lg:text-left mt-4 text-lg max-w-lg">
-                  Możesz również skontaktować się z nami bezpośrednio:
-                </p>
-                <div className="flex flex-col items-center justify-center lg:justify-start lg:items-start mt-4">
-                  <Link
-                    href="mailto:centrumbiznesu.quixy@gmail.com"
-                    className=""
-                  >
-                    centrumbiznesu.quixy@gmail.com
-                  </Link>
-                  <Link href="tel:+48 575 793 394">+48 575 793 394</Link>
-                  <Link title="quixy" href="https://quixy.pl">
-                    www.wesiudev.com
-                  </Link>
-                </div>
+              <div className="flex items-center gap-3">
                 <Image
-                  src="/assets/quixy-logo.png"
-                  width={224}
-                  height={224}
-                  alt=""
-                  className="mt-4 w-24 h-auto mx-auto lg:mx-0 relative z-50"
+                  src="/logo-quixy.png"
+                  width={244}
+                  height={244}
+                  alt="Logo quixy"
+                  className="w-32 h-auto"
                 />
               </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="w-full lg:w-1/2 max-w-xl bg-white/90 rounded-2xl shadow-lg border border-zinc-100 p-8">
+              <h2 className="flex items-center gap-2 text-2xl font-bold text-primaryStart mb-4">
+                <FaEnvelope className="text-primaryEnd" /> Wypełnij formularz
+              </h2>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const id = toast.loading(<span>Sekunda...</span>);
+                  if (data.name && data.email && data.message) {
+                    pushLead({
+                      id: randId(),
+                      name: `Imię: ${data.name} Wiadomość: ${data.message}`,
+                      phone: data.email,
+                      type: "email",
+                    }).then(() => {
+                      setSent(true);
+                      toast.update(id, {
+                        render: "Wiadomość została wysłana",
+                        type: "success",
+                        isLoading: false,
+                        autoClose: 2000,
+                        onClose: () => {
+                          setData({
+                            email: "",
+                            name: "",
+                            message: "",
+                          });
+                        },
+                      });
+                    });
+                  } else {
+                    toast.update(id, {
+                      render: "Wypełnij wszystkie pola",
+                      type: "error",
+                      isLoading: false,
+                      autoClose: 2000,
+                    });
+                  }
+                }}
+                className="flex flex-col gap-5"
+              >
+                <div className="flex flex-col md:flex-row gap-5">
+                  <div className="w-full">
+                    <label
+                      htmlFor="name"
+                      className="block text-zinc-700 font-medium mb-1"
+                    >
+                      Imię
+                    </label>
+                    <input
+                      onChange={(e) =>
+                        setData({ ...data, name: e.target.value })
+                      }
+                      value={data.name}
+                      type="text"
+                      id="name"
+                      className="w-full rounded-lg border border-zinc-300 focus:border-primaryStart focus:ring-2 focus:ring-primaryStart/20 p-3 text-zinc-900 bg-zinc-50 transition"
+                      placeholder="Wpisz swoje imię"
+                      autoComplete="name"
+                    />
+                  </div>
+                  <div className="w-full">
+                    <label
+                      htmlFor="email"
+                      className="block text-zinc-700 font-medium mb-1"
+                    >
+                      Email
+                    </label>
+                    <input
+                      onChange={(e) =>
+                        setData({ ...data, email: e.target.value })
+                      }
+                      value={data.email}
+                      type="email"
+                      id="email"
+                      className="w-full rounded-lg border border-zinc-300 focus:border-primaryStart focus:ring-2 focus:ring-primaryStart/20 p-3 text-zinc-900 bg-zinc-50 transition"
+                      placeholder="Wpisz swój email"
+                      autoComplete="email"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-zinc-700 font-medium mb-1"
+                  >
+                    Wiadomość
+                  </label>
+                  <textarea
+                    onChange={(e) =>
+                      setData({ ...data, message: e.target.value })
+                    }
+                    value={data.message}
+                    id="message"
+                    className="w-full rounded-lg border border-zinc-300 focus:border-primaryStart focus:ring-2 focus:ring-primaryStart/20 p-3 text-zinc-900 bg-zinc-50 min-h-[120px] transition"
+                    placeholder="Wpisz swoją wiadomość"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  disabled={sent}
+                  className={`mt-2 w-full py-3 rounded-lg font-semibold text-lg transition
+                    ${
+                      sent
+                        ? "bg-zinc-400 cursor-not-allowed text-white"
+                        : "bg-gradient-to-r from-ctaStart to-primaryEnd hover:from-primaryHoverStart hover:to-primaryHoverEnd text-white shadow-md"
+                    }
+                  `}
+                >
+                  {!sent ? "Wyślij wiadomość" : "Wiadomość została wysłana"}
+                </button>
+              </form>
             </div>
           </div>
         </div>

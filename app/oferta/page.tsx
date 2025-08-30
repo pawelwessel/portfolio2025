@@ -79,4 +79,7 @@ export const metadata: Metadata = {
   title: "O nas - Misja Quixy",
   description:
     "Quixy to przyszłość pracy zdalnej. Łączymy możliwości pracy zdalnej z mocą sztucznej inteligencji, abyś mógł tworzyć lepszą przyszłość dla siebie i swojej firmy.",
+  keywords: [
+    "misja quixy, praca zdalna, sztuczna inteligencja, innowacje, przyszłość pracy, narzędzia biznesowe, zarządzanie czasem, technologia w biznesie",
+  ],
 };

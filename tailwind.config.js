@@ -9,16 +9,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ctaStart: "#14A800",
-        ctaEnd: "#0B7D43",
-        primaryStart: "#2563eb", // blue-600
-        primaryEnd: "#1e40af", // blue-800
-        primaryHoverStart: "#1d4ed8", // blue-700
-        primaryHoverEnd: "#2563eb", // blue-600
-        bgStart: "#f3f4f6", // gray-100
-        bgEnd: "#e5e7eb", // gray-200
-        accentStart: "#06b6d4", // cyan-500
-        accentEnd: "#0e7490", // cyan-700
+        ctaStart: "#22c55e", // classic green-500
+        ctaEnd: "#15803d", // classic green-800
+        primaryStart: "#2563eb", // blue-600 (already good)
+        primaryEnd: "#1e40af", // blue-800 (already good)
+        primaryHoverStart: "#1d4ed8", // blue-700 (already good)
+        primaryHoverEnd: "#2563eb", // blue-600 (already good)
+        bgStart: "#f8fafc", // slate-50 (very light, clean)
+        bgEnd: "#e2e8f0", // slate-200 (soft, subtle)
+        accentStart: "#0ea5e9", // sky-500 (modern, not too bright)
+        accentEnd: "#0369a1", // sky-800 (deep, for contrast)
       },
       backgroundImage: {
         courses: "url('/bg-courses.jpg')",

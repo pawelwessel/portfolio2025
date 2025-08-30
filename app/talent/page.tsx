@@ -5,7 +5,7 @@ export default async function Page() {
   return (
     <div className="md:flex flex-col md:items-center md:justify-between md:space-x-8 md:space-y-0 space-y-8 md:py-12 py-8">
       <div className="mx-auto px-4">
-        <h1 className="p-3 mt-12 bg-gradient-to-r from-primary to-cta text-white text-2xl lg:text-3xl font-gotham w-full">
+        <h1 className="p-3  mt-12 bg-gradient-to-r from-primary to-cta text-white text-2xl lg:text-3xl font-gotham w-full">
           NASZA MISJA - QUIXY – PRZYSZŁOŚĆ PRACY ZDALNEJ
         </h1>
         <div className="text-2xl lg:text-3xl font-gotham mt-12">
@@ -70,18 +70,13 @@ export default async function Page() {
   );
 }
 export const metadata: Metadata = {
-  publisher: "wesiu.dev",
+  publisher: "quixy.pl",
   manifest: "/manifest.json",
-  authors: [
-    {
-      name: "wesiudev",
-      url: "https://wesiudev.com",
-    },
-  ],
+
   verification: {
     google: "google85185d3abec28326.html",
   },
-  title: "Nasza misja Szukaj Pracy Dodaj Ofertę Pracy AI",
+  title: "O nas - Misja Quixy",
   description:
-    "Dowiedz się więcej o misji Quixy, pracujemy aby zapewnić połączenie między pracodawcami i ekspertami.",
+    "Quixy to przyszłość pracy zdalnej. Łączymy możliwości pracy zdalnej z mocą sztucznej inteligencji, abyś mógł tworzyć lepszą przyszłość dla siebie i swojej firmy.",
 };
