@@ -93,9 +93,9 @@ export default function Nav({
   // Show only below lg, hide on lg and up
   // The menu itself is hidden below lg unless mobileMenuOpen is true
   return (
-    <>
+    <div>
       {/* Mobile menu toggle button */}
-      <div className="block lg:hidden fixed top-[70px] left-0 z-[200]">
+      <div className="block lg:!hidden fixed top-[70px] left-0 z-[200]">
         <button
           onClick={() => setMobileMenuOpen((open) => !open)}
           className={`m-2 p-2 rounded-md shadow-md ${
@@ -377,6 +377,6 @@ export default function Nav({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
