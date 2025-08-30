@@ -19,13 +19,13 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const talent = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/companies/${params.slug}`
+    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/companies/${params.slug}`
   ).then((res: any) => res.json());
   const talents = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/getSimilarTalents?tubylytylkofigi=${process.env.API_SECRET_KEY}&id=${talent.uid}`
+    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/getSimilarTalents?tubylytylkofigi=${process.env.API_SECRET_KEY}&id=${talent.uid}`
   ).then((res: any) => res.json());
   const companies = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/getSimilarCompanies?tubylytylkofigi=${process.env.API_SECRET_KEY}&id=${talent.uid}`
+    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/getSimilarCompanies?tubylytylkofigi=${process.env.API_SECRET_KEY}&id=${talent.uid}`
   ).then((res: any) => res.json());
   return (
     <Suspense fallback={<Loadinger />}>
@@ -253,7 +253,7 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const slug = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/companies/${params.slug}`
+    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/companies/${params.slug}`
   ).then((res: any) => res.json());
   const title = !slug.access
     ? `${slug.title} - ${slug.name} | ${slug.city}`

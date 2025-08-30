@@ -2,10 +2,7 @@ import Link from "next/link";
 import { polishToEnglish } from "../../../../utils/polishToEnglish";
 import Image from "next/image";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
-import OpinionsForm from "@/components/quixyComponents/OpinionsForm";
-import Market from "@/components/quixyComponents/marketplace/Market";
 import BlogPostList from "@/components/quixyComponents/BlogPostList";
-import { getServices } from "@/lib/getServices";
 import { getPosts } from "@/lib/getPosts";
 import { getContent } from "@/lib/getContent";
 import { Suspense } from "react";
@@ -26,12 +23,6 @@ export default async function Page(props: {
   const users = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/apiQuixy/users/${params.slug}`
   ).then((res: any) => res.json());
-  const opinions = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/opinions?tubylytylkofigi=${
-      process.env.API_SECRET_KEY
-    }&slug=${polishToEnglish(params.slug)}`
-  ).then((res: any) => res.json());
-  const services = await getServices();
   const content = await getContent(params.slug);
   const posts = await getPosts();
   return (
