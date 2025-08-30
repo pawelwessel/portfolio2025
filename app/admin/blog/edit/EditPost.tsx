@@ -8,7 +8,7 @@ import PostImages from "./PostImages";
 import EditSection from "./EditSection";
 import SectionContentEditor from "../new/PostSections/SectionContentEditor";
 import SectionsList from "../new/PostSections/SectionsList";
-import { db } from "@/common/firebase";
+import { db } from "@/common/firebase/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { Post, Section } from "@/types";

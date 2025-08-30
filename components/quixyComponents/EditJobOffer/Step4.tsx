@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputField } from "./InputField";
 import ReactConfetti from "react-confetti";
-import { addJobOffer, storage, updateUser } from "@/common/firebase/quixy";
+import { addJobOffer, updateUser } from "@/common/firebase/quixy";
 import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,7 @@ import {
 import { FaSave } from "react-icons/fa";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Image from "next/image";
+import { storage } from "@/common/firebase/firebase";
 export default function StepFour({
   handleChange,
   currentStep,

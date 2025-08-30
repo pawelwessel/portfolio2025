@@ -11,11 +11,10 @@ import {
   createProduct,
   deleteDraft,
   deleteProduct,
-  storage,
   updateDraft,
   updateProduct,
 } from "@/common/firebase/quixy";
-
+import { storage } from "@/common/firebase/firebase";
 import ImagePicker from "@/components/quixyComponents/AdminComponents/ImagePicker";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRouter } from "next/navigation";

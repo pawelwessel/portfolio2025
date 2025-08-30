@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { InputField } from "./InputField";
 import ReactConfetti from "react-confetti";
-import { addJobOffer, storage, updateUser } from "@/common/firebase/quixy";
+import { addJobOffer, updateUser } from "@/common/firebase/quixy";
+import { storage } from "@/common/firebase/firebase";
 import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";

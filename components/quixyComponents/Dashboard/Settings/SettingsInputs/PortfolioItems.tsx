@@ -15,7 +15,8 @@ import { set_modals } from "@/common/redux/slices/modalsopen";
 import { IProject } from "@/types";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import { addDocument, storage, updateUser } from "@/common/firebase/quixy";
+import { addDocument, updateUser } from "@/common/firebase/quixy";
+import { storage } from "@/common/firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { InputField } from "@/components/quixyComponents/AddJobOffer/InputField";
 
