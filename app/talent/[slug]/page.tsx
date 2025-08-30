@@ -29,7 +29,7 @@ export default async function Page(props: {
   ).then((res: any) => res.json());
   return (
     <Suspense fallback={<Loadinger />}>
-      <div className={`relative h-full font-sans`}>
+      <div className={`relative h-full font-sans pt-20 pb-24`}>
         <div
           className={`${
             !talent?.access
@@ -38,7 +38,7 @@ export default async function Page(props: {
           }`}
         >
           <div className="px-6 w-max max-w-full">
-            <div className="w-max max-w-full flex flex-col bg-white p-6 rounded-lg ">
+            <div className="w-max max-w-full flex flex-col bg-white p-6 rounded-lg">
               <h2 className="w-full font-extrabold text-2xl">
                 Wyświetl się w platformie Quixy
               </h2>

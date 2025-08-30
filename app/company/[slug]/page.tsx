@@ -29,7 +29,7 @@ export default async function Page(props: {
   ).then((res: any) => res.json());
   return (
     <Suspense fallback={<Loadinger />}>
-      <div className={`relative h-full font-sans pt-24`}>
+      <div className={`relative h-full font-sans pt-20 pb-24`}>
         <div
           className={`${
             !talent?.access
