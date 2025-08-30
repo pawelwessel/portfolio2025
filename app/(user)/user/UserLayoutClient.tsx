@@ -15,7 +15,7 @@ export default function UserLayoutClient({
 }: {
   children: React.ReactNode;
 }) {
-  const [isNavOpen, setNavOpen] = useState(true);
+  const [isNavOpen, setNavOpen] = useState(false);
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
