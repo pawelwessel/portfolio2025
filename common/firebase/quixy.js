@@ -279,7 +279,7 @@ async function getBookings(uid) {
 async function getUsers() {
   const ref = collection(db, "users");
   const response = await getDocs(ref);
-  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return response.docs.map((doc) => ({ ...doc.data() }));
 }
 
 async function getUser(uid) {
