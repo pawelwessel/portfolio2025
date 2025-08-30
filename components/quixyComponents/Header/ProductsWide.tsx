@@ -127,14 +127,6 @@ export default function ProductsWide({
           >
             <FaFacebook className="text-2xl text-white" />
           </Link>
-          <Link
-            title="Oferta Strony Internetowe WWW z Cennikiem Grudziądz"
-            href="/oferta"
-            target="_blank"
-            className="ml-3 text-white text-lg"
-          >
-            /oferta
-          </Link>
         </div>
       </div>
     </div>

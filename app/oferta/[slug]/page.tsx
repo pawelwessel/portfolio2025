@@ -11,14 +11,10 @@ import { Metadata } from "next";
 import Script from "next/script";
 import FaqSection from "./FaqSection";
 import {
-  polishCities,
   getAllCitySlugs,
   isCitySlug,
   slugToCity,
   getCityDisplayName,
-  PolishCase,
-  getCityInCase,
-  generateCityContent,
 } from "@/lib/polishCities";
 import { generateCityPost } from "@/lib/cityPostGenerator";
 import PricingHero from "@/components/landing/PricingHero";
@@ -27,6 +23,10 @@ import OpinionsSection from "@/components/landing/OpinionsSection";
 import ReachSection from "@/components/landing/ReachSection";
 import { mapMarkers } from "@/lib/mapMarkers";
 import { notFound } from "next/navigation";
+import { getUsersData } from "@/lib/getUsersData";
+import JobBoardList from "@/components/quixyComponents/JobBoardList";
+
+// Remove top-level await for getUsers, move to page function
 
 // Generate static params for all city-based slugs
 export async function generateStaticParams() {
@@ -183,7 +183,17 @@ export async function generateMetadata({
   };
 }
 
-function PageContent({ post, slug }: { post: Post; slug: string }) {
+function PageContent({
+  post,
+  slug,
+  talents,
+  companies,
+}: {
+  post: Post;
+  slug: string;
+  talents: any[];
+  companies: any[];
+}) {
   // Generate JSON-LD structured data for FAQ
   const faqJsonLd =
     post.faq && post.faq.length > 0
@@ -238,7 +248,6 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
     },
     keywords: post.tags?.join(", "),
   };
-
   return (
     <>
       {/* JSON-LD Structured Data */}
@@ -283,7 +292,7 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
 
         {/* Hero banner */}
         <section className="relative w-full">
-          <div className="relative w-full aspect-[16/6] min-h-[400px] z-[2]">
+          <div className="relative w-full aspect-[16/6] min-h-[600px] z-[2]">
             <ParallaxImage
               src={
                 // Use globe image for city-based posts, otherwise use post's main image
@@ -468,6 +477,37 @@ function PageContent({ post, slug }: { post: Post; slug: string }) {
           </article>
           <div className="max-w-6xl mx-auto font-sans">
             <PricingHero />
+            <div className="mt-24">
+              {isCitySlug(slug) && slugToCity(slug) ? (
+                <>
+                  <h2 className="mb-8 text-2xl font-gotham font-semibold text-white text-center">
+                    Twórcy stron internetowych w{" "}
+                    {getCityDisplayName(slugToCity(slug)!)}
+                  </h2>
+                  <p className="text-zinc-700 text-center font-light font-gotham">
+                    Przeglądasz najlepszych twórców stron internetowych,
+                    programistów, specjalistów ds. SEO, marketingu,
+                    projektowania, grafiki i fotografii w{" "}
+                    {getCityDisplayName(slugToCity(slug)!)} i okolicach. Wybierz
+                    idealnego specjalistę dla swojego projektu!
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h2 className="mb-8 text-2xl font-gotham font-semibold text-white text-center">
+                    Tworzenie stron internetowych Grudziądz i okolice
+                  </h2>
+                  <p className="text-white max-w-4xl mx-auto mb-12 text-center font-light font-gotham">
+                    Przeglądasz najlepszych twórców stron internetowych,
+                    programistów, specjalistów ds. SEO, marketingu,
+                    projektowania, grafiki i fotografii w Grudziądzu i okolic.
+                    Wybierz idealnego specjalistę dla swojego projektu!
+                  </p>
+                </>
+              )}
+
+              <JobBoardList talents={talents} companies={companies} />
+            </div>
             <BlogSection />
             <OpinionsSection />
             <ReachSection markers={mapMarkers} />
@@ -498,5 +538,30 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  return <PageContent post={post} slug={slug} />;
+  // Fetch users, talents, companies here
+  let users: any[] = [];
+  let talents: any[] = [];
+  let companies: any[] = [];
+  try {
+    users = await getUsersData();
+    talents = users.filter(
+      (user) => user.seek && user.configured && user.access
+    );
+    companies = users.filter(
+      (user) => !user.seek && user.configured && user.access
+    );
+  } catch (e) {
+    // fallback to empty arrays if error
+    talents = [];
+    companies = [];
+  }
+
+  return (
+    <PageContent
+      post={post}
+      slug={slug}
+      talents={talents}
+      companies={companies}
+    />
+  );
 }

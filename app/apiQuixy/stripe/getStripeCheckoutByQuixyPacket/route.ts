@@ -1,7 +1,7 @@
 import { addOrder } from "@/common/firebase/quixy";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
-const stripe = require("stripe")(`${process.env.STRIPE_SECRET}`);
+const stripe = require("stripe")(`${process.env.STRIPE_SECRET_KEY}`);
 
 export async function POST(req: NextRequest) {
   const id = uuidv4();
