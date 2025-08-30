@@ -1,4 +1,5 @@
 "use client";
+import Toast from "@/components/Toast";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { addDocument, getDocument } from "@/common/firebase/quixy";
@@ -141,6 +142,7 @@ export default function Register() {
   }, [loading, user]);
   return (
     <div className="font-sans w-full min-h-screen bg-center mx-auto relative flex flex-col-reverse md:flex-row bg-white">
+      <Toast />
       <div
         style={{ boxShadow: "inset 0 0 3px black" }}
         className="md:w-[33vw] lg:w-[50vw] xl:w-[50vw] h-screen bg-login sm:bg-register md:bg-login xl:bg-register bg-cover bg-bottom"
