@@ -130,7 +130,7 @@ export default function HeaderComponent({
           </div>
           <div className="flex items-center gap-3 -mt-3">
             <div className="w-max">
-              <Cta label="Wycena" />
+              <Cta label="Darmowa Wycena" />
             </div>
           </div>
         </div>
