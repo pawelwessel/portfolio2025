@@ -118,7 +118,7 @@ export async function updateUser(userId, data) {
 export async function getOpinions() {
   const opinionsRef = collection(db, "opinions");
   const opinionsSnap = await getDocs(opinionsRef);
-  return opinionsSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return opinionsSnap.docs.map((doc) => ({ ...doc.data() }));
 }
 
 export async function addOpinion(data) {
@@ -250,20 +250,20 @@ async function getBookingById(id) {
   const docRef = doc(db, "bookings", id);
   const docSnapshot = await getDoc(docRef);
   if (!docSnapshot.exists()) return null;
-  return { id: docSnapshot.id, ...docSnapshot.data() };
+  return { ...docSnapshot.data() };
 }
 
 async function getBookingsByUserId(uid) {
   const ref = collection(db, "bookings");
   const filter = query(ref, where("uid", "==", uid));
   const response = await getDocs(filter);
-  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return response.docs.map((doc) => ({ ...doc.data() }));
 }
 
 async function getAllBookings() {
   const ref = collection(db, "bookings");
   const response = await getDocs(ref);
-  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return response.docs.map((doc) => ({ ...doc.data() }));
 }
 
 async function getBookings(uid) {
@@ -271,7 +271,6 @@ async function getBookings(uid) {
   const userRequestsQuery = query(requestsCollection, where("uid", "==", uid));
   const querySnapshot = await getDocs(userRequestsQuery);
   return querySnapshot.docs.map((doc) => ({
-    id: doc.id,
     ...doc.data(),
   }));
 }
@@ -295,7 +294,7 @@ async function getDocument(collectionName, key) {
   const docRef = doc(db, collectionName, key);
   const docSnapshot = await getDoc(docRef);
   if (!docSnapshot.exists()) return null;
-  return { id: docSnapshot.id, ...docSnapshot.data() };
+  return { ...docSnapshot.data() };
 }
 
 export async function fetchUsers() {
@@ -307,13 +306,13 @@ export async function fetchUsers() {
 export async function fetchOffers() {
   const ref = collection(db, "offers");
   const response = await getDocs(ref);
-  return response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return response.docs.map((doc) => ({ ...doc.data() }));
 }
 
 async function getDocuments(collectionName) {
   const ref = collection(db, collectionName);
   const res = await getDocs(ref);
-  return res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return res.docs.map((doc) => ({ ...doc.data() }));
 }
 
 async function addDocument(collectionName, uniqueId, data) {
@@ -527,9 +526,7 @@ export async function addOrder(id, data) {
   await setDoc(doc(db, "orders", id), data);
   const docRef = doc(db, "orders", id);
   const docSnapshot = await getDoc(docRef);
-  return docSnapshot.exists()
-    ? { id: docSnapshot.id, ...docSnapshot.data() }
-    : null;
+  return docSnapshot.exists() ? { ...docSnapshot.data() } : null;
 }
 
 export async function updateOrder(keys, values, id) {
