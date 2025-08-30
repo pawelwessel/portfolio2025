@@ -11,7 +11,9 @@ import {
   FaList,
   FaPowerOff,
   FaUser,
+  FaBars,
 } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { usePathname, useRouter } from "next/navigation";
 import { set_modals } from "@/common/redux/slices/modalsopen";
@@ -20,6 +22,7 @@ import { setLight } from "@/common/redux/slices/lightSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "@/common/firebase";
 import { setUser } from "@/common/redux/slices/user";
+
 export default function Nav({
   isNavOpen,
   setNavOpen,
@@ -28,6 +31,7 @@ export default function Nav({
   setNavOpen: any;
 }) {
   const [expandedItems, setExpandedItems] = useState([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const navItems = [
     {
@@ -84,55 +88,85 @@ export default function Nav({
       router.push("/login");
     });
   }
+
+  // Mobile menu toggle button (below lg)
+  // Show only below lg, hide on lg and up
+  // The menu itself is hidden below lg unless mobileMenuOpen is true
   return (
     <>
-      <div className="h-full">
+      {/* Mobile menu toggle button */}
+      <div className="block lg:hidden fixed top-[70px] left-0 z-[200]">
+        <button
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className={`m-2 p-2 rounded-md shadow-md ${
+            light ? "bg-white text-black" : "bg-[#222430] text-white"
+          }`}
+          aria-label={mobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
+        >
+          {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
+      {/* Menu container */}
+      <div
+        className={`
+          h-max sticky top-[65px] lg:top-[94px] left-0
+          z-[150]
+          ${mobileMenuOpen ? "block" : "hidden"}
+          lg:block
+          transition-all duration-200
+        `}
+        style={{
+          // On mobile, make the menu overlay the content
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          background: light ? "rgba(255,255,255,0.95)" : "rgba(34,36,48,0.98)",
+          zIndex: 150,
+          // On lg and up, revert to sticky sidebar
+          ...(typeof window !== "undefined" && window.innerWidth >= 1024
+            ? {
+                position: "sticky",
+                width: "auto",
+                height: "max-content",
+                background: "unset",
+              }
+            : {}),
+        }}
+      >
         <div
-          className={`z-[150] lg:py-6 lg:px-6 h-full fixed scrollbar ${
+          className={`lg:py-6 lg:px-6 h-full sticky left-0 top-0 scrollbar ${
             light ? "text-black" : "text-white"
-          } ${
-            isNavOpen
-              ? "translate-x-[0] duration-300"
-              : "-translate-x-[300px] lg:-translate-x-0 duration-300"
           }`}
         >
           <div className="relative flex flex-col gap-12 h-full">
-            <button
-              onClick={() => setNavOpen(!isNavOpen)}
-              className="lg:hidden absolute -right-[38px] w-[38px] h-[38px] top-1/2 -translate-y-1/2 rounded-r-lg bg-gradient-to-b from-accentStart to-accentEnd duration-200 text-white flex items-center justify-center"
-            >
-              <FaChevronLeft
-                className={`lg:hidden text-xl ${
-                  isNavOpen ? "rotate-0" : "rotate-180"
-                }`}
-              />
-            </button>
             <div
-              className={`relative flex flex-col justify-between h-full w-[300px] ${
+              className={`relative flex flex-col justify-between h-full ${
                 light ? "bg-white duration-150" : "bg-[#222430] duration-150"
               } lg:rounded-lg`}
             >
-              <div className="absolute bottom-0 w-full left-0">
-                <button
-                  onClick={() => dispatch(setLight(!light))}
-                  className={`${
-                    light ? "bg-primaryEnd" : "bg-white"
-                  } lg:rounded-bl-lg duration-300 rounded-tr-3xl w-16 h-16 flex items-center justify-center`}
-                >
-                  <FaLightbulb
-                    className={`rotate-45 text-3xl ${
-                      light ? "text-white" : "text-accentStart"
-                    }`}
-                  />
-                </button>
-              </div>
-              <div>
-                <Link
-                  href="/"
-                  className="text-lg font-sans font-bold flex flex-row items-center py-2 px-6 !text-white bg-gradient-to-b from-primaryStart to-primaryEnd rounded-br-3xl lg:rounded-tl-lg w-max max-w-full"
-                >
-                  <div className="">Panel administracyjny</div>
-                </Link>
+              <div className="w-full">
+                <div className="w-full flex justify-between">
+                  <Link
+                    href="/"
+                    className="mr-20 font-sans font-bold flex flex-row items-center py-2 px-6 !text-white bg-gradient-to-b from-primaryStart to-primaryEnd rounded-br-3xl lg:rounded-tl-lg w-max max-w-full"
+                  >
+                    <div className="">Panel administracyjny</div>
+                  </Link>
+                  <button
+                    onClick={() => dispatch(setLight(!light))}
+                    className={`${
+                      light ? "bg-primaryEnd" : "bg-white"
+                    } lg:rounded-bl-lg lg:rounded-tr-lg duration-300 rounded-bl-3xl w-16 h-16 flex items-center justify-center`}
+                  >
+                    <FaLightbulb
+                      className={`rotate-45 text-3xl ${
+                        light ? "text-white" : "text-accentStart"
+                      }`}
+                    />
+                  </button>
+                </div>
 
                 <div className="mt-4 font-sans">
                   <div className="flex flex-col flex-wrap justify-between w-full px-4 gap-2">
@@ -146,6 +180,7 @@ export default function Nav({
                           })
                         );
                         setNavOpen(!isNavOpen);
+                        setMobileMenuOpen(false);
                       }}
                       className={`${
                         modals.config
@@ -158,7 +193,7 @@ export default function Nav({
                       } border-l-2 flex items-center py-2 px-4 w-full rounded-md`}
                     >
                       <FaUser className="mr-2" />
-                      Portfolio
+                      Ustawienia
                     </button>
                     {navItems.map((item, index) => (
                       <div
@@ -178,6 +213,7 @@ export default function Nav({
                                 })
                               );
                               setNavOpen(!isNavOpen);
+                              setMobileMenuOpen(false);
                             }}
                             className={`${
                               modals.quixies
@@ -212,6 +248,7 @@ export default function Nav({
                             } else {
                               router.push(item.href);
                               setNavOpen(!isNavOpen);
+                              setMobileMenuOpen(false);
                             }
                           }}
                           className={`${
@@ -285,6 +322,7 @@ export default function Nav({
                                     onClick={() => {
                                       router.push(subItem.href);
                                       setNavOpen(!isNavOpen);
+                                      setMobileMenuOpen(false);
                                     }}
                                     className={`flex items-center py-2 px-4 w-full ${
                                       subItem.href === pathname
@@ -312,6 +350,7 @@ export default function Nav({
                             onClick={() => {
                               logout();
                               setNavOpen(!isNavOpen);
+                              setMobileMenuOpen(false);
                             }}
                             className={`mt-2 ${
                               modals.quixies

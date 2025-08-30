@@ -100,9 +100,7 @@ export default function Nav({
 
   return (
     <div
-      className={`fixed z-[51] scrollbar font-coco !text-white duration-500 ${
-        isNavOpen ? "translate-x-[0]" : "-translate-x-[300px]"
-      }`}
+      className={`sticky z-[51] scrollbar font-coco !text-white duration-500`}
     >
       <div className="flex flex-col justify-between py-6 h-screen w-[300px] border-r-[1px] border-[#303345] bg-[#222430] font-sans">
         <div className="text-white py-4 px-3 relative">
@@ -116,14 +114,6 @@ export default function Nav({
             />{" "}
             Panel administracyjny
           </h1>
-          <button
-            onClick={() => setNavOpen(!isNavOpen)}
-            className="absolute -right-[50px] w-[50px] h-[50px] top-0 !z-[9999999] bg-green-400 hover:bg-green-500 duration-200 text-white flex items-center justify-center"
-          >
-            <FaArrowLeft
-              className={`${isNavOpen ? "rotate-0" : "rotate-180"}`}
-            />
-          </button>
         </div>
         <div className="mt-12">
           <ul className="flex flex-col flex-wrap justify-between w-full px-2">

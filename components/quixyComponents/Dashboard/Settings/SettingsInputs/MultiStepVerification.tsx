@@ -81,7 +81,7 @@ export default function MultiStepVerification({
       <div
         className={`${user?.access && "hidden"} ${
           light ? "bg-white text-black" : "bg-[#222430] text-white"
-        } duration-300 transition-all mt-3 mx-3 lg:mx-6 lg:ml-12 rounded-lg relative max-w-full`}
+        } duration-300 transition-all mt-3 mx-3 lg:mx-6  rounded-lg relative max-w-full`}
       >
         <h2 className="px-[2.5rem]  py-3 w-max rounded-tl-lg rounded-br-3xl bg-gradient-to-r text-white from-primaryStart to-primaryEnd">
           WERYFIKACJA

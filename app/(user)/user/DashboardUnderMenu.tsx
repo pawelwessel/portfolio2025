@@ -10,36 +10,24 @@ export default function DashboardUnderMenu() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   return (
-    <div>
-      <div className="flex flex-col group">
-        <div className="flex items-start justify-between h-max relative w-full">
-          <div
-            className={`flex flex-col-reverse lg:grid ${
-              !user?.pseudo ||
-              !user?.name ||
-              !user?.title ||
-              !user?.configured ||
-              !user?.access
-                ? "grid-cols-1"
-                : ""
-            }  w-full`}
-          >
-            <div className="">
-              <DashboardUserInfo />
-              <div>
-                <MultiStepVerification
-                  seek={user?.seek}
-                  pseudo={user?.pseudo}
-                  name={user?.name}
-                  title={user?.title}
-                  configured={user?.configured}
-                  user={user}
-                  setIsAnimating={setIsAnimating}
-                  isAnimating={isAnimating}
-                />
-              </div>
-              <AccountHistory />
+    <div className="flex flex-col group w-full">
+      <div className="flex items-start justify-between h-max relative w-full">
+        <div className={`flex flex-col-reverse w-full`}>
+          <div className="w-full">
+            <DashboardUserInfo />
+            <div>
+              <MultiStepVerification
+                seek={user?.seek}
+                pseudo={user?.pseudo}
+                name={user?.name}
+                title={user?.title}
+                configured={user?.configured}
+                user={user}
+                setIsAnimating={setIsAnimating}
+                isAnimating={isAnimating}
+              />
             </div>
+            <AccountHistory />
           </div>
         </div>
       </div>

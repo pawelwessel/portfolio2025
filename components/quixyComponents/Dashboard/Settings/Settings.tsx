@@ -18,7 +18,7 @@ const Unsaved = dynamic(() => import("./SettingsInputs/Unsaved"), {
 export default function Settings({ isNavOpen }: { isNavOpen: boolean }) {
   const [error, setError] = useState<any>("");
   const [changesWereMade, setChangesWereMade] = useState<any>(false);
-  const modals = useSelector((state: any) => state.modals);
+  const { modals } = useSelector((state: any) => state.modals);
   const { light } = useSelector((state: any) => state.light);
   const dispatch = useDispatch();
   return (

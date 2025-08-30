@@ -30,7 +30,7 @@ export default function Register() {
   const [isLoading, setLoading] = useState(false);
   function createAccount() {
     setLoading(true);
-    const id = toast.loading(<span>Sekundarnie...</span>, {
+    const id = toast.loading(<span>Sekunda...</span>, {
       position: "bottom-right",
       isLoading: true,
     });

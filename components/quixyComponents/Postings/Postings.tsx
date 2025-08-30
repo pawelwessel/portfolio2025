@@ -83,7 +83,7 @@ const JobOfferList = () => {
   const { light } = useSelector((state: any) => state.light);
   if (!user?.job_offers || user?.job_offers?.length === 0) {
     return (
-      <div className="font-sans py-3 mx-3 lg:py-6 lg:mx-6 lg:ml-12">
+      <div className="font-sans py-3 mx-3 lg:py-6 lg:mx-6 ">
         <div
           className={`${
             light ? "bg-white text-black" : "bg-[#222430] text-white"
@@ -137,9 +137,7 @@ const JobOfferList = () => {
       {editOpen && (
         <EditJobOffer jobOffer={openedJobOffer} closeEdit={closeEdit} />
       )}
-      <div
-        className={`${editOpen && "hidden"} py-3 mx-3 lg:py-6 lg:mx-6 lg:ml-12`}
-      >
+      <div className={`${editOpen && "hidden"} py-3 mx-3 lg:py-6 lg:mx-6 `}>
         <div
           className={`${
             light ? "bg-white text-black" : "bg-[#222430] text-white"
@@ -160,7 +158,7 @@ const JobOfferList = () => {
       <div
         className={`${
           editOpen && "hidden"
-        } min-h-screen grid grid-cols-1 2xl:grid-cols-2 gap-3 mx-3 lg:mx-6 lg:ml-12 rounded-lg`}
+        } min-h-screen grid grid-cols-1 2xl:grid-cols-2 gap-3 mx-3 lg:mx-6  rounded-lg`}
       >
         {user?.job_offers?.map((jobOffer: JobPosting, i: number) => (
           <Posting

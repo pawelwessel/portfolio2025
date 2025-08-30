@@ -49,7 +49,7 @@ export default function DashboardUserInfo() {
         <div
           className={`${
             light ? "bg-white" : "bg-[#222430]"
-          } duration-300  flex flex-row items-start mt-3 mx-3 lg:mt-6 lg:mx-6 lg:ml-12 p-3 rounded-lg`}
+          } duration-300  flex flex-row items-start mt-3 mx-3 lg:mt-6 lg:mx-6  p-3 rounded-lg`}
         >
           <button
             onClick={() =>
@@ -169,7 +169,7 @@ export default function DashboardUserInfo() {
         <div>
           {!user?.emailVerified && (
             <div
-              className={`rounded-lg border-l-4 border-primaryStart p-3 mt-3 mx-3 lg:mx-6 lg:ml-12 px-3 max-w-full ${
+              className={`rounded-lg border-l-4 border-primaryStart p-3 mt-3 mx-3 lg:mx-6  px-3 max-w-full ${
                 light ? "bg-white text-black" : "bg-[#222430] text-white"
               } duration-300`}
             >
@@ -187,7 +187,7 @@ export default function DashboardUserInfo() {
           <div>
             {(user?.seek || !user?.seek) && (
               <div className={`mt-3`}>
-                <div className="grid xl:grid-cols-2 mx-3 lg:mx-6 lg:ml-12 gap-3">
+                <div className="grid xl:grid-cols-2 mx-3 lg:mx-6  gap-3">
                   <div
                     className={`rounded-lg duration-300 relative ${
                       light ? "bg-white" : "bg-[#222430]"
@@ -272,7 +272,7 @@ export default function DashboardUserInfo() {
                   </div>
                 </div>
                 <div
-                  className={`mt-3 mx-3 lg:mx-6 lg:ml-12 ${
+                  className={`mt-3 mx-3 lg:mx-6  ${
                     light ? "bg-white" : "bg-[#222430]"
                   } duration-300 rounded-lg relative`}
                 >

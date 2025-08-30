@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import InitializeUser from "@/components/quixyComponents/InitializeUser";
 import Settings from "@/components/quixyComponents/Dashboard/Settings/Settings";
 import QuixiesModule from "@/components/quixyComponents/Dashboard/QuixiesModule";
+import { ThemeProvider } from "@/common/context/ThemeContext";
+import Hero from "@/components/hero/Hero";
 export default function AdminLayout({
   children,
 }: {
@@ -24,29 +26,25 @@ export default function AdminLayout({
   }, [loading]);
   const { light } = useSelector((state: any) => state);
   return (
-    <>
-      <div className="z-[9999999999999999999999999999999]">
-        <Settings isNavOpen={isNavOpen} />
-        <QuixiesModule />
+    <div className="w-full bg-black/90 relative pt-[65px] lg:pt-[94px] pb-[50vh]">
+      <div className="h-full w-full fixed left-0 top-0">
+        <Hero />
       </div>
-      <div className="w-full relative">
-        <InitializeUser />
+      <ThemeProvider>
+        <div className="z-[9999999999999999999999999999999]">
+          <Settings isNavOpen={isNavOpen} />
+          <QuixiesModule />
+        </div>
+        <div className="w-full relative">
+          <InitializeUser />
 
-        <div>
-          <Nav setNavOpen={setNavOpen} isNavOpen={isNavOpen} />
-          <div
-            className={`duration-300 ${
-              isNavOpen
-                ? "ml-[300px] lg:ml-[0px] lg:pl-[300px]"
-                : "ml-0 lg:pl-[300px]"
-            } min-w-full min-h-screen ${
-              light ? "bg-zinc-800/30" : "bg-primaryEnd/80"
-            }`}
-          >
-            {children}
+          <div className="relative h-full w-full flex flex-col lg:flex-row">
+            <Nav setNavOpen={setNavOpen} isNavOpen={isNavOpen} />
+
+            <div className={`duration-300 w-full`}>{children}</div>
           </div>
         </div>
-      </div>
-    </>
+      </ThemeProvider>
+    </div>
   );
 }

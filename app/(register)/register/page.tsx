@@ -35,15 +35,15 @@ export const metadata: Metadata = {
       type: "image/png",
     },
   ],
-  title: "Najskuteczniejsza platforma z pracą zdalną w Polsce - Rejestracja",
+  title: "Zaproszenie do serwisu Quixy.pl",
   description:
-    "Rejestracja w serwisie Quixy.pl - Zatrudnij ekspertów z branży IT, marketingu, designu i innych dziedzin. Znajdź specjalistów w Quixy Talent™ i rozwijaj swój biznes już dziś!",
+    "Logowanie w serwisie Quixy.pl - posiadasz zaproszenie? Zaloguj się i zacznij korzystać z naszych usług!",
   openGraph: {
     type: "website",
     url: "https://quixy.pl",
-    title: "Najskuteczniejsza platforma z pracą zdalną w Polsce - Rejestracja",
+    title: "Zaproszenie do serwisu Quixy.pl",
     description:
-      "Rejestracja w serwisie Quixy.pl - Zatrudnij ekspertów z branży IT, marketingu, designu i innych dziedzin. Znajdź specjalistów w Quixy Talent™ i rozwijaj swój biznes już dziś!",
+      "Logowanie w serwisie Quixy.pl - posiadasz zaproszenie? Zaloguj się i zacznij korzystać z naszych usług!",
     siteName: "Quixy",
   },
 };

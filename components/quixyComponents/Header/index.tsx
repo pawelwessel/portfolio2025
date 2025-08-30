@@ -9,10 +9,6 @@ const ProductsMobile = dynamic(() => import("./ProductsMobile"), {
 const HeaderComponent = dynamic(() => import("./HeaderComponent"), {
   ssr: false,
 });
-import { AiFillThunderbolt, AiOutlineLogin } from "react-icons/ai";
-import { MdOutlineDesignServices } from "react-icons/md";
-import { FiUsers } from "react-icons/fi";
-import { FaStore } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 export default function Header({ jobsList }: { jobsList: any[] }) {
   const { width } = useWindowDimensions();
@@ -47,7 +43,8 @@ export default function Header({ jobsList }: { jobsList: any[] }) {
   }, []);
   const pathname = usePathname();
   return (
-    <div className={`${pathname.includes("user") && "hidden"}`}>
+    <div className={``}>
+      {/* PRODUCTS TAB OPENED WIDE */}
       <ProductsWide
         width={width}
         setProductsOpen={setProductsOpen}

@@ -116,7 +116,7 @@ export default function Contact() {
                   <button
                     onClick={(e: any) => {
                       e.preventDefault();
-                      const id = toast.loading(<span>Sekundarnie...</span>);
+                      const id = toast.loading(<span>Sekunda...</span>);
                       if (data.name && data.email && data.message) {
                         pushLead(data).then(() => {
                           setSent(true);

@@ -12,7 +12,7 @@ export default function NewService() {
   const { user } = useSelector((state: any) => state.user);
   const { light } = useSelector((state: any) => state.light);
   return (
-    <div className="mx-3 lg:mx-6 lg:ml-12 py-6">
+    <div className="mx-3 lg:mx-6  py-6">
       {isUploading && (
         <div className="fixed left-0 top-0 z-[99999999999999999999999] h-screen w-screen flex justify-center items-center bg-[#202020]/50 text-xl text-white">
           <div className="flex flex-col items-center justify-center">

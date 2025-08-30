@@ -14,7 +14,7 @@ export default function LeadsList() {
   const { light } = useSelector((state: any) => state.light);
   return (
     <>
-      <div className="font-sans py-3 mx-3 lg:py-6 lg:mx-6 lg:ml-12">
+      <div className="font-sans py-3 mx-3 lg:py-6 lg:mx-6 ">
         <div
           className={`${
             light ? "bg-white text-black" : "bg-[#222430] text-white"

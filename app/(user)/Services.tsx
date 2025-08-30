@@ -22,7 +22,7 @@ export default function Services() {
       <div
         className={`${
           editOpen && "hidden"
-        }  font-sans py-3 mx-3 lg:py-6 lg:mx-6 lg:ml-12`}
+        }  font-sans py-3 mx-3 lg:py-6 lg:mx-6 `}
       >
         <div
           className={`${editOpen && "hidden"} ${

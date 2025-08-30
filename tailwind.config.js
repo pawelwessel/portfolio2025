@@ -11,14 +11,14 @@ module.exports = {
       colors: {
         ctaStart: "#14A800",
         ctaEnd: "#0B7D43",
-        primaryStart: "#126b91",
-        primaryEnd: "#082F47",
-        primaryHoverEnd: "#468CA9",
-        primaryHoverStart: "#126b91",
-        bgStart: "#126b91",
-        bgEnd: "#082F47",
-        accentStart: "#FFA726",
-        accentEnd: "#FF7043",
+        primaryStart: "#2563eb", // blue-600
+        primaryEnd: "#1e40af", // blue-800
+        primaryHoverStart: "#1d4ed8", // blue-700
+        primaryHoverEnd: "#2563eb", // blue-600
+        bgStart: "#f3f4f6", // gray-100
+        bgEnd: "#e5e7eb", // gray-200
+        accentStart: "#06b6d4", // cyan-500
+        accentEnd: "#0e7490", // cyan-700
       },
       backgroundImage: {
         courses: "url('/bg-courses.jpg')",

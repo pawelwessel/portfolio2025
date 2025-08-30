@@ -20,7 +20,7 @@ export default function EditService({
   const [uploadCount, setUploadCount] = useState(0);
   return (
     <>
-      <div className="font-sans relative overflow-hidden min-h-screen flex flex-col items-center mx-3 lg:mx-6 lg:ml-12 py-6">
+      <div className="font-sans relative overflow-hidden min-h-screen flex flex-col items-center mx-3 lg:mx-6  py-6">
         <div
           className={`${
             light ? "bg-white text-black" : "bg-[#222430] text-white"

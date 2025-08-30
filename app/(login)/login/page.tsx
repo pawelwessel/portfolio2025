@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       type: "image/png",
     },
   ],
-  title: "Posiadasz zaproszenie do serwisu Quixy.pl?",
+  title: "Zaproszenie do serwisu Quixy.pl",
   description:
     "Logowanie w serwisie Quixy.pl - posiadasz zaproszenie? Zaloguj się i zacznij korzystać z naszych usług!",
   verification: {
