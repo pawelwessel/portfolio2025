@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { PhoneModalProvider } from "@/common/context/PhoneModalContext";
 import { ThemeProvider } from "@/common/context/ThemeContext";
+import { Providers } from "@/common/redux/Provider";
 import PhoneModal from "@/components/PhoneModal";
 import PromoPopup from "@/components/PromoPopup";
 import Footer from "@/components/footer/Footer";
@@ -22,15 +23,17 @@ export default async function Root({
       <body
         className={`${cocosharp.variable} font-sans overflow-x-hidden ${gotham.variable}`}
       >
-        <ThemeProvider>
-          <PhoneModalProvider>
-            <Header jobsList={jobs} />
-            {children}
-            <Footer />
-            <PhoneModal />
-            <PromoPopup />
-          </PhoneModalProvider>
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider>
+            <PhoneModalProvider>
+              <Header jobsList={jobs} />
+              {children}
+              <Footer />
+              <PhoneModal />
+              <PromoPopup />
+            </PhoneModalProvider>
+          </ThemeProvider>
+        </Providers>
         <Script id="linkedin-analytics">
           {`
           

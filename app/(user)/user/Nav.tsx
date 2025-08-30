@@ -109,31 +109,16 @@ export default function Nav({
       {/* Menu container */}
       <div
         className={`
-          h-max sticky top-[65px] lg:top-[94px] left-0
           z-[150]
-          ${mobileMenuOpen ? "block" : "hidden"}
-          lg:block
+          ${mobileMenuOpen ? "fixed top-0 left-0 w-screen h-screen" : "hidden"}
+          lg:sticky lg:top-[94px] lg:left-0 lg:block
           transition-all duration-200
+          ${
+            light
+              ? "bg-white/95 lg:bg-transparent"
+              : "bg-[#222430]/95 lg:bg-transparent"
+          }
         `}
-        style={{
-          // On mobile, make the menu overlay the content
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          background: light ? "rgba(255,255,255,0.95)" : "rgba(34,36,48,0.98)",
-          zIndex: 150,
-          // On lg and up, revert to sticky sidebar
-          ...(typeof window !== "undefined" && window.innerWidth >= 1024
-            ? {
-                position: "sticky",
-                width: "auto",
-                height: "max-content",
-                background: "unset",
-              }
-            : {}),
-        }}
       >
         <div
           className={`lg:py-6 lg:px-6 h-full sticky left-0 top-0 scrollbar ${

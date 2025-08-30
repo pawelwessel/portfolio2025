@@ -25,7 +25,7 @@ export default function UserLayoutClient({
     }
   }, [user, loading, router]);
 
-  const { light } = useSelector((state: any) => state);
+  const light = useSelector((state: any) => state.light.light);
 
   return (
     <div className="z-[9999999999999999999999999999999]">
