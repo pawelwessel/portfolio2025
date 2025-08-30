@@ -582,4 +582,8 @@ export {
   getDocuments,
   updateUserLeads,
   app,
+  auth,
+  provider,
+  storage,
+  db,
 };
