@@ -207,12 +207,7 @@ export async function generateMetadata(props: { params: Promise<any> }) {
     .find(
       (item: any) => polishToEnglish(item.category) === params.category
     ).category;
-  const job = jobs
-    .flatMap((service: any) =>
-      service.data.flatMap((subItem: any) => subItem.data)
-    )
-    .map((item: any) => ({ title: item.title }))
-    .find((item: any) => polishToEnglish(item.title) === params.job);
+  const job = await getContent(params.job);
   const title = `${job?.title} Zlecenia i Oferta Usług dla Firm`;
   const description = `Usługi dla firm Szukasz zleceń w ${job?.genitive}? Chcesz zająć się ${job?.instrumental}?`;
   return {
