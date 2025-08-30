@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
-const DashboardUnderMenu = dynamic(() => import("./DashboardUnderMenu"));
+import DashboardUnderMenu from "./DashboardUnderMenu";
 
 export const metadata: Metadata = {
   title: "Panel administracyjny",
