@@ -248,7 +248,6 @@ export default function StepFour({
                     <button
                       disabled={isSent}
                       onClick={async () => {
-                        console.log(formData);
                         // setIsAnimating(true);
                         // setIsSent(true);
                         // await handleRecruitmentStart();

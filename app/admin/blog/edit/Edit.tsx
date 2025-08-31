@@ -16,14 +16,14 @@ export default function Edit({ posts }: { posts: Post[] }) {
           {posts?.length !== 0 &&
             posts?.map((post: Post, i: number) => (
               <div
-                onClick={() => router.push(`/admin/blog/edit/${post.postId}`)}
+                onClick={() => router.push(`/admin/blog/edit/${post.url}`)}
                 key={i}
                 className="cursor-pointer group relative aspect-square h-max flex flex-col hover:bg-green-300 hover:p-1 duration-300 ease-in-out rounded-lg shadow-md  shadow-zinc-700"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
-                    router.push(`/admin/blog/edit/${post.postId}`);
+                    router.push(`/admin/blog/edit/${post.url}`);
                   }
                 }}
               >

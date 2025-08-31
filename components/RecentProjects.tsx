@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type Project = {
   img: string;
@@ -67,49 +67,199 @@ const projects: Project[] = [
   },
 ];
 
+function getSlidesPerView(width: number) {
+  if (width >= 1024) return 4;
+  if (width >= 640) return 2;
+  return 1;
+}
+
 export default function RecentProjects({ className = "" }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [current, setCurrent] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(4);
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  // Responsive slides per view
+  useEffect(() => {
+    function handleResize() {
+      setSlidesPerView(getSlidesPerView(window.innerWidth));
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Keyboard navigation for modal
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setSelectedProject(null);
+      if (!selectedProject) {
+        if (e.key === "ArrowLeft") {
+          setCurrent((prev) => Math.max(prev - 1, 0));
+        }
+        if (e.key === "ArrowRight") {
+          setCurrent((prev) =>
+            Math.min(prev + 1, projects.length - slidesPerView)
+          );
+        }
+      }
     }
-    if (selectedProject) {
-      document.addEventListener("keydown", onKeyDown);
-    }
+    document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [selectedProject]);
+    // eslint-disable-next-line
+  }, [selectedProject, slidesPerView]);
+
+  // Clamp current index if slidesPerView changes
+  useEffect(() => {
+    setCurrent((prev) =>
+      Math.min(prev, Math.max(0, projects.length - slidesPerView))
+    );
+  }, [slidesPerView]);
+
+  // Carousel navigation handlers
+  const handlePrev = () => {
+    setCurrent((prev) => Math.max(prev - 1, 0));
+  };
+  const handleNext = () => {
+    setCurrent((prev) => Math.min(prev + 1, projects.length - slidesPerView));
+  };
+
+  // Touch/drag support
+  const dragState = useRef<{ startX: number; dragging: boolean } | null>(null);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    dragState.current = { startX: e.touches[0].clientX, dragging: true };
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!dragState.current?.dragging) return;
+    const diff = e.touches[0].clientX - dragState.current.startX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handlePrev();
+      else handleNext();
+      dragState.current.dragging = false;
+    }
+  };
+  const onTouchEnd = () => {
+    dragState.current = null;
+  };
 
   return (
     <section className={`w-full py-12 ${className}`}>
       <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8">
         Ostatnie projekty
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto">
-        {projects.map((p, i) => (
-          <button
-            key={i}
-            onClick={() => setSelectedProject(p)}
-            className="group block text-left rounded-xl bg-gray-200 duration-300 overflow-hidden cursor-pointer"
+      <div className="relative">
+        <button
+          aria-label="Poprzedni"
+          onClick={handlePrev}
+          disabled={current === 0}
+          className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border shadow rounded-full w-10 h-10 flex items-center justify-center transition disabled:opacity-30 disabled:cursor-not-allowed`}
+          style={{
+            display: slidesPerView === projects.length ? "none" : undefined,
+          }}
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
           >
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
-              <Image
-                src={p.img}
-                alt={p.name}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, 25vw"
-                priority={i === 0}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Następny"
+          onClick={handleNext}
+          disabled={current >= projects.length - slidesPerView}
+          className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border shadow rounded-full w-10 h-10 flex items-center justify-center transition disabled:opacity-30 disabled:cursor-not-allowed`}
+          style={{
+            display: slidesPerView === projects.length ? "none" : undefined,
+          }}
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+        <div
+          ref={containerRef}
+          className="overflow-hidden"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <div
+            className="flex transition-transform duration-500"
+            style={{
+              width: `${(projects.length / slidesPerView) * 100}%`,
+              transform: `translateX(-${current * (100 / projects.length)}%)`,
+            }}
+          >
+            {projects.map((p, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 px-2"
+                style={{
+                  width: `calc(100% / ${slidesPerView})`,
+                  minWidth: 0,
+                }}
+              >
+                <button
+                  onClick={() => setSelectedProject(p)}
+                  className="group block text-left rounded-xl bg-gray-200 duration-300 overflow-hidden cursor-pointer w-full h-full"
+                  tabIndex={0}
+                  style={{ outline: "none" }}
+                >
+                  <div className="relative w-full aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      priority={i === 0}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold mb-2 text-black">
+                      {p.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">{p.desc}</p>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex justify-center mt-4 gap-2">
+          {Array.from(
+            { length: projects.length - slidesPerView + 1 },
+            (_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrent(idx)}
+                className={`w-3 h-3 rounded-full ${
+                  current === idx ? "bg-black" : "bg-gray-300"
+                } transition`}
+                aria-label={`Przejdź do slajdu ${idx + 1}`}
               />
-            </div>
-            <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2 text-black">
-                {p.name}
-              </h3>
-              <p className="text-sm text-gray-600">{p.desc}</p>
-            </div>
-          </button>
-        ))}
+            )
+          )}
+        </div>
       </div>
 
       {selectedProject && (

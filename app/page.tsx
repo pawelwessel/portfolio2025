@@ -25,7 +25,7 @@ export default async function Page({
             <MainCard />
             <PricingHero />
             <BlogSection />
-            <OpinionsSection />
+
             <ReachSection markers={mapMarkers} />
           </section>
         </main>

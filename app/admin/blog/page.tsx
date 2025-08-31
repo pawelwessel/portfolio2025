@@ -103,12 +103,12 @@ export default function BlogPage() {
             <div
               key={post.postId}
               className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-              onClick={() => router.push(`/admin/blog/edit/${post.postId}`)}
+              onClick={() => router.push(`/admin/blog/edit/${post.url}`)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
-                  router.push(`/admin/blog/edit/${post.postId}`);
+                  router.push(`/admin/blog/edit/${post.url}`);
                 }
               }}
             >

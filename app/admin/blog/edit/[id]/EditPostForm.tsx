@@ -127,7 +127,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           typeof formData.readTime === "number" ? formData.readTime : 0,
         ],
         "blog",
-        post.postId
+        post.url
       );
       toast.success("Post został zaktualizowany");
     } catch (error) {
