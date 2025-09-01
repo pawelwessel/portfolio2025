@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaMapMarker, FaPlusCircle } from "react-icons/fa";
 import Pagination from "./pagination/Pagination";
 import { useState } from "react";
+import { FaDollarSign } from "react-icons/fa6";
 
 export default function DisplayCompaniesOrInviter({ data }: { data: any }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,41 +27,62 @@ export default function DisplayCompaniesOrInviter({ data }: { data: any }) {
           <Link
             key={talent?.pseudo || i}
             href={`/company/${talent.pseudo}`}
-            className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 hover:scale-[1.03]"
+            className="flex flex-col p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 hover:scale-[1.03]"
           >
-            {/* Zdjęcie lub inicjały */}
-            {talent?.photoURL ? (
-              <div className="relative min-w-16 lg:min-w-20 h-16 lg:h-20 aspect-square rounded-full overflow-hidden shadow">
-                <Image
-                  src={talent.photoURL}
-                  width={224}
-                  height={224}
-                  alt={`Zdjęcie talentu ${talent?.name || talent?.pseudo}`}
-                  className="absolute inset-0 object-cover w-full h-full"
-                />
-              </div>
-            ) : (
-              <span className="min-w-16 lg:min-w-20 h-16 lg:h-20 aspect-square rounded-full flex items-center justify-center text-4xl font-extrabold text-primary bg-gray-100 shadow">
-                {talent?.name
-                  ? talent.name[0]?.toUpperCase()
-                  : talent?.pseudo[0]?.toUpperCase()}
-              </span>
-            )}
-
-            {/* Informacje o talencie */}
-            <div className="px-2 sm:px-4 flex flex-col">
-              <h2 className="sm:text-lg font-extrabold text-black">
-                {talent?.name}
-              </h2>
-              <h3 className="text-xs sm:text-sm xl:text-base mt-0.5">
-                <span
-                  style={{ lineHeight: 1.8 }}
-                  className="text-white bg-zinc-600 rounded-md px-2 py-1 w-max max-w-full"
-                >
-                  {talent?.title}
+            <div className="flex flex-row">
+              {/* Zdjęcie lub inicjały */}
+              {talent?.photoURL ? (
+                <div className="relative min-w-16 lg:min-w-20 h-16 lg:h-20 aspect-square rounded-full overflow-hidden shadow">
+                  <Image
+                    src={talent.photoURL}
+                    width={224}
+                    height={224}
+                    alt={`Zdjęcie talentu ${talent?.name || talent?.pseudo}`}
+                    className="absolute inset-0 object-cover w-full h-full"
+                  />
+                </div>
+              ) : (
+                <span className="min-w-16 lg:min-w-20 h-16 lg:h-20 aspect-square rounded-full flex items-center justify-center text-4xl font-extrabold text-white bg-green-600 shadow">
+                  {talent?.name
+                    ? talent.name[0]?.toUpperCase()
+                    : talent?.pseudo[0]?.toUpperCase()}
                 </span>
-              </h3>
-              <h3 className="text-sm text-gray-700">{talent?.city}</h3>
+              )}
+
+              {/* Informacje o talencie */}
+              <div className="px-2 sm:px-4 flex flex-col">
+                <h2 className="font-extrabold text-black">{talent?.name}</h2>
+                <h3 className="text-xs sm:text-sm xl:text-base mt-0.5">
+                  <span
+                    style={{ lineHeight: 1.8 }}
+                    className="font-gotham font-light text-black rounded-md py-1 w-max max-w-full"
+                  >
+                    {talent?.title}
+                  </span>
+                </h3>
+              </div>
+            </div>
+
+            <div className="w-full flex items-center gap-2 flex-wrap">
+              <div className="flex flex-row items-center mt-2">
+                <FaMapMarker className="mr-0.5 text-sm" />
+                <h3 className="text-xs text-black font-gotham font-light">
+                  {talent?.city}
+                </h3>
+              </div>
+              <div className="col-span-2 mt-2">
+                <h3 className="flex flex-row items-center text-xs xl:text-base">
+                  <FaDollarSign className="mr-0.5 text-sm" />
+                  <span
+                    style={{ lineHeight: 1.8 }}
+                    className="font-gotham font-light text-black rounded-md w-max max-w-full"
+                  >
+                    {talent?.hourRate
+                      ? `${talent.hourRate} PLN / godzina`
+                      : "Zapytaj o wycenę"}
+                  </span>
+                </h3>
+              </div>
             </div>
           </Link>
         ))}

@@ -11,20 +11,27 @@ import RecentProjects from "../RecentProjects";
 import VideoPlayer from "../VideoPlayer";
 import OpinionsSection from "./OpinionsSection";
 import Link from "next/link";
+import JobBoardList from "../quixyComponents/JobBoardList";
+import { FaArrowRightLong } from "react-icons/fa6";
 
-export default function MainCard() {
+export default function MainCard({
+  talents,
+  companies,
+}: {
+  talents: any[];
+  companies: any[];
+}) {
   return (
     <div
       id="about"
-      className="text-xl sm:text-2xl lg:text-3xl flex flex-col mt-12 bg-white px-6 xl:px-12 py-3 xl:pb-12 rounded-md relative text-zinc-700 drop-shadow-md shadow-black"
+      className="w-full text-xl sm:text-2xl lg:text-3xl flex flex-col mt-12 bg-white px-6 xl:px-12 py-6 xl:pb-12 rounded-md relative text-zinc-700 drop-shadow-md shadow-black"
     >
-      <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
-        <div>
-          <h2 className="text-3xl lg:text-4xl font-bold mt-12 font-gotham">
-            Strony Internetowe w twojej okolicy – projektowanie i tworzenie
-            stron www
+      <div className="w-full flex flex-col lg:flex-row gap-12 items-center lg:items-start">
+        <div className="w-full">
+          <h2 className="text-xl lg:text-4xl font-bold font-gotham">
+            Strony Internetowe w twojej okolicy
           </h2>
-          <p className="text-base font-light max-w-[45rem] mt-4 text-justify lg:text-left">
+          <p className="text-base font-light max-w-[45rem] mt-4 lg:text-left">
             Projektujemy szybkie i skuteczne{" "}
             <Link
               className="text-blue-400"
@@ -42,8 +49,8 @@ export default function MainCard() {
             , a także prowadzimy{" "}
             <Link className="text-blue-400" href="/oferta/dla-firm/marketing">
               marketing
-            </Link>
-            w
+            </Link>{" "}
+            w{" "}
             <Link
               className="text-blue-400"
               href="/oferta/dla-firm/marketing/marketing-cyfrowy/marketing-w-social-media"
@@ -68,7 +75,7 @@ export default function MainCard() {
             >
               analitykę
             </Link>
-            , aby dowozić realne wyniki
+            , aby dowozić realne wyniki{" "}
             <Link
               className="text-blue-400"
               href="/oferta/dla-firm/uslugi-biznesowe"
@@ -79,17 +86,23 @@ export default function MainCard() {
           </p>
 
           <div className="mt-6">
-            <h2 className="text-2xl font-gotham">Co w ofercie?</h2>
-            <ul className="mt-6 space-y-3 flex flex-col text-sm">
-              <li className="flex items-start gap-2">
-                <div className="bg-blue-500 h-2 w-2 rounded-full mt-2"></div>
-                <div>
-                  <span className="font-medium">Projekt i wdrożenie:</span>{" "}
+            <h2 className="text-2xl font-gotham mb-6">Co w ofercie?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-500 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    1
+                  </div>
+                  <span className="font-semibold text-lg">
+                    Projekt i wdrożenie
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
                   <Link
                     className="text-blue-500 hover:underline font-medium"
                     href="/oferta/tworzenie-stron-w-internecie-grudziadz"
                   >
-                    klasyczne strony internetowe
+                    Klasyczne strony internetowe
                   </Link>
                   {", "}
                   <Link
@@ -120,10 +133,17 @@ export default function MainCard() {
                     strony internetowe typu landing page
                   </Link>
                 </div>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-blue-500 h-2 w-2 rounded-full mt-2"></div>
-                <div>
+              </div>
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-500 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    2
+                  </div>
+                  <span className="font-semibold text-lg">
+                    Systemy i automatyzacje
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
                   <Link
                     className="text-blue-500 hover:underline font-medium"
                     href="/oferta/dla-firm/rozwoj-oprogramowania/oprogramowanie/programista"
@@ -145,10 +165,17 @@ export default function MainCard() {
                     integracje
                   </Link>
                 </div>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-blue-500 h-2 w-2 rounded-full mt-2"></div>
-                <div>
+              </div>
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-500 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    3
+                  </div>
+                  <span className="font-semibold text-lg">
+                    SEO &amp; Performance
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
                   <Link
                     className="text-blue-500 hover:underline font-medium"
                     href="/oferta/dla-firm/marketing/marketing-cyfrowy/seo"
@@ -157,10 +184,17 @@ export default function MainCard() {
                   </Link>
                   {" i Core Web Vitals, PageSpeed 95–100"}
                 </div>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-blue-500 h-2 w-2 rounded-full mt-2"></div>
-                <div>
+              </div>
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-500 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    4
+                  </div>
+                  <span className="font-semibold text-lg">
+                    Hosting &amp; Wsparcie
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
                   <Link
                     className="text-blue-500 hover:underline font-medium"
                     href="/oferta/dla-firm/uslugi-it/doradztwo-it/cloud-computing"
@@ -183,133 +217,168 @@ export default function MainCard() {
                   </Link>
                   {" i rozwój po wdrożeniu"}
                 </div>
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-10">
-            <h2 className="text-2xl font-gotham">
-              Marketing dla <span className="text-blue-500">Twojej firmy</span>
-            </h2>
-
-            <ul className="mt-6 space-y-2 flex flex-col text-sm">
-              <li className="flex flex-row items-center">
-                <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/marketing/marketing-cyfrowy/content-marketing"
-                >
-                  Content marketing
-                </Link>
-                ,{" "}
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/marketing/kreacja/strategia-komunikacji"
-                >
-                  storytelling
-                </Link>{" "}
-                i{" "}
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/marketing/kreacja/public-relations"
-                >
-                  budowanie społeczności online
-                </Link>
-              </li>
-              <li className="flex flex-row items-center">
-                <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                Facebook Business Manager, Instagram Creator Studio, social
-                media automation
-              </li>
-              <li className="flex flex-row items-center">
-                <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                Kampanie reklamowe:{" "}
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/uslugi-biznesowe/wsparcie-sprzedazy/generowanie-leadow"
-                >
-                  lead generation
-                </Link>
-                ,{" "}
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/uslugi-biznesowe/wsparcie-sprzedazy/kwalifikacja-leadow"
-                >
-                  conversions
-                </Link>
-                ,{" "}
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/marketing/reklama/branding"
-                >
-                  brand awareness
-                </Link>
-                ,{" "}
-                <Link
-                  className="text-blue-400"
-                  href="/oferta/dla-firm/marketing/reklama/ppc-pay-per-click"
-                >
-                  reach
-                </Link>
-              </li>
-              <li className="flex flex-row items-center">
-                <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                Analytics: Facebook Insights, Instagram Analytics, Google
-                Analytics 4
-              </li>
-            </ul>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
-              <div className="bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm">
-                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                  <FaFacebook className="text-2xl" />
-                </div>
-                <div className="text-sm mt-2">Facebook</div>
-              </div>
-              <div className="bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm">
-                <div className="w-14 h-14 rounded-full bg-pink-50 flex items-center justify-center text-pink-600">
-                  <FaInstagram className="text-2xl" />
-                </div>
-                <div className="text-sm mt-2">Instagram</div>
-              </div>
-              <div className="bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm">
-                <div className="w-14 h-14 rounded-full bg-black/5 flex items-center justify-center text-black">
-                  <FaTiktok className="text-2xl" />
-                </div>
-                <div className="text-sm mt-2">TikTok</div>
-              </div>
-              <div className="bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm">
-                <div className="w-14 h-14 rounded-full bg-sky-50 flex items-center justify-center text-sky-600">
-                  <FaLinkedin className="text-2xl" />
-                </div>
-                <div className="text-sm mt-2">LinkedIn</div>
-              </div>
-              <div className="bg-white border rounded-xl p-4 flex flex-col items-center justify-center shadow-sm">
-                <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                  <FaYoutube className="text-2xl" />
-                </div>
-                <div className="text-sm mt-2">YouTube</div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="w-full  mt-12">
-          <div className="flex flex-col">
-            <Image
-              src="https://images.pexels.com/photos/18569238/pexels-photo-18569238.jpeg?_gl=1*cakisu*_ga*NzU4NzQzMjk1LjE3NTU1MTc3ODk.*_ga_8JE65Q40S6*czE3NTU2MDYyMTckbzIkZzEkdDE3NTU2MDYyNjgkajkkbDAkaDA."
-              width={800}
-              height={600}
-              alt="Strony Internetowe w twojej okolicy – projektowanie i tworzenie stron www"
-              className="w-full max-w-[650px] h-auto rounded-lg"
-              priority
-            />
-            <div className="max-w-[450px] mt-12">
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-gotham mb-6">
+              Marketing dla <span className="text-blue-500">Twojej firmy</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-400 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    A
+                  </div>
+                  <span className="font-semibold text-lg">
+                    Content &amp; Community
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/marketing/marketing-cyfrowy/content-marketing"
+                  >
+                    Content marketing
+                  </Link>
+                  {", "}
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/marketing/kreacja/strategia-komunikacji"
+                  >
+                    storytelling
+                  </Link>
+                  {" i "}
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/marketing/kreacja/public-relations"
+                  >
+                    budowanie społeczności online
+                  </Link>
+                </div>
+              </div>
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-400 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    B
+                  </div>
+                  <span className="font-semibold text-lg">
+                    Social Media Tools
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
+                  Facebook Business Manager, Instagram Creator Studio, social
+                  media automation
+                </div>
+              </div>
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-400 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    C
+                  </div>
+                  <span className="font-semibold text-lg">
+                    Kampanie reklamowe
+                  </span>
+                </div>
+                <div className="text-sm text-zinc-700">
+                  Kampanie reklamowe:{" "}
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/uslugi-biznesowe/wsparcie-sprzedazy/generowanie-leadow"
+                  >
+                    lead generation
+                  </Link>
+                  {", "}
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/uslugi-biznesowe/wsparcie-sprzedazy/kwalifikacja-leadow"
+                  >
+                    conversions
+                  </Link>
+                  {", "}
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/marketing/reklama/branding"
+                  >
+                    brand awareness
+                  </Link>
+                  {", "}
+                  <Link
+                    className="text-blue-400 hover:underline font-medium"
+                    href="/oferta/dla-firm/marketing/reklama/ppc-pay-per-click"
+                  >
+                    reach
+                  </Link>
+                </div>
+              </div>
+              <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-blue-400 h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    D
+                  </div>
+                  <span className="font-semibold text-lg">Analityka</span>
+                </div>
+                <div className="text-sm text-zinc-700">
+                  Analytics: Facebook Insights, Instagram Analytics, Google
+                  Analytics 4
+                </div>
+              </div>
+            </div>
+
+            <div className="mx-auto flex flex-row items-center gap-4 mt-10 w-full flex-wrap justify-center">
+              <div className="">
+                <div className=" text-blue-600">
+                  <FaFacebook className="text-3xl" />
+                </div>
+              </div>
+              <div className="">
+                <div className=" text-pink-600">
+                  <FaInstagram className="text-3xl" />
+                </div>
+              </div>
+              <div className="">
+                <div className=" text-black">
+                  <FaTiktok className="text-3xl" />
+                </div>
+              </div>
+              <div className="">
+                <div className=" text-sky-600">
+                  <FaLinkedin className="text-3xl" />
+                </div>
+              </div>
+              <div className="">
+                <div className=" text-red-600">
+                  <FaYoutube className="text-3xl" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="h-full relative w-full">
+            <div className=" sticky top-[65px] lg:top-[94px] bg-white rounded-bl-lg rounded-tr-lg p-3 w-full max-w-[450px] mt-6">
               <OpinionsSection />
             </div>
           </div>
         </div>
       </div>
-
+      <div className="mx-auto pb-16 bg-gradient-to-b from-white via-zinc-50 to-white rounded-2xl shadow-lg px-4 sm:px-8 pt-6">
+        <div className="bg-gray-50 relative rounded-xl shadow-md px-4 sm:px-8 py-8">
+          <h2 className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-2xl sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
+            Współpracuj z Quixy Studio jako firma lub freelancer!
+          </h2>
+          <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
+          <div className="mt-6">
+            <JobBoardList talents={talents} companies={companies} />
+          </div>
+        </div>
+        <p className="text-zinc-700 text-base sm:text-lg max-w-3xl mx-auto text-center mt-14 font-gotham font-light leading-relaxed px-2">
+          W poszukiwaniu firmy lub freelancera?{" "}
+          <span className="font-semibold text-blue-600">
+            Sprawdź ofertę zaufanych partnerów Quixy Studio.
+          </span>{" "}
+          Możesz dodawać zlecenia dla freelancerów oraz dużych firm.
+        </p>
+      </div>
       <div className="mt-12">
         <RecentProjects />
       </div>

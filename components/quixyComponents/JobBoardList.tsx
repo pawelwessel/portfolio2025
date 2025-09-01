@@ -13,7 +13,7 @@ export default function JobBoardList({
   companies: any;
   content?: any;
 }) {
-  const [searchType, setSearchType] = useState("talents");
+  const [searchType, setSearchType] = useState("companies");
 
   return (
     <div className="">
@@ -26,14 +26,14 @@ export default function JobBoardList({
         </div>
       )}
       <div className="mx-auto rounded-xl">
-        <div className="flex items-center flex-wrap gap-3">
+        <div className="flex items-center justify-center w-full flex-wrap gap-3">
           <button
             onClick={() => setSearchType("talents")}
             className={`${
               searchType === "talents"
-                ? "bg-zinc-600 text-white"
+                ? "bg-blue-600 text-white"
                 : "bg-white text-black"
-            } flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-105`}
+            } w-[150px] text-center flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-105 font-gotham text-lg font-light`}
           >
             Freelancerzy
           </button>
@@ -41,9 +41,9 @@ export default function JobBoardList({
             onClick={() => setSearchType("companies")}
             className={`${
               searchType === "companies"
-                ? " bg-zinc-600 text-white"
+                ? " bg-blue-600 text-white"
                 : "bg-white text-black"
-            } flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-[1.03]`}
+            } w-[150px] text-center flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-[1.03] font-gotham text-lg font-light`}
           >
             Firmy
           </button>

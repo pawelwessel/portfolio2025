@@ -7,11 +7,21 @@ import BlogSection from "../components/landing/BlogSection";
 import OpinionsSection from "../components/landing/OpinionsSection";
 import ReachSection from "../components/landing/ReachSection";
 import { mapMarkers } from "@/lib/mapMarkers";
+import { getUsersData } from "@/lib/getUsersData";
 export default async function Page({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
+  const users = await getUsersData();
+  const talents = users.filter(
+    (user) =>
+      user.seek && user.configured && user.access && user.tags?.length > 0
+  );
+  const companies = users.filter(
+    (user) =>
+      !user.seek && user.configured && user.access && user.tags?.length > 0
+  );
   return (
     <div className="w-screen overflow-x-hidden">
       <div className="font-sans w-full bg-[#222222] pb-48 h-full">
@@ -22,7 +32,7 @@ export default async function Page({
 
         <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
           <section className={`max-w-[90vw] mx-auto h-max z-50`}>
-            <MainCard />
+            <MainCard talents={talents} companies={companies} />
             <PricingHero />
             <BlogSection />
 

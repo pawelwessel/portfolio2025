@@ -57,9 +57,16 @@ const projects = [
 export default function RecentProjects({ className = "" }) {
   return (
     <section className={`w-full py-12 ${className}`}>
+      <h3 className="text-blue-500 text-center font-gotham font-extrabold">
+        Case Studies
+      </h3>
       <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8">
-        Ostatnie projekty
+        Tworzenie stron internetowych Quixy
       </h2>
+      <p className="text-sm mb-8 text-gray-700 max-w-2xl mx-auto text-center">
+        Nie tylko łączymy firmy, oferty pracy, zlecenia i freelancerów! Poza tym
+        dodatkowo wykonujemy projekty jako Agencja Kreatywna.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto">
         {projects.map((p, i) => (
           <div

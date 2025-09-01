@@ -1,13 +1,10 @@
-import HeroStars from "@/components/hero/Hero";
+import Hero from "@/components/hero/Hero";
 import { Metadata } from "next";
 export default function Page() {
   return (
     <div className="relative w-screen overflow-x-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="fixed left-0 top-0 w-full h-screen">
-          <HeroStars />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#11131a]/70 to-[#0b0d12]" />
+      <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-green-500 via-zinc-600 to-black z-10">
+        <Hero />
       </div>
 
       <main className="relative z-10 min-h-screen w-full px-4">

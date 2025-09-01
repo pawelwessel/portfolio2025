@@ -261,17 +261,25 @@ export async function generateMetadata(props: {
     : !slug?.googleTitle
     ? `${slug?.title} - ${slug?.name} | ${slug?.city}`
     : slug?.googleTitle;
+
+  // Handle tags array possibly being empty or undefined
+  let tagsString = "";
+  if (Array.isArray(slug?.tags) && slug.tags.length > 0) {
+    tagsString = slug.tags
+      .slice(0, 8)
+      .map((tag: any) => (tag?.title ? tag.title : ""))
+      .filter(Boolean)
+      .join(" ");
+  }
+
   const description = !slug.access
     ? "Jesteś właścicelem tego konta? Skonfiguruj lub opłać wpisowe aby wyświetlać swój profil w Quixy."
     : !slug.googleDescription
-    ? `Profile z ofertami usług - ${slug?.title} - ${slug.name} | ${
-        slug?.tags[0]?.title || ""
-      } ${slug?.tags[1]?.title || ""} ${slug?.tags[2]?.title || ""} ${
-        slug?.tags[3]?.title || ""
-      } ${slug?.tags[4]?.title || ""} ${slug?.tags[5]?.title || ""} ${
-        slug?.tags[6]?.title || ""
-      } ${slug?.tags[7]?.title || ""}`
+    ? `Profile z ofertami usług - ${slug?.title} - ${slug.name}${
+        tagsString ? " | " + tagsString : ""
+      }`
     : slug.googleDescription;
+
   return {
     title,
     description,

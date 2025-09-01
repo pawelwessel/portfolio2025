@@ -126,52 +126,43 @@ const stats = [
 
 export default function OpinionsSection() {
   return (
-    <div>
-      <div className="block w-full">
-        <Image
-          className="mb-20 w-24 h-auto"
-          src="/google.webp"
-          height={244}
-          width={244}
-          alt="Google Review Badge"
-        />
-        <Swiper
-          modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={16}
-          slidesPerView={1}
-          loop
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          pagination={{ clickable: true }}
-          navigation={false}
-          className=""
-        >
-          {opinions.map((op, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="p-5 duration-300 h-full flex flex-col justify-between">
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`w-12 h-12 aspect-square ${op.color} rounded-full flex items-center justify-center text-white font-bold text-lg`}
-                  >
-                    {op.initial}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 text-lg">
-                      {op.name}
-                    </h4>
-                    <p className="text-sm text-gray-500">{op.role}</p>
-                  </div>
+    <div className="mt-20 h-max block w-full">
+      <Swiper
+        modules={[Autoplay, Pagination, Navigation]}
+        spaceBetween={16}
+        slidesPerView={1}
+        loop
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        pagination={{ clickable: true }}
+        navigation={false}
+        className=""
+      >
+        {opinions.map((op, idx) => (
+          <SwiperSlide key={idx}>
+            <div className="p-5 duration-300 h-max flex flex-col justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-12 h-12 aspect-square ${op.color} rounded-full flex items-center justify-center text-white font-bold text-lg`}
+                >
+                  {op.initial}
                 </div>
-                <p className="text-gray-700 leading-relaxed flex-1 text-sm mt-2">
-                  {op.text}
-                </p>
+                <div>
+                  <h4 className="font-bold text-gray-800 text-lg">{op.name}</h4>
+                  <p className="text-sm text-gray-500 font-gotham font-light">
+                    {op.role}
+                  </p>
+                </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+              <p className="text-gray-700 leading-relaxed flex-1 text-sm mt-2">
+                {op.text}
+              </p>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
