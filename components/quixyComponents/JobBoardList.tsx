@@ -16,7 +16,7 @@ export default function JobBoardList({
   const [searchType, setSearchType] = useState("companies");
 
   return (
-    <div className="">
+    <div className="mt-8">
       {content && (
         <div>
           <h2 className="text-white font-extrabold text-xl lg:text-3xl">
@@ -26,14 +26,14 @@ export default function JobBoardList({
         </div>
       )}
       <div className="mx-auto rounded-xl">
-        <div className="flex items-center justify-center w-full flex-wrap gap-3">
+        <div className="grid grid-cols-2 sm:flex items-center justify-center w-full flex-wrap gap-3">
           <button
             onClick={() => setSearchType("talents")}
             className={`${
               searchType === "talents"
                 ? "bg-blue-600 text-white"
                 : "bg-white text-black"
-            } w-[150px] text-center flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-105 font-gotham text-lg font-light`}
+            } sm:w-[150px] text-sm sm:text-base text-center flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-105 font-gotham font-light`}
           >
             Freelancerzy
           </button>
@@ -43,12 +43,12 @@ export default function JobBoardList({
               searchType === "companies"
                 ? " bg-blue-600 text-white"
                 : "bg-white text-black"
-            } w-[150px] text-center flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-[1.03] font-gotham text-lg font-light`}
+            } sm:w-[150px] text-sm sm:text-base text-center flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-gray-300 duration-200 hover:scale-[1.03] font-gotham font-light`}
           >
             Firmy
           </button>
         </div>
-        <div className={`rounded-lg block ${content ? "mt-6" : "mt-3"}`}>
+        <div className={`block ${content ? "mt-6" : "mt-3"}`}>
           <div className={`${searchType === "talents" ? "" : "hidden"}`}>
             <DisplayTalentsOrInviter data={talents} />
           </div>

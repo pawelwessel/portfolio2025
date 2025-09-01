@@ -7,7 +7,11 @@ import { toast } from "react-toastify";
 import { FaEnvelope } from "react-icons/fa6";
 import { randId } from "@/common/utils/getRandomId";
 
-export default function Contact() {
+export default function Contact({
+  isLandingPage,
+}: {
+  isLandingPage?: boolean;
+}) {
   const [data, setData] = useState({
     email: "",
     name: "",
@@ -16,40 +20,59 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-bgStart to-bgEnd pt-[65px] lg:pt-[94px]">
+    <div
+      className={`flex flex-col  ${
+        !isLandingPage &&
+        "pt-[65px] lg:pt-[94px] min-h-screen bg-gradient-to-br from-bgStart to-bgEnd"
+      }`}
+    >
       <div className="flex-grow">
         {/* Breadcrumbs and Title */}
-        <div className="w-full bg-white/80 shadow-sm border-b border-zinc-200">
-          <div className="container mx-auto px-4 py-6">
-            <nav className="flex items-center text-sm breadcrumbs !text-zinc-700">
-              <ul className="flex items-center flex-wrap gap-2">
-                <li>
-                  <Link
-                    href="/"
-                    title="Strony Internetowe Grudziądz"
-                    className="hover:underline font-semibold"
-                  >
-                    Strona główna
-                  </Link>
-                </li>
-                <li>
-                  <span className="mx-2 text-zinc-400">/</span>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    title="kontakt"
-                    className="hover:underline font-semibold"
-                  >
-                    Kontakt
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-            <h1 className="mt-4 text-3xl md:text-4xl font-extrabold text-zinc-800 tracking-tight">
+        <div
+          className={`w-full ${
+            !isLandingPage && "bg-white shadow-sm border-b border-zinc-200"
+          } `}
+        >
+          <div className={`${!isLandingPage && "container"} mx-auto px-4 py-6`}>
+            {!isLandingPage && (
+              <nav className="flex items-center text-sm breadcrumbs !text-zinc-700">
+                <ul className="flex items-center flex-wrap gap-2">
+                  <li>
+                    <Link
+                      href="/"
+                      title="Strony Internetowe Grudziądz"
+                      className="hover:underline font-semibold"
+                    >
+                      Strona główna
+                    </Link>
+                  </li>
+                  <li>
+                    <span className="mx-2 text-zinc-400">/</span>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      title="kontakt"
+                      className="hover:underline font-semibold"
+                    >
+                      Kontakt
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            )}
+            <h2
+              className={`mt-4 text-3xl md:text-4xl font-extrabold tracking-tight ${
+                isLandingPage ? "text-white" : "text-zinc-800"
+              }`}
+            >
               Skontaktuj się z nami!
-            </h1>
-            <p className="mt-2 text-zinc-600 max-w-2xl">
+            </h2>
+            <p
+              className={`mt-2 max-w-2xl ${
+                isLandingPage ? "text-white" : "text-zinc-600"
+              }`}
+            >
               Masz pytania lub chcesz omówić swój projekt? Wypełnij formularz
               lub skorzystaj z danych kontaktowych poniżej.
             </p>
@@ -57,15 +80,15 @@ export default function Contact() {
         </div>
 
         {/* Main Content */}
-        <div className="container mx-auto py-12">
+        <div className={`${!isLandingPage && "py-12 container"} mx-auto`}>
           <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 items-center lg:items-start justify-center">
             {/* Contact Info */}
-            <div className="w-full flex flex-col items-center lg:items-start bg-white/90 rounded-2xl shadow-lg p-8 border border-zinc-100">
-              <h2 className="text-2xl font-bold text-zinc-800 mb-4 flex items-center gap-2">
+            <div className="w-full flex flex-col items-center lg:items-start bg-white rounded-2xl shadow-lg p-8 border border-zinc-100">
+              <h3 className="text-2xl font-bold text-zinc-800 mb-4 flex items-center gap-2">
                 <span className="inline-block bg-gradient-to-r from-primaryStart to-primaryEnd text-white px-3 py-1 rounded-lg">
                   Informacje kontaktowe
                 </span>
-              </h2>
+              </h3>
               <p className="text-zinc-700 mb-4 text-center lg:text-left">
                 Możesz również skontaktować się z nami bezpośrednio:
               </p>
@@ -95,7 +118,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="w-full lg:w-1/2 max-w-xl bg-white/90 rounded-2xl shadow-lg border border-zinc-100 p-8">
+            <div className="w-full lg:w-1/2 max-w-xl bg-white rounded-2xl shadow-lg border border-zinc-100 p-8">
               <h2 className="flex items-center gap-2 text-2xl font-bold text-primaryStart mb-4">
                 <FaEnvelope className="text-primaryEnd" /> Wypełnij formularz
               </h2>

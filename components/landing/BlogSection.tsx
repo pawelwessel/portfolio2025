@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDocuments } from "@/common/firebase";
 import { Post } from "@/types";
+import { FaEye } from "react-icons/fa";
 
 export default function BlogSection() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -30,10 +31,6 @@ export default function BlogSection() {
 
   return (
     <section className="relative w-full py-24 overflow-hidden px-4">
-      <div className="absolute inset-0 -z-10">
-        <div className="rounded-b-xl left-0 absolute top-0 w-full h-full bg-gradient-to-b from-transparent via-[#11131a]/70 to-[#0b0d12]" />
-      </div>
-
       <div className="relative z-10 w-full px-3 max-w-7xl mx-auto">
         <div className="mb-12 text-center relative">
           {/* Floating accent elements */}
@@ -47,7 +44,6 @@ export default function BlogSection() {
           <p className="text-gray-200 mt-3 text-base lg:text-lg max-w-2xl mx-auto">
             Artykuły o stronach, projektowaniu i inspiracjach
           </p>
-
           {/* Subtle gradient line */}
           <div className="w-24 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mx-auto mt-4 rounded-full opacity-60" />
         </div>
@@ -128,7 +124,8 @@ export default function BlogSection() {
                           </span>
                         )}
                       {typeof post.viewerCount === "number" && (
-                        <span className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                        <span className="flex flex-row items-center bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/30 text-gray-300 px-2.5 py-1 rounded-full">
+                          <FaEye />
                           {post.viewerCount}
                         </span>
                       )}
@@ -137,19 +134,6 @@ export default function BlogSection() {
                     <h3 className="text-white font-semibold text-lg leading-tight line-clamp-2 group-hover:text-[#B4FC2D] transition-colors duration-300 font-gotham">
                       {post.title}
                     </h3>
-
-                    {post.tags && post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {post.tags.slice(0, 3).map((tag, idx) => (
-                          <span
-                            key={idx}
-                            className="text-xs bg-gradient-to-r from-[#1a1f2e] to-[#22263a] text-gray-300 px-2.5 py-1 rounded-full border border-[#2a2f3d]/30 backdrop-blur-sm"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
 
                     <div className="mt-5">
                       <Link

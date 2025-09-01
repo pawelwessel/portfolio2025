@@ -1,0 +1,274 @@
+{
+  "HomePage": {
+    "h2Text": "Programuję w języku JavaScript i interesuję się grafiką 3D.",
+    "projectShowcase": "Portfolio projektów",
+    "hi": "Cześć, tu wesiudev",
+    "dev": "Kreatywny Developer",
+    "projects": [
+      {
+        "name": "Quixy.pl",
+        "shortDescription": "Platforma internetowa z ofertami pracy zdalnej, która połączy klientów z talentami, czyli osobami, które zrealizują wizję klienta.",
+        "images": [
+          "/images/projects/quixy/hero.png",
+          "/images/projects/quixy/why-us.png",
+          "/images/projects/quixy/footer.png",
+          "/images/projects/quixy/register.png",
+          "/images/projects/quixy/dashboard.png",
+          "/images/projects/quixy/quixies.png",
+          "/images/projects/quixy/image-generator.png"
+        ],
+        "link": "https://www.quixy.pl/",
+        "type": "Aplikacja Full-stack",
+        "technologies": [
+          "React",
+          "Next",
+          "Tailwind",
+          "Firebase",
+          "PWA",
+          "ThreeJS",
+          "Stripe",
+          "openai",
+          "redux",
+          "Mikropłatności"
+        ],
+        "colors": ["#126b91", "#14A800", "#27272A"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["light", "light italic", "regular", "bold"]
+          },
+          {
+            "fontName": "Gotham",
+            "variants": ["light", "regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/quixy"
+      },
+      {
+        "name": "Hexon.work",
+        "shortDescription": "Zaawansowany system CRM dla branży energetycznej. Zawiera system reflinków, generowanie i zarządzanie leadami, analitykę, wykresy, asystenta AI i wiele więcej. W trakcie kampanii Google Ads, aplikacja bezproblemowo obsłużyła ponad 10 000 użytkowników.",
+        "images": [
+          "/images/projects/hexon/hero.png",
+          "/images/projects/hexon/underhero.png",
+          "/images/projects/hexon/opinions-map.png",
+          "/images/projects/hexon/dofinansowanie.png",
+          "/images/projects/hexon/prad.png",
+          "/images/projects/hexon/aiassistant.png"
+        ],
+        "link": "https://www.hexon.work/",
+        "type": "Aplikacja Full-stack",
+        "technologies": [
+          "React",
+          "Next",
+          "Tailwind",
+          "CSS",
+          "Firebase",
+          "PWA",
+          "ThreeJS",
+          "openai",
+          "CRM",
+          "Chart.js",
+          "Redux",
+          "moment.js"
+        ],
+        "colors": ["#AFFC31", "#06B6D4", "#27272A"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["light", "light italic", "regular", "bold"]
+          },
+          {
+            "fontName": "Gotham",
+            "variants": ["light", "regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/quixy"
+      },
+      {
+        "name": "Blackbellart.com",
+        "shortDescription": "Aplikacja internetowa dla artysty. Sklep z obrazami, oferta usług tatuatorskich.",
+        "images": [
+          "/images/projects/blackbellart/hero.webp",
+          "/images/projects/blackbellart/shop.webp",
+          "/images/projects/blackbellart/shopItem.webp",
+          "/images/projects/blackbellart/tattooBlog.webp",
+          "/images/projects/blackbellart/tattoos.webp",
+          "/images/projects/blackbellart/contact.webp"
+        ],
+        "link": "https://www.blackbellart.com/",
+        "type": "Sklep Online",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next",
+          "Redux",
+          "Stripe",
+          "Firebase",
+          "Tailwind",
+          "ThreeJS",
+          "PWA"
+        ],
+        "colors": ["#252326", "#8F26F3", "#22C55E"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["regular", "bold", "light", "italic"]
+          },
+          {
+            "fontName": "Gilroy",
+            "variants": ["regular"]
+          },
+          {
+            "fontName": "GraublauWeb",
+            "variants": ["regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/art-tattoo"
+      },
+      {
+        "name": "Zaklejki.pl",
+        "shortDescription": "Sklep internetowy z kolekcją ponad 2000 ręcznie wycinanych naklejkami.",
+        "images": [
+          "/images/projects/zaklejki/hero.webp",
+          "/images/projects/zaklejki/lottery.webp",
+          "/images/projects/zaklejki/shop.webp",
+          "/images/projects/zaklejki/product.webp"
+        ],
+        "link": "https://www.zaklejki.pl/",
+        "type": "Sklep Online",
+        "technologies": ["React", "Next", "Firebase", "Python", "Web Scraping"],
+        "colors": ["#F389EC", "#FFFFFF", "#4338CA"],
+        "fonts": [
+          {
+            "fontName": "Inter",
+            "variants": ["regular", "bold"]
+          },
+          {
+            "fontName": "Druk-wide",
+            "variants": ["bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/zaklejki"
+      },
+      {
+        "name": "Manicuregrudziadz.pl",
+        "shortDescription": "Strona dedykowana usługom manicure, gdzie mozna zarezerwować terminy, i otrzymać rabaty za zapraszanie znajomych. ",
+        "images": [
+          "/images/projects/manicuregrudziadz/hero.webp",
+          "/images/projects/manicuregrudziadz/dashboard.webp",
+          "/images/projects/manicuregrudziadz/rezerwacje.webp"
+        ],
+        "link": "https://www.manicuregrudziadz.pl/",
+        "type": "Front-end z prostą bazą danych",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next",
+          "Redux",
+          "Firebase",
+          "Tailwind"
+        ],
+        "colors": ["#3F3F46", "#FACC15", "#4F46E5"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["light", "light italic", "regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/manicuregrudziadz"
+      },
+
+      {
+        "name": "Fryzurykaminska.pl",
+        "shortDescription": "Strona wizytówka z ofertą usług fryzjerskich, kontaktem i portfolio.",
+        "images": [
+          "/images/projects/fryzurykaminska/hero.webp",
+          "/images/projects/fryzurykaminska/offer.webp"
+        ],
+        "link": "https://www.fryzurykaminska.pl/",
+        "type": "Front-end z prostą bazą danych",
+        "technologies": ["React", "Next", "Tailwind"],
+        "colors": ["#22C55E", "#F3F4F6", "#93C5FD"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/fryzury-kaminska"
+      },
+      {
+        "name": "Radcadeluga.pl",
+        "shortDescription": "Strona wizytówka dla kancelarii. Lista usług, kontakt.",
+        "images": [
+          "/images/projects/kancelariadeluga/hero.webp",
+          "/images/projects/kancelariadeluga/offer.webp"
+        ],
+        "link": "https://www.delugakancelaria.pl/",
+        "type": "Front-end z prostą bazą danych",
+        "technologies": ["React", "Next", "Firebase"],
+        "colors": ["#685A50", "#4ADE80", "#D8B4FE"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/kancelaria-artur-deluga"
+      }
+    ],
+    "colors": "Kolory",
+    "stack": "Technologie",
+    "fonts": "Czcionki",
+    "source": "Kod źródłowy",
+    "visit": "Odwiedź stronę",
+    "about": "O mnie",
+    "timeline": [
+      {
+        "year": 2015,
+        "title": "Szkoła",
+        "description": "Zacząłem uczyć się informatyki w Technikum Informatycznym."
+      },
+      {
+        "year": 2017,
+        "title": "Pierwsza strona WWW",
+        "description": "W 2017 roku utworzyłem swoją pierwszą prostą stronę opartą o HTML, CSS i JavaScript."
+      },
+      {
+        "year": 2020,
+        "title": "Przygoda PHP",
+        "description": "Po ukonczeniu szkoły, zacząłem uczyć się o PHP i utworzyłem swój pierwszy projekt."
+      },
+      {
+        "year": 2021,
+        "title": "Nauka Reacta",
+        "description": "Chciałem rozwijać się w kierunku programowania i natknąłem się na bibliotekę React."
+      },
+      {
+        "year": 2022,
+        "title": "Mentor",
+        "description": "Poznałem mentora, który pomógł mi w rozwoju swoich umiejętności."
+      },
+      {
+        "year": 2023,
+        "title": "Tworzenie projektów",
+        "description": "Po ukonczeniu kursów, stworzyłem kilka projektów, które znajdują się w moim portfolio."
+      }
+    ],
+
+    "motivation": "Motywacja do kodowania",
+    "logic": "Logika",
+    "logicDesc": "Lubię pracować nad logiką aplikacji i procesem optymalizacji. Projektowanie i implementacja nowych funkcji jest dla mnie ekscytująca.",
+    "learning": "Nauka",
+    "learningDesc": "Moja pasja do programowania napędza mnie do ciągłego rozwoju, i na bieżąco szukam okazji do dalszego doskonalenia moich umiejętności.",
+    "visualization": "Wizualizacja",
+    "visualizationDesc": "Odczuwam ogromną satysfakcję z pracy z danymi, które mogę wizualizować, a przepływ informacji jest dla mnie czymś fascynującym.",
+    "story": "Moja historia",
+    "storyDesc": "Kiedyś patrzyłem na gry lub aplikacje internetowe i często zastanawiałem się: 'Jak to jest zrobione? Czy to trudne do osiągnięcia?' Zawsze chciałem znaleźć odpowiedzi na te pytania. Pracując w magazynie, pragnąłem rozwoju, więc po pracy uruchamiałem swoje środowisko developerskie i majstrowałem przy kodzie, eksplorując nowe technologie i rozwiązania.",
+    "plans": "Plany na przyszłość",
+    "plan1": "Nauka wykorzystywania różnych języków programowania i pozostanie na bieżąco z technologiami, których używam.",
+    "plan2": "Programowania gier w wolnym czasie.",
+    "plan3": "Rozwijanie zainteresowań poza programowaniem, takich jak rysowanie lub komunikacja w języku niderlandzkim.",
+    "resume": "Moje CV"
+  }
+}

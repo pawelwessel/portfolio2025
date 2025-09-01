@@ -33,7 +33,7 @@ export default function ProductsWide({
       onMouseLeave={() => {
         width >= 1024 && handleMouseLeave();
       }}
-      className={`z-[9999] fixed w-full max-h-[80vh] overflow-y-scroll top-0 left-0 bg-white shadow-black ${
+      className={`z-[9999] pb-12 fixed w-full max-h-[80vh] overflow-y-scroll top-0 left-0 bg-white shadow-black ${
         hovered === "cat"
           ? "translate-y-[116px] lg:translate-y-[84px]"
           : "-translate-y-[100vh] opacity-0"
@@ -41,13 +41,33 @@ export default function ProductsWide({
     >
       <div className="relative mt-12">
         <div className="sticky top-0 left-0 flex flex-col z-[500] px-12">
+          <div className="my-4 relative flex flex-col">
+            <div className="flex items-center flex-wrap gap-4">
+              <Link
+                title="Strony Internetowe WWW z Cennikiem Grudziądz Tiktok"
+                target="_blank"
+                href="https://www.tiktok.com/@strony_www_grudziadz"
+                className="flex items-center"
+              >
+                <FaTiktok className="text-2xl text-black" />
+              </Link>
+              <Link
+                title="Strony Internetowe WWW z Cennikiem Grudziądz Facebook"
+                href="https://www.facebook.com/profile.php?id=61579945978455"
+                target="_blank"
+                className="flex items-center"
+              >
+                <FaFacebook className="text-2xl text-black" />
+              </Link>
+            </div>
+          </div>
           <div className="gap-4 grid grid-cols-3">
             {jobs.map((job: any, i: any) => (
               <div className={` flex flex-col font-extrabold`} key={i}>
                 <Link
                   href={`/oferta/dla-firm/${polishToEnglish(job.title)}`}
                   title={`Oferta ${job.title}`}
-                  className={`border-2 border-white text-center rounded-lg flex flex-col bg-gradient-to-b from-zinc-700 to-zinc-800 hover:scale-105 duration-100`}
+                  className={`w-max max-w-full border-2 border-white text-center rounded-lg flex flex-col bg-gradient-to-b from-zinc-700 to-zinc-800 hover:scale-105 duration-100`}
                   key={i}
                   onClick={resetHeader}
                 >
@@ -85,7 +105,7 @@ export default function ProductsWide({
                               title={`Oferta ${job.title}/${item.title}/${subcategory.title}`}
                               key={i}
                               style={{ boxShadow: "inset 0px 0px 3px black" }}
-                              className={`hover:underline bg-gradient-to-r from-zinc-700 to-zinc-800 font-normal p-2 text-white w-[210px] xl:min-w-[210px] max-w-[420px] ${
+                              className={`hover:underline bg-white font-normal p-2 text-black w-[210px] xl:min-w-[210px] max-w-[420px] ${
                                 item.data.length % 2 !== 0 &&
                                 i + 1 === item.data.length &&
                                 ""
@@ -107,26 +127,6 @@ export default function ProductsWide({
               </div>
             ))}
           </div>
-        </div>
-      </div>
-      <div className="py-12 mt-12 relative flex flex-col px-12 bg-gradient-to-r from-zinc-700 to-zinc-800">
-        <div className="flex items-center flex-wrap gap-4">
-          <Link
-            title="Strony Internetowe WWW z Cennikiem Grudziądz Tiktok"
-            target="_blank"
-            href="https://www.tiktok.com/@strony_www_grudziadz"
-            className="flex items-center"
-          >
-            <FaTiktok className="text-2xl text-white" />
-          </Link>
-          <Link
-            title="Strony Internetowe WWW z Cennikiem Grudziądz Facebook"
-            href="https://www.facebook.com/profile.php?id=61579945978455"
-            target="_blank"
-            className="flex items-center"
-          >
-            <FaFacebook className="text-2xl text-white" />
-          </Link>
         </div>
       </div>
     </div>

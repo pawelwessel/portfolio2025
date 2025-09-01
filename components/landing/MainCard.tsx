@@ -7,12 +7,10 @@ import {
   FaLinkedin,
   FaYoutube,
 } from "react-icons/fa";
-import RecentProjects from "../RecentProjects";
-import VideoPlayer from "../VideoPlayer";
+
 import OpinionsSection from "./OpinionsSection";
 import Link from "next/link";
 import JobBoardList from "../quixyComponents/JobBoardList";
-import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function MainCard({
   talents,
@@ -361,9 +359,9 @@ export default function MainCard({
           </div>
         </div>
       </div>
-      <div className="mx-auto pb-16 bg-gradient-to-b from-white via-zinc-50 to-white rounded-2xl shadow-lg px-4 sm:px-8 pt-6">
-        <div className="bg-gray-50 relative rounded-xl shadow-md px-4 sm:px-8 py-8">
-          <h2 className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-2xl sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
+      <div className="mx-auto pb-16 bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl px-4 sm:px-8 pt-6">
+        <div className="relative sm:px-8">
+          <h2 className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
             Współpracuj z Quixy Studio jako firma lub freelancer!
           </h2>
           <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
@@ -376,61 +374,8 @@ export default function MainCard({
           <span className="font-semibold text-blue-600">
             Sprawdź ofertę zaufanych partnerów Quixy Studio.
           </span>{" "}
-          Możesz dodawać zlecenia dla freelancerów oraz dużych firm.
+          Możesz dodawać zlecenia dla freelancerów lub zlecenia dla firm.
         </p>
-      </div>
-      <div className="mt-12">
-        <RecentProjects />
-      </div>
-
-      <div className="w-full">
-        <div className="bg-gradient-to-br from-white to-zinc-50 border rounded-2xl p-6 lg:p-10 shadow-sm">
-          <div className="flex flex-col lg:flex-row gap-8">
-            <div className="flex-1">
-              <h2 className="text-3xl lg:text-4xl font-bold">
-                Ekskluzywna kampania w Google Ads
-              </h2>
-              <p className="text-base font-light mt-4">
-                Kompleksowa realizacja kampanii: audyt, dobór słów kluczowych,
-                kreacje, landing page, konfiguracja GA4 i GTM, śledzenie
-                konwersji, cotygodniowa optymalizacja oraz przejrzyste
-                raportowanie wyników. Pakiet zawiera również ofertę z zakresu
-                SEO - nie, nie generujemy treści przy użyciu AI Botów.
-              </p>
-              <ul className="mt-6 space-y-2 text-sm">
-                <li className="flex items-center">
-                  <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                  Audyt i strategia kampanii pod cele biznesowe
-                </li>
-                <li className="flex items-center">
-                  <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                  Landing page nastawiony na konwersję
-                </li>
-                <li className="flex items-center">
-                  <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                  GA4, Google Tag Manager, śledzenie konwersji
-                </li>
-                <li className="flex items-center">
-                  <div className="bg-blue-500 min-h-2 min-w-2 rounded-full mr-2"></div>
-                  Optymalizacja stawek i jakości, A/B testy
-                </li>
-              </ul>
-              <div className="mt-6">
-                <Cta label="Zamów kampanię Google Ads" />
-              </div>
-            </div>
-            <div className="flex justify-end h-max">
-              <Image
-                src="/google.webp"
-                alt="Google Ads"
-                width={600}
-                height={400}
-                className="w-full max-w-[179px]"
-                priority
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

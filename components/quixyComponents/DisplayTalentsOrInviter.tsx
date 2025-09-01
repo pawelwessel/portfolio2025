@@ -17,7 +17,7 @@ export default function DisplayTalentsOrInviter({ data }: { data: any }) {
   return (
     <>
       <div
-        className={`w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4`}
+        className={`w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-6`}
       >
         {/* Wyświetlenie dostępnych talentów */}
         {data.map((talent: any, i: number) => (
@@ -48,7 +48,9 @@ export default function DisplayTalentsOrInviter({ data }: { data: any }) {
 
               {/* Informacje o talencie */}
               <div className="px-2 sm:px-4 flex flex-col">
-                <h2 className="font-extrabold text-black">{talent?.name}</h2>
+                <h2 className="font-extrabold text-base text-black">
+                  {talent?.name}
+                </h2>
                 <h3 className="text-xs sm:text-sm xl:text-base mt-0.5">
                   <span
                     style={{ lineHeight: 1.8 }}
@@ -63,19 +65,19 @@ export default function DisplayTalentsOrInviter({ data }: { data: any }) {
             <div className="w-full flex items-center gap-2 flex-wrap">
               <div className="flex flex-row items-center mt-2">
                 <FaMapMarker className="mr-0.5 text-sm" />
-                <h3 className="text-xs text-black font-gotham font-light">
+                <h3 className="text-xs lg:text-base text-black font-gotham font-light">
                   {talent?.city}
                 </h3>
               </div>
               <div className="col-span-2 mt-2">
-                <h3 className="flex flex-row items-center text-xs xl:text-base">
+                <h3 className="flex flex-row items-center text-xs lg:text-base">
                   <FaDollarSign className="mr-0.5 text-sm" />
                   <span
                     style={{ lineHeight: 1.8 }}
                     className="font-gotham font-light text-black rounded-md w-max max-w-full"
                   >
                     {talent?.hourRate
-                      ? `${talent.hourRate} PLN / godzina`
+                      ? `${talent.hourRate} PLN/h`
                       : "Zapytaj o wycenę"}
                   </span>
                 </h3>

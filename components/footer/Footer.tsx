@@ -59,8 +59,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-6 font-sans font-light">
-              Tworzymy skuteczne strony WWW, marketing w social media i kampanie
-              Google Ads.
+              Tworzymy skuteczne rozwiązania dla firm oraz freelancerów.
             </p>
 
             {/* Contact Info */}

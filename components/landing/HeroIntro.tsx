@@ -34,18 +34,18 @@ export default function HeroIntro() {
             />
             <div className="font-light mt-6 text-base lg:text-lg xl:text-xl text-gray-50 text-center lg:text-left z-30 w-full flex justify-center">
               <span className="text-white drop-shadow-md shadow-black italic sm:max-w-[30rem] lg:max-w-[50rem] max-w-[40rem]">
-                Tworzymy skuteczne strony WWW, marketing w social media i
-                kampanie Google Ads.
+                Zlecenia dla firm i freelancerów, oferty pracy oraz zdalne
+                projekty IT w jednym miejscu.
               </span>
             </div>
             <div className="gap-6 flex flex-col-reverse xl:flex-row z-30 w-full justify-center lg:justify-start items-center lg:items-start sm:w-max mt-6 mx-auto lg:mx-0">
-              <Cta label="Skontaktuj się" />
-              {/* <Link
-                href="/oferta"
+              <Cta label="Dodaj zlecenie" />
+              <Link
+                href="/register"
                 className="py-3 px-5 text-sm lg:text-base mt-4 hover:scale-110 duration-200 in-out text-white rounded-lg cursor-pointer bg-blue-500 w-max max-w-full"
               >
-                Dla branży IT
-              </Link> */}
+                Firma/Freelancer
+              </Link>
             </div>
           </h1>
           <div className="flex items-center justify-center flex-col w-full lg:pl-12 mt-20 lg:mt-0">
