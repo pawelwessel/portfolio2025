@@ -64,9 +64,9 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <h4 className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
+              <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
                 Kontakt
-              </h4>
+              </span>
               <div className="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
                   <span className="font-bold">Email:</span>{" "}
@@ -92,9 +92,9 @@ export default function Footer() {
 
           {/* Cities We Serve */}
           <div>
-            <h4 className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
+            <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
               Miasta, które obsługujemy
-            </h4>
+            </span>
             <div className="grid grid-cols-2 gap-1 text-sm">
               {polishCities.slice(0, 20).map((city) => (
                 <Link
@@ -115,9 +115,9 @@ export default function Footer() {
 
           {/* Blog Posts */}
           <div>
-            <h4 className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
+            <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
               Oferta
-            </h4>
+            </span>
             {loading ? (
               <div className="space-y-2">
                 {[...Array(6)].map((_, i) => (
@@ -150,9 +150,9 @@ export default function Footer() {
 
           {/* Legal & Additional Links */}
           <div>
-            <h4 className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
+            <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
               Informacje
-            </h4>
+            </span>
             <div className="space-y-2 text-sm font-sans">
               <Link
                 href="/regulamin"

@@ -61,13 +61,13 @@ export default function Contact({
                 </ul>
               </nav>
             )}
-            <h2
+            <span
               className={`mt-4 text-3xl md:text-4xl font-extrabold tracking-tight ${
                 isLandingPage ? "text-white" : "text-zinc-800"
               }`}
             >
               Skontaktuj się z nami!
-            </h2>
+            </span>
             <p
               className={`mt-2 max-w-2xl ${
                 isLandingPage ? "text-white" : "text-zinc-600"
@@ -119,9 +119,9 @@ export default function Contact({
 
             {/* Contact Form */}
             <div className="w-full lg:w-1/2 max-w-xl bg-white rounded-2xl shadow-lg border border-zinc-100 p-8">
-              <h2 className="flex items-center gap-2 text-2xl font-bold text-primaryStart mb-4">
+              <span className="flex items-center gap-2 text-2xl font-bold text-primaryStart mb-4">
                 <FaEnvelope className="text-primaryEnd" /> Wypełnij formularz
-              </h2>
+              </span>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();

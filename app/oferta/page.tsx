@@ -37,9 +37,9 @@ export default async function Page() {
             KAŻDEGO. Z QUIXY OGRANICZENIA NIE ISTNIEJĄ.
           </p>
         </div>
-        <h2 className="text-xl font-coco italic text-white mt-12">
+        <span className="text-xl font-coco italic text-white mt-12">
           Paweł Wessel
-        </h2>
+        </span>
       </div>
     </div>
   );

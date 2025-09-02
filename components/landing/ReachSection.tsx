@@ -39,9 +39,9 @@ export default function ReachSection({ markers }: ReachSectionProps) {
     <div className="mb-12">
       <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 rounded-2xl p-8 shadow-lg">
         <div className="text-center mb-12">
-          <h2 className="mt-12 mb-6 italic text-3xl lg:text-4xl font-bold text-zinc-800 drop-shadow-md shadow-black">
+          <span className="mt-12 mb-6 italic text-3xl lg:text-4xl font-bold text-zinc-800 drop-shadow-md shadow-black">
             Zasięg Działania
-          </h2>
+          </span>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
             Realizujemy strony internetowe, platformy webowe oraz kampanie
             marketingowe (Google Ads, social media) dla klientów w całej Polsce.

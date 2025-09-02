@@ -49,17 +49,17 @@ export default function ProductsWide({
                 key={i}
                 onClick={() => setHovered(false)}
               >
-                <h2>{job.title}</h2>
+                <span>{job.title}</span>
               </Link>
               <div className="flex flex-col mt-3">
                 {job.data.map((item: any, i: any) => (
                   <div key={i} className="relative group">
-                    <h2
+                    <span
                       title={`Quixy Studio Grudziądz ${item.title}`}
                       className="p-0.5 font-light group-hover:text-white group-hover:bg-[#126b91] w-max text-gray-800 text-sm"
                     >
                       {item.title}
-                    </h2>
+                    </span>
 
                     {/* Hover dropdown */}
                     <div className="flex flex-col absolute max-w-[300px] left-0 top-0 group-hover:z-10 z-[-10] opacity-0 group-hover:opacity-100 transition-opacity duration-75">

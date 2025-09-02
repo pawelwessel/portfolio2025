@@ -150,7 +150,9 @@ export default function OpinionsSection() {
                   {op.initial}
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-800 text-lg">{op.name}</h4>
+                  <span className="font-bold text-gray-800 text-lg">
+                    {op.name}
+                  </span>
                   <p className="text-sm text-gray-500 font-gotham font-light">
                     {op.role}
                   </p>

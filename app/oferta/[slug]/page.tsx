@@ -268,20 +268,6 @@ function PageContent({
         />
       )}
 
-      <div className="z-[15] absolute w-[130px] sm:w-[300px] h-[50px] left-0 top-20 lg:top-36 overflow-hidden rounded-r-xl">
-        <div className="w-full flex items-start relative">
-          <div className="w-max absolute left-[300px] top-0">
-            <Image
-              src="/loga.png"
-              width={3600}
-              height={200}
-              alt="Quixy Studio - Tworzenie stron internetowych"
-              className="w-auto h-[50px] move-from-right-to-left"
-              priority
-            />
-          </div>
-        </div>
-      </div>
       <div className="relative w-screen overflow-x-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="z-50 fixed left-0 top-0 w-full h-screen">

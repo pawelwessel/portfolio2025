@@ -20,9 +20,9 @@ const FAQ: React.FC<FAQProps> = ({ faqItems }) => {
 
   return (
     <div className="">
-      <h2 className="font-extrabold z-50 pb-3 text-2xl text-black w-full">
+      <span className="font-extrabold z-50 pb-3 text-2xl text-black w-full">
         Masz jakieś pytania?
-      </h2>
+      </span>
       <ul className="-mt-[2px] cursor-default select-none lg:hover:bg-gradient-to-r lg:hover:from-primaryStart/20 lg:hover:to-primaryEnd/20 bg-gradient-to-r text-lg text-black">
         {faqItems.slice(0, visibleItems).map((faq, index) => (
           <li
@@ -31,7 +31,7 @@ const FAQ: React.FC<FAQProps> = ({ faqItems }) => {
               index + 1 !== visibleItems && "border-primaryStart/50 border-b-2"
             }`}
           >
-            <h4 className="font-extrabold">{faq.question}</h4>
+            <span className="font-extrabold">{faq.question}</span>
             <p className="text-base">{faq.answer}</p>
           </li>
         ))}

@@ -103,9 +103,9 @@ export default async function Page(props: { params: Promise<any> }) {
             {/* Podkategorie */}
             {slug?.data?.length > 0 && (
               <div className="bg-white p-6 mt-12 w-full rounded-xl">
-                <h2 className="text-black text-2xl lg:text-3xl font-extrabold mb-6">
+                <h3 className="text-black text-2xl lg:text-3xl font-extrabold mb-6">
                   {slug.title} - zlecenia
-                </h2>
+                </h3>
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
                   {slug.data.map((item: any, index: number) => (
                     <Link
@@ -118,9 +118,9 @@ export default async function Page(props: { params: Promise<any> }) {
                       <div className="flex items-center justify-center aspect-square h-full rounded-md bg-white text-zinc-700">
                         <FaBriefcase className="w-6 h-6" />
                       </div>
-                      <h2 className="font-coco w-full flex items-center justify-center text-center gap-3">
+                      <span className="font-coco w-full flex items-center justify-center text-center gap-3">
                         {item.title}
-                      </h2>
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -133,10 +133,10 @@ export default async function Page(props: { params: Promise<any> }) {
                 {/* Główna sekcja tekstowa */}
                 <section className="w-full">
                   {/* Nagłówek */}
-                  <h2 className="font-extrabold text-black text-xl lg:text-3xl mb-3">
+                  <h3 className="font-extrabold text-black text-xl lg:text-3xl mb-3">
                     Czym zajmują się{" "}
                     {content?.informal_title_plural?.toLowerCase()}?
-                  </h2>
+                  </h3>
 
                   {/* Opis - obsługa HTML */}
                   <div
@@ -153,9 +153,9 @@ export default async function Page(props: { params: Promise<any> }) {
             <BlogPostList posts={posts} />
           </div>
           <div className="mt-12 p-6 lg:p-12 w-full bg-black/50">
-            <h4 className="text-xl font-extrabold text-white text-center mb-12">
+            <span className="text-xl font-extrabold text-white text-center mb-12">
               Tagi
-            </h4>
+            </span>
             <ul className="flex overflow-x-scroll lg:overflow-visible w-full lg:flex-wrap gap-4 text-sm lg:text-base">
               {content?.synonyms.map((item: any, i: number) => (
                 <li
@@ -218,39 +218,132 @@ export default async function Page(props: { params: Promise<any> }) {
   );
 }
 
-// Metadata generation
-export async function generateMetadata(props: { params: Promise<any> }) {
-  const params = await props.params;
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string; category: string; job: string };
+}): Promise<Metadata> {
+  // Fetch all jobs data
   const jobs = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs?tubylytylkofigi=${process.env.API_SECRET_KEY}`
   ).then((res) => res.json());
-  const content = await getContent(params.category);
-  const title = `${content?.title} Zlecenia i Oferta Usług dla Firm`;
-  const description = `Usługi dla firm Szukasz zleceń w ${content?.genitive}? Chcesz zająć się ${content?.instrumental}?`;
+
+  // Find the category name in Polish
+  const categoryObj = jobs
+    .flatMap((service: any) =>
+      service.data.flatMap((subItem: any) => ({ category: subItem.title }))
+    )
+    .find((item: any) => polishToEnglish(item.category) === params.category);
+  const category = categoryObj?.category || params.category;
+
+  // Get job content
+  const job = await getContent(params.category);
+
+  // Compose metadata fields
+  const title = `${
+    job?.title || params.job
+  } Zlecenia i Oferta Usług dla Firm | ${category}`;
+  const description = `Usługi dla firm. Sprawdź aktualne oferty pracy i zlecenia dla firm w kategorii ${category}.`;
+  const keywords = [
+    job?.title,
+    job?.genitive,
+    job?.instrumental,
+    category,
+    "zlecenia",
+    "oferty pracy",
+    "usługi dla firm",
+    "freelance",
+    "praca zdalna",
+    "job board",
+    "ogłoszenia o pracę",
+    "zarobki",
+    "rekrutacja",
+    "znajdź pracę",
+    "quixy",
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const imageUrl = job?.mainImage
+    ? job.mainImage
+    : "/favicons/android-chrome-512x512.png";
+
+  const url = `https://quixy.pl/oferta/dla-firm/${params.slug}/${params.category}/${params.job}`;
+
   return {
     title,
     description,
+    keywords,
+    authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
+    publisher: "Quixy Studio",
     openGraph: {
       type: "website",
-      url: "https://quixy.pl",
+      url,
       title,
       description,
       siteName: "Quixy",
       images: [
         {
-          url: "/favicons/android-chrome-512x512.png",
-          type: "image/png",
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
         },
       ],
+      locale: "pl_PL",
     },
     twitter: {
-      cardType: "summary_large_image",
+      card: "summary_large_image",
       site: "@quixy",
       title,
       description,
-      image: {
-        url: "/favicons/android-chrome-512x512.png",
+      images: [imageUrl],
+      creator: "@quixystudio",
+    },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
+    // Extended metadata fields
+    metadataBase: new URL("https://quixy.pl"),
+    category: category,
+    applicationName: "Quixy",
+    creator: "Quixy Studio",
+    generator: "Next.js",
+    referrer: "origin-when-cross-origin",
+    colorScheme: "dark",
+    themeColor: "#22c55e",
+    formatDetection: {
+      email: true,
+      address: false,
+      telephone: true,
+    },
+    icons: [
+      { rel: "icon", url: "/favicons/favicon.ico" },
+      { rel: "apple-touch-icon", url: "/favicons/apple-touch-icon.png" },
+      {
+        rel: "icon",
+        url: "/favicons/android-chrome-192x192.png",
+        sizes: "192x192",
+      },
+      {
+        rel: "icon",
+        url: "/favicons/android-chrome-512x512.png",
+        sizes: "512x512",
+      },
+    ],
+    manifest: "/manifest.json",
   };
 }

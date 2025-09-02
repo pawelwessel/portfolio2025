@@ -38,9 +38,9 @@ export default function BlogSection() {
           <div className="absolute top-2 right-1/4 w-1 h-1 bg-[#3EE7C0] rounded-full opacity-80" />
           <div className="absolute -top-2 left-1/4 w-1.5 h-1.5 bg-[#B4FC2D] rounded-full opacity-40" />
 
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white font-gotham">
+          <span className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white font-gotham">
             Z Bloga
-          </h2>
+          </span>
           <p className="text-gray-200 mt-3 text-base lg:text-lg max-w-2xl mx-auto">
             Artykuły o stronach, projektowaniu i inspiracjach
           </p>

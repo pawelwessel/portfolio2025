@@ -77,12 +77,12 @@ export default function ProductsMobile({
                         title={`Przejdź do ofert pracy ${job.title}`}
                         className="bg-slate-800 w-full text-center py-12"
                       >
-                        <h4
+                        <span
                           title={`Oferta ${item.title}`}
                           className={`font-extrabold text-white `}
                         >
                           {item.title}
-                        </h4>
+                        </span>
                       </Link>
                     </div>
 

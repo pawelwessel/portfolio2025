@@ -25,9 +25,9 @@ export default function FaqAds({
   return (
     <div className="mt-12">
       <div className="w-[90vw] sm:w-3/4 mx-auto bg-gradient-to-br from-blue-50 via-white to-green-50 rounded-2xl p-6 lg:p-10 shadow-lg">
-        <h2 className="text-3xl lg:text-4xl font-bold text-zinc-800 text-center mb-6">
+        <span className="text-3xl lg:text-4xl font-bold text-zinc-800 text-center mb-6">
           FAQ. Najczęstsze pytania
-        </h2>
+        </span>
         <div className="grid grid-cols-1 gap-3">
           {faqs.map((f, i) => (
             <div key={i} className="bg-white rounded-xl border border-zinc-200">

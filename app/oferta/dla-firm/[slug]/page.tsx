@@ -84,9 +84,9 @@ export default async function Page(props: {
                 <div className="flex flex-col w-full justify-center items-center">
                   <div className="text-black">
                     <div className="relative overflow-hidden bg-white px-3 rounded-md">
-                      <h2 className="text-sm text-white px-3 py-1 bg-gradient-to-b from-zinc-600 to-zinc-700 rounded-b-3xl w-max mb-2">
+                      <span className="text-sm text-white px-3 py-1 bg-gradient-to-b from-zinc-600 to-zinc-700 rounded-b-3xl w-max mb-2">
                         Quixy dla firm
-                      </h2>
+                      </span>
                       <p className="text-center sm:text-lg text-black p-3 bg-white rounded-md mt-3 mb-8">
                         Zatrudnij najlepszych specjalistów — opublikuj ofertę
                         pracy w kategorii{" "}
@@ -106,9 +106,9 @@ export default async function Page(props: {
                   </div>
                   <div className="mt-6 text-black">
                     <div className="relative overflow-hidden bg-white px-3 rounded-md">
-                      <h2 className="text-sm text-white px-3 py-1 bg-gradient-to-b from-zinc-600 to-zinc-700 rounded-b-3xl w-max mb-2">
+                      <span className="text-sm text-white px-3 py-1 bg-gradient-to-b from-zinc-600 to-zinc-700 rounded-b-3xl w-max mb-2">
                         Quixy bez firmy
-                      </h2>
+                      </span>
                       <p className="sm:text-lg text-black text-center p-3 bg-white rounded-md mt-3 mb-8">
                         Znajdź pracę zdalną lub jednorazowe zlecenia i rozwijaj
                         swoje portfolio w panelu użytkownika. Przeglądaj
@@ -141,12 +141,12 @@ export default async function Page(props: {
             {/* Content */}
             <div className="bg-white mx-auto flex flex-col lg:flex-row gap-12 p-6 rounded-xl">
               <div className="w-full lg:w-[50%]">
-                <h2
+                <span
                   style={{ lineHeight: 1.2 }}
                   className="rounded-xl text-zinc-800 drop-shadow-md font-gotham shadow-black w-max max-w-full font-extrabold text-2xl 2xl:text-4xl mb-6"
                 >
                   Dodaj zlecenie w {content?.genitive}
-                </h2>
+                </span>
                 {jobs.map((job: any, i: any) => (
                   <div key={i}>
                     {polishToEnglish(job.title) === params.slug && (
@@ -154,14 +154,14 @@ export default async function Page(props: {
                         <div className="flex flex-col bg-white rounded-xl gap-6">
                           {job.data.map((item: any, j: any) => (
                             <div key={j} className="relative">
-                              <h2
+                              <span
                                 title={`Pracuj zdalnie w ${item.title}`}
                                 className="rounded-md py-2 w-full text-xl"
                               >
                                 <div className="text-zinc-800 drop-shadow-md font-gotham shadow-black">
                                   {item.title}
                                 </div>
-                              </h2>
+                              </span>
 
                               {/* Hover dropdown */}
                               <div className="grid grid-cols-2 gap-3 mt-4">
@@ -190,10 +190,10 @@ export default async function Page(props: {
                 ))}
               </div>
               <section className="w-full lg:w-3/5">
-                <h2 className="pb-3 text-black text-2xl font-extrabold">
+                <h3 className="pb-3 text-black text-2xl font-extrabold">
                   Czym zajmują się{" "}
                   {content?.informal_title_plural.toLowerCase()}?
-                </h2>
+                </h3>
 
                 <div
                   className="text-black max-w-3xl markdownSlug  "
@@ -205,14 +205,11 @@ export default async function Page(props: {
             </div>
 
             <BlogPostList posts={posts} />
-            {/* <h2 className="text-xl font-semibold text-primary mb-4">
-          Najlepsi specjaliści {slug.title}
-        </h2> */}
           </div>
           <div className="mt-12 p-6 lg:p-12 w-full bg-black/50">
-            <h4 className="text-xl font-extrabold text-white text-center mb-12">
+            <span className="text-xl font-extrabold text-white text-center mb-12">
               Tagi
-            </h4>
+            </span>
             <ul className="flex overflow-x-scroll lg:overflow-visible w-full lg:flex-wrap gap-4 text-sm lg:text-base">
               {content?.synonyms.map((item: any, i: number) => (
                 <li
@@ -275,36 +272,115 @@ export default async function Page(props: {
   );
 }
 
-export async function generateMetadata(props: { params: Promise<any> }) {
-  const params = await props.params;
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const content = await getContent(params.slug);
+
   const title = `${content?.title} Zlecenia i Oferta Usług dla Firm`;
-  const description = `Usługi dla firm Szukasz zleceń w ${content?.genitive}? Chcesz zająć się ${content?.instrumental}?`;
+  const description = `Usługi dla firm. Szukasz zleceń w ${content?.genitive}? Chcesz zająć się ${content?.instrumental}?`;
+  const keywords = [
+    content?.title,
+    content?.genitive,
+    content?.instrumental,
+    "zlecenia",
+    "oferty pracy",
+    "usługi dla firm",
+    "freelance",
+    "praca zdalna",
+    "job board",
+    "ogłoszenia o pracę",
+    "zarobki",
+    "rekrutacja",
+    "znajdź pracę",
+    "quixy",
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const imageUrl = content?.mainImage
+    ? content.mainImage
+    : "/favicons/android-chrome-512x512.png";
+
+  const url = `https://quixy.pl/oferta/dla-firm/${polishToEnglish(
+    params.slug
+  )}`;
+
   return {
     title,
     description,
+    keywords,
+    authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
+    publisher: "Quixy Studio",
     openGraph: {
       type: "website",
-      url: `https://quixy.pl/oferta/dla-firm/${polishToEnglish(params.slug)}`,
+      url,
       title,
       description,
       siteName: "Quixy",
       images: [
         {
-          url: "/favicons/android-chrome-512x512.png",
-          type: "image/png",
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
         },
       ],
+      locale: "pl_PL",
     },
     twitter: {
-      cardType: "summary_large_image",
-      image: {
-        url: "/favicons/android-chrome-512x512.png",
-        type: "image/png",
-      },
+      card: "summary_large_image",
       site: "@quixy",
       title,
       description,
+      images: [imageUrl],
+      creator: "@quixystudio",
     },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    // Extended metadata fields
+    metadataBase: new URL("https://quixy.pl"),
+    applicationName: "Quixy",
+    creator: "Quixy Studio",
+    generator: "Next.js",
+    referrer: "origin-when-cross-origin",
+    colorScheme: "dark",
+    themeColor: "#22c55e",
+    formatDetection: {
+      email: true,
+      address: false,
+      telephone: true,
+    },
+    icons: [
+      { rel: "icon", url: "/favicons/favicon.ico" },
+      { rel: "apple-touch-icon", url: "/favicons/apple-touch-icon.png" },
+      {
+        rel: "icon",
+        url: "/favicons/android-chrome-192x192.png",
+        sizes: "192x192",
+      },
+      {
+        rel: "icon",
+        url: "/favicons/android-chrome-512x512.png",
+        sizes: "512x512",
+      },
+    ],
+    manifest: "/manifest.json",
   };
 }

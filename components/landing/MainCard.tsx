@@ -26,9 +26,9 @@ export default function MainCard({
     >
       <div className="w-full flex flex-col lg:flex-row gap-12 items-center lg:items-start">
         <div className="w-full">
-          <h2 className="text-xl lg:text-4xl font-bold font-gotham">
+          <span className="text-xl lg:text-4xl font-bold font-gotham">
             Strony Internetowe w twojej okolicy
-          </h2>
+          </span>
           <p className="text-base font-light max-w-[45rem] mt-4 lg:text-left">
             Projektujemy szybkie i skuteczne{" "}
             <Link
@@ -84,7 +84,7 @@ export default function MainCard({
           </p>
 
           <div className="mt-6">
-            <h2 className="text-2xl font-gotham mb-6">Co w ofercie?</h2>
+            <span className="text-2xl font-gotham mb-6">Co w ofercie?</span>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
                 <div className="flex items-center gap-3 mb-2">
@@ -220,9 +220,9 @@ export default function MainCard({
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-gotham mb-6">
+            <div className="text-2xl font-gotham mb-6">
               Marketing dla <span className="text-blue-500">Twojej firmy</span>
-            </h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
                 <div className="flex items-center gap-3 mb-2">
@@ -361,9 +361,9 @@ export default function MainCard({
       </div>
       <div className="mx-auto pb-16 bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl px-4 sm:px-8 pt-6">
         <div className="relative sm:px-8">
-          <h2 className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
+          <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
             Współpracuj z Quixy Studio jako firma lub freelancer!
-          </h2>
+          </span>
           <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
           <div className="mt-6">
             <JobBoardList talents={talents} companies={companies} />

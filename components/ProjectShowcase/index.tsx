@@ -112,9 +112,9 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
                         </a>
                       )}
                     </div>
-                    <h2 className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
+                    <span className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
                       {dictionary.HomePage.colors}
-                    </h2>
+                    </span>
                     <div className="flex flex-row flex-wrap gap-2 mt-2">
                       {item.colors.map((color: any, j: number) => (
                         <motionDiv.div
@@ -132,9 +132,9 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
                         </motionDiv.div>
                       ))}
                     </div>
-                    <h2 className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
+                    <span className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
                       {dictionary.HomePage.stack}
-                    </h2>
+                    </span>
                     <div className="flex flex-row flex-wrap gap-2 mt-2">
                       {item.technologies.map((technology: any, k: any) => (
                         <motionDiv.div
@@ -149,9 +149,9 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
                         </motionDiv.div>
                       ))}
                     </div>
-                    <h2 className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
+                    <span className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
                       {dictionary.HomePage.fonts}
-                    </h2>
+                    </span>
                     <div className="flex flex-col gap-1 mt-2">
                       {item.fonts.map((font: any, l: any) => (
                         <div

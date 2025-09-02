@@ -67,9 +67,9 @@ export default function HeroIntroAds() {
               className="w-full h-auto rounded-xl border border-zinc-200 shadow"
               priority
             />
-            <h2 className="text-2xl lg:text-3xl font-italic text-white font-sans italic text-center mt-12">
+            <span className="text-2xl lg:text-3xl font-italic text-white font-sans italic text-center mt-12">
               Rozwiązania cyfrowe, które robią różnicę
-            </h2>
+            </span>
           </div>
         </div>
       </div>

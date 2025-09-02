@@ -93,9 +93,9 @@ export default async function Page(props: { params: Promise<any> }) {
               }`}
             >
               <div>
-                <h2 className={`text-black font-extrabold text-xl lg:text-3xl`}>
+                <h3 className={`text-black font-extrabold text-xl lg:text-3xl`}>
                   {content?.title} - Zlecenia
-                </h2>
+                </h3>
                 <p
                   className={`text-black flex items-center flex-wrap text-wrap`}
                 >
@@ -112,7 +112,7 @@ export default async function Page(props: { params: Promise<any> }) {
             {/* Content */}
             <div className="w-full flex flex-col lg:flex-row bg-white mt-12 p-6 rounded-xl">
               <section className="text-left">
-                <h2
+                <h3
                   style={{ lineHeight: 1.5 }}
                   className="font-extrabold text-black text-xl lg:text-3xl mb-3"
                 >
@@ -120,7 +120,7 @@ export default async function Page(props: { params: Promise<any> }) {
                   <span className="ml-2 text-black">
                     {content?.informal_title_plural.toLowerCase()}?
                   </span>
-                </h2>
+                </h3>
                 <div
                   className="text-black max-w-3xl markdownSlug !bg-transparent"
                   dangerouslySetInnerHTML={{
@@ -132,7 +132,9 @@ export default async function Page(props: { params: Promise<any> }) {
             <BlogPostList posts={posts} />
           </div>
           <div className="p-6 lg:p-12 w-full bg-black/50 mt-12">
-            <h4 className="text-xl font-extrabold text-white mb-12">Tagi</h4>
+            <span className="text-xl font-extrabold text-white mb-12">
+              Tagi
+            </span>
             <ul className="flex overflow-x-scroll lg:overflow-visible w-full lg:flex-wrap items-center gap-4 text-sm lg:text-base">
               {content?.synonyms.map((item: any, i: number) => (
                 <li
@@ -194,45 +196,102 @@ export default async function Page(props: { params: Promise<any> }) {
     </Suspense>
   );
 }
+import type { Metadata } from "next";
 
-export async function generateMetadata(props: { params: Promise<any> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string; category: string; job: string };
+}): Promise<Metadata> {
+  // Fetch all jobs data
   const jobs = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs?tubylytylkofigi=${process.env.API_SECRET_KEY}`
   ).then((res) => res.json());
-  const params = await props.params;
-  const category = jobs
+
+  // Find the category name in Polish
+  const categoryObj = jobs
     .flatMap((service: any) =>
       service.data.flatMap((subItem: any) => ({ category: subItem.title }))
     )
-    .find(
-      (item: any) => polishToEnglish(item.category) === params.category
-    ).category;
+    .find((item: any) => polishToEnglish(item.category) === params.category);
+  const category = categoryObj?.category || params.category;
+
+  // Get job content
   const job = await getContent(params.job);
-  const title = `${job?.title} Zlecenia i Oferta Usług dla Firm`;
-  const description = `Usługi dla firm Szukasz zleceń w ${job?.genitive}? Chcesz zająć się ${job?.instrumental}?`;
+
+  // Compose metadata fields
+  const title = `${
+    job?.title || params.job
+  } Zlecenia i Oferta Usług dla Firm | ${category}`;
+  const description = `Usługi dla firm. Sprawdź aktualne oferty pracy i zlecenia dla firm w kategorii ${category}.`;
+  const keywords = [
+    job?.title,
+    job?.genitive,
+    job?.instrumental,
+    category,
+    "zlecenia",
+    "oferty pracy",
+    "usługi dla firm",
+    "freelance",
+    "praca zdalna",
+    "job board",
+    "ogłoszenia o pracę",
+    "zarobki",
+    "rekrutacja",
+    "znajdź pracę",
+    "quixy",
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const imageUrl = job?.mainImage
+    ? job.mainImage
+    : "/favicons/android-chrome-512x512.png";
+
+  const url = `https://quixy.pl/oferta/dla-firm/${params.slug}/${params.category}/${params.job}`;
+
   return {
     title,
     description,
+    keywords,
+    authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
+    publisher: "Quixy Studio",
     openGraph: {
       type: "website",
-      url: "https://quixy.pl",
+      url,
       title,
       description,
       siteName: "Quixy",
       images: [
         {
-          url: "/favicons/android-chrome-512x512.png",
-          type: "image/png",
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
         },
       ],
+      locale: "pl_PL",
     },
     twitter: {
-      cardType: "summary_large_image",
+      card: "summary_large_image",
       site: "@quixy",
       title,
       description,
-      image: {
-        url: "/favicons/android-chrome-512x512.png",
+      images: [imageUrl],
+      creator: "@quixystudio",
+    },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
   };

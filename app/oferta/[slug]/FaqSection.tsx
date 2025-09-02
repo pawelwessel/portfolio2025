@@ -20,9 +20,9 @@ export default function FaqSection({ faqs }: FaqSectionProps) {
   return (
     <section className="mt-16 pt-8 border-t border-[#2a2f3d]/50">
       <div className="mb-8">
-        <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2 font-gotham">
+        <span className="text-2xl lg:text-3xl font-bold text-white mb-2 font-gotham">
           Często zadawane pytania
-        </h2>
+        </span>
         <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] rounded-full opacity-60" />
       </div>
 

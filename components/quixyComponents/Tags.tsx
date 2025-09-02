@@ -20,14 +20,14 @@ export default function Tags({ talent }: { talent: any }) {
           .slice(0, showMore ? tags.length : 10)
           .map((item: any, i: number) => (
             <div key={i}>
-              <h3 className="">
+              <div>
                 <Link
                   href={`/oferta/dla-firm/${item?.slugUrl}/${item?.categoryUrl}/${item?.url}`}
                   className="rounded-md text-xs sm:text-sm lg:text-base bg-gradient-to-b from-zinc-700 to-primaryHoverEnd hover:from-zinc-700/80 hover:to-primaryHoverEnd/80 px-[0.7rem] text-white ml-1 mt-1 duration-100 flex items-center py-[0.5rem]"
                 >
                   {item.title}
                 </Link>
-              </h3>
+              </div>
             </div>
           ))}
         {tags.length > 10 && (

@@ -230,19 +230,19 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#ffffff",
   manifest: "/manifest.json",
-  title: "Strony internetowe dla firm. Tworzenie stron i sklepów.",
+  title: "Platforma dla freelancerów i firm IT – Zlecenia, praca, projekty",
   description:
-    "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads. Transparentne ceny i realne wyniki biznesowe.",
+    "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.",
   openGraph: {
     type: "website",
     url: "https://quixy.pl",
-    title: "Strony internetowe dla firm. Tworzenie stron i sklepów.",
+    title: "Platforma dla freelancerów i firm IT – Zlecenia, praca, projekty",
     description:
-      "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
+      "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.",
     siteName: "Quixy Studio",
     images: [
       {
-        url: "/logo-quixy.png",
+        url: "/main.png",
         width: 1200,
         height: 630,
         alt: "Quixy Studio",
@@ -251,15 +251,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Strony internetowe dla firm. Tworzenie stron i sklepów.",
+    title: "Platforma dla freelancerów i firm IT – Zlecenia, praca, projekty",
     description:
-      "Projektujemy szybkie strony i sklepy, prowadzimy social media i realizujemy skuteczne kampanie Google Ads.",
-    images: ["/logo-quixy.png"],
+      "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.",
+    images: ["/main.png"],
   },
   authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
   publisher: "Quixy Studio",
   keywords:
-    "strony internetowe, strony www, sklepy internetowe, landing page, web developer, projektowanie stron, social media, marketing, Google Ads, kampanie reklamowe, SEO, Core Web Vitals",
+    "freelancerzy, firmy IT, zlecenia IT, praca zdalna, projekty IT, platforma dla freelancerów, oferty pracy IT, współpraca IT, ogłoszenia IT, marketplace IT",
   icons: [
     {
       url: "/favicons/apple-touch-icon.png",
