@@ -1,11 +1,11 @@
-import { 
-  polishCities, 
-  PolishCase, 
-  getCityInCase, 
+import {
+  polishCities,
+  PolishCase,
+  getCityInCase,
   generateCityContent,
   CityDeclension,
-  getCityDeclension
-} from './polishCities';
+  getCityDeclension,
+} from "./polishCities";
 
 // Content template types for different page variations
 export interface ContentTemplate {
@@ -16,10 +16,12 @@ export interface ContentTemplate {
 }
 
 // Generate content variations for a city using all grammatical cases
-export function generateContentVariations(citySlug: string): ContentTemplate | null {
+export function generateContentVariations(
+  citySlug: string
+): ContentTemplate | null {
   const cityContent = generateCityContent(citySlug);
   const declension = getCityDeclension(citySlug);
-  
+
   if (!cityContent || !declension) {
     return null;
   }
@@ -45,7 +47,9 @@ export function generateContentVariations(citySlug: string): ContentTemplate | n
     ],
 
     descriptionVariations: [
-      `Profesjonalne ${cityContent.phrases.webDesignService.toLowerCase()}. Tworzymy nowoczesne, responsywne strony WWW ${cityContent.contexts.target}.`,
+      `Profesjonalne ${cityContent.phrases.webDesignService.toLowerCase()}. Tworzymy nowoczesne, responsywne strony WWW ${
+        cityContent.contexts.target
+      }.`,
       `${cityContent.phrases.localBusiness} specjalizująca się w tworzeniu stron internetowych. ${cityContent.phrases.servingCity} od 2020 roku.`,
       `Kompleksowe usługi web designu w ${locative}. ${cityContent.phrases.forResidents} oferujemy konkurencyjne ceny i szybką realizację.`,
       `Potrzebujesz strony internetowej w ${locative}? ${cityContent.phrases.workingWith} tworzymy strony, które sprzedają.`,
@@ -97,7 +101,7 @@ export function generateContentVariations(citySlug: string): ContentTemplate | n
          <p>"${cityContent.phrases.welcomeCity} Dzięki współpracy z Quixy Studio nasza firma z ${genitive} zyskała profesjonalną obecność online. Polecamy wszystkim przedsiębiorcom w ${locative}!"</p>
          <footer>— Zadowolony klient z ${genitive}</footer>
        </blockquote>`,
-    ]
+    ],
   };
 }
 
@@ -117,7 +121,7 @@ export function generatePageVariations(citySlug: string, count: number = 3) {
       title: variations.titleVariations[titleIndex],
       description: variations.descriptionVariations[descIndex],
       content: variations.contentBlocks[contentIndex],
-      headings: variations.headingVariations.slice(i * 2, (i * 2) + 2)
+      headings: variations.headingVariations.slice(i * 2, i * 2 + 2),
     });
   }
 
@@ -126,11 +130,16 @@ export function generatePageVariations(citySlug: string, count: number = 3) {
 
 // Export example usage
 export function demonstrateGrammarUsage() {
-  const exampleCity = 'grudziadz';
+  const exampleCity = "grudziadz";
   const declension = getCityDeclension(exampleCity);
-  
-  console.log(`\n=== Przykład odmiany dla ${getCityInCase(exampleCity, PolishCase.NOMINATIVE)} ===`);
-  
+
+  console.log(
+    `\n=== Przykład odmiany dla ${getCityInCase(
+      exampleCity,
+      PolishCase.NOMINATIVE
+    )} ===`
+  );
+
   if (declension) {
     console.log(`Mianownik (kto? co?): ${declension.nominative}`);
     console.log(`Dopełniacz (kogo? czego?): ${declension.genitive}`);
@@ -163,8 +172,8 @@ export function demonstrateGrammarUsage() {
 // Helper to generate bulk content for all cities
 export function generateBulkContent(): Record<string, ContentTemplate> {
   const bulkContent: Record<string, ContentTemplate> = {};
-  
-  polishCities.forEach(citySlug => {
+
+  polishCities.forEach((citySlug) => {
     const variations = generateContentVariations(citySlug);
     if (variations) {
       bulkContent[citySlug] = variations;

@@ -26,8 +26,6 @@ import { notFound } from "next/navigation";
 import { getUsersData } from "@/lib/getUsersData";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
 
-// Remove top-level await for getUsers, move to page function
-
 // Generate static params for all city-based slugs
 export async function generateStaticParams() {
   try {
@@ -513,12 +511,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const post = await getPostData(slug);
 
-  // If it's a city slug, but the city is not valid, show 404
-  if (isCitySlug(slug) && !slugToCity(slug)) {
-    notFound();
-  }
-
-  // If it's not a city slug and not a post, show 404
+  // If it's not a post, show 404
   if (!post) {
     notFound();
   }

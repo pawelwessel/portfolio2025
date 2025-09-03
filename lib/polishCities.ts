@@ -130,6 +130,8 @@ export const polishCities = [
   "bilgoraj",
   "sandomierz",
   "tarnobrzeg",
+  "stalowa-wola",
+  "mielec",
 ];
 
 // Convert city name to URL-friendly slug

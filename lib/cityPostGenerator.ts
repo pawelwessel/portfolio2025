@@ -6,6 +6,7 @@ import {
   PolishCase,
   generateCityContent,
 } from "./polishCities";
+import { randId } from "@/common/utils/getRandomId";
 
 // Generate a single city-based post
 export function generateCityPost(citySlug: string): Post {
@@ -24,8 +25,8 @@ export function generateCityPost(citySlug: string): Post {
 
   return {
     postId,
-    title: `Tworzenie stron internetowych ${cityName} - Cennik`,
-    metaTitle: `Tworzenie stron internetowych ${cityName} - Cennik`,
+    title: `${cityContent.phrases.webDesignService} - Profesjonalne Usługi Web`,
+    metaTitle: `Strona Internetowa ${cityName} | Quixy Studio - Tworzenie Stron`,
     metaDescription: `Profesjonalne ${cityContent.phrases.webDesignService.toLowerCase()}. Nowoczesne, responsywne strony WWW. Szybka realizacja, konkurencyjne ceny. Sprawdź naszą ofertę!`,
     metaKeywords: [
       `strona internetowa ${citySlug}`,
@@ -198,7 +199,7 @@ export async function generateCityPostIfNeeded(
 
     if (!exists) {
       const post = generateCityPost(citySlug);
-      await addDocument("blog", post.postId, post);
+      await addDocument("blog", post, post);
       console.log(`Generated and saved post for ${citySlug}`);
       return post;
     }
