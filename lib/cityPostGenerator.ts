@@ -1,12 +1,11 @@
 import { Post } from "@/types";
-import { addDocument } from "@/common/firebase";
 import {
   polishCities,
   getCityInCase,
   PolishCase,
   generateCityContent,
 } from "./polishCities";
-import { randId } from "@/common/utils/getRandomId";
+import { addDocument } from "@/common/firebase/quixy";
 
 // Generate a single city-based post
 export function generateCityPost(citySlug: string): Post {
@@ -25,8 +24,8 @@ export function generateCityPost(citySlug: string): Post {
 
   return {
     postId,
-    title: `${cityContent.phrases.webDesignService} - Profesjonalne Usługi Web`,
-    metaTitle: `Strona Internetowa ${cityName} | Quixy Studio - Tworzenie Stron`,
+    title: `Tworzenie stron internetowych ${cityName} - Cennik`,
+    metaTitle: `Tworzenie stron internetowych ${cityName} - Cennik`,
     metaDescription: `Profesjonalne ${cityContent.phrases.webDesignService.toLowerCase()}. Nowoczesne, responsywne strony WWW. Szybka realizacja, konkurencyjne ceny. Sprawdź naszą ofertę!`,
     metaKeywords: [
       `strona internetowa ${citySlug}`,
@@ -156,15 +155,11 @@ export async function generateAndSaveAllCityPosts(): Promise<void> {
   for (const citySlug of polishCities) {
     try {
       const post = generateCityPost(citySlug);
-
-      // Save to database
+      // Here you would save the post to your database
       await addDocument("blog", post.postId, post);
 
       results.success++;
       console.log(`✅ Generated post for ${citySlug}: ${post.title}`);
-
-      // Add small delay to avoid overwhelming the database
-      await new Promise((resolve) => setTimeout(resolve, 100));
     } catch (error) {
       results.errors++;
       console.error(`❌ Error generating post for ${citySlug}:`, error);
@@ -199,8 +194,7 @@ export async function generateCityPostIfNeeded(
 
     if (!exists) {
       const post = generateCityPost(citySlug);
-      await addDocument("blog", post, post);
-      console.log(`Generated and saved post for ${citySlug}`);
+      console.log(`Generated post for ${citySlug}`);
       return post;
     }
 
@@ -215,8 +209,7 @@ export async function generateCityPostIfNeeded(
 export async function updateCityPost(citySlug: string): Promise<void> {
   try {
     const post = generateCityPost(citySlug);
-    await addDocument("blog", post.postId, post);
-    console.log(`Updated post for ${citySlug}`);
+    console.log(`Regenerated post for ${citySlug}`);
   } catch (error) {
     console.error(`Error updating city post for ${citySlug}:`, error);
   }

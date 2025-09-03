@@ -131,7 +131,6 @@ export const polishCities = [
   "sandomierz",
   "tarnobrzeg",
   "stalowa-wola",
-  "mielec",
 ];
 
 // Convert city name to URL-friendly slug
