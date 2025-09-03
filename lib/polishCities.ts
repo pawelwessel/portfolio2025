@@ -135,15 +135,22 @@ export const polishCities = [
 
 // Convert city name to URL-friendly slug
 export function cityToSlug(city: string): string {
+  // Ensure city is a valid city slug (from polishCities)
+  if (!polishCities.includes(city)) {
+    throw new Error(`Invalid city: ${city}`);
+  }
   return `tworzenie-stron-internetowych-${city}-cennik`;
 }
 
-// Convert slug back to city name
 export function slugToCity(slug: string): string | null {
-  if (!slug.startsWith("tworzenie-stron-internetowych-")) {
+  // Match the pattern and extract the city slug
+  const match = slug.match(
+    /^tworzenie-stron-internetowych-([a-z0-9-]+)-cennik$/
+  );
+  if (!match) {
     return null;
   }
-  const cityName = slug.replace("tworzenie-stron-internetowych-", "");
+  const cityName = match[1];
   return polishCities.includes(cityName) ? cityName : null;
 }
 

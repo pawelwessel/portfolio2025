@@ -156,7 +156,6 @@ export async function generateAndSaveAllCityPosts(): Promise<void> {
     try {
       const post = generateCityPost(citySlug);
       // Here you would save the post to your database
-      await addDocument("blog", post.postId, post);
 
       results.success++;
       console.log(`✅ Generated post for ${citySlug}: ${post.title}`);
