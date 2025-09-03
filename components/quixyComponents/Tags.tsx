@@ -14,32 +14,35 @@ export default function Tags({ talent }: { talent: any }) {
   }
 
   return (
-    <>
-      <div className="flex flex-wrap">
-        {tags
-          .slice(0, showMore ? tags.length : 10)
-          .map((item: any, i: number) => (
-            <div key={i}>
-              <div>
-                <Link
-                  href={`/oferta/dla-firm/${item?.slugUrl}/${item?.categoryUrl}/${item?.url}`}
-                  className="rounded-md text-xs sm:text-sm lg:text-base bg-gradient-to-b from-zinc-700 to-primaryHoverEnd hover:from-zinc-700/80 hover:to-primaryHoverEnd/80 px-[0.7rem] text-white ml-1 mt-1 duration-100 flex items-center py-[0.5rem]"
-                >
-                  {item.title}
-                </Link>
-              </div>
-            </div>
-          ))}
-        {tags.length > 10 && (
-          <button
-            type="button"
-            className="rounded-md text-xs sm:text-sm lg:text-base bg-gradient-to-b from-ctaStart to-primaryHoverEnd hover:from-ctaStart/80 hover:to-primaryHoverEnd/80 px-[1rem] text-white ml-1 mt-1 duration-100 flex items-center py-[0.5rem]"
-            onClick={() => setShowMore(!showMore)}
+    <div className="mt-3 flex flex-wrap items-center gap-1.5">
+      {tags
+        .slice(0, showMore ? tags.length : 10)
+        .map((item: any, i: number) => (
+          <Link
+            key={i}
+            href={`/oferta/dla-firm/${item?.slugUrl}/${item?.categoryUrl}/${item?.url}`}
+            title={item.title}
+            className="inline-flex max-w-full items-center truncate rounded-full 
+                   bg-gradient-to-b from-primaryStart to-primaryEnd 
+                   px-2 py-1 text-[11px] font-medium text-white shadow-sm 
+                   transition hover:brightness-105"
           >
-            {showMore ? "Ukryj" : `Pokaż więcej (${tags.length - 10})`}
-          </button>
-        )}
-      </div>
-    </>
+            {item.title}
+          </Link>
+        ))}
+
+      {tags.length > 10 && (
+        <button
+          type="button"
+          onClick={() => setShowMore(!showMore)}
+          className="inline-flex items-center rounded-full 
+                 bg-gradient-to-b from-accentStart to-accentEnd 
+                 px-2 py-1 text-[11px] font-medium text-white shadow-sm 
+                 hover:brightness-105"
+        >
+          {showMore ? "Ukryj" : `+${tags.length - 10}`}
+        </button>
+      )}
+    </div>
   );
 }

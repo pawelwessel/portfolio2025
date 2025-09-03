@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
-import { polishCities, getCityDisplayName } from "@/lib/polishCities";
+import {
+  polishCities,
+  getCityDisplayName,
+  getCityNominative,
+} from "@/lib/polishCities";
 import { Post } from "@/types";
 import { FaFacebook, FaTiktok } from "react-icons/fa";
 
@@ -45,7 +49,7 @@ export default function Footer() {
   return (
     <footer className="bg-black/90 text-white py-16 px-4 relative z-50">
       <div className="max-w-[90vw] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="block mb-6">
@@ -58,8 +62,9 @@ export default function Footer() {
                 priority
               />
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 font-sans font-light">
-              Tworzymy skuteczne rozwiązania dla firm oraz freelancerów.
+            <p className="text-gray-300 text-sm leading-relaxed mb-6 font-sans font-light max-w-sm">
+              W Quixy znajdziesz pracę zdalną, zlecenia i stworzysz profil firmy
+              lub freelancera.
             </p>
 
             {/* Contact Info */}
@@ -93,61 +98,23 @@ export default function Footer() {
           {/* Cities We Serve */}
           <div>
             <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
-              Miasta, które obsługujemy
+              Strony internetowe
             </span>
             <div className="grid grid-cols-2 gap-1 text-sm">
-              {polishCities.slice(0, 20).map((city) => (
+              {polishCities.map((city) => (
                 <Link
                   key={city}
-                  href={`/oferta/strona-internetowa-${city}`}
+                  title={`Tworzenie stron internetowych ${getCityNominative(
+                    city
+                  )}`}
+                  href={`/oferta/tworzenie-stron-internetowych-${city}-cennik`}
                   className="text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 text-xs font-sans font-light"
                 >
-                  {getCityDisplayName(city)}
+                  Tworzenie stron internetowych {getCityNominative(city)}
                 </Link>
               ))}
             </div>
-            {polishCities.length > 20 && (
-              <p className="text-gray-400 text-xs mt-3 font-sans font-light">
-                + {polishCities.length - 20} więcej miast
-              </p>
-            )}
           </div>
-
-          {/* Blog Posts */}
-          <div>
-            <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
-              Oferta
-            </span>
-            {loading ? (
-              <div className="space-y-2">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-4 bg-gray-700 rounded animate-pulse"
-                  ></div>
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {blogPosts.slice(0, 8).map((post, i) => (
-                  <Link
-                    key={i}
-                    href={`/oferta/${post.slug || post.url || post.postId}`}
-                    className="block text-gray-300 hover:text-[#3EE7C0] transition-colors text-sm py-1 truncate font-sans font-light"
-                    title={post.title}
-                  >
-                    {post.title}
-                  </Link>
-                ))}
-                {blogPosts.length === 0 && (
-                  <p className="text-gray-400 text-sm font-sans font-light">
-                    Ładowanie artykułów...
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-
           {/* Legal & Additional Links */}
           <div>
             <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
@@ -167,23 +134,6 @@ export default function Footer() {
                 Mapa strony
               </Link>
             </div>
-
-            {/* Services Quick Links */}
-            {/* <h5 className="text-[#B4FC2D] text-base mt-6 mb-3 font-gotham font-light">
-              Nasze usługi
-            </h5>
-            <div className="space-y-2 text-sm font-sans">
-              <p className="text-gray-300 py-1 font-light">
-                Strony internetowe
-              </p>
-              <p className="text-gray-300 py-1 font-light">
-                Sklepy internetowe
-              </p>
-              <p className="text-gray-300 py-1 font-light">Landing pages</p>
-              <p className="text-gray-300 py-1 font-light">Social media</p>
-              <p className="text-gray-300 py-1 font-light">Google Ads</p>
-              <p className="text-gray-300 py-1 font-light">SEO</p>
-            </div> */}
           </div>
         </div>
 

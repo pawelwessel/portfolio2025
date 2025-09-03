@@ -29,218 +29,200 @@ export default async function Page(props: {
   ).then((res: any) => res.json());
   return (
     <Suspense fallback={<Loadinger />}>
-      <div className={`relative h-full font-sans pt-20 pb-24`}>
-        <div
-          className={`${
-            !talent?.access
-              ? "flex-col fixed top-0 left-0 z-[999] w-full h-full flex items-center justify-center bg-gradient-to-b from-accentStart/70 to-accentEnd/70"
-              : "hidden"
-          }`}
-        >
-          <div className="px-6 w-max max-w-full">
-            <div className="w-max max-w-full flex flex-col bg-white p-6 rounded-lg">
-              <span className="w-full font-extrabold text-2xl">
+      <div className="relative min-h-screen font-sans pt-20 pb-24 bg-white">
+        {/* GATE / OVERLAY */}
+        {!talent?.access && (
+          <div className="fixed inset-0 z-[999] flex items-center justify-center bg-accentStart/70 backdrop-blur-sm">
+            <div className="mx-4 w-full max-w-xl rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+              <h3 className="text-xl font-bold text-slate-900">
                 Wyświetl się w platformie Quixy
-              </span>
-              <p className="w-full mt-1.5">
+              </h3>
+              <p className="mt-1.5 text-sm text-slate-600">
                 Jesteś właścicielem tego profilu? Dokończ konfigurację lub opłać
                 wpisowe.
               </p>
-              <div className="mt-3 bg-gray-200 rounded-lg px-3 py-6 relative">
+
+              <div className="relative mt-4 rounded-2xl border border-slate-200 bg-slate-50/60 p-5">
                 {talent?.hourRate && (
-                  <div className="absolute right-0 top-0 rounded-tr-md rounded-bl-xl block w-max max-w-full text-sm  font-extrabold text-white bg-gradient-to-b from-ctaStart to-ctaEnd px-2 py-1 text-center">
-                    {talent?.hourRate} zł/h
+                  <div className="absolute right-0 top-0 rounded-tr-2xl rounded-bl-xl bg-gradient-to-b from-ctaStart to-ctaEnd px-3 py-1 text-xs font-extrabold text-white shadow-sm">
+                    {talent.hourRate} zł/h
                   </div>
                 )}
-                <div className="flex flex-col w-full">
-                  <div className="flex flex-col items-center justify-center w-full">
-                    <div className="flex w-max flex-col items-center">
-                      {talent?.photoURL && (
-                        <div className="relative h-20 w-20 sm:w-24 sm:h-24 aspect-square">
-                          <Image
-                            src={talent?.photoURL}
-                            width={256}
-                            height={256}
-                            alt=""
-                            className="rounded-full mb-0 absolute inset-0 object-cover w-full h-full shadow-sm shadow-black"
-                          />
-                        </div>
-                      )}
-                      {!talent?.photoURL && (
-                        <div className="flex flex-col items-center">
-                          <div className="bg-gradient-to-r from-primaryStart to-primaryEnd rounded-full aspect-square text-white flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 shadow-sm shadow-black">
-                            <FaUser className="text-3xl sm:text-4xl" />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <div className="w-full flex items-center justify-center flex-col text-center">
-                      <div>
-                        <h1 className="lg:text-2xl mt-2">
-                          {talent?.name ? talent?.name : "Brak nazwy"}
-                        </h1>
 
-                        {talent?.city && (
-                          <div className="text-black flex items-center justify-center text-center">
-                            <IoLocationOutline className="text-xl mr-1" />{" "}
-                            <span>{talent?.city}, Polska</span>
-                          </div>
-                        )}
+                {/* MINI HEADER */}
+                <div className="flex items-start gap-4">
+                  {talent?.photoURL ? (
+                    <span className="relative inline-flex h-20 w-20 overflow-hidden rounded-full ring-1 ring-slate-200 shadow-sm">
+                      <Image
+                        src={talent.photoURL}
+                        alt={talent?.name || "Profil"}
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                      />
+                    </span>
+                  ) : (
+                    <span className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-b from-primaryStart to-primaryEnd text-white ring-1 ring-slate-200 shadow-sm">
+                      <FaUser className="text-2xl" />
+                    </span>
+                  )}
+
+                  <div className="min-w-0 flex-1 text-center sm:text-left">
+                    <h4 className="truncate text-lg font-semibold text-slate-900">
+                      {talent?.name || "Brak nazwy"}
+                    </h4>
+                    {talent?.city && (
+                      <div className="mt-1 inline-flex items-center text-sm text-slate-700">
+                        <IoLocationOutline className="mr-1 text-lg text-primaryStart" />
+                        <span className="truncate">{talent.city}, Polska</span>
                       </div>
-                      {talent?.title && (
-                        <div>
-                          <span className="text-sm sm:text-base mt-1 block font-extrabold w-max max-w-full text-white rounded-md py-0.5 px-1 bg-gradient-to-b from-accentStart to-accentEnd">
-                            {talent?.title}
-                          </span>
-                        </div>
-                      )}
-                    </div>
+                    )}
+                    {talent?.title && (
+                      <span className="mt-2 inline-block truncate rounded-full bg-primaryStart/10 px-3 py-1 text-xs font-medium text-primaryStart">
+                        {talent.title}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
+
               <Link
                 href="/user"
-                className="mx-auto text-center w-max max-w-full block mt-3 font-bold  text-white py-2 px-4 rounded-md bg-gradient-to-r from-ctaStart to-ctaEnd"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-ctaStart to-ctaEnd px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctaStart"
               >
                 Przejdź do panelu
               </Link>
             </div>
           </div>
-        </div>
+        )}
+
+        {/* STICKY USER BAR */}
         <div className="fixed bottom-0 left-0 z-[100] w-full">
           <UserStickyTop slugData={talent} />
         </div>
-        <div className="container px-4 lg:px-12 relative mx-auto bg-white">
-          <div className="bg-white py-6 grid grid-cols-1 h-max w-full mx-auto relative z-50">
-            <div>
-              <div className="mt-6 w-full">
-                <div className="flex justify-between w-full">
-                  <div className="flex flex-col w-full">
-                    <div className="flex w-full">
-                      <div className="flex w-max flex-col items-center">
-                        {talent?.photoURL && (
-                          <div className="relative h-20 w-20 sm:w-24 sm:h-24 aspect-square">
-                            <Image
-                              src={talent?.photoURL}
-                              width={256}
-                              height={256}
-                              alt=""
-                              className="rounded-full mb-0 absolute inset-0 object-cover w-full h-full shadow-sm shadow-black"
-                            />
-                          </div>
-                        )}
-                        {!talent?.photoURL && (
-                          <div className="flex flex-col items-center">
-                            <div className="bg-gradient-to-b from-primaryStart to-primaryEnd rounded-full aspect-square text-white flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 shadow-sm shadow-black">
-                              <FaUser className="text-3xl sm:text-4xl" />
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                      <div className="pl-3 lg:pl-6 w-full">
-                        <div className="flex flex-col w-full">
-                          <div className="text-black font-extrabold w-full flex justify-between">
-                            <span className="text-xl lg:text-2xl pr-2">
-                              {talent?.name ? talent?.name : "Nie podano"}
-                            </span>
-                          </div>
-                          {talent?.title && (
-                            <span>
-                              <span className="my-0.5 block font-lato w-max max-w-full text-white rounded-md py-0.5 px-1 bg-gradient-to-b from-primaryHoverStart to-primaryHoverEnd">
-                                {talent?.title}
-                              </span>
-                            </span>
-                          )}
-                          {talent?.city && (
-                            <div className="text-black flex items-center">
-                              <IoLocationOutline className="-ml-px text-xl mr-1" />{" "}
-                              <span>{talent?.city}, Polska</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div
-                  className={`grid ${
-                    talent?.tags?.length > 10
-                      ? "grid-cols-1"
-                      : "grid-cols-1 lg:grid-cols-2"
-                  } mt-6`}
-                >
-                  <div>
-                    <span className="w-max text-2xl text-black font-extrabold">
-                      Specjalizacje
-                    </span>
-                    <div className="w-full -ml-1 mt-1 flex flex-wrap items-center text-black">
-                      <Tags talent={talent} />
-                      {talent?.tags?.length === 0 &&
-                        "Brak podanych specjalizacji..."}
-                    </div>
+        {/* PAGE CONTENT */}
+        <div className="container relative mx-auto px-4 lg:px-12">
+          <section className="py-6">
+            {/* HEADER */}
+            <div className="flex items-start gap-4">
+              {talent?.photoURL ? (
+                <span className="relative inline-flex h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full ring-1 ring-slate-200 shadow-sm">
+                  <Image
+                    src={talent.photoURL}
+                    alt={talent?.name || "Profil"}
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                </span>
+              ) : (
+                <span className="inline-flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-gradient-to-b from-primaryStart to-primaryEnd text-white ring-1 ring-slate-200 shadow-sm">
+                  <FaUser className="text-2xl sm:text-3xl" />
+                </span>
+              )}
+
+              <div className="min-w-0 flex-1">
+                <h1 className="truncate text-lg sm:text-xl font-bold text-slate-900">
+                  {talent?.name || "Nie podano"}
+                </h1>
+
+                {talent?.title && (
+                  <span className="mt-1 inline-block truncate rounded-full bg-primaryStart/10 px-3 py-1 text-xs font-medium text-primaryStart">
+                    {talent.title}
+                  </span>
+                )}
+
+                {talent?.city && (
+                  <div className="mt-2 flex items-center text-sm text-slate-700">
+                    <IoLocationOutline className="mr-1 text-lg text-primaryStart" />
+                    <span className="truncate">{talent.city}, Polska</span>
                   </div>
-                  <div>
-                    <span
-                      className={`${
-                        talent?.tags?.length > 10 ? "mt-6" : "lg:mt-0"
-                      } w-max text-2xl text-black font-extrabold`}
-                    >
-                      Dostępność
-                    </span>
-                    <div className="w-full -ml-1 mt-1 flex flex-wrap items-center">
-                      {talent?.preferences ? (
-                        talent?.preferences?.map((item: any, i: any) => (
-                          <span
-                            key={i}
-                            className={`rounded-md text-xs sm:text-sm lg:text-base bg-gradient-to-b from-primaryHoverStart to-primaryHoverEnd px-[0.7rem] text-white ml-1 mt-1 duration-100 flex items-center py-[0.5rem]`}
-                          >
-                            {item}
-                          </span>
-                        ))
-                      ) : (
-                        <span className="text-black text-lg ml-2">
-                          Brak danych o dostępności
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                {talent?.description && (
-                  <>
-                    <span className="mt-6 text-2xl text-black font-extrabold">
-                      Opis
-                    </span>
-                    <div className="mt-3 bg-gradient-to-r">
-                      <div className={`text-black my-3 reset`}>
-                        <Viewer value={talent?.description} displayBlack />
-                      </div>
-                    </div>
-                  </>
                 )}
               </div>
             </div>
-            {talent?.projects?.length > 0 && (
-              <div className="mt-6">
-                <div className={`h-max w-full`}>
-                  <span className="text-2xl text-black font-extrabold">
-                    Usługi
-                  </span>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-3">
-                    {talent?.projects?.map((project: IProject, i: any) => (
-                      <LeadCard key={i} service={project} slug />
-                    ))}
+
+            {/* TAGS + AVAILABILITY */}
+            <div
+              className={`mt-6 grid gap-6 ${
+                talent?.tags?.length > 10
+                  ? "grid-cols-1"
+                  : "grid-cols-1 lg:grid-cols-2"
+              }`}
+            >
+              <div>
+                <h2 className="text-xl font-semibold text-slate-900">
+                  Specjalizacje
+                </h2>
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                  <Tags talent={talent} />
+                  {(!talent?.tags || talent?.tags?.length === 0) && (
+                    <span className="text-sm text-slate-500">
+                      Brak podanych specjalizacji…
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h2
+                  className={`text-xl font-semibold text-slate-900 ${
+                    talent?.tags?.length > 10 ? "mt-0" : "lg:mt-0"
+                  }`}
+                >
+                  Dostępność
+                </h2>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {talent?.preferences && talent.preferences.length > 0 ? (
+                    talent.preferences.map((item: string, i: number) => (
+                      <span
+                        key={`${item}-${i}`}
+                        className="inline-flex items-center rounded-full bg-primaryStart/10 px-3 py-1 text-xs sm:text-sm font-medium text-primaryStart"
+                      >
+                        {item}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="text-sm text-slate-500">
+                      Brak danych o dostępności
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* DESCRIPTION */}
+            {talent?.description && (
+              <div className="mt-8">
+                <h2 className="text-xl font-semibold text-slate-900">Opis</h2>
+                <div className="mt-3">
+                  <div className="reset prose max-w-none text-slate-800">
+                    <Viewer value={talent.description} displayBlack />
                   </div>
                 </div>
               </div>
             )}
-          </div>
+
+            {/* SERVICES */}
+            {talent?.projects?.length > 0 && (
+              <div className="mt-8">
+                <h2 className="text-xl font-semibold text-slate-900">Usługi</h2>
+                <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+                  {talent.projects.map((project: IProject, i: number) => (
+                    <LeadCard key={i} service={project} slug />
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
         </div>
-        <div className="container mx-auto pb-12 mt-6 bg-white px-4 lg:px-12">
-          <div className="bg-white relative overflow-hidden">
-            <span className="text-black w-full text-xl lg:text-2xl font-extrabold">
+
+        {/* SIMILAR PROFILES */}
+        <div className="container mx-auto mt-6 px-4 pb-12 lg:px-12">
+          <div className="rounded-2xl bg-white">
+            <h2 className="text-xl lg:text-2xl font-extrabold text-slate-900">
               Zobacz podobne profile
-            </span>
+            </h2>
             <div className="mt-3">
               <JobBoardList talents={talents} companies={companies} />
             </div>

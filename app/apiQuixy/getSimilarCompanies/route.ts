@@ -29,14 +29,8 @@ export async function GET(req: NextRequest) {
         )
     )
     .map((user: any) => ({
-      seek: user?.seek,
-      name: user?.name,
-      pseudo: user?.pseudo,
+      ...user,
       email: "hidden",
-      photoURL: user?.photoURL,
-      city: user?.city,
-      title: user?.title,
-      access: user?.access,
     }));
   return NextResponse.json(talents);
 }

@@ -15,6 +15,7 @@ import {
   isCitySlug,
   slugToCity,
   getCityDisplayName,
+  getCityNominative,
 } from "@/lib/polishCities";
 import { generateCityPost } from "@/lib/cityPostGenerator";
 import PricingHero from "@/components/landing/PricingHero";
@@ -278,7 +279,7 @@ function PageContent({
 
         {/* Hero banner */}
         <section className="relative w-full">
-          <div className="relative w-full aspect-[16/6] min-h-[600px] z-[2]">
+          <div className="relative w-full aspect-[16/6] min-h-[500px] z-[2]">
             <ParallaxImage
               src={
                 isCitySlug(slug)
@@ -312,7 +313,7 @@ function PageContent({
             </ParallaxSection>
 
             <div className="absolute inset-0 flex items-end">
-              <div className="w-full max-w-6xl mx-auto px-4 pb-8">
+              <div className="w-full max-w-[90vw] mx-auto px-4 pb-8">
                 <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
                   <div className="flex items-center gap-3 text-xs font-gotham font-light">
                     <span className="w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
@@ -353,8 +354,8 @@ function PageContent({
         </section>
 
         {/* Article card */}
-        <main className="relative z-10 w-full px-4">
-          <article className="w-full max-w-6xl mx-auto -mt-10 md:-mt-16">
+        <main className="relative z-10 w-full px-4 -mt-12">
+          <article className="w-full max-w-[90vw] mx-auto">
             <ParallaxSection speed={0.1} direction="up">
               <div className="relative bg-[#0f1320]/90 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-3xl shadow-2xl p-8 md:p-12 overflow-hidden">
                 {/* Background accent elements */}
@@ -407,68 +408,41 @@ function PageContent({
                   {/* FAQ Section */}
                   <FaqSection faqs={post.faq} />
 
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="font-gotham font-light flex flex-wrap gap-3 mt-10 pt-8 border-t border-[#2a2f3d]/50">
-                      {post.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="text-sm bg-gradient-to-r from-[#1a1f2e] to-[#22263a] text-gray-300 px-4 py-2 rounded-full border border-[#2a2f3d]/30 backdrop-blur-sm hover:border-[#B4FC2D]/30 transition-colors duration-300"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50 flex flex-col sm:flex-row items-center gap-4">
+                  <div className="!text-lg font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50 flex flex-row items-center gap-4">
                     <Cta label="Dodaj zlecenie" />
-                    <Link
-                      href="/"
-                      className="mt-3 px-5 text-gray-200 flex items-center gap-2"
-                    >
-                      Strona główna
-                    </Link>
+                  </div>
+                  <div className="max-w-[450px]">
+                    <OpinionsSection darkBg={true} />
                   </div>
                 </div>
               </div>
             </ParallaxSection>
           </article>
-          <div className="max-w-6xl mx-auto font-sans">
-            <PricingHero />
-            <div className="mt-24">
-              {isCitySlug(slug) && slugToCity(slug) ? (
-                <>
-                  <h2 className="mb-8 text-2xl font-gotham font-semibold text-white text-center">
-                    Twórcy stron internetowych w{" "}
-                    {getCityDisplayName(slugToCity(slug)!)}
-                  </h2>
-                  <p className="text-zinc-700 text-center font-light font-gotham">
-                    Przeglądasz najlepszych twórców stron internetowych,
-                    programistów, specjalistów ds. SEO, marketingu,
-                    projektowania, grafiki i fotografii w{" "}
-                    {getCityDisplayName(slugToCity(slug)!)} i okolicach. Wybierz
-                    idealnego specjalistę dla swojego projektu!
-                  </p>
-                </>
-              ) : (
-                <>
-                  <h2 className="mb-8 text-2xl font-gotham font-semibold text-white text-center">
-                    Tworzenie stron internetowych Grudziądz i okolice
-                  </h2>
-                  <p className="text-white max-w-4xl mx-auto mb-12 text-center font-light font-gotham">
-                    Przeglądasz najlepszych twórców stron internetowych,
-                    programistów, specjalistów ds. SEO, marketingu,
-                    projektowania, grafiki i fotografii w Grudziądzu i okolic.
-                    Wybierz idealnego specjalistę dla swojego projektu!
-                  </p>
-                </>
-              )}
-
-              <JobBoardList talents={talents} companies={companies} />
+          <div className="max-w-[90vw] mx-auto font-sans mb-12">
+            <div className="bg-white rounded-xl p-6">
+              <PricingHero city={getCityNominative(slugToCity(slug)!)} />
+              <div className="my-12 mx-auto bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl p-6">
+                <div className="relative sm:px-8">
+                  <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
+                    Zaufani freelancerzy oraz firmy współpracujące z Quixy!
+                  </span>
+                  <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
+                  <div className="mt-6">
+                    <JobBoardList talents={talents} companies={companies} />
+                  </div>
+                </div>
+                <p className="text-zinc-700 text-base sm:text-lg max-w-3xl mx-auto text-center mt-14 font-gotham font-light leading-relaxed px-2">
+                  W poszukiwaniu firmy lub freelancera?{" "}
+                  <span className="font-semibold text-blue-600">
+                    Sprawdź ofertę zaufanych partnerów Quixy Studio.
+                  </span>{" "}
+                  Możesz dodawać zlecenia dla freelancerów lub zlecenia dla
+                  firm.
+                </p>
+              </div>
+              <ReachSection markers={mapMarkers} />
             </div>
             <BlogSection />
-            <OpinionsSection />
-            <ReachSection markers={mapMarkers} />
           </div>
         </main>
       </div>

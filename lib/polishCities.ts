@@ -161,6 +161,14 @@ export function getCityDisplayName(city: string): string {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
+export function getCityNominative(city: string): string {
+  // Returns the nominative (mianownik) form of the city, or the display name if not found in declensions
+  if (cityDeclensions[city] && cityDeclensions[city].nominative) {
+    return cityDeclensions[city].nominative;
+  }
+  // fallback: prettify the slug
+  return getCityDisplayName(city);
+}
 
 // Check if slug is a city-based slug
 export function isCitySlug(slug: string): boolean {

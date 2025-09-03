@@ -30,22 +30,17 @@ export default function BlogSection() {
   }, []);
 
   return (
-    <section className="relative w-full py-24 overflow-hidden px-4">
+    <section
+      className={`relative w-full py-24 overflow-hidden px-4 ${
+        posts.length > 0 ? "block" : "hidden"
+      }`}
+    >
       <div className="relative z-10 w-full px-3 max-w-7xl mx-auto">
         <div className="mb-12 text-center relative">
-          {/* Floating accent elements */}
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
-          <div className="absolute top-2 right-1/4 w-1 h-1 bg-[#3EE7C0] rounded-full opacity-80" />
-          <div className="absolute -top-2 left-1/4 w-1.5 h-1.5 bg-[#B4FC2D] rounded-full opacity-40" />
-
           <span className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white font-gotham">
-            Z Bloga
+            Ostatnie wpisy z bloga
           </span>
-          <p className="text-gray-200 mt-3 text-base lg:text-lg max-w-2xl mx-auto">
-            Artykuły o stronach, projektowaniu i inspiracjach
-          </p>
-          {/* Subtle gradient line */}
-          <div className="w-24 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mx-auto mt-4 rounded-full opacity-60" />
+          <p className="font-gotham font-light text-gray-200 mt-3 text-base lg:text-lg max-w-2xl mx-auto"></p>
         </div>
 
         {loading ? (
