@@ -67,14 +67,14 @@ export default function DisplayCompaniesOrInviter({ data }: { data: any }) {
 
             <div className="w-full flex items-center gap-2 flex-wrap">
               <div className="flex flex-row items-center mt-2">
-                <FaMapMarker className="mr-0.5 text-sm" />
+                <FaMapMarker className="mr-0.5 text-sm text-black" />
                 <span className="text-xs lg:text-base  text-black font-gotham font-light">
                   {talent?.city}
                 </span>
               </div>
               <div className="col-span-2 mt-2">
                 <div className="flex flex-row items-center text-xs lg:text-base">
-                  <FaDollarSign className="mr-0.5 text-sm" />
+                  <FaDollarSign className="mr-0.5 text-sm text-black" />
                   <span
                     style={{ lineHeight: 1.8 }}
                     className="font-gotham font-light text-black w-max max-w-full"

@@ -130,21 +130,19 @@ export const polishCities = [
   "bilgoraj",
   "sandomierz",
   "tarnobrzeg",
-  "stalowa-wola",
-  "mielec",
 ];
 
 // Convert city name to URL-friendly slug
 export function cityToSlug(city: string): string {
-  return `strona-internetowa-${city}`;
+  return `tworzenie-stron-internetowych-${city}-cennik`;
 }
 
 // Convert slug back to city name
 export function slugToCity(slug: string): string | null {
-  if (!slug.startsWith("strona-internetowa-")) {
+  if (!slug.startsWith("tworzenie-stron-internetowych-")) {
     return null;
   }
-  const cityName = slug.replace("strona-internetowa-", "");
+  const cityName = slug.replace("tworzenie-stron-internetowych-", "");
   return polishCities.includes(cityName) ? cityName : null;
 }
 
@@ -158,7 +156,10 @@ export function getCityDisplayName(city: string): string {
 
 // Check if slug is a city-based slug
 export function isCitySlug(slug: string): boolean {
-  return slug.startsWith("strona-internetowa-") && slugToCity(slug) !== null;
+  return (
+    slug.startsWith("tworzenie-stron-internetowych-") &&
+    slugToCity(slug) !== null
+  );
 }
 
 // Generate all city slugs

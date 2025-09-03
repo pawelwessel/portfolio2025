@@ -108,8 +108,8 @@ export async function generateMetadata({
         ? getCityDisplayName(cityName)
         : "Polski Miasto";
       return {
-        title: `Strony internetowe ${displayName} | Quixy Studio`,
-        description: `Profesjonalne tworzenie stron internetowych w ${displayName}. Sprawdź naszą ofertę i skontaktuj się z nami po bezpłatną wycenę.`,
+        title: `Tworzenie stron internetowych ${displayName} | Quixy Studio`,
+        description: `W Quixy tworzymy sklepy internetowe, platformy internetowe oraz prowadzimy marketing. Strony internetowe ${displayName}.`,
       };
     }
 
@@ -134,7 +134,7 @@ export async function generateMetadata({
   const url = `https://quixy.pl/oferta/${params.slug}`;
 
   return {
-    title: `${title} | Quixy Studio`,
+    title: `${title}`,
     description,
     keywords: Array.isArray(keywords) ? keywords.join(", ") : keywords,
     authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
@@ -281,7 +281,6 @@ function PageContent({
           <div className="relative w-full aspect-[16/6] min-h-[600px] z-[2]">
             <ParallaxImage
               src={
-                // Use globe image for city-based posts, otherwise use post's main image
                 isCitySlug(slug)
                   ? "/assets/globe.jpg"
                   : typeof post.mainImage === "string" &&

@@ -18,11 +18,11 @@ export default function JobBoardList({
   return (
     <div className="mt-8">
       {content && (
-        <div>
+        <div className="text-center mx-auto">
           <h2 className="text-white font-extrabold text-xl lg:text-3xl">
             {content?.informal_title_plural}{" "}
           </h2>
-          <p className="mb-2 text-white">Czego szukasz tym razem?</p>
+          <p className="my-4 text-white">Czego szukasz tym razem?</p>
         </div>
       )}
       <div className="mx-auto rounded-xl">
