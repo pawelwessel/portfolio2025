@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
-const { polishCities, getAllCitySlugs } = require("./lib/polishCities");
-const { getDocuments, getBlogPosts } = require("./common/firebase");
+import { polishCities, getAllCitySlugs } from "./lib/polishCities";
+import { getDocuments, getBlogPosts } from "./common/firebase";
 
 module.exports = {
   siteUrl: process.env.SITE_URL || "https://quixy.pl",

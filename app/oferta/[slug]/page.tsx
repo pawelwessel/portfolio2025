@@ -129,7 +129,7 @@ export async function generateMetadata({
       post.mainImage.startsWith("https://") ||
       post.mainImage.startsWith("/"))
       ? post.mainImage
-      : "/assets/globe.jpg";
+      : "/assets/earth.jpg";
 
   const url = `https://quixy.pl/oferta/${params.slug}`;
 
@@ -220,13 +220,13 @@ function PageContent({
     image:
       // Use globe image for city-based posts, otherwise use post's main image
       isCitySlug(slug)
-        ? "/assets/globe.jpg"
+        ? "/assets/earth.jpg"
         : typeof post.mainImage === "string" &&
           (post.mainImage.startsWith("http://") ||
             post.mainImage.startsWith("https://") ||
             post.mainImage.startsWith("/"))
         ? post.mainImage
-        : "/assets/globe.jpg",
+        : "/assets/earth.jpg",
     author: {
       "@type": "Organization",
       name: "Quixy Studio",
@@ -282,43 +282,24 @@ function PageContent({
             <ParallaxImage
               src={
                 isCitySlug(slug)
-                  ? "/assets/globe.jpg"
+                  ? "/assets/earth.jpg"
                   : typeof post.mainImage === "string" &&
                     (post.mainImage.startsWith("http://") ||
                       post.mainImage.startsWith("https://") ||
                       post.mainImage.startsWith("/"))
                   ? post.mainImage
-                  : "/assets/globe.jpg"
+                  : "/assets/earth.jpg"
               }
               alt={post.title}
               fill
               priority
               speed={0.5}
               direction="down"
-              scale={1.2}
+              scale={1}
               containerClassName="w-full h-full"
               overlay
               overlayClassName="bg-gradient-to-b from-black/20 via-black/60 to-black"
             />
-
-            {/* Floating accent elements */}
-            <ParallaxSection
-              speed={0.1}
-              direction="up"
-              className="absolute top-8 left-8"
-            >
-              <div className="w-3 h-3 bg-[#B4FC2D] rounded-full opacity-60 animate-pulse" />
-            </ParallaxSection>
-            <ParallaxSection
-              speed={0.15}
-              direction="down"
-              className="absolute top-12 right-12"
-            >
-              <div
-                className="w-2 h-2 bg-[#3EE7C0] rounded-full opacity-40 animate-pulse"
-                style={{ animationDelay: "1s" }}
-              />
-            </ParallaxSection>
             <ParallaxSection
               speed={0.08}
               direction="up"
@@ -337,18 +318,10 @@ function PageContent({
                     <span className="w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
                       {new Date(post.creationTime).toLocaleDateString("pl-PL")}
                     </span>
-                    {typeof post.readTime === "number" && post.readTime > 0 && (
-                      <span className="flex items-center flex-row w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
-                        <FaBook className="mr-1.5 w-4 h-4" />
-                        {post.readTime} min
-                      </span>
-                    )}
-                    {typeof post.viewerCount === "number" && (
-                      <span className="flex items-center flex-row w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
-                        <FaEye className="mr-1.5 w-4 h-4" />
-                        {post.viewerCount}
-                      </span>
-                    )}
+
+                    <span className="flex items-center flex-row w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
+                      <FaBook className="mr-1.5 w-4 h-4" />5 min
+                    </span>
                   </div>
                   <br />
                   <Link
@@ -448,7 +421,7 @@ function PageContent({
                   )}
 
                   <div className="font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50 flex flex-col sm:flex-row items-center gap-4">
-                    <Cta label="Darmowa wycena" />
+                    <Cta label="Dodaj zlecenie" />
                     <Link
                       href="/"
                       className="mt-3 px-5 text-gray-200 flex items-center gap-2"

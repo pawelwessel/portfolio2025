@@ -2,7 +2,7 @@
 import Cta from "@/components/cta/Cta";
 import Image from "next/image";
 import Link from "next/link";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaUserCircle } from "react-icons/fa";
 export default function HeaderComponent({
   showHeader,
   menuShow,
@@ -128,11 +128,16 @@ export default function HeaderComponent({
               Aktualności
             </Link>
           </div>
-          <div className="flex items-center gap-3 -mt-3">
-            <div className="w-max">
-              <Cta label="Darmowa Wycena" />
+          <Link
+            href="/register"
+            title="Zarejestruj się"
+            className="text-nowrap bg-blue-500 text-white font-gotham font-light px-4 py-2 rounded-md hover:bg-blue-600 drop-shadow-sm shadow-black text-sm sm:text-base"
+          >
+            <div className="flex items-center">
+              <FaUserCircle className="text-white text-xl mr-2" />
+              Zarejestruj się
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </>

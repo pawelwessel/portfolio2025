@@ -7,18 +7,18 @@
 **File:** `app/oferta/[slug]/page.tsx`
 
 ```typescript
-// NEW: City-based posts now use globe.jpg
+// NEW: City-based posts now use earth.jpg
 <ParallaxImage
   src={
     // Use globe image for city-based posts, otherwise use post's main image
     isCitySlug(slug)
-      ? "/assets/globe.jpg"
+      ? "/assets/earth.jpg"
       : typeof post.mainImage === "string" &&
         (post.mainImage.startsWith("http://") ||
           post.mainImage.startsWith("https://") ||
           post.mainImage.startsWith("/"))
       ? post.mainImage
-      : "/assets/globe.jpg"
+      : "/assets/earth.jpg"
   }
   alt={post.title}
   // ... other props
@@ -32,7 +32,7 @@ The structured data now also uses the globe image for city pages:
 ```typescript
 // JSON-LD also uses globe for city posts
 image: isCitySlug(slug)
-  ? "/assets/globe.jpg"
+  ? "/assets/earth.jpg"
   : (/* fallback logic */)
 ```
 
@@ -42,17 +42,17 @@ image: isCitySlug(slug)
 
 ```typescript
 // City posts are generated with globe image by default
-mainImage: "/assets/globe.jpg",
-images: ["/assets/globe.jpg"],
+mainImage: "/assets/earth.jpg",
+images: ["/assets/earth.jpg"],
 ```
 
 ## 🎯 Result
 
 ### City Pages (globe image):
 
-- `http://localhost:3000/oferta/strona-internetowa-warszawa` → 🌍 `/assets/globe.jpg`
-- `http://localhost:3000/oferta/strona-internetowa-krakow` → 🌍 `/assets/globe.jpg`
-- `http://localhost:3000/oferta/strona-internetowa-czestochowa` → 🌍 `/assets/globe.jpg`
+- `http://localhost:3000/oferta/strona-internetowa-warszawa` → 🌍 `/assets/earth.jpg`
+- `http://localhost:3000/oferta/strona-internetowa-krakow` → 🌍 `/assets/earth.jpg`
+- `http://localhost:3000/oferta/strona-internetowa-czestochowa` → 🌍 `/assets/earth.jpg`
 
 ### Regular Blog Posts (original image):
 
@@ -70,7 +70,7 @@ images: ["/assets/globe.jpg"],
 To test the implementation:
 
 1. Visit any city page: `/oferta/strona-internetowa-{city}`
-2. Check that the hero image shows the globe (`/assets/globe.jpg`)
+2. Check that the hero image shows the globe (`/assets/earth.jpg`)
 3. Compare with regular blog posts which show their original images
 4. Verify in browser dev tools that structured data also references the globe image
 
@@ -78,6 +78,6 @@ To test the implementation:
 
 - ✅ `app/oferta/[slug]/page.tsx` - Parallax image + JSON-LD
 - ✅ `lib/cityPostGenerator.ts` - Default city post image
-- ✅ Image exists at `/public/assets/globe.jpg`
+- ✅ Image exists at `/public/assets/earth.jpg`
 
 The implementation automatically detects city-based slugs and displays the appropriate globe image while maintaining the original functionality for regular blog posts.
