@@ -590,7 +590,7 @@ export default async function Page({
                   <div className="flex flex-row mt-4">
                     <Link
                       className="hover:scale-105 duration-100 gap-3 flex items-center py-2 rounded-md px-4 bg-gradient-to-r from-ctaStart to-ctaEnd text-white"
-                      href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna`}
+                      href={`${process.env.NEXT_PUBLIC_URL}/oferta`}
                     >
                       Sprawdź kategorie <FaChevronRight />
                     </Link>
@@ -599,151 +599,159 @@ export default async function Page({
               </div>
             </div>
           </div>
-          <div className="xl:container mx-auto px-4 lg:px-12 mt-12 w-full">
-            <div className="rounded-lg relative bg-cover bg-center lg:bg-right-bottom p-4 h-screen lg:h-[80vh] bg-woman-pc">
-              <div className="rounded-lg absolute left-0 top-0  bg-black bg-opacity-50 w-full h-full z-0"></div>
-              <div className="rounded-md px-4 py-2 bg-gradient-to-r from-accentStart to-accentEnd absolute left-4 top-4 text-white">
-                Dla klientów
-              </div>
-              <div className="flex flex-col justify-end relative z-10 h-full w-full">
-                <h2 className="text-xl lg:text-3xl font-extrabold text-white">
-                  Znajdź eksperta, którego potrzebujesz!
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2  gap-2 md:gap-4 mt-4">
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna/rozwoj-oprogramowania/web-development`}
-                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
-                  >
-                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
-                      Zamów stronę internetową
-                    </h3>
-                    <div className="flex flex-row items-center font-light">
-                      Nasi web developerzy czekają na Twój projekt
-                    </div>
-                  </Link>
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna/marketing/marketing-cyfrowy/seo`}
-                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
-                  >
-                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
-                      Zamów SEO
-                    </h3>
-                    <div className="flex flex-row items-center font-light">
-                      Zwiększ widoczność w sieci dzięki SEO.
-                    </div>
-                  </Link>
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna/projektowanie/web-design`}
-                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
-                  >
-                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
-                      Zamów design
-                    </h3>
-                    <div className="flex flex-row items-center font-light">
-                      Wyróżnij się wizualnie – specjaliści od designu są tutaj,
-                      by pomóc.
-                    </div>
-                  </Link>
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna`}
-                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
-                  >
-                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
-                      Zobacz więcej...
-                    </h3>
-                    <div className="flex flex-row items-center font-light">
-                      Szukasz usług firmy lub freelancera?
-                    </div>
-                  </Link>
+          <div className="w-full relative z-50 bg-white pb-24">
+            <div className="xl:container mx-auto px-4 lg:px-12 mt-12 w-full">
+              <div className="rounded-lg relative bg-cover bg-center lg:bg-right-bottom p-4 h-screen lg:h-[80vh] bg-woman-pc">
+                <div className="rounded-lg absolute left-0 top-0  bg-black bg-opacity-50 w-full h-full z-0"></div>
+                <div className="rounded-md px-4 py-2 bg-gradient-to-r from-accentStart to-accentEnd absolute left-4 top-4 text-white">
+                  Dla klientów
+                </div>
+                <div className="flex flex-col justify-end relative z-10 h-full w-full">
+                  <h2 className="text-xl lg:text-3xl font-extrabold text-white">
+                    Znajdź eksperta, którego potrzebujesz!
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2  gap-2 md:gap-4 mt-4">
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_URL}/oferta/rozwoj-oprogramowania/web-development`}
+                      className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                    >
+                      <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                        Zamów stronę internetową
+                      </h3>
+                      <div className="flex flex-row items-center font-light">
+                        Nasi web developerzy czekają na Twój projekt
+                      </div>
+                    </Link>
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_URL}/oferta/marketing/marketing-cyfrowy/seo`}
+                      className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                    >
+                      <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                        Zamów SEO
+                      </h3>
+                      <div className="flex flex-row items-center font-light">
+                        Zwiększ widoczność w sieci dzięki SEO.
+                      </div>
+                    </Link>
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_URL}/oferta/projektowanie/web-design`}
+                      className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                    >
+                      <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                        Zamów design
+                      </h3>
+                      <div className="flex flex-row items-center font-light">
+                        Wyróżnij się wizualnie – specjaliści od designu są
+                        tutaj, by pomóc.
+                      </div>
+                    </Link>
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_URL}/oferta`}
+                      className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                    >
+                      <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                        Zobacz więcej...
+                      </h3>
+                      <div className="flex flex-row items-center font-light">
+                        Szukasz usług firmy lub freelancera?
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="xl:container mx-auto px-4 lg:px-12 mt-12 flex flex-col md:flex-row w-full">
-            <div className="mt-3 md:mt-0 md:w-[55%] w-full text-black">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mx-auto">
-                <div className="flex flex-row">
-                  <span className="text-2xl">💎</span>
-                  <div className="ml-3 flex flex-col">
-                    <h3 className="font-bold text-lg -mt-1 font-gotham">
-                      Darmowe Quixies na start
-                    </h3>
-                    <p className="text-sm w-3/4 ">
-                      Na początku przygody otrzymasz od nas bonus.
-                    </p>
+          <div className="w-full relative z-50 bg-white pb-24">
+            <div className="xl:container mx-auto px-4 lg:px-12 mt-12 flex flex-col md:flex-row w-full">
+              <div className="mt-3 md:mt-0 md:w-[55%] w-full text-black">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mx-auto">
+                  <div className="flex flex-row">
+                    <span className="text-2xl">💎</span>
+                    <div className="ml-3 flex flex-col">
+                      <h3 className="font-bold text-lg -mt-1 font-gotham">
+                        Darmowe Quixies na start
+                      </h3>
+                      <p className="text-sm w-3/4 ">
+                        Na początku przygody otrzymasz od nas bonus.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-row">
-                  <span className="text-2xl">⭐</span>
-                  <div className="ml-3 flex flex-col">
-                    <h3 className="font-bold text-lg -mt-1 font-gotham">
-                      Wyświetlaj swoje usługi
-                    </h3>
-                    <p className="text-sm w-3/4 ">
-                      Zdobywaj zlecenia jako freelancer lub firma.
-                    </p>
+                  <div className="flex flex-row">
+                    <span className="text-2xl">⭐</span>
+                    <div className="ml-3 flex flex-col">
+                      <h3 className="font-bold text-lg -mt-1 font-gotham">
+                        Wyświetlaj swoje usługi
+                      </h3>
+                      <p className="text-sm w-3/4 ">
+                        Zdobywaj zlecenia jako freelancer lub firma.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-row">
-                  <span className="text-2xl">✔️</span>
-                  <div className="ml-3 flex flex-col">
-                    <h3 className="font-bold text-lg -mt-1 font-gotham">
-                      Zapewnimy bezpieczeństwo
-                    </h3>
-                    <p className="text-sm w-3/4 ">
-                      Potrzebujesz pomocy? Skontaktuj się z nami!
-                    </p>
+                  <div className="flex flex-row">
+                    <span className="text-2xl">✔️</span>
+                    <div className="ml-3 flex flex-col">
+                      <h3 className="font-bold text-lg -mt-1 font-gotham">
+                        Zapewnimy bezpieczeństwo
+                      </h3>
+                      <p className="text-sm w-3/4 ">
+                        Potrzebujesz pomocy? Skontaktuj się z nami!
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           {/* just a component for the future 🤷‍♀️ */}
-          <div className="relative xl:container px-4 lg:px-12 mx-auto mt-12 h-max">
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full relative">
-              <div className="rounded-lg bg-guitar-man bg-center h-[60vh] xl:h-[80vh] relative">
-                <h3 className="rounded-md px-4 py-2 bg-gradient-to-r from-accentStart to-accentEnd absolute left-4 top-4 text-white">
-                  Dla freelancerów
-                </h3>
-              </div>
-              <div className="py-4 md:py-8 2xl:py-10 md:px-8 2xl:px-10 text-black w-full md:h-full grid grid-cols-1">
-                <div>
-                  <h2 className="text-black text-2xl lg:text-4xl font-extrabold">
-                    Szukaj zleceń lub pracy zdalnej
-                  </h2>
-                  <p className="text-base lg:text-lg my-3 lg:my-4 lg:mb-3 ">
-                    Przeglądaj zlecenia klientów, szukaj pracy zdalnej lub
-                    sprzedawaj gotowe strony internetowe, aplikacje lub
-                    projekty.
-                  </p>
-                  <Link
-                    className="w-max max-w-full flex items-center gap-2 rounded-md bg-gradient-to-r from-ctaStart to-ctaEnd hover:scale-105 duration-100 px-4 py-2 font-gotham text-white"
-                    href="/register"
-                  >
-                    Utwórz portfolio <FaChevronRight />
-                  </Link>
+          <div className="w-full relative z-50 bg-white pb-24">
+            <div className="relative xl:container px-4 lg:px-12 mx-auto mt-12 h-max">
+              <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full relative">
+                <div className="rounded-lg bg-guitar-man bg-center h-[60vh] xl:h-[80vh] relative">
+                  <h3 className="rounded-md px-4 py-2 bg-gradient-to-r from-accentStart to-accentEnd absolute left-4 top-4 text-white">
+                    Dla freelancerów
+                  </h3>
                 </div>
-                <div className="flex items-end  text-base md:text-sm lg:text-base xl:text-lg">
-                  <div className="w-full grid grid-cols-2 gap-3 pt-3 mt-12 border-t-2 border-primaryStart">
-                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
-                      Wysyłaj aplikacje
-                    </h4>
-                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
-                      Szukaj zleceń
-                    </h4>
-                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
-                      Prezentuj usługi
-                    </h4>
-                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
-                      Sprzedaj projekt
-                    </h4>
+                <div className="py-4 md:py-8 2xl:py-10 md:px-8 2xl:px-10 text-black w-full md:h-full grid grid-cols-1">
+                  <div>
+                    <h2 className="text-black text-2xl lg:text-4xl font-extrabold">
+                      Szukaj zleceń lub pracy zdalnej
+                    </h2>
+                    <p className="text-base lg:text-lg my-3 lg:my-4 lg:mb-3 ">
+                      Przeglądaj zlecenia klientów, szukaj pracy zdalnej lub
+                      sprzedawaj gotowe strony internetowe, aplikacje lub
+                      projekty.
+                    </p>
+                    <Link
+                      className="w-max max-w-full flex items-center gap-2 rounded-md bg-gradient-to-r from-ctaStart to-ctaEnd hover:scale-105 duration-100 px-4 py-2 font-gotham text-white"
+                      href="/register"
+                    >
+                      Utwórz portfolio <FaChevronRight />
+                    </Link>
+                  </div>
+                  <div className="flex items-end  text-base md:text-sm lg:text-base xl:text-lg">
+                    <div className="w-full grid grid-cols-2 gap-3 pt-3 mt-12 border-t-2 border-primaryStart">
+                      <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                        Wysyłaj aplikacje
+                      </h4>
+                      <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                        Szukaj zleceń
+                      </h4>
+                      <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                        Prezentuj usługi
+                      </h4>
+                      <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                        Sprzedaj projekt
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-12 xl:container mx-auto bg-white relative h-max pb-12 px-4 lg:px-12">
-            <FAQ faqItems={faqItems} />
+          <div className="w-full relative z-50 bg-white pb-24">
+            <div className="mt-12 xl:container mx-auto bg-white relative h-max pb-12 px-4 lg:px-12">
+              <FAQ faqItems={faqItems} />
+            </div>
           </div>
         </div>
         <div className="font-sans w-full bg-[#222222] pb-48 h-full">
