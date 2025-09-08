@@ -10,7 +10,7 @@ export default function HeroIntro() {
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 h-max">
           <div className="z-50 bg-zinc-800 bg-opacity-80 rounded-xl p-6 lg:p-12 flex flex-col justify-center h-max my-auto">
             <Image
-              src="/logo-quixy.png"
+              src="/assets/quixy-logo.png"
               width={400}
               height={400}
               alt="Quixy Studio Logo"

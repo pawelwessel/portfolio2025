@@ -33,6 +33,9 @@ export default function DisplayCompaniesOrInviter({ data }: { data: any }) {
         >
           <FaPlusCircle className="text-zinc-600 text-5xl min-w-16 lg:min-w-20 h-16 lg:h-20" />
           <div className="px-4">
+            <p className="text-lg lg:text-xl font-bold text-black font-gotham">
+              Dołącz do nas
+            </p>
             <p className="text-sm text-black font-gotham font-light">
               Skonfiguruj profil na naszej platformie i wyświetlaj swoje usługi.
             </p>
@@ -40,7 +43,7 @@ export default function DisplayCompaniesOrInviter({ data }: { data: any }) {
         </Link>
       </div>
       {data?.length > 0 && (
-        <div className="">
+        <div>
           <Pagination
             onShowMore={handleShowMore}
             totalItems={data?.length}

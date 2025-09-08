@@ -1,14 +1,109 @@
+import SearchJobs from "@/components/quixyComponents/HomeUnderHero/SearchJobs";
+import OpenableOpportunity from "@/components/quixyComponents/HomeUnderHero/OpenableOpportunity";
+import FAQ from "@/components/quixyComponents/Faq";
+import Regions from "@/components/quixyComponents/Regions";
+import AboutQuixyTalent from "@/components/quixyComponents/AboutQuixyTalent";
+import Image from "next/image";
+import Link from "next/link";
+import { FaChevronRight } from "react-icons/fa";
+import Pawełek from "../public/Pawełek/2.png";
+import ytLogo from "../public/assets/yt-logo.png";
 import Hero from "@/components/hero/Hero";
 import { Metadata } from "next";
 import HeroIntro from "../components/landing/HeroIntro";
 import MainCard from "../components/landing/MainCard";
 import BlogSection from "../components/landing/BlogSection";
 import ReachSection from "../components/landing/ReachSection";
-import { mapMarkers } from "@/lib/mapMarkers";
 import { getUsersData } from "@/lib/getUsersData";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import Contact from "@/components/quixyComponents/Contact";
+import LandingPageSearchInput from "@/components/LandingPageSearchInput";
+import JobBoardList from "@/components/quixyComponents/JobBoardList";
+import Cta from "@/components/cta/Cta";
 
+const faqItems = [
+  {
+    question: "Czym jest Quixy?",
+    answer:
+      "Quixy to platforma, która łączy klientów z firmami i freelancerami. Utwórz swoje portfolio, dodaj usługi na rynek lub znajdź pracę zdalną.",
+  },
+  {
+    question: "Jak działa rynek usług?",
+    answer:
+      "Nasza platforma prezentuje oferty usług wszystkich użytkowników, umożliwiając klientom łatwe dotarcie do profilu dostawcy, który świadczy interesującą ich usługę.",
+  },
+  {
+    question: "Czy mogę ustawić różne ceny dla różnych usług?",
+    answer:
+      "Tak, możesz dostosować cenę oraz preferowany sposób płatności indywidualnie dla każdej dodawanej usługi.",
+  },
+  {
+    question: "Jak klienci kontaktują się ze mną po znalezieniu mojej oferty?",
+    answer:
+      "Klienci mogą skorzystać z przycisku *Wyślij zapytanie* dostępnego na Twoim profilu.",
+  },
+  {
+    question: "Czy istnieje opłata za korzystanie z platformy?",
+    answer:
+      "Dodanie usługi do naszej platformy wiąże się z jednorazową opłatą.",
+  },
+  {
+    question: "Ile kosztuje 1 Quixie?",
+    answer:
+      "Aktualny cennik jest dostępny w panelu użytkownika po zalogowaniu.",
+  },
+  {
+    question: "Jakie rodzaje usług są najczęściej poszukiwane przez klientów?",
+    answer:
+      "Najczęściej wyszukiwane usługi to: tworzenie stron internetowych, aplikacje mobilne, marketing, projektowanie graficzne, księgowość oraz usługi biznesowe.",
+  },
+  {
+    question: "Czy platforma oferuje wsparcie w promowaniu moich usług?",
+    answer:
+      "Tak, nasze podstrony oraz oferty dostępne na rynku są promowane m.in. za pośrednictwem Google.",
+  },
+  {
+    question:
+      "Jakie informacje powinienem umieścić w swoim profilu, aby przyciągnąć klientów?",
+    answer:
+      "Zadbaj o szczegółowy opis swoich usług, profesjonalne zdjęcia, referencje od klientów oraz jasne warunki współpracy.",
+  },
+  {
+    question: "Czy platforma zapewnia ochronę płatności za świadczone usługi?",
+    answer:
+      "Płatności są ustalane bezpośrednio między klientami a dostawcami usług. Platforma nie pośredniczy w rozliczeniach.",
+  },
+  {
+    question: "Jak mogę znaleźć pracę zdalną na Quixy?",
+    answer:
+      "Aby znaleźć pracę zdalną, przejdź do sekcji 'Kategorie' na naszej stronie. Możesz przeglądać dostępne oferty pracy, filtrować je według kategorii oraz aplikować bezpośrednio przez platformę.",
+  },
+  {
+    question: "Jak mogę zatrudnić freelancera lub firmę?",
+    answer:
+      "Jeśli szukasz ekspertów do swojego projektu, przejdź do sekcji 'Kategorie'. Możesz przeglądać profile specjalistów, sprawdzać ich doświadczenie i umiejętności oraz nawiązywać współpracę bezpośrednio przez platformę.",
+  },
+  {
+    question: "Czy Quixy zapewnia bezpieczeństwo moich danych?",
+    answer:
+      "Tak, bezpieczeństwo naszych użytkowników jest dla nas priorytetem. Korzystamy z niezawodnych technologii zabezpieczających dane oraz oferujemy, aby zapewnić Ci bezpieczne i komfortowe korzystanie z platformy.",
+  },
+  {
+    question: "Jakie korzyści oferuje Quixy nowym użytkownikom?",
+    answer:
+      "Nowi użytkownicy otrzymują darmowe Quixies na start, które mogą wykorzystać do korzystania z różnych funkcji platformy. To nasz sposób na powitanie Cię w społeczności Quixy i wsparcie Cię w rozpoczęciu Twojej przygody z nami.",
+  },
+  {
+    question: "Jak mogę dodać ogłoszenie o pracę na Quixy?",
+    answer:
+      "Aby dodać ogłoszenie o pracę, zaloguj się na swoje konto, przejdź do sekcji 'Dodaj ofertę pracy' i wypełnij formularz z informacjami o ofercie pracy. Twoje ogłoszenie zostanie natychmiast opublikowane na platformie, aby przyciągnąć odpowiednich kandydatów.",
+  },
+  {
+    question: "Gdzie mogę znaleźć opinie innych użytkowników o Quixy?",
+    answer:
+      "Opinie naszych klientów znajdziesz w sekcji 'Praca zdalna'. Z dumą prezentujemy oceny i recenzje, które świadczą o wysokiej jakości naszych usług oraz zaufaniu, jakim obdarzyli nas użytkownicy.",
+  },
+];
 const dictionary = {
   HomePage: {
     projects: [
@@ -204,92 +299,621 @@ export default async function Page({
     (user) =>
       !user.seek && user.configured && user.access && user.tags?.length > 0
   );
+  const jobs = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/apiQuixy/jobs?tubylytylkofigi=${process.env.API_SECRET_KEY}`
+  ).then((res) => res.json());
   return (
-    <div className="w-screen overflow-x-hidden">
-      <div className="font-sans w-full bg-[#222222] pb-48 h-full">
-        <HeroIntro />
-        <div className="z-[30] fixed h-screen w-full left-0 top-0">
-          <Hero />
-        </div>
+    <>
+      <div className="w-screen overflow-x-hidden">
+        <div className="flex flex-col bg-white">
+          <div className="bg-white z-50 pt-[125px] lg:pt-[175px] pb-36">
+            <div className=" mx-auto px-4 lg:px-12 xl:container flex flex-col lg:items-center lg:grid lg:grid-cols-2 relative z-50 pt-12">
+              <div className="group relative flex flex-col">
+                <div className="absolute w-12 h-12 rounded-full bg-green-400/30 -left-14 -top-16" />
+                <div className="absolute w-5 h-5 rounded-full bg-green-400/50 -left-24 -top-3" />
+                <h1
+                  style={{ lineHeight: 1.3 }}
+                  className="font-gotham italic block text-center max-w-sm mx-auto lg:mx-0 lg:text-left lg:max-w-lg text-4xl lg:text-5xl text-zinc-800"
+                >
+                  Zlecenia w branży kreatywnej
+                </h1>
+                <p className="pt-4 max-w-lg text-center lg:text-left text-sm mx-auto lg:mx-0 text-zinc-800 drop-shadow-sm shadow-black">
+                  <strong>Koniec z nudnymi ofertami pracy!</strong> Nie bądź na
+                  smyczy od 9 do 17. Pracuj jak chcesz i gdzie chcesz.
+                </p>
+                <LandingPageSearchInput rounded={false} isLandingPage={true} />
+                <div className="flex flex-row items-center gap-3 w-max mx-auto lg:mx-0">
+                  <Link
+                    href="/register"
+                    className="w-max max-w-full flex items-center gap-3 rounded-md font-gotham bg-gradient-to-r from-ctaStart to-ctaEnd hover:scale-105 duration-100 text-white px-4 py-2 text-center mt-6"
+                  >
+                    Utwórz profil
+                    <FaChevronRight />
+                  </Link>
+                  <Link
+                    href="/oferta"
+                    className="w-max max-w-full flex items-center gap-3 rounded-md font-gotham bg-gradient-to-r from-accentStart to-accentEnd hover:scale-105 duration-100 text-white px-4 py-2 text-center mt-6"
+                  >
+                    Nasza oferta
+                    <FaChevronRight />
+                  </Link>
+                </div>
+                <div className="mx-auto lg:mx-0 my-6">
+                  <Regions />
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center w-full h-full mx-auto relative max-w-[420px]">
+                <Image
+                  style={{ boxShadow: "0px 0px 12px rgb(82 82 91 / 0.8)" }}
+                  src={Pawełek}
+                  alt="Niewolnik pracy od 9-17? to nie dla mnie. ~Pawełek"
+                  title="Niewolnik pracy od 9-17? to nie dla mnie. ~Pawełek"
+                  className="w-full max-w-lg lg:max-w-none rounded-lg drop-shadow-lg shadow-black"
+                />
+                <div
+                  style={{ boxShadow: "0px 0px 12px rgb(82 82 91 / 0.8)" }}
+                  className="text-zinc-800 drop-shadow-sm shadow-black font-extralight font-gotham p-3 rounded-xl w-max max-w-full bg-white absolute bottom-[-36px] -left-4"
+                >
+                  &quot;Pracowałem po 12 godzin w sprintach IT dla{" "}
+                  <strong>Janusza</strong>. Dziś nie wyobrażam sobie biznesu bez
+                  Quixy&quot; ~{" "}
+                  <Link
+                    href="https://youtube.com/@kudlaty-koduje"
+                    target="_blank"
+                    title="Kudłaty Koduje YouTube"
+                    className="inline-flex items-center align-middle ml-1 text-blue-600"
+                  >
+                    <Image
+                      src={ytLogo}
+                      width={24}
+                      height={24}
+                      alt="YouTube logo"
+                      className="h-auto w-5 mr-1"
+                    />
+                    Kudłaty
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="infinite-bg p-3 sm:px-12 py-8 lg:py-16 h-max">
+            <div className="flex flex-col justify-center items-center">
+              <div className="flex flex-row">
+                <h2
+                  style={{ textShadow: "0px 1px 5px black" }}
+                  className="w-full md:max-w-[50rem] xl:max-w-[1024px] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white text-center"
+                >
+                  Wyobraź sobie wymarzony biznes online, pomnożony przez
+                  maksymalizację efektywności - To właśnie oferuje Quixy!
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div className="relative bg-white z-50 w-full pb-24">
+            <div className="relative z-50 w-full max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between mt-24 gap-8 px-4">
+              <div className="flex flex-col w-full md:w-2/3">
+                <h3 className="text-3xl md:text-4xl font-extrabold text-black mb-2">
+                  Najlepsze zlecenia dla branży kreatywnej
+                </h3>
+                <p className="text-zinc-700 font-sans text-base md:text-lg mb-6 mt-3 max-w-xl">
+                  Nie czekaj i zacznij zbierać leady. Przeglądaj zlecenia zdalne
+                  dla grafików, copywriterów, programistów, marketerów i innych
+                  twórców.{" "}
+                  <strong>Działaj jak ninja w branży kreatywnej!</strong>
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                  <div className="flex items-center bg-white rounded-lg shadow px-4 py-2">
+                    <span className="text-2xl mr-3">🌟</span>
+                    <div>
+                      <h4 className="text-lg font-bold text-black leading-tight">
+                        4.95/5
+                      </h4>
+                      <p className="text-xs text-zinc-600">
+                        Ocena użytkowników
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center bg-white rounded-lg shadow px-4 py-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 mr-3"
+                      viewBox="0 0 48 48"
+                    >
+                      <defs>
+                        <path
+                          id="a"
+                          d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"
+                        />
+                      </defs>
+                      <clipPath id="b">
+                        <use href="#a" overflow="visible" />
+                      </clipPath>
+                      <path
+                        clipPath="url(#b)"
+                        fill="#FBBC05"
+                        d="M0 37V11l17 13z"
+                      />
+                      <path
+                        clipPath="url(#b)"
+                        fill="#EA4335"
+                        d="M0 11l17 13 7-6.1L48 14V0H0z"
+                      />
+                      <path
+                        clipPath="url(#b)"
+                        fill="#34A853"
+                        d="M0 37l30-23 7.9 1L48 0v48H0z"
+                      />
+                      <path
+                        clipPath="url(#b)"
+                        fill="#4285F4"
+                        d="M48 48L17 24l-4-3 35-10z"
+                      />
+                    </svg>
+                    <div>
+                      <h4 className="text-lg font-bold text-black leading-tight">
+                        Technologia Google
+                      </h4>
+                      <p className="text-xs text-zinc-600">
+                        Bezpieczna i szybka platforma
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <Link
+                  href="/zlecenia-dla-freelancerow"
+                  className="w-max mt-2 px-6 py-3 bg-gradient-to-r from-ctaStart to-ctaEnd font-extrabold rounded-md text-white shadow hover:scale-105 transition"
+                >
+                  Przeglądaj zlecenia
+                </Link>
+              </div>
+              <div className="w-full md:w-1/3 flex justify-center items-center relative mt-8 md:mt-0">
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
+                  <Image
+                    src="/assets/ninja.png"
+                    fill
+                    alt="Kreatywny freelancer - Ninja"
+                    className="object-contain rounded-xl"
+                    sizes="(max-width: 768px) 60vw, 20vw"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative bg-white z-50 w-full pb-24">
+            <div className="max-w-[90vw] relative mx-auto pb-16 bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl px-4 sm:px-8 pt-6">
+              <div className="relative sm:px-8">
+                <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
+                  Współpracuj jako firma lub freelancer!
+                </span>
+                <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
+                <div className="mt-6">
+                  <JobBoardList talents={talents} companies={companies} />
+                </div>
+              </div>
+              <p className="text-zinc-700 text-base sm:text-lg max-w-3xl mx-auto text-center mt-14 font-gotham font-light leading-relaxed px-2">
+                W poszukiwaniu firmy lub freelancera?{" "}
+                <span className="font-semibold text-blue-600">
+                  Sprawdź ofertę naszych zaufanych partnerów.
+                </span>{" "}
+                Możesz dodawać zlecenia dla freelancerów i firm.
+              </p>
+              <div className="mx-auto w-max max-w-full">
+                <Cta label="Utwórz nowe zlecenie!" />
+              </div>
+            </div>
+          </div>
 
-        <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
-          <section className={`max-w-[90vw] mx-auto h-max z-50`}>
-            <MainCard talents={talents} companies={companies} />
-            <ProjectShowcase dictionary={dictionary} />
-            {/* <PricingHero /> */}
-            <BlogSection />
-            <ReachSection markers={mapMarkers} />
-            <Contact isLandingPage={true} />
-          </section>
-        </main>
+          <div className="relative z-50 py-24 h-max">
+            <div className="absolute left-0 top-0 w-full h-full infinite-bg -z-1">
+              <Hero />
+            </div>
+            <div className="max-w-[95vw] xl:container mx-auto p-4 lg:p-6 bg-white relative rounded-2xl">
+              <SearchJobs />
+
+              <div
+                id="oferty"
+                className="grid grid-cols-1 lg:grid-cols-2 mt-6 gap-4"
+              >
+                {jobs.map((opportunity: any, i: number) => (
+                  <OpenableOpportunity
+                    key={i}
+                    opportunity={opportunity}
+                    i={i}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="w-full relative z-50 bg-white pt-12 pb-12">
+            <div className="mx-auto px-4 lg:px-12 mb-12 xl:container">
+              <AboutQuixyTalent />
+            </div>
+          </div>
+
+          <div className="w-full relative z-50 bg-white pb-24">
+            <div className="xl:container mx-auto h-max px-4 lg:px-12">
+              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 2xl:gap-12">
+                <div className="h-full w-full md:p-3 lg:p-0 lg:bg-white md:bg-[#f7faf7]">
+                  <Image
+                    src="/assets/happy-woman.webp"
+                    width={1024}
+                    height={1024}
+                    alt="Praca zdalna Quixy Talent"
+                    className="rounded-lg sticky top-12"
+                  />
+                </div>
+                <div className="flex flex-col justify-center text-black">
+                  <h2
+                    style={{ lineHeight: 1.325 }}
+                    className="text-4xl font-extrabold drop-shadow-md shadow-black"
+                  >
+                    Dynamiczne projekty z freelancerami i firmami
+                  </h2>
+                  <div className="my-3">
+                    <div className="flex items-start">
+                      <span className="text-2xl mt-1">🤝</span>
+                      <div className="ml-1.5 flex flex-col">
+                        <h3 className="font-bold text-lg lg:text-xl">
+                          Zatrudniaj freelancerów
+                        </h3>
+                        <p className="text-black text-sm  font-gotham font-light">
+                          Zanurz się w świecie pracy zdalnej! Wyszukaj i
+                          zatrudnij eksperta.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex mt-3 items-start">
+                      <span className="text-2xl mt-1">🌍</span>
+                      <div className="ml-1.5 flex flex-col">
+                        <h3 className="font-bold text-lg lg:text-xl text-black font-gotham font-light">
+                          Dodaj ofertę pracy
+                        </h3>
+                        <p className="text-black text-sm ">
+                          Znajdź utalentowane osoby, skontaktuj się i
+                          rozpocznijcie zdalną współpracę.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex mt-3 items-start">
+                      <span className="text-2xl mt-1">🚀</span>
+                      <div className="ml-1.5 flex flex-col">
+                        <h3 className="font-bold text-lg lg:text-xl">
+                          Zaufani eksperci
+                        </h3>
+                        <p className="text-black text-sm font-gotham font-light">
+                          Znajdziesz najlepszych zawodowców z branży.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-4">
+                    <Link
+                      className="hover:scale-105 duration-100 gap-3 flex items-center py-2 rounded-md px-4 bg-gradient-to-r from-ctaStart to-ctaEnd text-white"
+                      href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna`}
+                    >
+                      Sprawdź kategorie <FaChevronRight />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="xl:container mx-auto px-4 lg:px-12 mt-12 w-full">
+            <div className="rounded-lg relative bg-cover bg-center lg:bg-right-bottom p-4 h-screen lg:h-[80vh] bg-woman-pc">
+              <div className="rounded-lg absolute left-0 top-0  bg-black bg-opacity-50 w-full h-full z-0"></div>
+              <div className="rounded-md px-4 py-2 bg-gradient-to-r from-accentStart to-accentEnd absolute left-4 top-4 text-white">
+                Dla klientów
+              </div>
+              <div className="flex flex-col justify-end relative z-10 h-full w-full">
+                <h2 className="text-xl lg:text-3xl font-extrabold text-white">
+                  Znajdź eksperta, którego potrzebujesz!
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2  gap-2 md:gap-4 mt-4">
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna/rozwoj-oprogramowania/web-development`}
+                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                  >
+                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                      Zamów stronę internetową
+                    </h3>
+                    <div className="flex flex-row items-center font-light">
+                      Nasi web developerzy czekają na Twój projekt
+                    </div>
+                  </Link>
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna/marketing/marketing-cyfrowy/seo`}
+                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                  >
+                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                      Zamów SEO
+                    </h3>
+                    <div className="flex flex-row items-center font-light">
+                      Zwiększ widoczność w sieci dzięki SEO.
+                    </div>
+                  </Link>
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna/projektowanie/web-design`}
+                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                  >
+                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                      Zamów design
+                    </h3>
+                    <div className="flex flex-row items-center font-light">
+                      Wyróżnij się wizualnie – specjaliści od designu są tutaj,
+                      by pomóc.
+                    </div>
+                  </Link>
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_URL}/praca-zdalna`}
+                    className="group flex flex-col  bg-black/50 text-white group p-3 rounded-md"
+                  >
+                    <h3 className="group-hover:underline md:mb-1 text-lg lg:text-xl font-extrabold">
+                      Zobacz więcej...
+                    </h3>
+                    <div className="flex flex-row items-center font-light">
+                      Szukasz usług firmy lub freelancera?
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="xl:container mx-auto px-4 lg:px-12 mt-12 flex flex-col md:flex-row w-full">
+            <div className="mt-3 md:mt-0 md:w-[55%] w-full text-black">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mx-auto">
+                <div className="flex flex-row">
+                  <span className="text-2xl">💎</span>
+                  <div className="ml-3 flex flex-col">
+                    <h3 className="font-bold text-lg -mt-1 font-gotham">
+                      Darmowe Quixies na start
+                    </h3>
+                    <p className="text-sm w-3/4 ">
+                      Na początku przygody otrzymasz od nas bonus.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-row">
+                  <span className="text-2xl">⭐</span>
+                  <div className="ml-3 flex flex-col">
+                    <h3 className="font-bold text-lg -mt-1 font-gotham">
+                      Wyświetlaj swoje usługi
+                    </h3>
+                    <p className="text-sm w-3/4 ">
+                      Zdobywaj zlecenia jako freelancer lub firma.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-row">
+                  <span className="text-2xl">✔️</span>
+                  <div className="ml-3 flex flex-col">
+                    <h3 className="font-bold text-lg -mt-1 font-gotham">
+                      Zapewnimy bezpieczeństwo
+                    </h3>
+                    <p className="text-sm w-3/4 ">
+                      Potrzebujesz pomocy? Skontaktuj się z nami!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* just a component for the future 🤷‍♀️ */}
+          <div className="relative xl:container px-4 lg:px-12 mx-auto mt-12 h-max">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full relative">
+              <div className="rounded-lg bg-guitar-man bg-center h-[60vh] xl:h-[80vh] relative">
+                <h3 className="rounded-md px-4 py-2 bg-gradient-to-r from-accentStart to-accentEnd absolute left-4 top-4 text-white">
+                  Dla freelancerów
+                </h3>
+              </div>
+              <div className="py-4 md:py-8 2xl:py-10 md:px-8 2xl:px-10 text-black w-full md:h-full grid grid-cols-1">
+                <div>
+                  <h2 className="text-black text-2xl lg:text-4xl font-extrabold">
+                    Szukaj zleceń lub pracy zdalnej
+                  </h2>
+                  <p className="text-base lg:text-lg my-3 lg:my-4 lg:mb-3 ">
+                    Przeglądaj zlecenia klientów, szukaj pracy zdalnej lub
+                    sprzedawaj gotowe strony internetowe, aplikacje lub
+                    projekty.
+                  </p>
+                  <Link
+                    className="w-max max-w-full flex items-center gap-2 rounded-md bg-gradient-to-r from-ctaStart to-ctaEnd hover:scale-105 duration-100 px-4 py-2 font-gotham text-white"
+                    href="/register"
+                  >
+                    Utwórz portfolio <FaChevronRight />
+                  </Link>
+                </div>
+                <div className="flex items-end  text-base md:text-sm lg:text-base xl:text-lg">
+                  <div className="w-full grid grid-cols-2 gap-3 pt-3 mt-12 border-t-2 border-primaryStart">
+                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                      Wysyłaj aplikacje
+                    </h4>
+                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                      Szukaj zleceń
+                    </h4>
+                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                      Prezentuj usługi
+                    </h4>
+                    <h4 className="text-center bg-gradient-to-r from-primaryStart to-primaryEnd text-white py-2 rounded-md">
+                      Sprzedaj projekt
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-12 xl:container mx-auto bg-white relative h-max pb-12 px-4 lg:px-12">
+            <FAQ faqItems={faqItems} />
+          </div>
+        </div>
+        <div className="font-sans w-full bg-[#222222] pb-48 h-full">
+          <HeroIntro />
+
+          <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
+            <section className={`max-w-[90vw] mx-auto h-max z-50`}>
+              <MainCard talents={talents} companies={companies} />
+              <ProjectShowcase dictionary={dictionary} />
+              {/* <PricingHero /> */}
+              <BlogSection />
+              <ReachSection markers={markers} isLandingPage={true} />
+              <Contact isLandingPage={true} />
+            </section>
+          </main>
+        </div>
       </div>
-    </div>
+      <div className="z-[0] fixed h-screen w-full left-0 top-0">
+        <Hero />
+      </div>
+    </>
   );
 }
+const siteTitle = "Quixy Studio | Współpraca w Branży Kreatywnej";
+const siteDescription =
+  "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.";
+const siteUrl = "https://quixy.pl";
+const siteName = "Quixy Studio";
+const mainImage = {
+  url: "/main.png",
+  width: 1200,
+  height: 630,
+  alt: "Quixy Studio",
+};
+const keywords =
+  "freelancerzy, firmy IT, zlecenia IT, praca zdalna, projekty IT, platforma dla freelancerów, oferty pracy IT, współpraca IT, ogłoszenia IT, marketplace IT";
+const icons = [
+  {
+    url: "/favicons/apple-touch-icon.png",
+    sizes: "180x180",
+    type: "image/png",
+  },
+  {
+    url: "/favicons/favicon-16x16.png",
+    sizes: "16x16",
+    type: "image/png",
+  },
+  {
+    url: "/favicons/android-chrome-512x512.png",
+    sizes: "512x512",
+    type: "image/png",
+  },
+  {
+    url: "/favicons/android-chrome-192x192.png",
+    sizes: "192x192",
+    type: "image/png",
+  },
+  {
+    url: "/favicons/favicon-32x32.png",
+    sizes: "32x32",
+    type: "image/png",
+  },
+  {
+    url: "/favicons/favicon.ico",
+    sizes: "48x48",
+    type: "image/x-icon",
+  },
+];
+
 export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#ffffff",
   manifest: "/manifest.json",
-  title: "Platforma dla freelancerów i firm IT – Zlecenia, praca, projekty",
-  description:
-    "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.",
+  title: siteTitle,
+  description: siteDescription,
   openGraph: {
     type: "website",
-    url: "https://quixy.pl",
-    title: "Platforma dla freelancerów i firm IT – Zlecenia, praca, projekty",
-    description:
-      "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.",
-    siteName: "Quixy Studio",
-    images: [
-      {
-        url: "/main.png",
-        width: 1200,
-        height: 630,
-        alt: "Quixy Studio",
-      },
-    ],
+    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    siteName,
+    images: [mainImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Platforma dla freelancerów i firm IT – Zlecenia, praca, projekty",
-    description:
-      "Quixy to platforma łącząca freelancerów i firmy IT. Dodawaj zlecenia, szukaj pracy, realizuj projekty i rozwijaj swoją karierę lub biznes w jednym miejscu.",
-    images: ["/main.png"],
+    title: siteTitle,
+    description: siteDescription,
+    images: [mainImage.url],
   },
-  authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
-  publisher: "Quixy Studio",
-  keywords:
-    "freelancerzy, firmy IT, zlecenia IT, praca zdalna, projekty IT, platforma dla freelancerów, oferty pracy IT, współpraca IT, ogłoszenia IT, marketplace IT",
-  icons: [
-    {
-      url: "/favicons/apple-touch-icon.png",
-      sizes: "180x180",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/favicon-16x16.png",
-      sizes: "16x16",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/android-chrome-512x512.png",
-      sizes: "512x512",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/android-chrome-192x192.png",
-      sizes: "192x192",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/favicon-32x32.png",
-      sizes: "32x32",
-      type: "image/png",
-    },
-    {
-      url: "/favicons/favicon.ico",
-      sizes: "48x48",
-      type: "image/x-icon",
-    },
-  ],
+  authors: [{ name: siteName, url: siteUrl }],
+  publisher: siteName,
+  keywords,
+  icons,
 };
+const markers = [
+  {
+    style: "w-[8%] absolute top-[40%] left-[9.5%] sm:left-[8.5%]",
+    label: "Szczecin - Strona internetowa dla restauracji",
+  },
+  {
+    style: "w-[10%] absolute top-[58%] left-[18%]",
+    label: "Zielona Góra - Sklep online z elektroniką",
+  },
+  {
+    style: "w-[6%] absolute top-[69%] left-[33%]",
+    label: "Wrocław - Portfolio fotografa",
+  },
+  {
+    style: "w-[6%] absolute top-[76%] left-[43%]",
+    label: "Opole - Strona dla kancelarii prawnej",
+  },
+  {
+    style: "w-[6%] absolute top-[67%] left-[44.5%]",
+    label: "Katowice - Sklep internetowy z odzieżą",
+  },
+  {
+    style: "w-[8%] absolute top-[81%] left-[56.5%]",
+    label: "Kraków - Strona internetowa dla hotelu",
+  },
+  {
+    style: "w-[8%] absolute top-[78%] left-[72.5%]",
+    label: "Rzeszów - Portal edukacyjny",
+  },
+  {
+    style: "w-[10%] absolute top-[57%] left-[79%]",
+    label: "Lublin - Strona internetowa dla lekarza",
+  },
+  {
+    style: "w-[8%] absolute top-[65%] left-[60.5%]",
+    label: "Kielce - Blog kulinarny",
+  },
+  {
+    style: "w-[10%] absolute top-[50%] left-[47.5%]",
+    label: "Łódź - Portfolio grafika",
+  },
+  {
+    style: "w-[8%] absolute top-[46%] left-[30%]",
+    label: "Poznań - Strona internetowa dla agencji marketingowej",
+  },
+  {
+    style: "w-[8%] absolute top-[36%] left-[22%]",
+    label: "Gorzów Wlkp. - Strona internetowa dla szkoły językowej",
+  },
+  {
+    style: "w-[10%] absolute top-[27%] left-[37.5%]",
+    label: "Bydgoszcz - Sklep internetowy z zabawkami",
+  },
+  {
+    style: "w-[8%] absolute top-[44%] left-[65%]",
+    label: "Radom - Strona internetowa dla architekta",
+  },
+  {
+    style: "w-[8%] absolute top-[34%] left-[56%]",
+    label: "Białystok - Portal informacyjny",
+  },
+  {
+    style: "w-[10%] absolute top-[23%] left-[78%]",
+    label: "Suwałki - Strona internetowa dla firmy budowlanej",
+  },
+  {
+    style: "w-[10%] absolute top-[14.5%] sm:top-[13.5%] left-[58%]",
+    label: "Olsztyn - Strona internetowa dla przedszkola",
+    aos: "zoom-in",
+  },
+  {
+    style: "w-[10%] absolute top-[6%] left-[32%]",
+    label: "Gdańsk - Strona internetowa dla salonu fryzjerskiego",
+  },
+  {
+    style: "w-[10%] absolute top-[20%] left-[10%]",
+    label: "Koszalin - Strona internetowa dla trenera personalnego",
+  },
+];

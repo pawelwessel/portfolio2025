@@ -560,7 +560,7 @@ export default function ChooseTime({ linkId }: { linkId: any }) {
             </h2>
           )}
           {(invite?.status === "delivered" || invite?.status === "visited") && (
-            <div className="">
+            <div>
               <p className="flex flex-col items-center justify-center text-white text-lg xl:text-base max-w-[30rem] font-sans mt-3 text-center">
                 {!invite?.finished && invite?.hasMovieTimeEnded && (
                   <div className="w-full">
@@ -568,7 +568,7 @@ export default function ChooseTime({ linkId }: { linkId: any }) {
                       Dziękujemy za udział w pierwszym etapie rekrutacji.
                     </h2>
                     {!invite.finished && (
-                      <div className="">
+                      <div>
                         <p className="text-center max-w-[30rem] mx-auto text-white">
                           Masz jakieś pytania zanim podpiszesz z nami umowę o
                           współpracę? Kliknij tutaj i zapisz się, a biuro do

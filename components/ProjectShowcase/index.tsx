@@ -98,20 +98,7 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
                     <p className="text-base sm:text-lg font-dosis mt-1 mb-2">
                       {item.shortDescription}
                     </p>
-                    <div className="flex flex-row flex-wrap gap-2 mt-2">
-                      {item.sourceCode && (
-                        <a
-                          href={item.sourceCode}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <span className="text-green-400 underline text-xs ml-2">
-                            Kod źródłowy
-                          </span>
-                        </a>
-                      )}
-                    </div>
+
                     <span className="shadow-sm shadow-black -ml-2 px-2 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-base sm:text-lg mt-3">
                       {dictionary.HomePage.colors}
                     </span>

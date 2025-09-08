@@ -81,13 +81,7 @@ export default function LoginPage() {
         </button>
       </form>{" "}
       <h1 className="text-center text-2xl  bg-gradient-to-br from-zinc-600 via-zinc-600 to-zinc-600 text-white p-3 rounded-b-xl relative z-50">
-        <Image
-          src="/logo-quixy.png"
-          width={200}
-          height={200}
-          alt=""
-          className=""
-        />
+        <Image src="/assets/quixy-logo.png" width={200} height={200} alt="" />
       </h1>
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-green-400 via-blue-500 to-red-500 opacity-25"></div>
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-green-400 via-blue-500 to-red-500 opacity-25"></div>

@@ -120,7 +120,7 @@ export default function LinkComponent({
                 <div className="text-[12px] font-bold flex items-center justify-center">
                   {link.secondVersion ? (
                     <>
-                      {/* <div className="">
+                      {/* <div>
                         Aktywował link:{" "}
                         <span className="text-green-500 font-bold">
                           {moment(link?.date)

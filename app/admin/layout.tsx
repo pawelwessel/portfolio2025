@@ -50,7 +50,7 @@ export default function AdminLayout({
                 <div className={` duration-500 w-full pt-24 scrollbar`}>
                   <Link href="/" className="absolute left-20 top-6 z-50">
                     <Image
-                      src="/logo-quixy.png"
+                      src="/assets/quixy-logo.png"
                       width={200}
                       height={200}
                       alt=""

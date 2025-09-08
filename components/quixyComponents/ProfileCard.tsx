@@ -125,12 +125,12 @@ export default function ProfileCard({
 
           {/* tags */}
           {tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            <div className="h-max mt-3 flex flex-wrap items-center gap-1.5">
               {visibleTags.map((t, i) => (
                 <span
                   key={`${t.title}-${i}`}
                   title={t.title}
-                  className="inline-flex max-w-full items-center truncate rounded-full bg-gradient-to-b
+                  className="h-max inline-flex max-w-full items-center truncate rounded-full bg-gradient-to-b
                              from-primaryStart to-primaryEnd px-2 py-1 text-[11px] font-medium text-white shadow-sm
                              transition group-hover:brightness-105"
                 >

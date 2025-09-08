@@ -67,7 +67,7 @@ export default function Posting({
   };
   const { light } = useSelector((state: any) => state.light);
   return (
-    <div className="">
+    <div>
       <div
         className={`font-sans h-[50vh] overflow-y-scroll scrollbar rounded-lg shadow-md ${
           light ? "bg-white text-black" : "bg-[#222430] text-white"
@@ -135,7 +135,7 @@ export default function Posting({
           </h2>
           <div className="relative w-full">
             <div className="bg-white rounded-md w-full p-[1rem]">
-              <div className="">
+              <div>
                 {/* Specializations */}
                 <div>
                   {job.specializations.length > 0 && (
@@ -215,7 +215,7 @@ export default function Posting({
                               "Freelance",
                             ].includes(item)
                         ).length > 0 && (
-                          <div className="">
+                          <div>
                             <h4 className="text-black text-xs font-semibold mb-1">
                               {job.preferences
                                 .filter(

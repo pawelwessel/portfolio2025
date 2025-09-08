@@ -6,11 +6,11 @@ import UserStickyTop from "@/components/quixyComponents/UserStickyTop";
 import { IoLocationOutline } from "react-icons/io5";
 import Viewer from "@/components/quixyComponents/AddJobOffer/Viewer";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
-import dynamic from "next/dynamic";
 import LeadCard from "@/components/quixyComponents/Dashboard/LeadCard";
 import { Suspense } from "react";
 import Loadinger from "@/app/loading";
-const Tags = dynamic(() => import("@/components/quixyComponents/Tags"));
+import Tags from "@/components/quixyComponents/Tags";
+
 export const revalidate = 60;
 export const dynamicParams = true;
 export default async function Page(props: {
@@ -29,7 +29,7 @@ export default async function Page(props: {
   ).then((res: any) => res.json());
   return (
     <Suspense fallback={<Loadinger />}>
-      <div className="relative min-h-screen font-sans pt-20 pb-24 bg-white">
+      <div className="relative min-h-screen font-sans pt-16 pb-24 bg-white">
         {/* GATE / OVERLAY */}
         {!talent?.access && (
           <div className="fixed inset-0 z-[999] flex items-center justify-center bg-accentStart/70 backdrop-blur-sm">
@@ -127,24 +127,90 @@ export default async function Page(props: {
                   {talent?.name || "Nie podano"}
                 </h1>
 
+                {talent?.city && (
+                  <div className="mt-1 flex items-center text-sm text-slate-700">
+                    <IoLocationOutline className="mr-1 text-lg text-primaryStart" />
+                    <span className="truncate">{talent.city}, Polska</span>
+                  </div>
+                )}
                 {talent?.title && (
                   <span className="mt-1 inline-block truncate rounded-full bg-primaryStart/10 px-3 py-1 text-xs font-medium text-primaryStart">
                     {talent.title}
                   </span>
                 )}
-
-                {talent?.city && (
-                  <div className="mt-2 flex items-center text-sm text-slate-700">
-                    <IoLocationOutline className="mr-1 text-lg text-primaryStart" />
-                    <span className="truncate">{talent.city}, Polska</span>
+              </div>
+            </div>
+            <div>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {talent?.preferences && talent.preferences.length > 0 ? (
+                  talent.preferences.map((item: string, i: number) => (
+                    <span
+                      key={`${item}-${i}`}
+                      className="inline-flex items-center rounded-full bg-primaryStart/10 px-3 py-1 text-xs sm:text-sm font-medium text-primaryStart"
+                    >
+                      {item}
+                    </span>
+                  ))
+                ) : (
+                  <span className="text-sm text-slate-500">
+                    Brak danych o dostępności
+                  </span>
+                )}
+                {/* SERVICES COUNT */}
+                {talent?.projects && (
+                  <div>
+                    <div className="inline-flex items-center rounded-full bg-primaryStart/10 px-3 py-1 text-xs sm:text-sm font-medium text-primaryStart">
+                      {talent.projects.length === 0 ? (
+                        <span className="text-red-500">0 usług</span>
+                      ) : (
+                        <span>
+                          {talent.projects.length}{" "}
+                          {talent.projects.length === 1
+                            ? "usługa"
+                            : talent.projects.length % 10 >= 2 &&
+                              talent.projects.length % 10 <= 4 &&
+                              !(
+                                talent.projects.length % 100 >= 12 &&
+                                talent.projects.length % 100 <= 14
+                              )
+                            ? "usługi"
+                            : "usług"}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
             </div>
 
+            {/* DESCRIPTION */}
+            {talent?.description && (
+              <div className="mt-10">
+                <div className="mt-3">
+                  <div className="reset prose max-w-none text-slate-800">
+                    <Viewer value={talent.description} displayBlack />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* SERVICES */}
+            {talent?.projects?.length > 0 && (
+              <div className="mt-10">
+                <h2 className="text-xl font-semibold text-slate-900">
+                  Kup od wykonawcy
+                </h2>
+                <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+                  {talent.projects.map((project: IProject, i: number) => (
+                    <LeadCard key={i} service={project} slug />
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* TAGS + AVAILABILITY */}
             <div
-              className={`mt-6 grid gap-6 ${
+              className={`mt-10 grid gap-6 ${
                 talent?.tags?.length > 10
                   ? "grid-cols-1"
                   : "grid-cols-1 lg:grid-cols-2"
@@ -163,57 +229,7 @@ export default async function Page(props: {
                   )}
                 </div>
               </div>
-
-              <div>
-                <h2
-                  className={`text-xl font-semibold text-slate-900 ${
-                    talent?.tags?.length > 10 ? "mt-0" : "lg:mt-0"
-                  }`}
-                >
-                  Dostępność
-                </h2>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {talent?.preferences && talent.preferences.length > 0 ? (
-                    talent.preferences.map((item: string, i: number) => (
-                      <span
-                        key={`${item}-${i}`}
-                        className="inline-flex items-center rounded-full bg-primaryStart/10 px-3 py-1 text-xs sm:text-sm font-medium text-primaryStart"
-                      >
-                        {item}
-                      </span>
-                    ))
-                  ) : (
-                    <span className="text-sm text-slate-500">
-                      Brak danych o dostępności
-                    </span>
-                  )}
-                </div>
-              </div>
             </div>
-
-            {/* DESCRIPTION */}
-            {talent?.description && (
-              <div className="mt-8">
-                <h2 className="text-xl font-semibold text-slate-900">Opis</h2>
-                <div className="mt-3">
-                  <div className="reset prose max-w-none text-slate-800">
-                    <Viewer value={talent.description} displayBlack />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* SERVICES */}
-            {talent?.projects?.length > 0 && (
-              <div className="mt-8">
-                <h2 className="text-xl font-semibold text-slate-900">Usługi</h2>
-                <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-                  {talent.projects.map((project: IProject, i: number) => (
-                    <LeadCard key={i} service={project} slug />
-                  ))}
-                </div>
-              </div>
-            )}
           </section>
         </div>
 

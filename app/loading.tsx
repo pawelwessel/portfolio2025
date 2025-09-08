@@ -21,7 +21,7 @@ export default function Loading() {
           />
         </svg>
         <Image
-          src="/logo-quixy.png"
+          src="/assets/quixy-logo.png"
           width={200}
           height={200}
           alt=""

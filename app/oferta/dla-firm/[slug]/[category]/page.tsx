@@ -129,7 +129,7 @@ export default async function Page(props: { params: Promise<any> }) {
 
             {/* Sekcja opisu */}
             <div className="p-6 w-full flex flex-col lg:flex-row bg-white mt-12 rounded-xl">
-              <div className="">
+              <div>
                 {/* Główna sekcja tekstowa */}
                 <section className="w-full">
                   {/* Nagłówek */}

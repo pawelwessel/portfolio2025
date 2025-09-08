@@ -22,7 +22,6 @@ import PricingHero from "@/components/landing/PricingHero";
 import BlogSection from "@/components/landing/BlogSection";
 import OpinionsSection from "@/components/landing/OpinionsSection";
 import ReachSection from "@/components/landing/ReachSection";
-import { mapMarkers } from "@/lib/mapMarkers";
 import { notFound } from "next/navigation";
 import { getUsersData } from "@/lib/getUsersData";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
@@ -238,7 +237,7 @@ function PageContent({
       name: "Quixy Studio",
       logo: {
         "@type": "ImageObject",
-        url: "https://quixy.pl/logo-quixy.png",
+        url: "https://quixy.pl/quixy-logo.png",
       },
     },
     datePublished: new Date(post.creationTime).toISOString(),
@@ -360,7 +359,7 @@ function PageContent({
               <div className="relative bg-[#0f1320]/90 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-3xl shadow-2xl p-8 md:p-12 overflow-hidden">
                 {/* Background accent elements */}
                 <Image
-                  src="/logo-quixy.png"
+                  src="/assets/quixy-logo.png"
                   width={400}
                   height={400}
                   alt="Quixy Studio Strony Internetowe Logo"
@@ -440,7 +439,7 @@ function PageContent({
                   firm.
                 </p>
               </div>
-              <ReachSection markers={mapMarkers} />
+              <ReachSection markers={markers} />
             </div>
             <BlogSection />
           </div>
@@ -497,3 +496,82 @@ export default async function Page({ params }: { params: { slug: string } }) {
     />
   );
 }
+const markers = [
+  {
+    style: "w-[8%] absolute top-[40%] left-[9.5%] sm:left-[8.5%]",
+    label: "Szczecin - Strona internetowa dla restauracji",
+  },
+  {
+    style: "w-[10%] absolute top-[58%] left-[18%]",
+    label: "Zielona Góra - Sklep online z elektroniką",
+  },
+  {
+    style: "w-[6%] absolute top-[69%] left-[33%]",
+    label: "Wrocław - Portfolio fotografa",
+  },
+  {
+    style: "w-[6%] absolute top-[76%] left-[43%]",
+    label: "Opole - Strona dla kancelarii prawnej",
+  },
+  {
+    style: "w-[6%] absolute top-[67%] left-[44.5%]",
+    label: "Katowice - Sklep internetowy z odzieżą",
+  },
+  {
+    style: "w-[8%] absolute top-[81%] left-[56.5%]",
+    label: "Kraków - Strona internetowa dla hotelu",
+  },
+  {
+    style: "w-[8%] absolute top-[78%] left-[72.5%]",
+    label: "Rzeszów - Portal edukacyjny",
+  },
+  {
+    style: "w-[10%] absolute top-[57%] left-[79%]",
+    label: "Lublin - Strona internetowa dla lekarza",
+  },
+  {
+    style: "w-[8%] absolute top-[65%] left-[60.5%]",
+    label: "Kielce - Blog kulinarny",
+  },
+  {
+    style: "w-[10%] absolute top-[50%] left-[47.5%]",
+    label: "Łódź - Portfolio grafika",
+  },
+  {
+    style: "w-[8%] absolute top-[46%] left-[30%]",
+    label: "Poznań - Strona internetowa dla agencji marketingowej",
+  },
+  {
+    style: "w-[8%] absolute top-[36%] left-[22%]",
+    label: "Gorzów Wlkp. - Strona internetowa dla szkoły językowej",
+  },
+  {
+    style: "w-[10%] absolute top-[27%] left-[37.5%]",
+    label: "Bydgoszcz - Sklep internetowy z zabawkami",
+  },
+  {
+    style: "w-[8%] absolute top-[44%] left-[65%]",
+    label: "Radom - Strona internetowa dla architekta",
+  },
+  {
+    style: "w-[8%] absolute top-[34%] left-[56%]",
+    label: "Białystok - Portal informacyjny",
+  },
+  {
+    style: "w-[10%] absolute top-[23%] left-[78%]",
+    label: "Suwałki - Strona internetowa dla firmy budowlanej",
+  },
+  {
+    style: "w-[10%] absolute top-[14.5%] sm:top-[13.5%] left-[58%]",
+    label: "Olsztyn - Strona internetowa dla przedszkola",
+    aos: "zoom-in",
+  },
+  {
+    style: "w-[10%] absolute top-[6%] left-[32%]",
+    label: "Gdańsk - Strona internetowa dla salonu fryzjerskiego",
+  },
+  {
+    style: "w-[10%] absolute top-[20%] left-[10%]",
+    label: "Koszalin - Strona internetowa dla trenera personalnego",
+  },
+];

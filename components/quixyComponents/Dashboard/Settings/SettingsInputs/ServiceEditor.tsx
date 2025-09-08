@@ -131,7 +131,6 @@ export default function ServiceEditor({
                       setTagDeletion(true);
                       setSelectedTag(item);
                     }}
-                    className=""
                   >
                     <FaMinusCircle className="ml-2 text-white" />
                   </button>
@@ -428,7 +427,7 @@ export default function ServiceEditor({
           ></textarea>
         </div>
         <div className="w-full sm:w-[300px] mt-3">
-          <div className="">
+          <div>
             <h3 className="font-extrabold text-lg">Płatność</h3>
             <select
               value={project?.time}
@@ -467,7 +466,7 @@ export default function ServiceEditor({
         </div>
       </div>
 
-      <div className="">
+      <div>
         <InputField
           light={light}
           id="duration"

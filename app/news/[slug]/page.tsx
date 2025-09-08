@@ -27,17 +27,17 @@ export default async function Page(props: { params: Promise<any> }) {
         <div className="pt-24 pb-24 relative">
           <div className="text-white flex flex-col breadcrumbs">
             <ul className="flex items-center flex-wrap">
-              <li className="">
+              <li>
                 <Link href={`/`} title="praca zdalna">
                   hello!
                 </Link>
               </li>
-              <li className="">
+              <li>
                 <Link href="/news" title="aktualności">
                   news
                 </Link>
               </li>
-              <li className="">
+              <li>
                 <Link
                   href={`/news/${polishToEnglish(product?.url)}`}
                   title="aktualności"
@@ -80,7 +80,7 @@ export default async function Page(props: { params: Promise<any> }) {
                     className="w-full h-auto mt-6 rounded-md"
                   />
                   <div className="w-max absolute bottom-4 right-4">
-                    <Link href="/" className="">
+                    <Link href="/">
                       <Image
                         src="/assets/quixy-logo.png"
                         width={420}
@@ -134,7 +134,7 @@ export default async function Page(props: { params: Promise<any> }) {
                     className="w-full h-auto rounded-md"
                   />
                   <div className="w-max absolute bottom-4 right-4">
-                    <Link href="/" className="">
+                    <Link href="/">
                       <Image
                         src="/assets/quixy-logo.png"
                         width={420}
@@ -165,7 +165,7 @@ export default async function Page(props: { params: Promise<any> }) {
                     className="w-full h-auto"
                   />
                   <div className="w-max absolute bottom-4 right-4">
-                    <Link href="/" className="">
+                    <Link href="/">
                       <Image
                         src="/assets/quixy-logo.png"
                         width={420}
@@ -194,7 +194,7 @@ export default async function Page(props: { params: Promise<any> }) {
                     className="w-full h-auto"
                   />
                   <div className="w-max absolute bottom-4 right-4">
-                    <Link href="/" className="">
+                    <Link href="/">
                       <Image
                         src="/assets/quixy-logo.png"
                         width={420}

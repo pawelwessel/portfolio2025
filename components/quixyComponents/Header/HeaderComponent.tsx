@@ -30,7 +30,7 @@ export default function HeaderComponent({
     <>
       <div
         style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
-        className={`fixed left-0 top-0 z-[10000] px-4 bg-zinc-800/80 backdrop-blur-sm flex flex-row items-center justify-center w-full ${
+        className={`fixed left-0 top-0 z-[10000] px-4 bg-white flex flex-row items-center justify-center w-full ${
           showHeader || menuShow || hovered === "cat" || productsOpen
             ? "-translate-y-0"
             : "-translate-y-[100%]"
@@ -77,7 +77,7 @@ export default function HeaderComponent({
               className="flex flex-col font-light h-full relative min-w-24"
             >
               <Image
-                src="/logo-quixy.png"
+                src="/assets/quixy-logo.png"
                 width={224}
                 height={224}
                 alt="Poszukujesz pracy zdalnej?"
@@ -103,40 +103,37 @@ export default function HeaderComponent({
                   setHovered("");
                 }}
                 title="Firmy, Freelancerzy, Oferty Pracy Zdalnej, Zlecenia, Usługi Quixy"
-                className={`flex text-white items-center ml-3 sm:ml-12 w-max py-[10px] px-[10px] drop-shadow-sm duration-500 relative text-base cursor-pointer`}
+                className={`flex text-black hover:text-white items-center ml-3 sm:ml-12 w-max py-[10px] px-[10px] drop-shadow-sm duration-500 relative text-base cursor-pointer`}
               >
                 <span
                   className={`relative z-50 ${
                     hovered === "cat" &&
-                    "bg-gradient-to-r from-zinc-700 to-zinc-800 text-white"
+                    "bg-gradient-to-br from-green-600 to-green-700 text-white"
                   } rounded-md px-1.5 py-1`}
                 >
                   Nasza oferta
                 </span>
                 <FaChevronDown
                   className={`${
-                    hovered === "cat" ? "rotate-180" : ""
-                  } ml-1 duration-200 font-light`}
+                    hovered === "cat" ? "text-black rotate-180" : ""
+                  } ml-1 duration-200`}
                 />
               </button>
             </div>
 
             <Link
               href="/news"
-              className="rounded-md text-base drop-shadow-sm shadow-black text-white px-2 py-1 bg-gradient-to-r hover:from-zinc-700 hover:to-zinc-800 hover:text-white "
+              className="rounded-md text-base drop-shadow-sm shadow-black text-black px-2 py-1 bg-gradient-to-br hover:from-green-600 hover:to-green-700 hover:text-white"
             >
               Aktualności
             </Link>
           </div>
           <Link
-            href="/register"
-            title="Zarejestruj się"
+            href="/login"
+            title="logowanie"
             className="text-nowrap bg-blue-500 text-white font-gotham font-light px-4 py-2 rounded-md hover:bg-blue-600 drop-shadow-sm shadow-black text-sm sm:text-base"
           >
-            <div className="flex items-center">
-              <FaUserCircle className="text-white text-xl mr-2" />
-              Zarejestruj się
-            </div>
+            <div className="flex items-center">Logowanie</div>
           </Link>
         </div>
       </div>

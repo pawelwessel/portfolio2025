@@ -1,47 +1,27 @@
 import Map from "@/components/Map";
-import Contact from "../quixyComponents/Contact";
-
-type MapMarker = {
-  id: string;
-  top: string;
-  left: string;
-  leftSm?: string;
-  topSm?: string;
-  width: string;
-  text: string;
-};
-
-type ReachSectionProps = {
-  markers: MapMarker[];
-};
-
-// Helper: disables pointer events and hides marker text when invisible
-function MarkerText({
-  visible,
-  children,
+import { MapMarker } from "@/types";
+export default function ReachSection({
+  markers,
+  isLandingPage,
 }: {
-  visible: boolean;
-  children: React.ReactNode;
+  markers: MapMarker[];
+  isLandingPage?: boolean;
 }) {
-  if (!visible) return null;
-  return (
-    <span
-      className={visible ? "" : "pointer-events-none select-none opacity-0"}
-      aria-hidden={!visible}
-    >
-      {children}
-    </span>
-  );
-}
-
-export default function ReachSection({ markers }: ReachSectionProps) {
   return (
     <div className="mt-12">
       <div className="text-center">
-        <span className="block mb-6 text-3xl lg:text-4xl font-bold text-zinc-800 drop-shadow-md shadow-black">
+        <span
+          className={`block mb-6 text-3xl lg:text-4xl font-bold ${
+            isLandingPage ? "text-white" : "text-zinc-800"
+          }  drop-shadow-md shadow-black`}
+        >
           Zasięg Działania
         </span>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6 font-gotham font-light">
+        <p
+          className={`text-lg ${
+            isLandingPage ? "text-white" : "text-zinc-800"
+          } text-gray-600 max-w-3xl mx-auto mb-6 font-gotham font-light`}
+        >
           Realizujemy strony internetowe, platformy webowe oraz kampanie
           marketingowe (Google Ads, social media) dla klientów w całej Polsce.
           Pracujemy zdalnie, z pełnym wsparciem niezależnie od lokalizacji.
@@ -67,7 +47,7 @@ export default function ReachSection({ markers }: ReachSectionProps) {
       </div>
 
       <div className="relative w-full mx-auto overflow-visible">
-        <Map />
+        <Map markers={markers} />
       </div>
     </div>
   );

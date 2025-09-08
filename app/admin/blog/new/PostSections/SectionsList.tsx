@@ -12,7 +12,7 @@ export default function SectionsList({
     <div>
       {input.sections.length > 0 && (
         <div className="bg-[#2F313C] p-3 rounded-md my-4 text-white">
-          <h1 className="">Twoje sekcje:</h1>
+          <h1>Twoje sekcje:</h1>
           {input.sections.map((section, idx: number) => (
             <div key={idx}>
               <div className="flex flex-row items-center my-2 hover:bg-[#34363d] p-1">

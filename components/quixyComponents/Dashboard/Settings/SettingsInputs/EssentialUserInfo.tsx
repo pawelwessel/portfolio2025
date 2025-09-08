@@ -214,13 +214,11 @@ export default function EssentialUserInfo({
             <>
               <div className="flex flex-col mt-2">
                 <label className="font-bold">Unikalny link</label>
-                <div className="">
+                <div>
                   {!localPseudo &&
                     "Wartość ta pozwala na wyświetlanie profilu w zakładce pracy zdalnej."}
                   {localPseudo && pseudoWasChanged && pseudoIsAvailable && (
-                    <div className="">
-                      To będzie Twój Unikalny Link w Quixy.pl
-                    </div>
+                    <div>To będzie Twój Unikalny Link w Quixy.pl</div>
                   )}
                 </div>
                 {hasAnswer && !pseudoIsAvailable && (
@@ -324,7 +322,7 @@ export default function EssentialUserInfo({
                     zł/h
                   </div>
                 </div>
-                <div className=""></div>
+                <div></div>
               </div>
             </div>
           </div>

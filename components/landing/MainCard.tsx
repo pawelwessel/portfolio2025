@@ -325,27 +325,27 @@ export default function MainCard({
             </div>
 
             <div className="mx-auto flex flex-row items-center gap-4 mt-10 w-full flex-wrap justify-center">
-              <div className="">
+              <div>
                 <div className=" text-blue-600">
                   <FaFacebook className="text-3xl" />
                 </div>
               </div>
-              <div className="">
+              <div>
                 <div className=" text-pink-600">
                   <FaInstagram className="text-3xl" />
                 </div>
               </div>
-              <div className="">
+              <div>
                 <div className=" text-black">
                   <FaTiktok className="text-3xl" />
                 </div>
               </div>
-              <div className="">
+              <div>
                 <div className=" text-sky-600">
                   <FaLinkedin className="text-3xl" />
                 </div>
               </div>
-              <div className="">
+              <div>
                 <div className=" text-red-600">
                   <FaYoutube className="text-3xl" />
                 </div>
@@ -358,24 +358,6 @@ export default function MainCard({
             </div>
           </div>
         </div>
-      </div>
-      <div className="mx-auto pb-16 bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl px-4 sm:px-8 pt-6">
-        <div className="relative sm:px-8">
-          <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
-            Współpracuj z Quixy Studio jako firma lub freelancer!
-          </span>
-          <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
-          <div className="mt-6">
-            <JobBoardList talents={talents} companies={companies} />
-          </div>
-        </div>
-        <p className="text-zinc-700 text-base sm:text-lg max-w-3xl mx-auto text-center mt-14 font-gotham font-light leading-relaxed px-2">
-          W poszukiwaniu firmy lub freelancera?{" "}
-          <span className="font-semibold text-blue-600">
-            Sprawdź ofertę zaufanych partnerów Quixy Studio.
-          </span>{" "}
-          Możesz dodawać zlecenia dla freelancerów lub zlecenia dla firm.
-        </p>
       </div>
     </div>
   );

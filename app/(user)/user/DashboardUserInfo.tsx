@@ -224,7 +224,7 @@ export default function DashboardUserInfo() {
                     <h2 className="px-[2.5rem]  py-3 w-max rounded-tl-lg rounded-br-3xl bg-gradient-to-r text-white from-primaryStart to-primaryEnd">
                       DOSTĘPNOŚĆ
                     </h2>
-                    <div className="" />
+                    <div />
                     {user?.seek && (
                       <div className="w-full flex flex-wrap items-center gap-2 p-[0.7rem]">
                         {user?.preferences ? (

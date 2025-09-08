@@ -87,7 +87,7 @@ export default function GenerateIdeaInputs({
         </div>
       </div>
       {config?.product === "Tak" && (
-        <div className="">
+        <div>
           <h2 className="font-gotham">Dodatkowe informacje:</h2>
           <textarea
             value={config.additional}

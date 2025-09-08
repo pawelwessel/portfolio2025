@@ -319,7 +319,7 @@ export default function EditPost({
                   />
                 </h3>
                 {selectedPost.sections.length > 0 && (
-                  <p className="">W tym poście przeczytasz o:</p>
+                  <p>W tym poście przeczytasz o:</p>
                 )}
                 <div className="flex flex-col ml-6">
                   {selectedPost.sections.length > 0 &&

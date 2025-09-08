@@ -137,7 +137,7 @@ export default function Nav({
                     href="/"
                     className="mr-20 font-sans font-bold flex flex-row items-center py-2 px-6 !text-white bg-gradient-to-b from-primaryStart to-primaryEnd rounded-br-3xl lg:rounded-tl-lg w-max max-w-full"
                   >
-                    <div className="">Panel administracyjny</div>
+                    <div>Panel administracyjny</div>
                   </Link>
                   <button
                     onClick={() => dispatch(setLight(!light))}

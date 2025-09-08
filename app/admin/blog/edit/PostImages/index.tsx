@@ -251,7 +251,7 @@ export default function PostImages({
                     className="absolute -right-3 -top-3 w-6 h-6"
                   >
                     <div className="group flex flex-row">
-                      <div className="">
+                      <div>
                         <FaExclamationCircle className="text-white text-2xl bg-red-400 rounded-full block duration-200 relative z-[15]" />
                       </div>
                       <div className="bg-white text-black font-light text-base opacity-0 group-hover:opacity-100 group-hover:block hidden duration-300 ml-3 p-3 rounded-md z-[20]">

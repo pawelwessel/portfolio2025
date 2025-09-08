@@ -327,7 +327,6 @@ export default function TagsHandler({ light }: { light: any }) {
                             setTagDeletion(true);
                             setSelectedTag(item);
                           }}
-                          className=""
                         >
                           <FaMinusCircle className="ml-2 text-white" />
                         </button>

@@ -1,4 +1,14 @@
 /* eslint-disable no-unused-vars */
+
+export type MapMarker = {
+  style: string;
+  label: string;
+  aos?: string;
+};
+
+export type ReachSectionProps = {
+  markers: MapMarker[];
+};
 export interface IService {
   flatten_name: string;
   real_name: string;

@@ -71,7 +71,7 @@ video::-webkit-media-controls {
 }
 .line {
   fill: none;
-  stroke: #fff;
+  stroke: #001e00;
   stroke-width: 4;
   transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
     stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -359,14 +359,18 @@ video::-webkit-media-controls {
 }
 
 .infinite-bg {
-  background: radial-gradient(circle at center, #126b91 0%, #082f47 100%);
+  background: radial-gradient(
+    circle at center,
+    rgb(29 78 216 / var(--tw-text-opacity, 0.7)),
+    rgb(29 78 216 / var(--tw-text-opacity, 1)) 100%
+  );
   background-size: 150% 100%;
   animation: slideBg 6s linear infinite;
   animation-direction: alternate;
 }
 
 .add_content_btn {
-  @apply bg-white text-zinc-800 font-bold py-2 px-4 cursor-pointer border-zinc-800 border-2 w-full hover:bg-gray-300 duration-300;
+  @apply bg-white text-blue-800 font-bold py-2 px-4 cursor-pointer border-zinc-800 border-2 w-full hover:bg-gray-300 duration-300;
 }
 .add_image_btn {
   @apply bg-white text-zinc-800 font-bold py-2 px-4 cursor-pointer border-zinc-800 border-2 w-full aspect-square hover:bg-gray-300 duration-300;
@@ -513,12 +517,6 @@ html {
   }
 }
 
-.infinite-bg {
-  background: radial-gradient(circle at center, #126b91 0%, #082f47 100%);
-  background-size: 150% 100%;
-  animation: slideBg 6s linear infinite;
-  animation-direction: alternate;
-}
 .button:hover {
   background-color: #126b91c7;
 }

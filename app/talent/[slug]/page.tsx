@@ -10,7 +10,8 @@ import dynamic from "next/dynamic";
 import LeadCard from "@/components/quixyComponents/Dashboard/LeadCard";
 import { Suspense } from "react";
 import Loadinger from "@/app/loading";
-const Tags = dynamic(() => import("@/components/quixyComponents/Tags"));
+import Tags from "@/components/quixyComponents/Tags";
+
 export const revalidate = 60;
 export const dynamicParams = true;
 export default async function Page(props: {

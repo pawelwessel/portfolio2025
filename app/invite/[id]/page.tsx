@@ -14,7 +14,7 @@ export default async function Page({
     <div className="min-h-screen w-full relative font-sans">
       <Link href="/" className="absolute left-8 top-6 xl:top-12 z-[501]">
         <Image
-          src="/logo-quixy.png"
+          src="/assets/quixy-logo.png"
           width={400}
           height={400}
           alt=""

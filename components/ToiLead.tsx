@@ -54,7 +54,7 @@ export default function SecondToiLead({
               {lead?.ownerNumber1 &&
               lead?.ownerNumber2 &&
               lead?.ownerNumber3 ? (
-                <div className="">
+                <div>
                   {lead?.ownerNumber1} / {lead?.ownerNumber2} /{" "}
                   {lead?.ownerNumber3}
                 </div>

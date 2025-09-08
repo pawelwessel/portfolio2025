@@ -108,7 +108,7 @@ export default function Contact({
               </div>
               <div className="flex items-center gap-3">
                 <Image
-                  src="/logo-quixy.png"
+                  src="/assets/quixy-logo.png"
                   width={244}
                   height={244}
                   alt="Logo quixy"

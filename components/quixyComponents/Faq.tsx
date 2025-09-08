@@ -19,7 +19,7 @@ const FAQ: React.FC<FAQProps> = ({ faqItems }) => {
   };
 
   return (
-    <div className="">
+    <div>
       <span className="font-extrabold z-50 pb-3 text-2xl text-black w-full">
         Masz jakieś pytania?
       </span>

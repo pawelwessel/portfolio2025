@@ -98,7 +98,7 @@ const JobOfferCard = ({ job }: { job: JobOffer }) => {
       {/* Expanded Content */}
       {isExpanded && (
         <div className="overflow-y-scroll h-[60vh] scrollbar bg-white w-full">
-          <div className="">
+          <div>
             {/* Specializations */}
             <div className="p-4">
               {job.specializations.length > 0 && (

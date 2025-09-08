@@ -2,18 +2,25 @@ import Link from "next/link";
 
 export default function SearchJobs() {
   return (
-    <div className="flex flex-col">
-      <h2 className="text-white w-max max-w-full text-3xl xl:text-5xl font-extrabold">
-        <Link title="oferta" href="/oferta">
-          Zapoznaj się z naszą ofertą
-        </Link>
+    <header className="flex flex-col gap-2">
+      <h2 className="text-zinc-900 w-max max-w-full text-2xl xl:text-3xl font-extrabold tracking-tight">
+        Tylko konkretne zlecenia w branży
       </h2>
-      <div className="flex flex-row">
-        <h2 className="mt-3 max-w-xl text-white">
-          Zatrudniaj specjalistów lub realizuj zlecenia – Twój sukces zaczyna
-          się tutaj!
-        </h2>
+
+      <p className="max-w-2xl text-zinc-600 font-gotham font-light">
+        Skup się na klientach, nie na szukaniu. Wejdź do ofert i zacznij budować
+        pipeline dzisiaj — bez zbędnych kroków po drodze.
+      </p>
+
+      <div className="mt-2">
+        <Link
+          href="/zlecenia-dla-freelancerow"
+          className="inline-flex items-center justify-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-900 shadow-sm hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/70 transition"
+          aria-label="Przejdź do listy ofert"
+        >
+          Przejdź do ofert
+        </Link>
       </div>
-    </div>
+    </header>
   );
 }

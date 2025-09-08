@@ -23,7 +23,7 @@ export default function ProductsMobile({
     setHovered("");
   }
   return (
-    <div className="">
+    <div>
       <div
         className={`fixed w-screen h-full overflow-y-scroll left-0 bg-white xl:space-x-3 xl:-ml-3 font-semibold shadow-black ${
           productsOpen ? "pt-[65px] opacity-100 z-[500]" : "z-[-10] opacity-0"

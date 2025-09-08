@@ -148,7 +148,7 @@ export default function GenerateIdea({
                 </h2>
               </div>
               <GenerateIdeaInputs config={config} setConfig={setConfig} />
-              <div className="">
+              <div>
                 <button
                   onClick={generate}
                   disabled={isLoading}

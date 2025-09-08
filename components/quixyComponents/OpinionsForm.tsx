@@ -50,8 +50,8 @@ function OpinionsForm({ opinions }: { opinions: Opinion[] }) {
             Podziel się przemyśleniami
           </h2>
           <div className="flex flex-col justify-between w-full h-full">
-            <div className="">
-              <div className="">
+            <div>
+              <div>
                 <label htmlFor="name" className="text-white font-light">
                   Przedstaw się
                 </label>
@@ -65,7 +65,7 @@ function OpinionsForm({ opinions }: { opinions: Opinion[] }) {
                   className="bg-gray-700 placeholder:text-white w-full py-3 px-4 shadow-sm mb-2 text-white border border-gray-300 rounded-md"
                 />
               </div>
-              <div className="">
+              <div>
                 <label htmlFor="opinion" className="text-white font-light">
                   Twoja opinia
                 </label>

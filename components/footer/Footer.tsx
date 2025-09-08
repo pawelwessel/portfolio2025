@@ -54,7 +54,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="block mb-6">
               <Image
-                src="/logo-quixy.png"
+                src="/assets/quixy-logo.png"
                 width={200}
                 height={80}
                 alt="Quixy Studio Logo"

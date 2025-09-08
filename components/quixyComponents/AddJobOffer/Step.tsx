@@ -135,7 +135,7 @@ export default function StepOne({
           />
         )}
         {formData?.job && (
-          <div className="">
+          <div>
             <p className={`font-extrabold text-lg mb-2`}>Kategoria</p>
             <div className="text-white bg-gradient-to-r from-primary to-cta w-max max-w-full p-2">
               {formData.job}

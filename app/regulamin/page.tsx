@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     siteName: "Quixy Studio",
     images: [
       {
-        url: "/logo-quixy.png",
+        url: "/assets/quixy-logo.png",
         width: 1200,
         height: 630,
         alt: "Quixy Studio",
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Regulamin i informacje o danych | Quixy Studio",
     description: "Regulamin i informacje o danych | Quixy Studio",
-    images: ["/logo-quixy.png"],
+    images: ["/assets/quixy-logo.png"],
   },
   authors: [{ name: "Quixy Studio", url: "https://quixy.pl" }],
   publisher: "Quixy Studio",

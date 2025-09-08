@@ -136,7 +136,6 @@ export default function OpinionsSection({ darkBg }: { darkBg?: boolean }) {
         }}
         pagination={{ clickable: true }}
         navigation={false}
-        className=""
       >
         {opinions.map((op, idx) => (
           <SwiperSlide key={idx}>
