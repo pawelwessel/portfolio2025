@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
 import { Post } from "@/types";
 import Hero from "@/components/hero/Hero";
-import { FaBook, FaEye } from "react-icons/fa";
+import { FaBook } from "react-icons/fa";
 import ParallaxImage from "@/components/ParallaxImage";
 import ParallaxSection from "@/components/ParallaxSection";
 import Cta from "@/components/cta/Cta";
@@ -25,6 +25,10 @@ import ReachSection from "@/components/landing/ReachSection";
 import { notFound } from "next/navigation";
 import { getUsersData } from "@/lib/getUsersData";
 import JobBoardList from "@/components/quixyComponents/JobBoardList";
+import HeroIntro from "@/components/landing/HeroIntro";
+import MainCard from "@/components/landing/MainCard";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import Contact from "@/components/quixyComponents/Contact";
 
 // Remove top-level await for getUsers, move to page function
 
@@ -269,181 +273,119 @@ function PageContent({
       )}
 
       <div className="relative w-screen overflow-x-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="z-50 fixed left-0 top-0 w-full h-screen">
-            <Hero />
-          </div>
-          <div className="absolute z-[-1] inset-0 bg-black/85" />
-        </div>
+        <div className="font-sans w-full bg-[#222222] pb-48 h-full">
+          <HeroIntro city={getCityNominative(slugToCity(slug)!)} />
 
-        {/* Hero banner */}
-        <section className="relative w-full">
-          <div className="relative w-full aspect-[16/6] min-h-[500px] z-[2]">
-            <ParallaxImage
-              src={
-                isCitySlug(slug)
-                  ? "/assets/earth.jpg"
-                  : typeof post.mainImage === "string" &&
-                    (post.mainImage.startsWith("http://") ||
-                      post.mainImage.startsWith("https://") ||
-                      post.mainImage.startsWith("/"))
-                  ? post.mainImage
-                  : "/assets/earth.jpg"
-              }
-              alt={post.title}
-              fill
-              priority
-              speed={0.5}
-              direction="down"
-              scale={1}
-              containerClassName="w-full h-full"
-              overlay
-              overlayClassName="bg-gradient-to-b from-black/20 via-black/60 to-black"
-            />
-            <ParallaxSection
-              speed={0.08}
-              direction="up"
-              className="absolute bottom-20 left-12"
-            >
-              <div
-                className="w-1.5 h-1.5 bg-[#B4FC2D] rounded-full opacity-80 animate-pulse"
-                style={{ animationDelay: "2s" }}
+          <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
+            <section className={`max-w-[90vw] mx-auto h-max z-50`}>
+              <MainCard
+                talents={talents}
+                companies={companies}
+                city={getCityNominative(slugToCity(slug)!)}
               />
-            </ParallaxSection>
+              <ProjectShowcase dictionary={dictionary} />
+              <BlogSection />
+              <ReachSection markers={markers} isLandingPage={true} />
+              <Contact isLandingPage={true} />
+              <div className="relative z-10 w-full">
+                <article className="w-full mx-auto">
+                  <div className="relative bg-white p-8 md:p-12 overflow-hidden">
+                    {/* Background accent elements */}
+                    <h1 className="mb-16 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black leading-tight font-gotham">
+                      {post.title}
+                    </h1>
+                    <Image
+                      src="/assets/quixy-logo.png"
+                      width={400}
+                      height={400}
+                      alt="Quixy Studio Strony Internetowe Logo"
+                      className="w-auto h-[90px]"
+                      priority
+                    />
+                    <div className="mt-6 relative z-10">
+                      {post.intro && (
+                        <div className="mb-10 font-gotham font-light">
+                          <p className="text-black text-base lg:text-lg leading-relaxed whitespace-pre-line font-light">
+                            {post.intro}
+                          </p>
+                          <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mt-6 rounded-full opacity-60" />
+                        </div>
+                      )}
 
-            <div className="absolute inset-0 flex items-end">
-              <div className="w-full max-w-[90vw] mx-auto px-4 pb-8">
-                <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
-                  <div className="flex items-center gap-3 text-xs font-gotham font-light">
-                    <span className="w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
-                      {new Date(post.creationTime).toLocaleDateString("pl-PL")}
-                    </span>
+                      {post.sections && post.sections.length > 0 && (
+                        <div className="space-y-12">
+                          {post.sections.map((section, idx) => (
+                            <section key={idx} className="relative font-sans">
+                              {section.title && (
+                                <h2 className="my-16 text-xl lg:text-2xl text-black font-bold font-gotham relative">
+                                  {section.title}
+                                </h2>
+                              )}
+                              <div
+                                className="prose prose-sm md:prose-base prose-invert prose-a:text-[#B4FC2D] prose-a:hover:text-[#A3E626] prose-headings:text-black prose-headings:font-gotham prose-p:text-black prose-p:leading-relaxed prose-strong:text-black prose-code:text-[#B4FC2D] prose-code:bg-[#1a1f2e] prose-code:px-2 prose-code:py-1 prose-code:rounded prose-h1:text-2xl md:prose-h1:text-3xl max-w-none"
+                                dangerouslySetInnerHTML={{
+                                  __html: section.content,
+                                }}
+                              />
+                            </section>
+                          ))}
+                        </div>
+                      )}
 
-                    <span className="flex items-center flex-row w-max text-nowrap text-xs sm:text-sm bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 px-3 py-2 rounded-full">
-                      <FaBook className="mr-1.5 w-4 h-4" />5 min
-                    </span>
-                  </div>
-                  <br />
-                  <Link
-                    href="/"
-                    className="z-[50000] inline-flex items-center gap-2 bg-[#1a1f2e]/80 backdrop-blur-sm border border-[#2a2f3d]/50 text-gray-200 hover:text-white hover:border-[#B4FC2D]/30 px-4 py-2 rounded-full transition-all duration-300 font-gotham font-light"
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                      />
-                    </svg>
-                    Wróć
-                  </Link>
-                </div>
-                <h1 className="mb-16 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight font-gotham">
-                  {post.title}
-                </h1>
-              </div>
-            </div>
-          </div>
-        </section>
+                      {post.outro && (
+                        <div className="font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50">
+                          <p className="text-black text-base lg:text-lg leading-relaxed whitespace-pre-line font-light">
+                            {post.outro}
+                          </p>
+                        </div>
+                      )}
 
-        {/* Article card */}
-        <main className="relative z-10 w-full px-4 -mt-12">
-          <article className="w-full max-w-[90vw] mx-auto">
-            <ParallaxSection speed={0.1} direction="up">
-              <div className="relative bg-[#0f1320]/90 backdrop-blur-xl border border-[#2a2f3d]/50 rounded-3xl shadow-2xl p-8 md:p-12 overflow-hidden">
-                {/* Background accent elements */}
-                <Image
-                  src="/assets/quixy-logo.png"
-                  width={400}
-                  height={400}
-                  alt="Quixy Studio Strony Internetowe Logo"
-                  className="w-auto h-[90px]"
-                  priority
-                />
-                <div className="mt-6 relative z-10">
-                  {post.intro && (
-                    <div className="mb-10 font-gotham font-light">
-                      <p className="text-gray-100 text-base lg:text-lg leading-relaxed whitespace-pre-line font-light">
-                        {post.intro}
-                      </p>
-                      <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mt-6 rounded-full opacity-60" />
+                      {/* FAQ Section */}
+                      <FaqSection faqs={post.faq} />
+
+                      <div className="!text-lg font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50 flex flex-row items-center gap-4">
+                        <Cta label="Dodaj zlecenie" />
+                      </div>
+                      <div className="max-w-[450px]">
+                        <OpinionsSection darkBg={true} />
+                      </div>
                     </div>
-                  )}
-
-                  {post.sections && post.sections.length > 0 && (
-                    <div className="space-y-12">
-                      {post.sections.map((section, idx) => (
-                        <section key={idx} className="relative font-sans">
-                          {section.title && (
-                            <h2 className="my-16 text-xl lg:text-2xl text-white font-bold font-gotham relative">
-                              {section.title}
-                            </h2>
-                          )}
-                          <div
-                            className="prose prose-sm md:prose-base prose-invert prose-a:text-[#B4FC2D] prose-a:hover:text-[#A3E626] prose-headings:text-white prose-headings:font-gotham prose-p:text-gray-100 prose-p:leading-relaxed prose-strong:text-white prose-code:text-[#B4FC2D] prose-code:bg-[#1a1f2e] prose-code:px-2 prose-code:py-1 prose-code:rounded prose-h1:text-2xl md:prose-h1:text-3xl max-w-none"
-                            dangerouslySetInnerHTML={{
-                              __html: section.content,
-                            }}
+                  </div>
+                </article>
+                <div className="max-w-[90vw] mx-auto font-sans mb-12">
+                  <div className="bg-white rounded-xl p-6">
+                    <PricingHero city={getCityNominative(slugToCity(slug)!)} />
+                    <div className="my-12 mx-auto bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl p-6">
+                      <div className="relative sm:px-8">
+                        <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
+                          Zaufani freelancerzy oraz firmy współpracujące z
+                          Quixy!
+                        </span>
+                        <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
+                        <div className="mt-6">
+                          <JobBoardList
+                            talents={talents}
+                            companies={companies}
                           />
-                        </section>
-                      ))}
-                    </div>
-                  )}
-
-                  {post.outro && (
-                    <div className="font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50">
-                      <p className="text-gray-100 text-base lg:text-lg leading-relaxed whitespace-pre-line font-light">
-                        {post.outro}
+                        </div>
+                      </div>
+                      <p className="text-zinc-700 text-base sm:text-lg max-w-3xl mx-auto text-center mt-14 font-gotham font-light leading-relaxed px-2">
+                        W poszukiwaniu firmy lub freelancera?{" "}
+                        <span className="font-semibold text-blue-600">
+                          Sprawdź ofertę zaufanych partnerów Quixy Studio.
+                        </span>{" "}
+                        Możesz dodawać zlecenia dla freelancerów lub zlecenia
+                        dla firm.
                       </p>
                     </div>
-                  )}
-
-                  {/* FAQ Section */}
-                  <FaqSection faqs={post.faq} />
-
-                  <div className="!text-lg font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50 flex flex-row items-center gap-4">
-                    <Cta label="Dodaj zlecenie" />
+                    <ReachSection markers={markers} />
                   </div>
-                  <div className="max-w-[450px]">
-                    <OpinionsSection darkBg={true} />
-                  </div>
+                  <BlogSection />
                 </div>
               </div>
-            </ParallaxSection>
-          </article>
-          <div className="max-w-[90vw] mx-auto font-sans mb-12">
-            <div className="bg-white rounded-xl p-6">
-              <PricingHero city={getCityNominative(slugToCity(slug)!)} />
-              <div className="my-12 mx-auto bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl p-6">
-                <div className="relative sm:px-8">
-                  <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
-                    Zaufani freelancerzy oraz firmy współpracujące z Quixy!
-                  </span>
-                  <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
-                  <div className="mt-6">
-                    <JobBoardList talents={talents} companies={companies} />
-                  </div>
-                </div>
-                <p className="text-zinc-700 text-base sm:text-lg max-w-3xl mx-auto text-center mt-14 font-gotham font-light leading-relaxed px-2">
-                  W poszukiwaniu firmy lub freelancera?{" "}
-                  <span className="font-semibold text-blue-600">
-                    Sprawdź ofertę zaufanych partnerów Quixy Studio.
-                  </span>{" "}
-                  Możesz dodawać zlecenia dla freelancerów lub zlecenia dla
-                  firm.
-                </p>
-              </div>
-              <ReachSection markers={markers} />
-            </div>
-            <BlogSection />
-          </div>
-        </main>
+            </section>
+          </main>
+        </div>
       </div>
     </>
   );
@@ -575,3 +517,183 @@ const markers = [
     label: "Koszalin - Strona internetowa dla trenera personalnego",
   },
 ];
+const dictionary = {
+  HomePage: {
+    projects: [
+      {
+        name: "Blackbellart.com",
+        shortDescription:
+          "Aplikacja internetowa dla artysty. Sklep z obrazami, oferta usług tatuatorskich.",
+        images: [
+          "/images/projects/blackbellart/hero.webp",
+          "/images/projects/blackbellart/shop.webp",
+          "/images/projects/blackbellart/shopItem.webp",
+          "/images/projects/blackbellart/tattooBlog.webp",
+          "/images/projects/blackbellart/tattoos.webp",
+          "/images/projects/blackbellart/contact.webp",
+        ],
+        link: "https://www.blackbellartstudio.pl/",
+        type: "Sklep Online",
+        technologies: [
+          "React",
+          "TypeScript",
+          "Next",
+          "Redux",
+          "Stripe",
+          "Firebase",
+          "Tailwind",
+          "ThreeJS",
+          "PWA",
+        ],
+        colors: ["#252326", "#8F26F3", "#22C55E"],
+        fonts: [
+          {
+            fontName: "CocoSharp",
+            variants: ["regular", "bold", "light", "italic"],
+          },
+          {
+            fontName: "Gilroy",
+            variants: ["regular"],
+          },
+          {
+            fontName: "GraublauWeb",
+            variants: ["regular", "bold"],
+          },
+        ],
+        sourceCode: "https://github.com/wesiudev/art-tattoo",
+      },
+      {
+        name: "Zaklejki.pl",
+        shortDescription:
+          "Sklep internetowy z kolekcją ponad 2000 ręcznie wycinanych naklejkami.",
+        images: [
+          "/images/projects/zaklejki/hero.webp",
+          "/images/projects/zaklejki/lottery.webp",
+          "/images/projects/zaklejki/shop.webp",
+          "/images/projects/zaklejki/product.webp",
+        ],
+        link: "https://www.zaklejki.pl/",
+        type: "Sklep Online",
+        technologies: ["React", "Next", "Firebase", "Python", "Web Scraping"],
+        colors: ["#F389EC", "#FFFFFF", "#4338CA"],
+        fonts: [
+          {
+            fontName: "Inter",
+            variants: ["regular", "bold"],
+          },
+          {
+            fontName: "Druk-wide",
+            variants: ["bold"],
+          },
+        ],
+        sourceCode: "https://github.com/wesiudev/zaklejki",
+      },
+      {
+        name: "Manicuregrudziadz.pl",
+        shortDescription:
+          "Strona dedykowana usługom manicure, gdzie mozna zarezerwować terminy, i otrzymać rabaty za zapraszanie znajomych. ",
+        images: [
+          "/images/projects/manicuregrudziadz/hero.webp",
+          "/images/projects/manicuregrudziadz/dashboard.webp",
+          "/images/projects/manicuregrudziadz/rezerwacje.webp",
+        ],
+        link: "https://www.manicuregrudziadz.pl/",
+        type: "Front-end z bazą danych",
+        technologies: [
+          "React",
+          "TypeScript",
+          "Next",
+          "Redux",
+          "Firebase",
+          "Tailwind",
+        ],
+        colors: ["#3F3F46", "#FACC15", "#4F46E5"],
+        fonts: [
+          {
+            fontName: "CocoSharp",
+            variants: ["light", "light italic", "regular", "bold"],
+          },
+        ],
+        sourceCode: "https://github.com/wesiudev/manicuregrudziadz",
+      },
+      {
+        name: "Quixy.pl",
+        shortDescription:
+          "Platforma internetowa z ofertami pracy zdalnej, która połączy klientów z talentami, czyli osobami, które zrealizują wizję klienta.",
+        images: [
+          "/images/projects/quixy/hero.png",
+          "/images/projects/quixy/why-us.png",
+          "/images/projects/quixy/footer.png",
+          "/images/projects/quixy/register.png",
+          "/images/projects/quixy/dashboard.png",
+        ],
+        link: "https://www.quixy.pl/",
+        type: "Aplikacja Full-stack",
+        technologies: [
+          "React",
+          "Next",
+          "Tailwind",
+          "Firebase",
+          "PWA",
+          "ThreeJS",
+          "Stripe",
+          "openai",
+          "redux",
+          "Mikropłatności",
+        ],
+        colors: ["#126b91", "#14A800", "#27272A"],
+        fonts: [
+          {
+            fontName: "CocoSharp",
+            variants: ["light", "light italic", "regular", "bold"],
+          },
+          {
+            fontName: "Gotham",
+            variants: ["light", "regular", "bold"],
+          },
+        ],
+        sourceCode: "https://github.com/wesiudev/quixy",
+      },
+      {
+        name: "Fryzurykaminska.pl",
+        shortDescription:
+          "Strona wizytówka z ofertą usług fryzjerskich, kontaktem i portfolio.",
+        images: [
+          "/images/projects/fryzurykaminska/hero.webp",
+          "/images/projects/fryzurykaminska/offer.webp",
+        ],
+        link: "https://www.fryzurykaminska.pl/",
+        type: "Front-end z bazą danych",
+        technologies: ["React", "Next", "Tailwind"],
+        colors: ["#22C55E", "#F3F4F6", "#93C5FD"],
+        fonts: [
+          {
+            fontName: "CocoSharp",
+            variants: ["regular", "bold"],
+          },
+        ],
+        sourceCode: "https://github.com/wesiudev/fryzury-kaminska",
+      },
+      {
+        name: "Radcadeluga.pl",
+        shortDescription:
+          "Strona wizytówka dla kancelarii. Lista usług, kontakt.",
+        images: [
+          "/images/projects/kancelariadeluga/hero.webp",
+          "/images/projects/kancelariadeluga/offer.webp",
+        ],
+        link: "https://www.delugakancelaria.pl/",
+        type: "Front-end z bazą danych",
+        technologies: ["React", "Next", "Firebase"],
+        colors: ["#685A50", "#4ADE80", "#D8B4FE"],
+        fonts: [
+          {
+            fontName: "CocoSharp",
+            variants: ["regular", "bold"],
+          },
+        ],
+        sourceCode: "https://github.com/wesiudev/kancelaria-artur-deluga",
+      },
+    ],
+  },
+};

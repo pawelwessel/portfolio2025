@@ -315,7 +315,7 @@ export default async function Page({
                   style={{ lineHeight: 1.3 }}
                   className="font-gotham italic block text-center max-w-sm mx-auto lg:mx-0 lg:text-left lg:max-w-lg text-4xl lg:text-5xl text-zinc-800"
                 >
-                  Zlecenia w branży kreatywnej
+                  Współpracuj w Branży Kreatywnej
                 </h1>
                 <p className="pt-4 max-w-lg text-center lg:text-left text-sm mx-auto lg:mx-0 text-zinc-800 drop-shadow-sm shadow-black">
                   <strong>Koniec z nudnymi ofertami pracy!</strong> Nie bądź na
@@ -638,20 +638,6 @@ export default async function Page({
               <FAQ faqItems={faqItems} />
             </div>
           </div>
-        </div>
-        <div className="font-sans w-full bg-[#222222] pb-48 h-full">
-          <HeroIntro />
-
-          <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
-            <section className={`max-w-[90vw] mx-auto h-max z-50`}>
-              <MainCard talents={talents} companies={companies} />
-              <ProjectShowcase dictionary={dictionary} />
-              {/* <PricingHero /> */}
-              <BlogSection />
-              <ReachSection markers={markers} isLandingPage={true} />
-              <Contact isLandingPage={true} />
-            </section>
-          </main>
         </div>
       </div>
       <div className="z-[0] fixed h-screen w-full left-0 top-0">

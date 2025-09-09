@@ -20,7 +20,7 @@ export default function FaqSection({ faqs }: FaqSectionProps) {
   return (
     <section className="mt-16 pt-8 border-t border-[#2a2f3d]/50">
       <div className="mb-8">
-        <span className="text-2xl lg:text-3xl font-bold text-white mb-2 font-gotham">
+        <span className="text-2xl lg:text-3xl font-bold text-black mb-2 font-gotham">
           Często zadawane pytania
         </span>
         <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] rounded-full opacity-60" />
@@ -33,7 +33,7 @@ export default function FaqSection({ faqs }: FaqSectionProps) {
             className="bg-[#1a1f2e]/60 backdrop-blur-sm border border-[#2a2f3d]/50 rounded-xl overflow-hidden transition-all duration-300 hover:border-[#B4FC2D]/30"
           >
             <button
-              className="w-full text-left px-6 py-4 font-semibold text-gray-200 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#B4FC2D]/30 focus:ring-inset"
+              className="w-full text-left px-6 py-4 font-semibold text-black transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#B4FC2D]/30 focus:ring-inset"
               onClick={() => setActive(active === index ? null : index)}
               aria-expanded={active === index}
               aria-controls={`faq-answer-${index}`}

@@ -15,9 +15,11 @@ import JobBoardList from "../quixyComponents/JobBoardList";
 export default function MainCard({
   talents,
   companies,
+  city,
 }: {
   talents: any[];
   companies: any[];
+  city: string;
 }) {
   return (
     <div
@@ -27,7 +29,7 @@ export default function MainCard({
       <div className="w-full flex flex-col lg:flex-row gap-12 items-center lg:items-start">
         <div className="w-full">
           <span className="text-xl lg:text-4xl font-bold font-gotham">
-            Strony Internetowe w twojej okolicy
+            Strony Internetowe w twojej okolicy - {city}
           </span>
           <p className="text-base font-light max-w-[45rem] mt-4 lg:text-left">
             Projektujemy szybkie i skuteczne{" "}
@@ -221,7 +223,8 @@ export default function MainCard({
 
           <div className="mt-12">
             <div className="text-2xl font-gotham mb-6">
-              Marketing dla <span className="text-blue-500">Twojej firmy</span>
+              Marketing <span className="text-blue-500">Twojej firmy</span>{" "}
+              {city}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white border rounded-xl shadow-sm p-6 flex flex-col gap-2">
@@ -353,7 +356,8 @@ export default function MainCard({
             </div>
           </div>
           <div className="h-full relative w-full">
-            <div className=" sticky top-[65px] lg:top-[94px] bg-white rounded-bl-lg rounded-tr-lg p-3 w-full max-w-[450px] mt-6">
+            Opinie o naszych usługach w {city}
+            <div className="bg-white rounded-bl-lg rounded-tr-lg p-3 w-full max-w-[450px] mt-6">
               <OpinionsSection />
             </div>
           </div>
