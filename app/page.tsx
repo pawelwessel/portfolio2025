@@ -389,104 +389,10 @@ export default async function Page({
               </div>
             </div>
           </div>
-          <div className="relative bg-white z-50 w-full pb-24">
-            <div className="relative z-50 w-full max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between mt-24 gap-8 px-4">
-              <div className="flex flex-col w-full md:w-2/3">
-                <h3 className="text-3xl md:text-4xl font-extrabold text-black mb-2">
-                  Najlepsze zlecenia dla branży kreatywnej
-                </h3>
-                <p className="text-zinc-700 font-sans text-base md:text-lg mb-6 mt-3 max-w-xl">
-                  Nie czekaj i zacznij zbierać leady. Przeglądaj zlecenia zdalne
-                  dla grafików, copywriterów, programistów, marketerów i innych
-                  twórców.{" "}
-                  <strong>Działaj jak ninja w branży kreatywnej!</strong>
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                  <div className="flex items-center bg-white rounded-lg shadow px-4 py-2">
-                    <span className="text-2xl mr-3">🌟</span>
-                    <div>
-                      <h4 className="text-lg font-bold text-black leading-tight">
-                        4.95/5
-                      </h4>
-                      <p className="text-xs text-zinc-600">
-                        Ocena użytkowników
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center bg-white rounded-lg shadow px-4 py-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 mr-3"
-                      viewBox="0 0 48 48"
-                    >
-                      <defs>
-                        <path
-                          id="a"
-                          d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"
-                        />
-                      </defs>
-                      <clipPath id="b">
-                        <use href="#a" overflow="visible" />
-                      </clipPath>
-                      <path
-                        clipPath="url(#b)"
-                        fill="#FBBC05"
-                        d="M0 37V11l17 13z"
-                      />
-                      <path
-                        clipPath="url(#b)"
-                        fill="#EA4335"
-                        d="M0 11l17 13 7-6.1L48 14V0H0z"
-                      />
-                      <path
-                        clipPath="url(#b)"
-                        fill="#34A853"
-                        d="M0 37l30-23 7.9 1L48 0v48H0z"
-                      />
-                      <path
-                        clipPath="url(#b)"
-                        fill="#4285F4"
-                        d="M48 48L17 24l-4-3 35-10z"
-                      />
-                    </svg>
-                    <div>
-                      <h4 className="text-lg font-bold text-black leading-tight">
-                        Technologia Google
-                      </h4>
-                      <p className="text-xs text-zinc-600">
-                        Bezpieczna i szybka platforma
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <Link
-                  href="/zlecenia-dla-freelancerow"
-                  className="w-max mt-2 px-6 py-3 bg-gradient-to-r from-ctaStart to-ctaEnd font-extrabold rounded-md text-white shadow hover:scale-105 transition"
-                >
-                  Przeglądaj zlecenia
-                </Link>
-              </div>
-              <div className="w-full md:w-1/3 flex justify-center items-center relative mt-8 md:mt-0">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                  <Image
-                    src="/assets/ninja.png"
-                    fill
-                    alt="Kreatywny freelancer - Ninja"
-                    className="object-contain rounded-xl"
-                    sizes="(max-width: 768px) 60vw, 20vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="relative bg-white z-50 w-full pb-24">
-            <div className="max-w-[90vw] relative mx-auto pb-16 bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl px-4 sm:px-8 pt-6">
+
+          <div className="relative bg- z-50 w-full bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 pb-24">
+            <div className="relative mx-auto pb-16 rounded-2xl px-4 sm:px-8 pt-6">
               <div className="relative sm:px-8">
-                <span className="font-gotham font-semibold text-zinc-800 drop-shadow-lg shadow-black w-full text-lg sm:text-3xl lg:text-4xl flex flex-row items-center justify-center mb-2 tracking-tight max-w-3xl text-center mx-auto">
-                  Współpracuj jako firma lub freelancer!
-                </span>
-                <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6"></div>
                 <div className="mt-6">
                   <JobBoardList talents={talents} companies={companies} />
                 </div>
@@ -504,27 +410,6 @@ export default async function Page({
             </div>
           </div>
 
-          <div className="relative z-50 py-24 h-max">
-            <div className="absolute left-0 top-0 w-full h-full infinite-bg -z-1">
-              <Hero />
-            </div>
-            <div className="max-w-[95vw] xl:container mx-auto p-4 lg:p-6 bg-white relative rounded-2xl">
-              <SearchJobs />
-
-              <div
-                id="oferty"
-                className="grid grid-cols-1 lg:grid-cols-2 mt-6 gap-4"
-              >
-                {jobs.map((opportunity: any, i: number) => (
-                  <OpenableOpportunity
-                    key={i}
-                    opportunity={opportunity}
-                    i={i}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
           <div className="w-full relative z-50 bg-white pt-12 pb-12">
             <div className="mx-auto px-4 lg:px-12 mb-12 xl:container">
               <AboutQuixyTalent />

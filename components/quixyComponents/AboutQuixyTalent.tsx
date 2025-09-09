@@ -5,8 +5,10 @@ import { useState } from "react";
 import { FaCheck, FaCheckCircle, FaChevronRight } from "react-icons/fa";
 import { BsFillSignStopFill } from "react-icons/bs";
 import logo from "../../public/assets/quixy-logo.png";
-export default function AboutQuixyTalent() {
-  const [content, setContent] = useState<"client" | "talent">("talent");
+export default function AboutQuixyfreelancer() {
+  const [content, setContent] = useState<"company" | "freelancer">(
+    "freelancer"
+  );
 
   return (
     <section
@@ -15,7 +17,7 @@ export default function AboutQuixyTalent() {
     >
       {/* EPIC background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-zinc-50 via-white to-zinc-50" />
-      <div className="absolute inset-x-0 -top-24 -z-10 h-72 bg-gradient-to-r from-ctaStart/20 via-ctaEnd/10 to-transparent blur-3xl" />
+      <div className="absolute inset-x-0 -top-24 -z-10 h-72 bg-gradient-to-r from-blue-800/30 via-blue-950/20 to-transparent blur-3xl" />
 
       <div className="mx-auto rounded-2xl border border-zinc-200/70 bg-white/90 shadow-xl backdrop-blur pb-12">
         {/* Top header */}
@@ -23,32 +25,39 @@ export default function AboutQuixyTalent() {
           <h2 className="text-2xl sm:text-3xl 2xl:text-5xl font-extrabold tracking-tight text-zinc-900">
             Zbuduj przewagę. Teraz.
           </h2>
-          <p className="mt-2 max-w-3xl text-zinc-600">
-            Quixy usuwa tarcie między zleceniem a wykonaniem. Ty określasz cel,
-            my dostarczamy skuteczny przepływ pracy i ludzi, którzy dowożą.
-          </p>
+          {content === "company" && (
+            <p className="mt-4 text-zinc-700">
+              Zbuduj widoczność, skróć czas rekrutacji i uruchom projekt w
+              dniach, nie tygodniach.
+            </p>
+          )}
+          {content === "freelancer" && (
+            <p className="mt-4 text-zinc-700">
+              Pokaż swoje umiejętności i zacznij rozmawiać z klientami.
+            </p>
+          )}
 
           {/* Tabs */}
           <div className="mt-6 flex gap-4">
             <button
-              onClick={() => setContent("client")}
+              onClick={() => setContent("company")}
               className={`text-sm sm:text-base font-bold py-2 px-6 rounded-lg transition-all duration-300 shadow-sm ring-1 ${
-                content === "client"
+                content === "company"
                   ? "bg-zinc-900 text-white ring-zinc-900/20 hover:brightness-110"
                   : "bg-zinc-100 text-zinc-900 ring-zinc-200 hover:bg-zinc-200"
               }`}
-              aria-pressed={content === "client"}
+              aria-pressed={content === "company"}
             >
               FIRMA
             </button>
             <button
-              onClick={() => setContent("talent")}
+              onClick={() => setContent("freelancer")}
               className={`text-sm sm:text-base font-bold py-2 px-6 rounded-lg transition-all duration-300 shadow-sm ring-1 ${
-                content === "talent"
+                content === "freelancer"
                   ? "bg-zinc-900 text-white ring-zinc-900/20 hover:brightness-110"
                   : "bg-zinc-100 text-zinc-900 ring-zinc-200 hover:bg-zinc-200"
               }`}
-              aria-pressed={content === "talent"}
+              aria-pressed={content === "freelancer"}
             >
               FREELANCER
             </button>
@@ -56,15 +65,11 @@ export default function AboutQuixyTalent() {
         </header>
 
         {/* Panels */}
-        {content === "client" && (
+        {content === "company" && (
           <div className="px-6 pb-8 sm:px-10 sm:pb-12">
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Copy */}
               <div>
-                <p className="mt-4 text-zinc-700">
-                  Zbuduj widoczność, skróć czas rekrutacji i uruchom projekt w
-                  dniach, nie tygodniach.
-                </p>
                 <ul className="mt-6 flex flex-col gap-1.5 text-zinc-900">
                   <li className="relative flex">
                     <div className="relative bg-blue-600 rounded-lg h-8 w-8 aspect-square flex items-center justify-center">
@@ -80,8 +85,8 @@ export default function AboutQuixyTalent() {
                       <FaCheckCircle className="min-h-5 min-w-5 text-white" />
                     </div>
                     <div className="max-w-xl pl-2 font-gotham font-light">
-                      Gotowe pipeline’y talentów w IT, marketingu, animacji i
-                      e-commerce.
+                      Gotowe pipeline’y freelancerów w IT, marketingu, animacji
+                      i e-commerce.
                     </div>
                   </li>
                   <li className="relative flex">
@@ -119,38 +124,15 @@ export default function AboutQuixyTalent() {
                   Dołącz jako firma
                 </Link>
               </div>
-
-              {/* Visual */}
-              <div className="w-full lg:flex lg:justify-end h-full lg:items-end">
-                <div className="h-max rounded-xl p-[1px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500">
-                  <div className="rounded-xl bg-white">
-                    <Image
-                      src="/assets/client-banner.png"
-                      width={1024}
-                      height={1024}
-                      quality={80}
-                      placeholder="blur"
-                      blurDataURL="data:image/webp;base64,UklGRiIAAABXRUJQVlA4WAoAAAAQAAAfAADuwH/xAAfAQADAAQAAAAAAQAvAQADAAQAAAAAAQAvAQA"
-                      alt="Panel dla firm — zarządzanie zleceniami"
-                      className="rounded-xl w-full lg:max-w-xl pl-2 font-gotham font-light"
-                      priority
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         )}
 
-        {content === "talent" && (
+        {content === "freelancer" && (
           <div className="px-6 pb-8 sm:px-10 sm:pb-12">
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Copy */}
               <div>
-                <p className="mt-4 text-zinc-700">
-                  Pokaż swoje umiejętności i zacznij rozmawiać z klientami.
-                </p>
-
                 <ul className="mt-6 flex flex-col gap-1.5 text-zinc-900">
                   <li className="relative flex">
                     <div className="relative bg-blue-600 rounded-lg h-8 w-8 aspect-square flex items-center justify-center">
@@ -196,38 +178,12 @@ export default function AboutQuixyTalent() {
                   Dołącz bez firmy
                 </Link>
               </div>
-
-              {/* Visual */}
-              <div className="w-full lg:flex lg:justify-end h-full lg:items-end">
-                <div className="h-max rounded-xl p-[1px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500">
-                  <div className="rounded-xl bg-white">
-                    <Image
-                      src="/assets/talent-banner.png"
-                      width={1024}
-                      height={1024}
-                      quality={80}
-                      placeholder="blur"
-                      blurDataURL="data:image/webp;base64,UklGRiIAAABXRUJQVlA4WAoAAAAQAAAfAADuwH/xAAfAQADAAQAAAAAAQAvAQADAAQAAAAAAQAvAQA"
-                      alt="Panel freelancera — portfolio i zlecenia"
-                      className="rounded-xl w-full lg:max-w-xl pl-2 font-gotham font-light"
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         )}
       </div>
       <div className="mx-auto max-w-[95%] py-16">
         <div className="flex flex-col-reverse md:flex-row text-black w-full">
-          <Image
-            src="/assets/gif/gihome.webp"
-            width={512}
-            height={512}
-            alt="Praca zdalna za darmo"
-            title="Praca zdalna za darmo"
-            className="mt-4 md:mt-0 md:mr-12 w-full md:max-w-[300px] rounded-lg"
-          />
           <div className="flex flex-col">
             <h2 className="text-2xl font-extrabold flex items-center">
               Dołącz już dziś!
