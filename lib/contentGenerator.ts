@@ -128,47 +128,6 @@ export function generatePageVariations(citySlug: string, count: number = 3) {
   return pages;
 }
 
-// Export example usage
-export function demonstrateGrammarUsage() {
-  const exampleCity = "grudziadz";
-  const declension = getCityDeclension(exampleCity);
-
-  console.log(
-    `\n=== Przykład odmiany dla ${getCityInCase(
-      exampleCity,
-      PolishCase.NOMINATIVE
-    )} ===`
-  );
-
-  if (declension) {
-    console.log(`Mianownik (kto? co?): ${declension.nominative}`);
-    console.log(`Dopełniacz (kogo? czego?): ${declension.genitive}`);
-    console.log(`Celownik (komu? czemu?): ${declension.dative}`);
-    console.log(`Biernik (kogo? co?): ${declension.accusative}`);
-    console.log(`Narzędnik (z kim? z czym?): ${declension.instrumental}`);
-    console.log(`Miejscownik (o kim? o czym?): ${declension.locative}`);
-    console.log(`Wołacz (o!): ${declension.vocative}`);
-  }
-
-  const cityContent = generateCityContent(exampleCity);
-  if (cityContent) {
-    console.log(`\n=== Przykładowe frazy ===`);
-    console.log(`Usługa: ${cityContent.phrases.webDesignService}`);
-    console.log(`Lokalizacja: ${cityContent.contexts.location}`);
-    console.log(`Dla mieszkańców: ${cityContent.phrases.forResidents}`);
-    console.log(`Obsługujemy: ${cityContent.phrases.servingCity}`);
-    console.log(`Powitanie: ${cityContent.phrases.welcomeCity}`);
-  }
-
-  const variations = generatePageVariations(exampleCity, 2);
-  console.log(`\n=== Wygenerowane warianty stron (${variations.length}) ===`);
-  variations.forEach((variation, index) => {
-    console.log(`\nWariant ${index + 1}:`);
-    console.log(`Tytuł: ${variation.title}`);
-    console.log(`Opis: ${variation.description}`);
-  });
-}
-
 // Helper to generate bulk content for all cities
 export function generateBulkContent(): Record<string, ContentTemplate> {
   const bulkContent: Record<string, ContentTemplate> = {};

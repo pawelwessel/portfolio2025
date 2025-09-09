@@ -30,7 +30,7 @@ export default function HeaderComponent({
     <>
       <div
         style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
-        className={`fixed left-0 top-0 z-[10000] px-4 bg-white flex flex-row items-center justify-center w-full ${
+        className={`py-1 fixed left-0 top-0 z-[10000] px-4 bg-white flex flex-row items-center justify-center w-full ${
           showHeader || menuShow || hovered === "cat" || productsOpen
             ? "-translate-y-0"
             : "-translate-y-[100%]"
@@ -38,6 +38,20 @@ export default function HeaderComponent({
       >
         {/* Header Content */}
         <div className="flex w-full items-center justify-between">
+          <Link
+            title="Platforma internetowa pracy zdalnej Quixy"
+            href="/"
+            className="flex flex-col font-light h-full relative min-w-24"
+          >
+            <Image
+              src="/assets/quixy-logo.png"
+              width={224}
+              height={224}
+              alt="Platforma dla freelancerów"
+              title="Platforma dla freelancerów"
+              className="w-36 aspect-auto absolute top-1/2 -translate-y-1/2"
+            />
+          </Link>
           <div className="flex items-center">
             <div className={`mr-1 w-max group lg:hidden`}>
               <button
@@ -71,20 +85,6 @@ export default function HeaderComponent({
                 </svg>
               </button>
             </div>
-            <Link
-              title="Platforma internetowa pracy zdalnej Quixy"
-              href="/"
-              className="flex flex-col font-light h-full relative min-w-24"
-            >
-              <Image
-                src="/assets/quixy-logo.png"
-                width={224}
-                height={224}
-                alt="Poszukujesz pracy zdalnej?"
-                title="Zajmij się pracą zdalną!"
-                className="w-36 aspect-auto absolute top-1/2 -translate-y-1/2"
-              />
-            </Link>
           </div>
           <div className="lg:flex items-center w-full hidden">
             <div
@@ -128,13 +128,6 @@ export default function HeaderComponent({
               Aktualności
             </Link>
           </div>
-          <Link
-            href="/login"
-            title="logowanie"
-            className="text-nowrap bg-blue-500 text-white font-gotham font-light px-4 py-2 rounded-md hover:bg-blue-600 drop-shadow-sm shadow-black text-sm sm:text-base"
-          >
-            <div className="flex items-center">Logowanie</div>
-          </Link>
         </div>
       </div>
     </>

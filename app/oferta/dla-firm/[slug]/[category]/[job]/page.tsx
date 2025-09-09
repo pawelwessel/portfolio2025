@@ -8,7 +8,6 @@ const JobOffers = dynamic(
   () => import("@/components/quixyComponents/JobOffers")
 );
 import dynamic from "next/dynamic";
-import { getServices } from "@/lib/getServices";
 import { getPosts } from "@/lib/getPosts";
 import { getContent } from "@/lib/getContent";
 import { Suspense } from "react";
@@ -30,9 +29,7 @@ export default async function Page(props: { params: Promise<any> }) {
     { next: { revalidate: 600 } }
   ).then((res: any) => res.json());
   const content = await getContent(params.job);
-  const services = await getServices();
   const posts: any = (await getPosts()) as any;
-  console.log(posts);
   return (
     <Suspense fallback={<Loadinger />}>
       <div className="w-full h-full bg-zinc-800">

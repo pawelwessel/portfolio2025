@@ -26,7 +26,6 @@ export default function ServiceCard({
   const [isOpen, setIsOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [deleteMenu, setDeleteMenu] = useState(false);
-  console.log(user?.services);
 
   const handleDeleteService = async (id: string) => {
     try {

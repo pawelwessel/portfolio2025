@@ -24,7 +24,7 @@ export default function DisplayCompaniesOrInviter({ data }: { data: any }) {
           <ProfileCard
             key={talent?.pseudo || i}
             profile={talent}
-            type="company"
+            type="firma"
           />
         ))}
         <Link

@@ -346,13 +346,13 @@ export default async function Page({
                 <Image
                   style={{ boxShadow: "0px 0px 12px rgb(82 82 91 / 0.8)" }}
                   src={Pawełek}
-                  alt="Niewolnik pracy od 9-17? to nie dla mnie. ~Pawełek"
-                  title="Niewolnik pracy od 9-17? to nie dla mnie. ~Pawełek"
+                  alt="Praca od 9-17? to nie dla mnie. ~Pawełek"
+                  title="Praca od 9-17? to nie dla mnie. ~Pawełek"
                   className="w-full max-w-lg lg:max-w-none rounded-lg drop-shadow-lg shadow-black"
                 />
                 <div
                   style={{ boxShadow: "0px 0px 12px rgb(82 82 91 / 0.8)" }}
-                  className="text-zinc-800 drop-shadow-sm shadow-black font-extralight font-gotham p-3 rounded-xl w-max max-w-full bg-white absolute bottom-[-36px] -left-4"
+                  className="text-zinc-800 drop-shadow-sm shadow-black font-extralight font-gotham p-3 rounded-xl w-max max-w-full bg-white absolute bottom-[-36px] left-0 lg:-left-4"
                 >
                   &quot;Pracowałem po 12 godzin w sprintach IT dla{" "}
                   <strong>Janusza</strong>. Dziś nie wyobrażam sobie biznesu bez

@@ -123,9 +123,9 @@ export default async function Page(props: {
               )}
 
               <div className="min-w-0 flex-1">
-                <h1 className="truncate text-lg sm:text-xl font-bold text-slate-900">
+                <h2 className="truncate text-lg sm:text-xl font-bold text-slate-900">
                   {talent?.name || "Nie podano"}
-                </h1>
+                </h2>
 
                 {talent?.city && (
                   <div className="mt-1 flex items-center text-sm text-slate-700">
@@ -236,7 +236,7 @@ export default async function Page(props: {
         {/* SIMILAR PROFILES */}
         <div className="container mx-auto mt-6 px-4 pb-12 lg:px-12">
           <div className="rounded-2xl bg-white">
-            <h2 className="text-xl lg:text-2xl font-extrabold text-slate-900">
+            <h2 className="text-xl lg:text-2xl font-extrabold text-slate-900 text-center">
               Zobacz podobne profile
             </h2>
             <div className="mt-3">

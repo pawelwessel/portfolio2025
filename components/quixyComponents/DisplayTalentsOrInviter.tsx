@@ -22,7 +22,7 @@ export default function DisplayTalentsOrInviter({ data }: { data: any }) {
           <ProfileCard
             key={talent?.pseudo || i}
             profile={talent}
-            type="talent"
+            type="freelancer"
           />
         ))}
 

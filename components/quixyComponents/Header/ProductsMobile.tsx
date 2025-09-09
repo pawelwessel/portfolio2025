@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { polishToEnglish } from "../../../utils/polishToEnglish";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import LandingPageSearchInput from "@/components/LandingPageSearchInput";
 
 export default function ProductsMobile({
   productsOpen,
@@ -25,75 +25,67 @@ export default function ProductsMobile({
   return (
     <div>
       <div
-        className={`fixed w-screen h-full overflow-y-scroll left-0 bg-white xl:space-x-3 xl:-ml-3 font-semibold shadow-black ${
-          productsOpen ? "pt-[65px] opacity-100 z-[500]" : "z-[-10] opacity-0"
+        className={`fixed w-screen h-full overflow-y-auto left-0 top-0 bg-gray-300 font-semibold transition-all duration-300 ${
+          productsOpen
+            ? "pt-[75px] opacity-100 z-[500]"
+            : "z-[-10] opacity-0 pointer-events-none"
         } lg:hidden`}
+        style={{ backdropFilter: "blur(2px)" }}
       >
-        <div className="bg-white grid grid-cols-2 mx-auto">
+        {/* Quick Links */}
+        <div className="font-light font-gotham grid grid-cols-2 gap-2 px-4 py-3 bg-gray-300">
           <Link
             onClick={resetHeader}
-            href="/oferta"
-            className="bg-gradient-to-br from-zinc-600 to-zinc-800 text-white p-4 text-center text-sm"
+            href="/login"
+            className="rounded-lg bg-gradient-to-br from-green-600 to-green-700 text-white py-3 text-center text-base shadow hover:brightness-110 transition"
           >
-            Home
+            Logowanie
           </Link>
-
           <Link
             onClick={resetHeader}
             href="/news"
-            className="bg-gradient-to-br from-zinc-600 to-zinc-800 text-white p-4 text-center text-sm"
+            className="rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 text-white py-3 text-center text-base shadow hover:brightness-110 transition"
           >
             Newsy
           </Link>
         </div>
-        <div className="w-full flex items-center z-[200] sticky top-0 left-0 bg-gradient-to-b from-zinc-700 to-zinc-800 drop-shadow-lg shadow-zinc-800">
-          <button
-            onClick={() => {
-              setMenuShow(false);
-              setProductsOpen(false);
-            }}
-            className="text-xs text-black px-4 py-2 bg-zinc-700"
-          >
-            <FaArrowLeftLong className="text-white text-lg mx-3" />
-          </button>
-          <div className="text-center text-green-500 animate-pulse w-full">
-            Oferta dla firm
-          </div>
-        </div>
-        <div className="grid grid-cols-1 w-full">
-          {jobs.map((job: any, i: any) => (
-            <div className="flex flex-col" key={i}>
-              <div className={`${i % 2 === 0 ? "" : ""} `}>
-                {job.data.map((item: any, z: any) => (
-                  <div key={z} className="relative">
-                    <div
-                      className={`flex items-center justify-between w-full text-xl`}
+        {/* Serch bar */}
+        <LandingPageSearchInput
+          rounded={false}
+          isLandingPage={false}
+          resetHeader={resetHeader}
+        />
+        {/* Oferta List */}
+        <div className="w-full px-2 py-4 space-y-6">
+          {jobs.map((job: any, i: number) => (
+            <div
+              className="rounded-2xl overflow-hidden shadow-lg bg-white/90 mb-6"
+              key={i}
+            >
+              <div>
+                {job.data.map((item: any, z: number) => (
+                  <div
+                    key={z}
+                    className="border-b last:border-b-0 border-zinc-200"
+                  >
+                    <Link
+                      href={`/oferta/dla-firm/${polishToEnglish(
+                        job.title
+                      )}/${polishToEnglish(item.title)}`}
+                      onClick={resetHeader}
+                      title={`Przejdź do ofert dla firm ${job.title}`}
+                      className="block w-full text-center py-5 transition font-bold text-zinc-800 drop-shadow-xl shadow-black text-lg tracking-wide"
                     >
-                      <Link
-                        href={`/oferta/dla-firm/${polishToEnglish(
-                          job.title
-                        )}/${polishToEnglish(item.title)}`}
-                        onClick={resetHeader}
-                        title={`Przejdź do ofert pracy ${job.title}`}
-                        className="bg-slate-800 w-full text-center py-12"
-                      >
-                        <span
-                          title={`Oferta ${item.title}`}
-                          className={`font-extrabold text-white `}
-                        >
-                          {item.title}
-                        </span>
-                      </Link>
-                    </div>
-
-                    {/* Hover dropdown */}
-                    <div className="grid grid-cols-2">
-                      {item.data.map((subcategory: any, i: any) => (
+                      {item.title}
+                    </Link>
+                    {/* Subcategories */}
+                    <div className="grid grid-cols-2 gap-2 bg-zinc-50 px-2 py-2">
+                      {item.data.map((subcategory: any, j: number) => (
                         <Link
-                          title={`Pracuj zdalnie w ${subcategory.title}`}
-                          key={i}
+                          title={`Oferta ${subcategory.title} dla firm`}
+                          key={j}
                           onClick={resetHeader}
-                          className="flex items-center justify-center p-4 text-center w-full h-full bg-gradient-to-br from-slate-500 to-slate-700"
+                          className="flex items-center justify-center rounded-md py-3 px-2 text-center w-full h-full bg-gradient-to-br from-zinc-200 to-zinc-300 text-zinc-800 hover:bg-gradient-to-br hover:from-slate-400 hover:to-slate-600 hover:text-white transition font-gotham font-light"
                           href={`/oferta/dla-firm/${polishToEnglish(
                             job.title
                           )}/${polishToEnglish(item.title)}/${polishToEnglish(

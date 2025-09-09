@@ -144,8 +144,6 @@ export function generateCityPost(citySlug: string): Post {
 
 // Generate all city posts and save to database
 export async function generateAndSaveAllCityPosts(): Promise<void> {
-  console.log("Starting to generate city posts...");
-
   const results = {
     success: 0,
     errors: 0,
@@ -158,18 +156,10 @@ export async function generateAndSaveAllCityPosts(): Promise<void> {
       // Here you would save the post to your database
 
       results.success++;
-      console.log(`✅ Generated post for ${citySlug}: ${post.title}`);
     } catch (error) {
       results.errors++;
-      console.error(`❌ Error generating post for ${citySlug}:`, error);
     }
   }
-
-  console.log("\n=== Generation Summary ===");
-  console.log(`Total cities: ${results.total}`);
-  console.log(`Successful: ${results.success}`);
-  console.log(`Errors: ${results.errors}`);
-  console.log("City posts generation completed!");
 }
 
 // Check if city post exists in database
@@ -193,7 +183,6 @@ export async function generateCityPostIfNeeded(
 
     if (!exists) {
       const post = generateCityPost(citySlug);
-      console.log(`Generated post for ${citySlug}`);
       return post;
     }
 
@@ -208,8 +197,5 @@ export async function generateCityPostIfNeeded(
 export async function updateCityPost(citySlug: string): Promise<void> {
   try {
     const post = generateCityPost(citySlug);
-    console.log(`Regenerated post for ${citySlug}`);
-  } catch (error) {
-    console.error(`Error updating city post for ${citySlug}:`, error);
-  }
+  } catch (error) {}
 }
