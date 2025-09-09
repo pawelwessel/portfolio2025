@@ -270,7 +270,7 @@ export async function generateMetadata(props: {
     description,
     openGraph: {
       type: "website",
-      url: `https://quixy.pl/talent/${params.slug}`,
+      url: `https://quixy.pl/freelancer/${params.slug}`,
       title,
       description,
       siteName: "Quixy",

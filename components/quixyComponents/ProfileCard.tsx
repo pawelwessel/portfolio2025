@@ -23,7 +23,7 @@ interface ProfileCardProps {
     services?: any[];
     projects?: any[];
   };
-  type: "talent" | "company";
+  type: "freelancer" | "firma";
   loading?: boolean; // <- opcjonalny skeleton
 }
 
@@ -35,9 +35,9 @@ export default function ProfileCard({
   const [showMoreSpecializations, setShowMoreSpecializations] = useState(false);
 
   const linkHref =
-    type === "talent"
-      ? `/talent/${profile.pseudo}`
-      : `/company/${profile.pseudo}`;
+    type === "freelancer"
+      ? `/freelancer/${profile.pseudo}`
+      : `/firma/${profile.pseudo}`;
 
   const tags = Array.isArray(profile?.tags) ? profile.tags : [];
   const prefs = Array.isArray(profile?.preferences) ? profile.preferences : [];
@@ -86,9 +86,9 @@ export default function ProfileCard({
           <span className="relative inline-flex h-16 w-16 overflow-hidden rounded-full ring-1 ring-slate-200">
             <Image
               src={profile.photoURL}
-              alt={`Zdjęcie ${type === "talent" ? "talentu" : "firmy"} ${
-                profile?.name || profile?.pseudo
-              }`}
+              alt={`Zdjęcie ${
+                type === "freelancer" ? "freelancera" : "firmy"
+              } ${profile?.name || profile?.pseudo}`}
               fill
               sizes="64px"
               className="object-cover"
