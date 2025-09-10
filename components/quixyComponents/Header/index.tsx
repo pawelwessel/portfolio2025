@@ -1,15 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../useWidth";
-import dynamic from "next/dynamic";
-const ProductsWide = dynamic(() => import("./ProductsWide"), { ssr: false });
-const ProductsMobile = dynamic(() => import("./ProductsMobile"), {
-  ssr: false,
-});
-const HeaderComponent = dynamic(() => import("./HeaderComponent"), {
-  ssr: false,
-});
 import { usePathname } from "next/navigation";
+import ProductsWide from "./ProductsWide";
+import ProductsMobile from "./ProductsMobile";
+import HeaderComponent from "./HeaderComponent";
 export default function Header({ jobsList }: { jobsList: any[] }) {
   const { width } = useWindowDimensions();
   const [hovered, setHovered] = useState("");

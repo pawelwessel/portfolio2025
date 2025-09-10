@@ -5,7 +5,7 @@ import Regions from "@/components/quixyComponents/Regions";
 import AboutQuixyTalent from "@/components/quixyComponents/AboutQuixyTalent";
 import Image from "next/image";
 import Link from "next/link";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronRight, FaPhoneAlt } from "react-icons/fa";
 import Pawełek from "../public/Pawełek/2.png";
 import ytLogo from "../public/assets/yt-logo.png";
 import Hero from "@/components/hero/Hero";
@@ -322,56 +322,70 @@ export default async function Page({
                   smyczy od 9 do 17. Pracuj jak chcesz i gdzie chcesz.
                 </p>
                 <LandingPageSearchInput rounded={false} isLandingPage={true} />
-                <div className="flex flex-row items-center gap-3 w-max mx-auto lg:mx-0">
+                <div className="flex flex-row items-center gap-3 w-max mx-auto lg:mx-0 lg:ml-3">
                   <Link
                     href="/register"
-                    className="w-max max-w-full flex items-center gap-3 rounded-md font-gotham bg-gradient-to-r from-ctaStart to-ctaEnd hover:scale-105 duration-100 text-white px-4 py-2 text-center mt-6"
+                    className="py-3 px-6 mt-0 text-white cursor-pointer rounded-b-xl bg-gradient-to-r from-blue-500 to-green-400 font-gotham font-semibold shadow-md"
                   >
-                    Utwórz profil
-                    <FaChevronRight />
-                  </Link>
-                  <Link
-                    href="/oferta"
-                    className="w-max max-w-full flex items-center gap-3 rounded-md font-gotham bg-gradient-to-r from-accentStart to-accentEnd hover:scale-105 duration-100 text-white px-4 py-2 text-center mt-6"
-                  >
-                    Nasza oferta
-                    <FaChevronRight />
+                    Firma/Freelancer
                   </Link>
                 </div>
                 <div className="mx-auto lg:mx-0 my-6">
                   <Regions />
                 </div>
               </div>
-              <div className="flex flex-col items-center justify-center w-full h-full mx-auto relative max-w-[420px]">
-                <Image
-                  style={{ boxShadow: "0px 0px 12px rgb(82 82 91 / 0.8)" }}
-                  src={Pawełek}
-                  alt="Praca od 9-17? to nie dla mnie. ~Pawełek"
-                  title="Praca od 9-17? to nie dla mnie. ~Pawełek"
-                  className="w-full max-w-lg lg:max-w-none rounded-lg drop-shadow-lg shadow-black"
-                />
-                <div
-                  style={{ boxShadow: "0px 0px 12px rgb(82 82 91 / 0.8)" }}
-                  className="text-zinc-800 drop-shadow-sm shadow-black font-extralight font-gotham p-3 rounded-xl w-max max-w-full bg-white absolute bottom-[-36px] left-0 lg:-left-4"
-                >
-                  &quot;Pracowałem po 12 godzin w sprintach IT dla{" "}
-                  <strong>Janusza</strong>. Dziś nie wyobrażam sobie biznesu bez
-                  Quixy&quot; ~{" "}
-                  <Link
-                    href="https://youtube.com/@kudlaty-koduje"
-                    target="_blank"
-                    title="Kudłaty Koduje YouTube"
-                    className="inline-flex items-center align-middle ml-1 text-blue-600"
-                  >
+              <div className="z-50 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-700 rounded-3xl shadow-2xl p-6 lg:p-14 flex flex-col justify-center h-max my-auto border border-zinc-700/40 relative overflow-hidden">
+                {/* Decorative background accents */}
+                <div className="absolute -top-10 -left-10 w-32 h-32 bg-green-400/20 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="relative z-10 flex flex-row items-center gap-6">
+                  <div className="relative">
+                    <div className="absolute bottom-3 right-3 bg-green-400 animate-ping w-5 h-5 rounded-full z-10" />
+                    <div className="absolute bottom-[13px] right-[13px] bg-green-500 w-4 h-4 rounded-full z-10" />
                     <Image
-                      src={ytLogo}
-                      width={24}
-                      height={24}
-                      alt="YouTube logo"
-                      className="h-auto w-5 mr-1"
+                      src={Pawełek}
+                      width={120}
+                      height={120}
+                      className="rounded-full min-w-24 min-h-24 aspect-square border-4 border-green-400/40 shadow-lg"
+                      alt="Zleć wykonanie strony internetowej np. Pawełkowi"
                     />
-                    Kudłaty
-                  </Link>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h2 className="text-2xl font-gotham font-semibold text-white drop-shadow-lg">
+                      Strony www, sklepy i aplikacje webowe
+                    </h2>
+                    <p className="text-sm font-gotham font-light text-zinc-200">
+                      <Link
+                        href="/freelancer/strony-internetowe-marketing-seo"
+                        className="underline underline-offset-2 decoration-green-400 hover:text-green-300 transition"
+                      >
+                        Paweł Wessel – Specjalista ds. Stron, SEO i Marketingu
+                      </Link>
+                    </p>
+                    <Link
+                      href="tel:+48721417154"
+                      title="Skontaktuj się z Paweł Wessel"
+                      className="mt-1 flex items-center gap-2 hover:underline text-green-300"
+                    >
+                      <FaPhoneAlt />
+                      <span className="text-lg font-light font-gotham">
+                        +48 721 417 154
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="font-light mt-8 text-base lg:text-lg xl:text-xl text-zinc-100 text-center lg:text-left z-30 w-full flex flex-col justify-center">
+                  <h2 className="text-white drop-shadow-md shadow-black italic sm:max-w-[30rem] lg:max-w-[40rem] max-w-[30rem] mx-auto lg:mx-0">
+                    Kompleksowa obsługa – od branży IT po marketing. Zyskaj
+                    nowoczesną stronę internetową, która wyróżni Twój biznes.
+                  </h2>
+                  <p className="font-gotham text-xs my-4 text-zinc-300">
+                    Chcesz wycenę? Kliknij &quot;Dodaj zlecenie&quot; i opisz
+                    swój pomysł na stronę, kampanię lub biznes.
+                  </p>
+                </div>
+                <div className="w-max mx-auto lg:mx-0 mt-6 !text-base">
+                  <Cta label="Dodaj zlecenie" />
                 </div>
               </div>
             </div>

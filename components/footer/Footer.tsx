@@ -4,11 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getDocuments, getBlogPosts } from "@/common/firebase";
-import {
-  polishCities,
-  getCityDisplayName,
-  getCityNominative,
-} from "@/lib/polishCities";
 import { Post } from "@/types";
 import { FaFacebook, FaTiktok } from "react-icons/fa";
 
@@ -49,7 +44,7 @@ export default function Footer() {
   return (
     <footer className="bg-black/90 text-white py-16 px-4 relative z-50">
       <div className="max-w-[90vw] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="block mb-6">
@@ -95,32 +90,39 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Cities We Serve */}
-          <div>
-            <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
-              Strony internetowe
-            </span>
-            <div className="grid grid-cols-2 gap-1 text-sm">
-              {polishCities.map((city) => (
-                <Link
-                  key={city}
-                  title={`Tworzenie stron internetowych ${getCityNominative(
-                    city
-                  )}`}
-                  href={`/oferta/tworzenie-stron-internetowych-${city}-cennik`}
-                  className="text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 text-xs font-sans font-light"
-                >
-                  Tworzenie stron internetowych {getCityNominative(city)}
-                </Link>
-              ))}
-            </div>
-          </div>
           {/* Legal & Additional Links */}
           <div>
-            <span className="text-[#B4FC2D] text-lg mb-4 font-gotham font-light">
-              Informacje
-            </span>
             <div className="space-y-2 text-sm font-sans">
+              <Link
+                href="/contact"
+                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
+              >
+                Kontakt
+              </Link>
+              <Link
+                href="/login"
+                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
+              >
+                Logowanie
+              </Link>
+              <Link
+                href="/register"
+                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
+              >
+                Rejestracja
+              </Link>
+              <Link
+                href="/news"
+                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
+              >
+                Aktualności
+              </Link>
+              <Link
+                href="/blog"
+                className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"
+              >
+                Blog
+              </Link>
               <Link
                 href="/regulamin"
                 className="block text-gray-300 hover:text-[#3EE7C0] transition-colors py-1 font-light"

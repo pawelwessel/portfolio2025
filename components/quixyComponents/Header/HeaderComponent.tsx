@@ -3,6 +3,7 @@ import Cta from "@/components/cta/Cta";
 import Image from "next/image";
 import Link from "next/link";
 import { FaChevronDown, FaUserCircle } from "react-icons/fa";
+import { polishCities, getCityNominative } from "@/lib/polishCities";
 export default function HeaderComponent({
   showHeader,
   menuShow,
@@ -30,18 +31,18 @@ export default function HeaderComponent({
     <>
       <div
         style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
-        className={`py-1 fixed left-0 top-0 z-[10000] px-4 bg-white flex flex-row items-center justify-center w-full ${
+        className={`fixed left-0 top-0 z-[10000] px-6 bg-white flex flex-row items-center justify-center w-full ${
           showHeader || menuShow || hovered === "cat" || productsOpen
             ? "-translate-y-0"
             : "-translate-y-[100%]"
         } duration-300 `}
       >
         {/* Header Content */}
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full max-w-7xl items-center justify-between">
           <Link
             title="Platforma internetowa pracy zdalnej Quixy"
             href="/"
-            className="flex flex-col font-light h-full relative min-w-24"
+            className="flex flex-col font-light h-full relative min-w-32"
           >
             <Image
               src="/assets/quixy-logo.png"
@@ -49,7 +50,7 @@ export default function HeaderComponent({
               height={224}
               alt="Platforma dla freelancerów"
               title="Platforma dla freelancerów"
-              className="w-36 aspect-auto absolute top-1/2 -translate-y-1/2"
+              className="w-24 aspect-auto absolute top-1/2 -translate-y-1/2"
             />
           </Link>
           <div className="flex items-center">
@@ -87,46 +88,105 @@ export default function HeaderComponent({
             </div>
           </div>
           <div className="lg:flex items-center w-full hidden">
-            <div
-              onMouseEnter={() => {
-                width >= 1024 && handleMouseEnter("cat");
-              }}
-              onMouseLeave={() => {
-                width >= 1024 && handleMouseLeave();
-              }}
-              className={`w-max h-full py-5 group`}
-            >
-              <button
-                onClick={() => {
-                  setProductsOpen(true);
-                  setMenuShow(false);
-                  setHovered("");
+            {/* Strony Internetowe Section */}
+            <div className="flex items-center space-x-8">
+              <div
+                onMouseEnter={() => {
+                  width >= 1024 && handleMouseEnter("strony");
                 }}
-                title="Firmy, Freelancerzy, Oferty Pracy Zdalnej, Zlecenia, Usługi Quixy"
-                className={`flex text-black hover:text-white items-center ml-3 sm:ml-12 w-max py-[10px] px-[10px] drop-shadow-sm duration-500 relative text-base cursor-pointer`}
+                onMouseLeave={() => {
+                  width >= 1024 && handleMouseLeave();
+                }}
+                className="relative group"
               >
-                <span
-                  className={`relative z-50 ${
-                    hovered === "cat" &&
-                    "bg-gradient-to-br from-green-600 to-green-700 text-white"
-                  } rounded-md px-1.5 py-1`}
+                <button
+                  title="Strony internetowe dla miast w Polsce"
+                  className="flex items-center text-black hover:text-green-600 transition-colors duration-200 font-medium text-base"
                 >
-                  Nasza oferta
-                </span>
-                <FaChevronDown
-                  className={`${
-                    hovered === "cat" ? "text-black rotate-180" : ""
-                  } ml-1 duration-200`}
-                />
-              </button>
-            </div>
+                  <span className="relative z-50 px-3 py-2">
+                    Strony internetowe
+                  </span>
+                  <FaChevronDown className="ml-1 text-sm" />
+                </button>
 
-            <Link
-              href="/news"
-              className="rounded-md text-base drop-shadow-sm shadow-black text-black px-2 py-1 bg-gradient-to-br hover:from-green-600 hover:to-green-700 hover:text-white"
-            >
-              Aktualności
-            </Link>
+                {/* Dropdown for Strony Internetowe */}
+                <div
+                  className={`absolute top-full left-0 mt-2 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-50 ${
+                    hovered === "strony"
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible"
+                  } transition-all duration-200`}
+                >
+                  <div className="p-4">
+                    <h3 className="text-sm font-semibold text-gray-800 mb-3">
+                      Strony internetowe dla miast:
+                    </h3>
+                    <div className="grid grid-cols-2 gap-1 max-h-64 overflow-y-auto">
+                      {polishCities.slice(0, 20).map((city) => (
+                        <Link
+                          key={city}
+                          href={`/oferta/tworzenie-stron-internetowych-${city}-cennik`}
+                          title={`Tworzenie stron internetowych ${getCityNominative(
+                            city
+                          )}`}
+                          className="text-xs text-gray-600 hover:text-green-600 transition-colors py-1 px-2 rounded hover:bg-gray-50"
+                        >
+                          {getCityNominative(city)}
+                        </Link>
+                      ))}
+                      {polishCities.length > 20 && (
+                        <div className="col-span-2 text-xs text-gray-500 py-2 text-center">
+                          +{polishCities.length - 20} więcej miast
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                onMouseEnter={() => {
+                  width >= 1024 && handleMouseEnter("cat");
+                }}
+                onMouseLeave={() => {
+                  width >= 1024 && handleMouseLeave();
+                }}
+                className={`w-max h-full py-5 group`}
+              >
+                <button
+                  onClick={() => {
+                    setProductsOpen(true);
+                    setMenuShow(false);
+                    setHovered("");
+                  }}
+                  title="Firmy, Freelancerzy, Oferty Pracy Zdalnej, Zlecenia, Usługi Quixy"
+                  className={`flex text-black hover:text-white items-center w-max py-[14px] px-[10px] drop-shadow-sm duration-500 relative text-base cursor-pointer`}
+                >
+                  <span
+                    className={`relative z-50 ${
+                      hovered === "cat" &&
+                      "text-green-600 transition-colors duration-200"
+                    } rounded-md px-3 py-2`}
+                  >
+                    Nasza oferta
+                  </span>
+                  <FaChevronDown
+                    className={`${
+                      hovered === "cat"
+                        ? "text-green-600 transition-colors duration-200"
+                        : ""
+                    } ml-1 text-sm`}
+                  />
+                </button>
+              </div>
+
+              <Link
+                href="/news"
+                className="rounded-md text-base drop-shadow-sm shadow-black text-black px-4 py-2 bg-gradient-to-br hover:from-green-600 hover:to-green-700 hover:text-white transition-all duration-200 font-medium"
+              >
+                Aktualności
+              </Link>
+            </div>
           </div>
         </div>
       </div>

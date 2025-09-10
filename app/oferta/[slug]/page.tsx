@@ -273,7 +273,10 @@ function PageContent({
       )}
 
       <div className="relative w-screen overflow-x-hidden">
-        <div className="font-sans w-full bg-[#222222] pb-48 h-full">
+        <div className="fixed left-0 top-0 w-full h-full">
+          <Hero />
+        </div>
+        <div className="font-sans w-full bg-zinc-800 pb-48 h-full">
           <HeroIntro city={getCityNominative(slugToCity(slug)!)} />
 
           <main className="font-sans overflow-visible relative items-center min-h-screen grid grid-cols-1 z-30">
@@ -285,74 +288,236 @@ function PageContent({
               />
               <ProjectShowcase dictionary={dictionary} />
               <BlogSection />
-              <ReachSection markers={markers} isLandingPage={true} />
               <Contact isLandingPage={true} />
-              <div className="relative z-10 w-full">
+              <div className="relative z-10 w-full mt-24">
                 <article className="w-full mx-auto">
-                  <div className="relative bg-white p-8 md:p-12 overflow-hidden">
-                    {/* Background accent elements */}
-                    <h1 className="mb-16 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black leading-tight font-gotham">
-                      {post.title}
-                    </h1>
-                    <Image
-                      src="/assets/quixy-logo.png"
-                      width={400}
-                      height={400}
-                      alt="Quixy Studio Strony Internetowe Logo"
-                      className="w-auto h-[90px]"
-                      priority
-                    />
-                    <div className="mt-6 relative z-10">
-                      {post.intro && (
-                        <div className="mb-10 font-gotham font-light">
-                          <p className="text-black text-base lg:text-lg leading-relaxed whitespace-pre-line font-light">
-                            {post.intro}
+                  <div className="relative bg-gradient-to-br from-white via-gray-50 to-white p-8 md:p-12 overflow-hidden rounded-2xl shadow-xl border border-gray-100">
+                    {/* Background decorative elements */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-green-100 to-blue-100 rounded-full -translate-y-32 translate-x-32 opacity-20"></div>
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-blue-100 to-green-100 rounded-full translate-y-24 -translate-x-24 opacity-20"></div>
+
+                    {/* Header Section */}
+                    <div className="relative z-10 mb-12">
+                      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
+                        <div className="flex-1">
+                          <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-4">
+                            <svg
+                              className="w-4 h-4 mr-2"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            Lokalna obsługa
+                          </div>
+                          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight font-gotham mb-4">
+                            {post.title}
+                          </h1>
+                          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
+                            Profesjonalne strony internetowe dostosowane do
+                            potrzeb Twojej firmy. Nowoczesny design, szybka
+                            realizacja, konkurencyjne ceny.
                           </p>
-                          <div className="w-16 h-0.5 bg-gradient-to-r from-[#B4FC2D] to-[#3EE7C0] mt-6 rounded-full opacity-60" />
+                        </div>
+                        <div className="flex-shrink-0">
+                          <div className="relative">
+                            <Image
+                              src="/assets/quixy-logo.png"
+                              width={400}
+                              height={400}
+                              alt="Quixy Studio Strony Internetowe Logo"
+                              className="w-auto h-24 lg:h-32 drop-shadow-lg"
+                              priority
+                            />
+                            <div className="absolute -inset-2 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg opacity-20 blur-lg"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Quick Stats */}
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                          <div className="text-2xl font-bold text-green-600 mb-1">
+                            500+
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Zrealizowanych projektów
+                          </div>
+                        </div>
+                        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                          <div className="text-2xl font-bold text-blue-600 mb-1">
+                            24h
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Czas odpowiedzi
+                          </div>
+                        </div>
+                        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                          <div className="text-2xl font-bold text-purple-600 mb-1">
+                            5 lat
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Doświadczenia
+                          </div>
+                        </div>
+                        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                          <div className="text-2xl font-bold text-orange-600 mb-1">
+                            100%
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Zadowolonych klientów
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="relative z-10">
+                      {post.intro && (
+                        <div className="mb-12 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 border border-blue-100">
+                          <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
+                                <svg
+                                  className="w-6 h-6 text-white"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 font-gotham">
+                                Dlaczego warto wybrać nas?
+                              </h3>
+                              <p className="text-gray-700 text-base lg:text-lg leading-relaxed whitespace-pre-line">
+                                {post.intro}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="mt-6 flex items-center space-x-4">
+                            <div className="flex-1 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 rounded-full"></div>
+                            <div className="text-sm text-gray-500 font-medium">
+                              Sprawdź naszą ofertę
+                            </div>
+                            <div className="flex-1 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 rounded-full"></div>
+                          </div>
                         </div>
                       )}
 
                       {post.sections && post.sections.length > 0 && (
-                        <div className="space-y-12">
+                        <div className="space-y-16">
                           {post.sections.map((section, idx) => (
-                            <section key={idx} className="relative font-sans">
-                              {section.title && (
-                                <h2 className="my-16 text-xl lg:text-2xl text-black font-bold font-gotham relative">
-                                  {section.title}
-                                </h2>
-                              )}
-                              <div
-                                className="prose prose-sm md:prose-base prose-invert prose-a:text-[#B4FC2D] prose-a:hover:text-[#A3E626] prose-headings:text-black prose-headings:font-gotham prose-p:text-black prose-p:leading-relaxed prose-strong:text-black prose-code:text-[#B4FC2D] prose-code:bg-[#1a1f2e] prose-code:px-2 prose-code:py-1 prose-code:rounded prose-h1:text-2xl md:prose-h1:text-3xl max-w-none"
-                                dangerouslySetInnerHTML={{
-                                  __html: section.content,
-                                }}
-                              />
+                            <section key={idx} className="relative">
+                              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                                {section.title && (
+                                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b border-gray-200">
+                                    <div className="flex items-center space-x-4">
+                                      <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
+                                        <span className="text-white font-bold text-lg">
+                                          {idx + 1}
+                                        </span>
+                                      </div>
+                                      <h2 className="text-2xl lg:text-3xl text-gray-900 font-bold font-gotham">
+                                        {section.title}
+                                      </h2>
+                                    </div>
+                                  </div>
+                                )}
+                                <div className="p-8">
+                                  <div
+                                    className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-headings:font-gotham prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-p:text-base prose-strong:text-gray-900 prose-strong:font-semibold prose-ul:text-gray-700 prose-li:text-gray-700 prose-li:leading-relaxed prose-a:text-green-600 prose-a:hover:text-green-700 prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-ol:text-gray-700"
+                                    dangerouslySetInnerHTML={{
+                                      __html: section.content,
+                                    }}
+                                  />
+                                </div>
+                              </div>
                             </section>
                           ))}
                         </div>
                       )}
 
                       {post.outro && (
-                        <div className="font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50">
-                          <p className="text-black text-base lg:text-lg leading-relaxed whitespace-pre-line font-light">
-                            {post.outro}
-                          </p>
+                        <div className="mt-16 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 border border-green-100">
+                          <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                                <svg
+                                  className="w-6 h-6 text-white"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 font-gotham">
+                                Gotowy na start?
+                              </h3>
+                              <p className="text-gray-700 text-base lg:text-lg leading-relaxed whitespace-pre-line">
+                                {post.outro}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       )}
 
                       {/* FAQ Section */}
-                      <FaqSection faqs={post.faq} />
-
-                      <div className="!text-lg font-gotham font-light mt-12 pt-8 border-t border-[#2a2f3d]/50 flex flex-row items-center gap-4">
-                        <Cta label="Dodaj zlecenie" />
+                      <div className="mt-16">
+                        <FaqSection faqs={post.faq} />
                       </div>
-                      <div className="max-w-[450px]">
-                        <OpinionsSection darkBg={true} />
+
+                      {/* CTA Section */}
+                      <div className="mt-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-white text-center">
+                        <div className="max-w-2xl mx-auto">
+                          <h3 className="text-2xl lg:text-3xl font-bold mb-4 font-gotham">
+                            Rozpocznij swój projekt już dziś!
+                          </h3>
+                          <p className="text-green-100 text-lg mb-6">
+                            Skontaktuj się z nami i otrzymaj bezpłatną wycenę w
+                            ciągu 24 godzin
+                          </p>
+                          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <Cta label="Dodaj zlecenie" />
+                            <Link
+                              href="/contact"
+                              title="Skontaktuj się"
+                              className="px-6 py-3 bg-white text-green-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                            >
+                              Bezpłatna konsultacja
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Opinions Section */}
+                      <div className="mt-16">
+                        <div className="max-w-[450px]">
+                          <OpinionsSection darkBg={false} />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </article>
-                <div className="max-w-[90vw] mx-auto font-sans mb-12">
+                <div className="max-w-[90vw] mx-auto font-sans my-12">
                   <div className="bg-white rounded-xl p-6">
                     <PricingHero city={getCityNominative(slugToCity(slug)!)} />
                     <div className="my-12 mx-auto bg-gradient-to-b from-gray-100 via-zinc-100 to-gray-100 rounded-2xl p-6">
@@ -380,7 +545,7 @@ function PageContent({
                     </div>
                     <ReachSection markers={markers} />
                   </div>
-                  <BlogSection />
+                  {/* <BlogSection /> */}
                 </div>
               </div>
             </section>

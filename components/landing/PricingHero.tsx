@@ -116,7 +116,7 @@ export default function PricingHero({ city }: { city: string }) {
         </table>
       </div>
 
-      <div className="mt-4 text-xs text-zinc-500">
+      <div className="mt-4 mb-3 text-xs text-zinc-500">
         * Ceny netto „od”. Końcowa wycena zależy od firmy, freelancera oraz
         zakresu, ilości podstron, integracji i budżetów mediowych. Budżet reklam
         nie jest wliczony w abonament.

@@ -10,64 +10,61 @@ export default function HeroIntro({ city }: { city?: string }) {
     <>
       <div className="mx-auto justify-evenly min-h-screen lg:mt-0 w-full flex flex-col px-3 lg:px-12 max-w-[90vw] relative pt-36 pb-12">
         <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 h-max">
-          <div className="z-50 bg-zinc-800 bg-opacity-80 rounded-xl p-6 lg:p-12 flex flex-col justify-center h-max my-auto">
-            <div className="my-5 flex flex-row items-center gap-3">
+          <div className="z-50 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-700 rounded-3xl shadow-2xl p-6 lg:p-14 flex flex-col justify-center h-max my-auto border border-zinc-700/40 relative overflow-hidden">
+            {/* Decorative background accents */}
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-green-400/20 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="relative z-10 flex flex-row items-center gap-6">
               <div className="relative">
-                <div className="absolute bottom-3 right-3 bg-green-500 animate-ping w-5 h-5 rounded-full z-10" />
+                <div className="absolute bottom-3 right-3 bg-green-400 animate-ping w-5 h-5 rounded-full z-10" />
                 <div className="absolute bottom-[13px] right-[13px] bg-green-500 w-4 h-4 rounded-full z-10" />
                 <Image
                   src={Pawełek}
-                  width={244}
-                  height={244}
-                  className="rounded-full min-w-32 min-h-32 aspect-square"
+                  width={120}
+                  height={120}
+                  className="rounded-full min-w-24 min-h-24 aspect-square border-4 border-green-400/40 shadow-lg"
                   alt="Zleć wykonanie strony internetowej np. Pawełkowi"
                 />
               </div>
-              <div className="flex flex-col">
-                <h2 className="text-xl">
-                  Tworzymy unikalne i oryginalne, responsywne strony www, sklepy
-                  internetowe i aplikacje webowe.
+              <div className="flex flex-col gap-1">
+                <h2 className="text-2xl font-gotham font-semibold text-white drop-shadow-lg">
+                  Strony www, sklepy i aplikacje webowe {city}
                 </h2>
-                <p className="text-sm font-gotham font-light text-white">
-                  <Link href="/freelancer/strony-internetowe-marketing-seo">
-                    Specjalista ds. Stron Internetowych, SEO i Marketingu Paweł
-                    Wessel
-                  </Link>{" "}
-                  {city}
-                </p>{" "}
+                <p className="text-sm font-gotham font-light text-zinc-200">
+                  <Link
+                    href="/freelancer/strony-internetowe-marketing-seo"
+                    className="underline underline-offset-2 decoration-green-400 hover:text-green-300 transition"
+                  >
+                    Paweł Wessel – Specjalista ds. Stron, SEO i Marketingu
+                  </Link>
+                </p>
                 <Link
                   href="tel:+48721417154"
                   title="Skontaktuj się z Paweł Wessel"
-                  className="mt-1 flex items-center gap-2 hover:underline text-blue-400"
+                  className="mt-1 flex items-center gap-2 hover:underline text-green-300"
                 >
                   <FaPhoneAlt />
-                  <p className="text-lg font-light font-gotham">
+                  <span className="text-lg font-light font-gotham">
                     +48 721 417 154
-                  </p>
+                  </span>
                 </Link>
               </div>
             </div>
-            <div className="font-light mt-6 text-base lg:text-lg xl:text-xl text-gray-50 text-center lg:text-left z-30 w-full flex flex-col justify-center">
-              <h1 className="text-white drop-shadow-md shadow-black italic sm:max-w-[30rem] lg:max-w-[50rem] max-w-[40rem]">
-                Agencja Kreatywna, która zapewni Ci kompleksową obsługę {city} -
-                od branży IT po marketing.
-              </h1>
-              <p className="font-gotham text-xs my-3">
-                Aby otrzymać wycenę, kliknij przycisk &quot;Dodaj zlecenie&quot;
-                - opisz stronę internetową, pomysł na kampanię marketingową, czy
-                po prostu plan na biznes.
+            <div className="font-light mt-8 text-base lg:text-lg xl:text-xl text-zinc-100 text-center lg:text-left z-30 w-full flex flex-col justify-center">
+              <h2 className="text-white drop-shadow-md shadow-black italic sm:max-w-[30rem] lg:max-w-[40rem] max-w-[30rem] mx-auto lg:mx-0">
+                Agencja Kreatywna {city} – od branży IT po marketing. Zyskaj
+                nowoczesną stronę internetową, która wyróżni Twój biznes.
+              </h2>
+              <p className="font-gotham text-xs my-4 text-zinc-300">
+                Chcesz wycenę? Kliknij &quot;Dodaj zlecenie&quot; i opisz swój
+                pomysł na stronę, kampanię lub biznes.
               </p>
             </div>
-            <div className="gap-3 flex z-30 w-full items-center lg:items-start sm:w-max mx-auto lg:mx-0">
+            <div className="w-max mx-auto lg:mx-0 mt-6 !text-base">
               <Cta label="Dodaj zlecenie" />
-              <Link
-                href="/register"
-                className="!text-xs sm:!text-base py-3 px-5 mt-4 hover:scale-110 duration-200 in-out text-white rounded-lg cursor-pointer bg-blue-500 w-max max-w-full"
-              >
-                Firma/Freelancer
-              </Link>
             </div>
           </div>
+
           <div className="flex items-center justify-center flex-col w-full lg:pl-12 mt-8 lg:mt-0">
             <div className="max-w-[90vw] lg:max-w-[550px] flex items-center justify-center">
               <Image

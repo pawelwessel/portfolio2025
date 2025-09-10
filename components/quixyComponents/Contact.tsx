@@ -36,19 +36,17 @@ export default function Contact({
           <div className={`${!isLandingPage && "container"} mx-auto px-4 py-6`}>
             {!isLandingPage && (
               <nav className="flex items-center text-sm breadcrumbs !text-zinc-700">
-                <ul className="flex items-center flex-wrap gap-2">
+                <ul className="pt-8 flex items-center flex-wrap gap-2">
                   <li>
                     <Link
                       href="/"
-                      title="Strony Internetowe Grudziądz"
+                      title="Strony Internetowe WWW z Cennikiem"
                       className="hover:underline font-semibold"
                     >
                       Strona główna
                     </Link>
                   </li>
-                  <li>
-                    <span className="mx-2 text-zinc-400">/</span>
-                  </li>
+
                   <li>
                     <Link
                       href="/contact"

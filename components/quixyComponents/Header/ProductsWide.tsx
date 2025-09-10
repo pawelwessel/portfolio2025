@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { polishToEnglish } from "../../../utils/polishToEnglish";
-import { FaFacebook, FaTiktok } from "react-icons/fa6";
+import { FaFacebook, FaTiktok, FaChevronRight } from "react-icons/fa6";
 
 export default function ProductsWide({
   width,
@@ -33,100 +33,123 @@ export default function ProductsWide({
       onMouseLeave={() => {
         width >= 1024 && handleMouseLeave();
       }}
-      className={`z-[9999] pb-12 fixed w-full max-h-[80vh] overflow-y-scroll top-0 left-0 bg-white shadow-black ${
+      className={`z-[9999] fixed w-full max-h-[85vh] overflow-y-auto top-0 left-0 bg-white border-t border-gray-200 ${
         hovered === "cat"
-          ? "translate-y-[116px] lg:translate-y-[84px]"
+          ? "translate-y-[116px] lg:translate-y-[84px] opacity-100"
           : "-translate-y-[100vh] opacity-0"
-      } hidden lg:grid shadow-sm`}
+      } hidden lg:block transition-all duration-300 ease-in-out shadow-2xl`}
     >
-      <div className="relative mt-12">
-        <div className="sticky top-0 left-0 flex flex-col z-[500] px-12">
-          <div className="my-4 relative flex flex-col">
-            <div className="flex items-center flex-wrap gap-4">
+      <div className="max-w-7xl mx-auto px-8 py-8">
+        {/* Header Section */}
+        <div className="mt-4 flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+          <div className="flex items-center space-x-6">
+            <h2 className="text-2xl font-bold text-gray-900">Nasza Oferta</h2>
+            <div className="flex items-center space-x-4">
               <Link
                 title="Strony Internetowe WWW z Cennikiem Grudziądz Tiktok"
                 target="_blank"
                 href="https://www.tiktok.com/@strony_www_grudziadz"
-                className="flex items-center"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
               >
-                <FaTiktok className="text-2xl text-black" />
+                <FaTiktok className="text-lg text-gray-700" />
               </Link>
               <Link
                 title="Strony Internetowe WWW z Cennikiem Grudziądz Facebook"
                 href="https://www.facebook.com/profile.php?id=61579945978455"
                 target="_blank"
-                className="flex items-center"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
               >
-                <FaFacebook className="text-2xl text-black" />
+                <FaFacebook className="text-lg text-gray-700" />
               </Link>
             </div>
           </div>
-          <div className="gap-4 grid grid-cols-3">
-            {jobs.map((job: any, i: any) => (
-              <div className={` flex flex-col font-extrabold`} key={i}>
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {jobs.map((job: any, i: any) => (
+            <div key={i} className="space-y-4">
+              {/* Category Header */}
+              <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-lg p-4 shadow-lg">
                 <Link
                   href={`/oferta/dla-firm/${polishToEnglish(job.title)}`}
                   title={`Oferta ${job.title}`}
-                  className={`w-max max-w-full border-2 border-white text-center rounded-lg flex flex-col bg-gradient-to-b from-zinc-700 to-zinc-800 hover:scale-105 duration-100`}
-                  key={i}
                   onClick={resetHeader}
+                  className="block group"
                 >
-                  <span
-                    style={{ textShadow: "2px 2px 5px gray" }}
-                    className="text-white text-xl p-2"
-                  >
+                  <h3 className="text-xl font-bold text-white group-hover:text-green-100 transition-colors">
                     {job.title}
-                  </span>
+                  </h3>
+                  <div className="flex items-center mt-2 text-green-100 text-sm">
+                    <span>Zobacz wszystkie oferty</span>
+                    <FaChevronRight className="ml-2 text-xs group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </Link>
-                <div className="flex flex-col mt-3">
-                  {job.data.map((item: any, i: any) => (
-                    <div key={i} className="relative group w-max">
-                      <div
-                        title={`Oferta ${job.title} / ${item.title}`}
-                        className="group-hover:text-white duration-150 group-hover:bg-gradient-to-r group-hover:from-green-700 group-hover:to-green-800 p-1 text-base text-black"
-                      >
-                        {item.title}
-                      </div>
+              </div>
 
-                      {/* Hover dropdown */}
-                      <div className="mt-[4px] flex flex-col absolute left-0 top-0 group-hover:-translate-y-0 -translate-y-[1000%] opacity-0 group-hover:opacity-100 z-50">
-                        <Link
-                          onClick={resetHeader}
-                          title={`Oferta ${item.title}`}
-                          className="py-3.5 text-white font-bold w-full text-left text-base"
-                          href={`/oferta/dla-firm/${polishToEnglish(
-                            job.title
-                          )}/${polishToEnglish(item.title)}`}
-                        ></Link>
-                        <div className="flex flex-col xl:flex-row xl:flex-wrap xl:w-[420px] w-[210px] overflow-hidden">
-                          {item.data.map((subcategory: any, i: any) => (
+              {/* Subcategories */}
+              <div className="space-y-2">
+                {job.data.map((item: any, itemIndex: any) => (
+                  <div key={itemIndex} className="group">
+                    <div className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
+                      <Link
+                        href={`/oferta/dla-firm/${polishToEnglish(
+                          job.title
+                        )}/${polishToEnglish(item.title)}`}
+                        onClick={resetHeader}
+                        title={`Oferta ${job.title} / ${item.title}`}
+                        className="block"
+                      >
+                        <h4 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors mb-2">
+                          {item.title}
+                        </h4>
+                      </Link>
+
+                      {/* Subcategory Grid */}
+                      <div className="grid grid-cols-1 gap-2">
+                        {item.data
+                          .slice(0, 4)
+                          .map((subcategory: any, subIndex: any) => (
                             <Link
+                              key={subIndex}
                               onClick={() => resetHeader()}
                               title={`Oferta ${job.title}/${item.title}/${subcategory.title}`}
-                              key={i}
-                              style={{ boxShadow: "inset 0px 0px 3px black" }}
-                              className={`hover:underline bg-white font-normal p-2 text-black w-[210px] xl:min-w-[210px] max-w-[420px] ${
-                                item.data.length % 2 !== 0 &&
-                                i + 1 === item.data.length &&
-                                ""
-                              }`}
                               href={`/oferta/dla-firm/${polishToEnglish(
                                 job.title
                               )}/${polishToEnglish(
                                 item.title
                               )}/${polishToEnglish(subcategory.title)}`}
+                              className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 hover:bg-white rounded-md transition-all duration-200 border border-transparent hover:border-green-200"
                             >
                               {subcategory.title}
                             </Link>
                           ))}
-                        </div>
+                        {item.data.length > 4 && (
+                          <div className="text-xs text-gray-500 px-3 py-2">
+                            +{item.data.length - 4} więcej opcji
+                          </div>
+                        )}
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer CTA */}
+        <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+          <p className="text-gray-600 text-sm">
+            Nie znalazłeś tego czego szukasz?
+            <Link
+              href="/contact"
+              className="text-green-600 hover:text-green-700 font-medium ml-1"
+              onClick={resetHeader}
+            >
+              Skontaktuj się z nami
+            </Link>
+          </p>
         </div>
       </div>
     </div>
