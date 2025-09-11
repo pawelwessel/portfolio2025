@@ -46,6 +46,7 @@ export const polishCities = [
   "piotrkow-trybunalski",
   "inowroclaw",
   "lubin",
+  "kedzierzyn-kozle",
   "ostrowiec-swietokrzyski",
   "gniezno",
   "stargard",
@@ -1295,6 +1296,15 @@ export const cityDeclensions: Record<string, CityDeclension> = {
     instrumental: "Żyrardowem",
     locative: "Żyrardowie",
     vocative: "Żyrardowie",
+  },
+  "kedzierzyn-kozle": {
+    nominative: "Kędzierzyn-Koźle",
+    genitive: "Kędzierzyna-Koźla",
+    dative: "Kędzierzynowi-Koźlu",
+    accusative: "Kędzierzyn-Koźle",
+    instrumental: "Kędzierzynem-Koźlem",
+    locative: "Kędzierzynie-Koźlu",
+    vocative: "Kędzierzynie-Koźle",
   },
 };
 
