@@ -314,9 +314,9 @@ function PageContent({
                             </svg>
                             Lokalna obsługa
                           </div>
-                          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight font-gotham mb-4">
+                          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight font-gotham mb-4">
                             {post.title}
-                          </h1>
+                          </h2>
                           <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
                             Profesjonalne strony internetowe dostosowane do
                             potrzeb Twojej firmy. Nowoczesny design, szybka

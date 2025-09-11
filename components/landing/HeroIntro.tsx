@@ -27,9 +27,9 @@ export default function HeroIntro({ city }: { city?: string }) {
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <h2 className="text-2xl font-gotham font-semibold text-white drop-shadow-lg">
+                <h1 className="text-2xl font-gotham font-semibold text-white drop-shadow-lg">
                   Strony www, sklepy i aplikacje webowe {city}
-                </h2>
+                </h1>
                 <p className="text-sm font-gotham font-light text-zinc-200">
                   <Link
                     href="/freelancer/strony-internetowe-marketing-seo"
